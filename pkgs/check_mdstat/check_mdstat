@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+stat=/proc/mdstat
+
+if [ ! -e "$stat" ]; then
+  echo "WARNING: $stat does not exist"
+  exit 1
+fi
+
+if [ ! -r "$stat" ]; then
+  echo "WARNING: cannot read $stat"
+  exit 1
+fi
+
+count=$(grep ^md -c "$stat")
+
+if [ "$count" -eq 0 ]; then
+  echo 'WARNING: no arrays found.'
+  exit 1
+elif [ "$count" -eq 1 ]; then
+  out="Linux Software RAID: $count array"
+else
+  out="Linux Software RAID: $count arrays"
+fi
+
+degrated=$(grep -c '\[.*_.*\]' "$stat")
+recovering=$(awk '/recovery/ {print $4}' "$stat")
+resyncing=$(awk '/resync/ {print $4}' "$stat")
+
+if [ -n "$recovering" ]; then
+  out="$out, recovering: $recovering"
+elif [ -n "$resyncing" ]; then
+  out="$out, resyncing: $resyncing"
+elif [ "$degrated" -gt 0 ]; then
+  out="$out, degrated: $degrated"
+fi
+
+if [ "$degrated" -gt 0 ]; then
+  echo "CRITICAL: $out."
+  exit 2
+fi
+
+if [ -n "$recovering$resyncing" ]; then
+  echo "WARNING: $out."
+  exit 1
+fi
+
+echo "OK: $out."
+exit 0
+

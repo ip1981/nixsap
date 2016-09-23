@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+readarray -t failed < <( systemctl show '*.service' \
+    --state=failed --property=Names \
+    | sed -r -n 's,Names=(.+)\.service,\1,p' \
+    | sort
+  )
+
+if [ ${#failed[@]} -ne 0 ]; then
+  printf -v list ', %s' "${failed[@]}"
+  printf 'WARNING: %s failed\n' "${list:2}"
+  exit 1
+else
+  echo "OK: no failed services"
+  exit 0
+fi
+
+

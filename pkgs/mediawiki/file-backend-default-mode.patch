@@ -1,0 +1,52 @@
+Index: mediawiki-1.23.13/includes/DefaultSettings.php
+===================================================================
+--- mediawiki-1.23.13.orig/includes/DefaultSettings.php
++++ mediawiki-1.23.13/includes/DefaultSettings.php
+@@ -429,7 +429,7 @@ $wgImgAuthUrlPathMap = array();
+  *                      leave the paths in unchanged, or 'simple' to replace paths with
+  *                      placeholders. Default for LocalRepo is 'simple'.
+  *   - fileMode         This allows wikis to set the file mode when uploading/moving files. Default
+- *                      is 0644.
++ *                      is 0640.
+  *   - directory        The local filesystem directory where public files are stored. Not used for
+  *                      some remote repos.
+  *   - thumbDir         The base thumbnail directory. Defaults to "<directory>/thumb".
+Index: mediawiki-1.23.13/includes/filerepo/FSRepo.php
+===================================================================
+--- mediawiki-1.23.13.orig/includes/filerepo/FSRepo.php
++++ mediawiki-1.23.13/includes/filerepo/FSRepo.php
+@@ -50,7 +50,7 @@ class FSRepo extends FileRepo {
+ 				: "{$directory}/transcoded";
+ 			$fileMode = isset( $info['fileMode'] )
+ 				? $info['fileMode']
+-				: 0644;
++				: 0640;
+ 
+ 			$repoName = $info['name'];
+ 			// Get the FS backend configuration
+Index: mediawiki-1.23.13/includes/filebackend/FSFileBackend.php
+===================================================================
+--- mediawiki-1.23.13.orig/includes/filebackend/FSFileBackend.php
++++ mediawiki-1.23.13/includes/filebackend/FSFileBackend.php
+@@ -82,7 +82,7 @@ class FSFileBackend extends FileBackendS
+ 			}
+ 		}
+ 
+-		$this->fileMode = isset( $config['fileMode'] ) ? $config['fileMode'] : 0644;
++		$this->fileMode = isset( $config['fileMode'] ) ? $config['fileMode'] : 0640;
+ 		if ( isset( $config['fileOwner'] ) && function_exists( 'posix_getuid' ) ) {
+ 			$this->fileOwner = $config['fileOwner'];
+ 			$info = posix_getpwuid( posix_getuid() );
+Index: mediawiki-1.23.13/includes/filebackend/FileBackendGroup.php
+===================================================================
+--- mediawiki-1.23.13.orig/includes/filebackend/FileBackendGroup.php
++++ mediawiki-1.23.13/includes/filebackend/FileBackendGroup.php
+@@ -88,7 +88,7 @@ class FileBackendGroup {
+ 				: "{$directory}/transcoded";
+ 			$fileMode = isset( $info['fileMode'] )
+ 				? $info['fileMode']
+-				: 0644;
++				: 0640;
+ 			// Get the FS backend configuration
+ 			$autoBackends[] = array(
+ 				'name' => $backendName,

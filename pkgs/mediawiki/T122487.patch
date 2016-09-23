@@ -1,0 +1,16 @@
+Description: fix warning on upload page
+Bug: https://phabricator.wikimedia.org/T122487
+Index: mediawiki-1.23.13/includes/User.php
+===================================================================
+--- mediawiki-1.23.13.orig/includes/User.php
++++ mediawiki-1.23.13/includes/User.php
+@@ -3806,6 +3806,9 @@ class User {
+ 	 * @return boolean: Whether the token matches
+ 	 */
+ 	public function matchEditToken( $val, $salt = '', $request = null ) {
++		if ($val === null) {
++			return false;
++		}
+ 		$sessionToken = $this->getEditToken( $salt, $request );
+ 		$equals = hash_equals( $sessionToken, $val );
+ 		if ( !$equals ) {
