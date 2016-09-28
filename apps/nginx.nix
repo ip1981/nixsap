@@ -2,11 +2,16 @@
 
 let
 
-  inherit (lib) mkIf mkOption mkEnableOption types filterAttrs
-                mapAttrsToList concatStringsSep;
-  inherit (types) int bool nullOr attrsOf str either enum submodule lines path;
+  inherit (builtins)
+    filter isBool toString ;
 
-  inherit (builtins) isBool filter toString;
+  inherit (lib)
+    concatMapStrings concatStringsSep filterAttrs mapAttrsToList mkEnableOption
+    mkIf mkOption ;
+
+  inherit (lib.types)
+    attrsOf bool either enum int lines nullOr path str submodule ;
+
 
   cfg = config.nixsap.apps.nginx;
   explicit = filterAttrs (n: v: n != "_module" && v != null);
@@ -21,7 +26,8 @@ let
     let mkEntry = k: v: "${indent}${k} ${show v};";
     in concatStringsSep "\n" (mapAttrsToList mkEntry (explicit set));
 
-  mkServer = name: text: ''
+  mkServer = name: text: pkgs.writeText "nginx-${name}.conf" ''
+    # ${name}:
     server {
     ${text}
     }
@@ -60,7 +66,7 @@ let
       fastcgi_param HTTP_PROXY "";
       proxy_set_header Proxy "";
 
-      ${concatStringsSep "\n" (mapAttrsToList mkServer cfg.http.servers)}
+      ${concatMapStrings (s: "include ${s}\n;") (mapAttrsToList mkServer cfg.http.servers)}
     }
   '';
 
