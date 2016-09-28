@@ -33,7 +33,7 @@ let
   groups = config.nixsap.system.groups;
 
   mkGroup = name: { gid = uid name; };
-  mkDeamonUser = name:
+  mkDaemonUser = name:
     {
       isNormalUser = false;
       uid = uid name;
@@ -76,7 +76,7 @@ in {
   # XXX: Modules for automatic unicity of user names:
   imports = [
     { users.groups = genAttrs (unique (daemons ++ groups)) mkGroup; }
-    { users.users = genAttrs daemons mkDeamonUser; }
+    { users.users = genAttrs daemons mkDaemonUser; }
     { users.users = genAttrs normal mkNormalUser; }
   ];
 }
