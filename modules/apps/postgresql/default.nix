@@ -5,9 +5,9 @@ let
     match toString ;
 
   inherit (lib)
-    concatMapStrings concatStringsSep filter filterAttrs foldl hasPrefix
-    isBool isInt isList isString length mapAttrs' mapAttrsToList mkDefault
-    mkIf mkOption nameValuePair types ;
+    concatMapStrings concatStringsSep filter filterAttrs foldAttrs foldl
+    hasPrefix isBool isInt isList isString length mapAttrs' mapAttrsToList
+    mkDefault mkIf mkOption nameValuePair types ;
 
   inherit (types)
     attrsOf lines listOf nullOr package path str submodule ;
@@ -19,10 +19,13 @@ let
   users = mapAttrsToList (_: v: v.user) instances;
 
   isFloat = x: match "^[0-9]+(\\.[0-9]+)?$" (toString x) != null;
-  isKey = s: s != null && hasPrefix "/run/keys/" s;
 
-  keyrings = mapAttrs' (_: i: nameValuePair "${i.user}" [ i.server.ssl_key_file ]
-    ) (filterAttrs (_: i: isKey i.server.ssl_key_file) instances);
+  keyrings =
+    let
+      isKey = s: s != null && hasPrefix "/run/keys/" s;
+      keys = i: filter isKey [ i.server.ssl_key_file ];
+      ik = mapAttrsToList (_: i: { "${i.user}" = keys i; } ) instances;
+    in foldAttrs (l: r: l ++ r) [] ik;
 
   mkService = name: opts:
     let
