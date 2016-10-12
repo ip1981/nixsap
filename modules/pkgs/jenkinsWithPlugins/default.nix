@@ -6,7 +6,7 @@
   Example: pkgs.jenkinsWithPlugins (plugins: [ plugins.BlameSubversion ... ])
 
   Non-optional dependencies, if any, are automatically added. Optional
-  dependencies are ignored, you have to added them explicitly.
+  dependencies are ignored, you have to add them explicitly.
 
 */
 
