@@ -51,13 +51,21 @@ let
     '';
   };
 
-  requestedPlugins =
+  neededPlugins =
     let
-      explicit = pluginsFunc updateCenter.plugins;
-      deps = map (p: map (d: updateCenter.plugins.${d.name})
-                     (filter (d: ! d.optional) p.dependencies)
-                 ) explicit;
-    in unique ( explicit ++ flatten deps );
+      rootPlugins = map (p: p.name) (pluginsFunc updateCenter.plugins);
+      directDeps = names:
+        let
+          pluginDeps = p: map (d: d.name) (filter (d: ! d.optional) p.dependencies);
+          deps = map (n: pluginDeps updateCenter.plugins.${n}) names;
+        in flatten deps;
+
+      getDepsRecursive = names:
+        if names == [] then []
+        else names ++ getDepsRecursive (directDeps names)
+        ;
+      all = unique ( getDepsRecursive rootPlugins );
+    in map (n: updateCenter.plugins.${n}) all;
 
   pack =  stdenv.mkDerivation rec {
     name = "jenkins-${updateCenter.core.version}+plugins.war";
@@ -70,7 +78,7 @@ let
         <target name="bundle" description="Merge plugins into jenkins.war">
           <zip destfile="jenkins.war" level="9">
             <zipfileset src="${core}" />
-            <zipfileset dir="${pluginsPack requestedPlugins}" prefix="WEB-INF/plugins" />
+            <zipfileset dir="${pluginsPack neededPlugins}" prefix="WEB-INF/plugins" />
           </zip>
         </target>
       </project>
@@ -93,5 +101,5 @@ let
     installPhase = "cp jenkins.war $out";
   };
 
-in if requestedPlugins == [] then core else pack
+in if neededPlugins == [] then core else pack
 
