@@ -4,7 +4,7 @@ let
   inherit (builtins)
     elem isBool isList isString toString ;
   inherit (lib)
-    concatMapStringsSep concatStringsSep filter filterAttrs
+    concatMapStringsSep concatStringsSep filterAttrs
     findFirst flatten hasPrefix mapAttrsToList mkIf
     mkOption optionalString removeSuffix ;
   inherit (lib.types)
@@ -252,7 +252,7 @@ let
     exit "$failed"
   '';
 
-  keys = filter (f: f != null && hasPrefix "/run/keys/" f) ( [cfg.pgpass cfg.s3cfg] );
+  keys = [ cfg.pgpass cfg.s3cfg ];
 
 in {
   options.nixsap.apps.pgbackup = {

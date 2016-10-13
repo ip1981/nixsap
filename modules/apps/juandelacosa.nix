@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  inherit (builtins) filter toString;
+  inherit (builtins) toString;
   inherit (lib) types mkOption mkEnableOption mkIf hasPrefix
                 concatStrings optionalString;
   inherit (types) str path int nullOr;
@@ -16,8 +16,6 @@ let
       then " -p ${toString cfg.port}"
       else " -s '${cfg.socket}'")
   ];
-
-  keys = filter (f: f != null && hasPrefix "/run/keys/" f) [ cfg.myFile ];
 
 in {
   options.nixsap.apps.juandelacosa = {
@@ -51,7 +49,7 @@ in {
 
   config = mkIf cfg.enable {
     nixsap.system.users.daemons = [ cfg.user ];
-    nixsap.deployment.keyrings.${cfg.user} = keys;
+    nixsap.deployment.keyrings.${cfg.user} = [ cfg.myFile ];
     systemd.services.juandelacosa = {
       description = "captain of the MariaDB";
       wantedBy = [ "multi-user.target" ];

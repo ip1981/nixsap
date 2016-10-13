@@ -339,7 +339,7 @@ in {
     ];
     nixsap.system.users.daemons = [ cfg.user ];
     nixsap.system.groups = [ cfg.commandGroup ];
-    nixsap.deployment.keyrings.${cfg.user} = filter (hasPrefix "/run/keys/") cfg.configFiles;
+    nixsap.deployment.keyrings.${cfg.user} = filter (hasPrefix config.nixsap.deployment.keyStore) cfg.configFiles;
     users.users.${cfg.user}.extraGroups = [ "proc" ];
     systemd.services.icinga2 = {
       description = "Icinga2 daemon";

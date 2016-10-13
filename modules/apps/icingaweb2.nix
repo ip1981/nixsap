@@ -5,7 +5,7 @@ let
   inherit (lib) types
     mkIf mkOption mkEnableOption mkDefault hasPrefix
     concatMapStringsSep filterAttrs recursiveUpdate mapAttrsToList
-    concatStringsSep isString filter genAttrs attrNames
+    concatStringsSep isString genAttrs attrNames
     optionalString mkOptionType any;
   inherit (types)
     bool str int lines path either
@@ -245,9 +245,8 @@ let
       fi
     '';
 
-  keys = filter (p: p != null && hasPrefix "/run/keys/" p)
-          [ cfg.resources.icingaweb2db.passfile
-            cfg.resources.icinga2db.passfile ];
+  keys = [ cfg.resources.icingaweb2db.passfile
+           cfg.resources.icinga2db.passfile ];
 
 in {
 

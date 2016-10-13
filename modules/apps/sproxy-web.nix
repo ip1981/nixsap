@@ -4,7 +4,7 @@ let
 
   inherit (builtins) toString ;
   inherit (lib)
-    concatStrings filter hasPrefix mkEnableOption mkIf mkOption
+    concatStrings hasPrefix mkEnableOption mkIf mkOption
     optionalString types ;
   inherit (types)
     int nullOr path str ;
@@ -18,8 +18,6 @@ let
       then " -p ${toString cfg.port}"
       else " -s '${cfg.socket}'")
   ];
-
-  keys = filter (f: f != null && hasPrefix "/run/keys/" f) [ cfg.pgPassFile ];
 
 in {
   options.nixsap.apps.sproxy-web = {
@@ -53,7 +51,7 @@ in {
 
   config = mkIf cfg.enable {
     nixsap.system.users.daemons = [ cfg.user ];
-    nixsap.deployment.keyrings.${cfg.user} = keys;
+    nixsap.deployment.keyrings.${cfg.user} = [ cfg.pgPassFile ];
     systemd.services.sproxy-web = {
       description = "Web interface to Sproxy database";
       wantedBy = [ "multi-user.target" ];

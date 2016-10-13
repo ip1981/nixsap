@@ -6,7 +6,7 @@ let
     attrNames isBool isString ;
 
   inherit (lib)
-    concatMapStringsSep concatStringsSep escape filter filterAttrs
+    concatMapStringsSep concatStringsSep escape filterAttrs
     foldAttrs foldl hasPrefix mapAttrs mapAttrsToList mkOption nameValuePair
     optionalString ;
 
@@ -14,7 +14,6 @@ let
     attrsOf submodule ;
 
   explicit = filterAttrs (n: v: n != "_module" && v != null);
-  isKey = s: s != null && hasPrefix "/run/keys/" s;
 
   instances = explicit config.nixsap.apps.jenkins;
   users = mapAttrsToList (_: i: i.user) instances;
@@ -26,10 +25,10 @@ let
   keyrings =
     let
       # This requires read-write mode of evaluation:
-      keys = n: i: filter isKey (import (pkgs.xinclude2nix (
+      keys = n: i: import (pkgs.xinclude2nix (
            (mapAttrsToList (_: f: f) (configFiles n i))
         ++ (mapAttrsToList (_: f: f) (jobFiles n i))
-        )));
+        ));
       ik = mapAttrsToList (n: i: { "${i.user}" = keys n i; } ) instances;
     in foldAttrs (l: r: l ++ r) [] ik;
 

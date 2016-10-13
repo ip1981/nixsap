@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  inherit (lib) mkOption mkIf mkDefault mapAttrsToList flatten hasPrefix filter
+  inherit (lib) mkOption mkIf mkDefault mapAttrsToList flatten hasPrefix 
                 concatMapStringsSep concatStringsSep optionalString filterAttrs
                 splitString removeSuffix;
   inherit (lib.types) bool str int path either enum nullOr listOf attrsOf submodule;
@@ -99,7 +99,7 @@ let
   );
 
   connectionKeys = flatten (mapAttrsToList (_: s: with s.connection; [ password-file ssl-key ]) cfg.servers);
-  keys = filter (f: f != null && hasPrefix "/run/keys/" f) ( connectionKeys ++ [cfg.s3cfg] );
+  keys =  connectionKeys ++ [ cfg.s3cfg ];
 
   showDatabases = name: server: pkgs.writeText "show-databases-${name}.sql" ''
     SHOW DATABASES WHERE `Database` NOT IN ('information_schema', 'performance_schema', 'tmp', 'innodb')

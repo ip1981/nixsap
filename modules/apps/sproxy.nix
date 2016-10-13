@@ -4,7 +4,7 @@ let
 
   inherit (builtins) toString;
   inherit (lib)
-    filter filterAttrs hasPrefix mapAttrsToList
+    filterAttrs hasPrefix mapAttrsToList
     mkEnableOption concatStrings mkIf mkOption types ;
   inherit (types)
     enum int nullOr attrsOf path str submodule ;
@@ -43,10 +43,9 @@ let
     ''}
   '';
 
-  keys = filter (hasPrefix "/run/keys/")
-       ( [ cfg.sslKey ]
+  keys = [ cfg.sslKey ]
        ++ mapAttrsToList (_: c: c.client_secret_file) (explicit cfg.oauth2)
-       );
+       ;
 
   oauth2 = mkOption {
     type = attrsOf (submodule {

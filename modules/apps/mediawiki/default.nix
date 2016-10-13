@@ -11,7 +11,7 @@ let
     attrsOf bool either enum int lines listOf nullOr path str
     submodule unspecified;
   inherit (builtins)
-    attrNames elem filter isAttrs isBool isList isString toString;
+    attrNames elem isAttrs isBool isList isString toString;
 
   cfg = config.nixsap.apps.mediawiki;
   user = config.nixsap.apps.mediawiki.user;
@@ -34,7 +34,7 @@ let
   concatMapAttrsSep = s: f: attrs: concatStringsSep s (mapAttrsToList f attrs);
   enabledExtentions = attrNames (filterAttrs (_: enabled: enabled) (explicit cfg.extensions));
 
-  keys = filter (hasPrefix "/run/keys/") (mapAttrsToList (_: o: o.password-file) cfg.users);
+  keys = mapAttrsToList (_: o: o.password-file) cfg.users;
 
   settings =
     let

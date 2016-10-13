@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  inherit (builtins) filter toString;
+  inherit (builtins) toString;
   inherit (lib) types mkOption mkEnableOption mkIf hasPrefix
                 concatStrings optionalString;
   inherit (types) str path int nullOr;
@@ -15,8 +15,6 @@ let
       else " -s '${cfg.socket}'")
     " '${cfg.myFile}'"
   ];
-
-  keys = filter (f: f != null && hasPrefix "/run/keys/" f) [ cfg.myFile ];
 
 in {
   options.nixsap.apps.mywatch = {
@@ -44,7 +42,7 @@ in {
 
   config = mkIf cfg.enable {
     nixsap.system.users.daemons = [ cfg.user ];
-    nixsap.deployment.keyrings.${cfg.user} = keys;
+    nixsap.deployment.keyrings.${cfg.user} = [ cfg.myFile ];
     systemd.services.mywatch = {
       description = "watch queries on multiple MySQL servers";
       wantedBy = [ "multi-user.target" ];

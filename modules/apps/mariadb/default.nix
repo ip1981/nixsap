@@ -255,16 +255,14 @@ let
       }
     '';
 
-  all-keys = unique (filter (f: f != null && hasPrefix "/run/keys/" f ) (flatten (
+  all-keys = flatten (
       mapAttrsToList (ch: {master, mysqldump, ...}:
         [ master.password-file
           master.ssl-key
           mysqldump.password-file
           mysqldump.ssl-key
         ]) (explicit cfg.replicate)
-    ) ++ [
-      cfg.mysqld.ssl_key
-    ]));
+    ) ++ [ cfg.mysqld.ssl_key ];
 
 in {
 

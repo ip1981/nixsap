@@ -4,7 +4,7 @@ let
   inherit (builtins)
     isBool isList isString toString ;
   inherit (lib)
-    concatMapStringsSep concatStringsSep filter filterAttrs
+    concatMapStringsSep concatStringsSep filterAttrs
     flatten hasPrefix mapAttrsToList mkIf
     mkOption optionalString removeSuffix ;
   inherit (lib.types)
@@ -203,8 +203,6 @@ let
     exit "$failed"
   '';
 
-  keys = filter (f: f != null && hasPrefix "/run/keys/" f) ( [cfg.s3cfg] );
-
 in {
   options.nixsap.apps.filebackup = {
     user = mkOption {
@@ -265,7 +263,7 @@ in {
 
   config = mkIf (cfg.files != {}) {
     nixsap.system.users.daemons = [ cfg.user ];
-    nixsap.deployment.keyrings.${cfg.user} = keys;
+    nixsap.deployment.keyrings.${cfg.user} = [ cfg.s3cfg ];
     systemd.services.filebackup = {
       description = "Directory backup with tar";
       after = [ "local-fs.target" "keys.target" ];

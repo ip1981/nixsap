@@ -5,7 +5,7 @@ let
   inherit (lib) mkIf mkOption types filterAttrs hasPrefix
                 mapAttrsToList concatStringsSep concatMapStringsSep;
   inherit (types) listOf submodule path attrsOf;
-  inherit (builtins) filter toString toFile isList isBool;
+  inherit (builtins) toString toFile isList isBool;
 
   cfg = config.nixsap.apps.strongswan;
   explicit = filterAttrs (n: v: n != "_module" && v != null);
@@ -81,7 +81,7 @@ in {
   };
 
   config = mkIf ({} != explicit cfg.conn) {
-    nixsap.deployment.keyrings.root = filter (hasPrefix "/run/keys/") cfg.secrets;
+    nixsap.deployment.keyrings.root = cfg.secrets;
     environment.systemPackages = [ pkgs.strongswan ];
     systemd.services.strongswan = {
       description = "strongSwan IPSec Service";

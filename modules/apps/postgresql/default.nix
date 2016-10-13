@@ -5,7 +5,7 @@ let
     match toString ;
 
   inherit (lib)
-    concatMapStrings concatStringsSep filter filterAttrs foldAttrs foldl
+    concatMapStrings concatStringsSep filterAttrs foldAttrs filter foldl
     hasPrefix isBool isInt isList isString length mapAttrs' mapAttrsToList
     mkDefault mkIf mkOption nameValuePair types ;
 
@@ -22,9 +22,7 @@ let
 
   keyrings =
     let
-      isKey = s: s != null && hasPrefix "/run/keys/" s;
-      keys = i: filter isKey [ i.server.ssl_key_file ];
-      ik = mapAttrsToList (_: i: { "${i.user}" = keys i; } ) instances;
+      ik = mapAttrsToList (_: i: { "${i.user}" = [ i.server.ssl_key_file ]; } ) instances;
     in foldAttrs (l: r: l ++ r) [] ik;
 
   mkService = name: opts:
