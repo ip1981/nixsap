@@ -6,9 +6,9 @@ let
     attrNames isBool isString ;
 
   inherit (lib)
-    concatMapStringsSep concatStringsSep escape filterAttrs
-    foldAttrs foldl hasPrefix mapAttrs mapAttrsToList mkOption nameValuePair
-    optionalString ;
+    concatMapStringsSep concatStringsSep escape filterAttrs foldAttrs foldl
+    hasPrefix mapAttrs mapAttrsToList mkOption nameValuePair optionalString
+    unique ;
 
   inherit (lib.types)
     attrsOf submodule ;
@@ -27,7 +27,7 @@ let
       # This requires read-write mode of evaluation:
       keys = n: i: import (pkgs.xinclude2nix (
            (mapAttrsToList (_: f: f) (configFiles n i))
-        ++ (mapAttrsToList (_: f: f) (jobFiles n i))
+        ++ (unique (mapAttrsToList (_: f: f) (jobFiles n i)))
         ));
       ik = mapAttrsToList (n: i: { "${i.user}" = keys n i; } ) instances;
     in foldAttrs (l: r: l ++ r) [] ik;
