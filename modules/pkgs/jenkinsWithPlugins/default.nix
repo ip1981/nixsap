@@ -20,13 +20,7 @@ let
   inherit (lib)
     concatMapStrings filter flatten unique ;
 
-  /*
-    jq to make it human readable:
-    curl https://updates.jenkins-ci.org/current/update-center.actual.json | jq . > update-center.actual.json
-  */
-
-  # capture into nix store to track changes:
-  updateCenter = fromJSON (readFile "${./update-center.actual.json}");
+  updateCenter = fromJSON (readFile pkgs.jenkinsUpdateCenter);
 
   core = with updateCenter.core; fetchurl {
     inherit url;
