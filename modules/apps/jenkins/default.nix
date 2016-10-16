@@ -40,6 +40,7 @@ let
            else "--${n}=${toString v}";
 
       path = ".war.path";
+      tmpdir = "${cfg.home}/tmp";
 
       startJenkins = pkgs.writeBashScript "jenkins-${name}-start" ''
         set -euo pipefail
@@ -91,8 +92,11 @@ let
           echo '${cfg.war}' > ${path}
         fi
 
+        rm -rf -- '${tmpdir}'
+        mkdir -p -- '${tmpdir}'
         exec ${cfg.jre}/bin/java \
           -DJENKINS_HOME='${cfg.home}' \
+          -Djava.io.tmpdir='${tmpdir}' \
           -jar '${cfg.war}' \
           ${concatStringsSep " \\\n  " (
             mapAttrsToList mkOpt (explicit cfg.options))}
