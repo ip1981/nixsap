@@ -66,7 +66,7 @@ let
       fastcgi_param HTTP_PROXY "";
       proxy_set_header Proxy "";
 
-      ${concatMapStrings (s: "include ${s}\n;") (mapAttrsToList mkServer cfg.http.servers)}
+      ${concatMapStrings (s: "include ${s};\n") (mapAttrsToList mkServer cfg.http.servers)}
     }
   '';
 
