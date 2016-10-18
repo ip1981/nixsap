@@ -52,6 +52,11 @@ in {
     sslKey = mkForce "${pkgs.fakeSSL}/key.pem";
     cookieName = mkForce "sproxy_vbox";
     logLevel = mkForce "debug";
+    database = mkForce "user=sproxy-readonly dbname=sproxy port=${toString apps.postgresql.fcebkl.server.port}";
+  };
+
+  nixsap.apps.sproxy-web = {
+    connectionString = mkForce "user=sproxy dbname=sproxy port=${toString apps.postgresql.fcebkl.server.port}";
   };
 
   nixsap.apps.mediawiki.localSettings = {
@@ -74,4 +79,84 @@ in {
     "/root/.ssh/authorized_keys"
     "/root/.vbox-nixops-client-key"
   ];
+
+  nixsap.apps.postgresql.fcebkl = mkIf apps.sproxy.enable {
+    package = pkgs.postgresql95;
+    server = {
+      data_directory = "/postgresql/9.5/fcebkl";
+      port = 9999;
+      hba_file = ''
+        local   sproxy      all              peer      map=sproxymap
+      '';
+      ident_file = ''
+        sproxymap ${apps.sproxy.user}      sproxy-readonly
+        sproxymap ${apps.sproxy-web.user}  sproxy
+      '';
+    };
+    roles = [ "sproxy" "sproxy-readonly" ];
+    databases = [ "sproxy" ];
+    configure = ''
+      ALTER ROLE sproxy LOGIN;
+      ALTER ROLE "sproxy-readonly" LOGIN;
+      ALTER DATABASE sproxy OWNER TO sproxy;
+
+      \c sproxy;
+      SET ROLE sproxy;
+
+      GRANT SELECT ON ALL TABLES IN SCHEMA public TO "sproxy-readonly";
+      ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO "sproxy-readonly";
+
+      BEGIN;
+        CREATE TABLE IF NOT EXISTS "group" (
+          "group" TEXT NOT NULL PRIMARY KEY
+        );
+        CREATE TABLE IF NOT EXISTS group_member (
+          "group" TEXT REFERENCES "group" ("group") ON UPDATE CASCADE ON DELETE CASCADE NOT NULL,
+          email TEXT NOT NULL,
+          PRIMARY KEY ("group", email)
+        );
+        CREATE TABLE IF NOT EXISTS domain (
+          domain TEXT NOT NULL PRIMARY KEY
+        );
+        CREATE TABLE IF NOT EXISTS privilege (
+          "domain" TEXT REFERENCES domain (domain) ON UPDATE CASCADE ON DELETE CASCADE NOT NULL,
+          privilege TEXT NOT NULL,
+          PRIMARY KEY ("domain", privilege)
+        );
+        CREATE TABLE IF NOT EXISTS privilege_rule (
+          "domain" TEXT NOT NULL,
+          privilege TEXT NOT NULL,
+          "path" TEXT NOT NULL,
+          "method" TEXT NOT NULL,
+          FOREIGN KEY ("domain", privilege) REFERENCES privilege ("domain", privilege) ON UPDATE CASCADE ON DELETE CASCADE,
+          PRIMARY KEY ("domain", "path", "method")
+        );
+        CREATE TABLE IF NOT EXISTS group_privilege (
+          "group" TEXT REFERENCES "group" ("group") ON UPDATE CASCADE ON DELETE CASCADE NOT NULL,
+          "domain" TEXT NOT NULL,
+          privilege TEXT NOT NULL,
+          FOREIGN KEY ("domain", privilege) REFERENCES privilege ("domain", privilege) ON UPDATE CASCADE ON DELETE CASCADE,
+          PRIMARY KEY ("group", "domain", privilege)
+        );
+      COMMIT;
+
+      BEGIN;
+        INSERT INTO domain (domain) VALUES ('%') ON CONFLICT DO NOTHING;
+        INSERT INTO "group" ("group") VALUES ('all') ON CONFLICT DO NOTHING;
+        INSERT INTO "group" ("group") VALUES ('devops') ON CONFLICT DO NOTHING;
+        INSERT INTO "group" ("group") VALUES ('foo') ON CONFLICT DO NOTHING;
+        INSERT INTO group_member ("group", email) VALUES ('all', '%') ON CONFLICT DO NOTHING;
+        INSERT INTO group_member ("group", email) VALUES ('devops', '%') ON CONFLICT DO NOTHING;
+        INSERT INTO group_member ("group", email) VALUES ('foo', '%') ON CONFLICT DO NOTHING;
+        INSERT INTO privilege (domain, privilege) VALUES ('%', 'full') ON CONFLICT DO NOTHING;
+        INSERT INTO group_privilege ("group", domain, privilege) VALUES ('all', '%', 'full') ON CONFLICT DO NOTHING;
+        INSERT INTO group_privilege ("group", domain, privilege) VALUES ('devops', '%', 'full') ON CONFLICT DO NOTHING;
+        INSERT INTO group_privilege ("group", domain, privilege) VALUES ('foo', '%', 'full') ON CONFLICT DO NOTHING;
+        INSERT INTO privilege_rule (domain, privilege, path, method) VALUES ('%', 'full', '%', '%') ON CONFLICT DO NOTHING;
+      COMMIT;
+
+      RESET ROLE;
+      \c postgres;
+    '';
+  };
 }
