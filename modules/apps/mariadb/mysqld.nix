@@ -12,6 +12,7 @@ let
     "InnoDB"
     "Memory"
     "MyISAM"
+    "TokuDB"
   ];
 
   syslog-facilities = [
