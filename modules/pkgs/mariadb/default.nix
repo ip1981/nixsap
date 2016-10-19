@@ -44,7 +44,6 @@ stdenv.mkDerivation rec {
     "-DWITH_ZLIB=system"
     "-DWITH_SSL=system"
     "-DWITH_PCRE=system"
-    "-DWITH_EMBEDDED_SERVER=yes"
     "-DWITH_EXTRA_CHARSETS=complex"
     "-DWITH_EMBEDDED_SERVER=ON"
     "-DWITH_ARCHIVE_STORAGE_ENGINE=1"
