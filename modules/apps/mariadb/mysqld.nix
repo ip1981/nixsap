@@ -220,6 +220,7 @@ in {
     net_read_timeout                         = optional int;
     net_write_timeout                        = optional int;
     optimizer_switch                         = set optimizer;
+    plugin_load_add                          = default [] (listOf str);
     port                                     = default 3306 int;
     query_alloc_block_size                   = optional int;
     query_cache_limit                        = optional int;

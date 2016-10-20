@@ -43,8 +43,10 @@ let
         showList (mapAttrsToList (n: v:
             "${n}=${if v then "on" else "off"}"
           ) (explicit a));
+      plugin_load_add = aa: concatMapStringsSep "\n" (l: "plugin_load_add = ${l}") (unique aa);
     in if hasPrefix "skip" name then (optionalString value name)
        else if name == "optimizer_switch" then "${name} = ${optimizer_switch value}"
+       else if name == "plugin_load_add" then plugin_load_add value
        else if isBool value then "${name} = ${if value then "ON" else "OFF"}"
        else if isInt value then "${name} = ${toString value}"
        else if isList value then "${name} = ${showList value}"
@@ -92,11 +94,11 @@ let
     then throw "Misconfigured slave: server_id was not set to a positive integer"
     else pkgs.writeText "mysqld.cnf" ''
       [mysqld]
-      basedir = ${cfg.package}
-      init_file = ${initFile}
-      pid_file = ${rundir}/mysqld.pid
-      plugin_load = unix_socket=auth_socket.so
-      plugin_load_add = server_audit=server_audit.so
+      basedir     = ${cfg.package}
+      init_file   = ${initFile}
+      pid_file    = ${rundir}/mysqld.pid
+      plugin_load = auth_socket
+
       ${concatNonEmpty "\n" (mapAttrsToList mkEntry (explicit cfg.mysqld))}
       ${optionalString hasMasters "!include ${replCnf}"}
     '';
