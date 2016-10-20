@@ -14,8 +14,19 @@ let
 
   cfg = config.nixsap.apps.mariadb;
 
-  getDirs = l: map dirOf (filter (p: p != null && hasPrefix "/" p) l);
-  mydirs = [ cfg.mysqld.datadir ] ++ getDirs [ cfg.mysqld.log_bin cfg.mysqld.relay_log ];
+  getDirs = l: filter (p: p != null) l;
+  dirsOf = l: map dirOf (getDirs l);
+  mydirs = with cfg.mysqld; unique ([
+          datadir
+        ] ++ dirsOf [
+          log_bin
+          relay_log
+        ] ++ getDirs [
+          tokudb_data_dir
+          tokudb_log_dir
+          tokudb_tmp_dir
+        ]);
+
   explicit = filterAttrs (n: v: n != "_module" && v != null);
   hasMasters = (explicit cfg.replicate) != {};
   concatNonEmpty = sep: list: concatStringsSep sep (filter (s: s != "") list);

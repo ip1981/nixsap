@@ -116,6 +116,16 @@ let
     check = isFloat;
   };
 
+  pint = mkOptionType {
+    name = "positive integer";
+    check = x: builtins.isInt x && x >= 0;
+  };
+
+  percent = mkOptionType {
+    name = "percent";
+    check = x: builtins.isInt x && x >= 0 x <= 100;
+  };
+
   # https://mariadb.com/kb/en/mariadb/optimizer-switch/
   optimizer = {
     options = {
@@ -179,7 +189,7 @@ in {
     innodb_buffer_pool_load_at_startup       = optional bool;
     innodb_buffer_pool_size                  = optional int;
     innodb_compression_algorithm             = optional (enum ["none" "zlib" "lz4" "lzo" "lzma" "bzip2" "snappy"]);
-    innodb_compression_failure_threshold_pct = optional (addCheck int (i: 0 <= i && i <= 100));
+    innodb_compression_failure_threshold_pct = optional percent;
     innodb_compression_level                 = optional (enum' [0 1 2 3 4 5 6 7 8 9]);
     innodb_compression_pad_pct_max           = optional (addCheck int (i: 0 <= i && i <= 75));
     innodb_doublewrite                       = optional bool;
@@ -281,7 +291,56 @@ in {
     thread_cache_size                        = optional int;
     tmp_table_size                           = optional int;
     tmpdir                                   = optional path;
+    tokudb_alter_print_error                 = optional bool;
+    tokudb_analyze_time                      = optional pint;
+    tokudb_block_size                        = optional pint;
+    tokudb_bulk_fetch                        = optional bool;
+    tokudb_cache_size                        = optional pint;
+    tokudb_check_jemalloc                    = optional bool;
+    tokudb_checkpoint_lock                   = optional bool;
+    tokudb_checkpoint_on_flush_logs          = optional bool;
+    tokudb_checkpointing_period              = optional pint;
+    tokudb_cleaner_iterations                = optional pint;
+    tokudb_cleaner_period                    = optional pint;
+    tokudb_commit_sync                       = optional bool;
+    tokudb_create_index_online               = optional bool;
+    tokudb_data_dir                          = optional path;
+    tokudb_debug                             = optional pint;
+    tokudb_directio                          = optional bool;
+    tokudb_disable_hot_alter                 = optional bool;
+    tokudb_disable_prefetching               = optional bool;
+    tokudb_disable_slow_alter                = optional bool;
+    tokudb_empty_scan                        = optional (enum ["lr" "rl" "disabled"]);
+    tokudb_fs_reserve_percent                = optional percent;
+    tokudb_fsync_log_period                  = optional pint;
+    tokudb_hide_default_row_format           = optional bool;
+    tokudb_killed_time                       = optional pint;
+    tokudb_last_lock_timeout                 = optional str;
+    tokudb_load_save_space                   = optional bool;
+    tokudb_loader_memory_size                = optional pint;
+    tokudb_lock_timeout                      = optional pint;
+    tokudb_lock_timeout_debug                = optional pint;
+    tokudb_log_dir                           = optional path;
+    tokudb_max_lock_memory                   = optional pint;
+    tokudb_optimize_index_fraction           = optional float;
+    tokudb_optimize_index_name               = optional str;
+    tokudb_optimize_throttle                 = optional pint;
+    tokudb_pk_insert_mode                    = optional (enum' [0 1 2]);
+    tokudb_prelock_empty                     = optional bool;
+    tokudb_read_block_size                   = optional (addCheck pint (p: p >= 4096));
+    tokudb_read_buf_size                     = optional pint;
+    tokudb_read_status_frequency             = optional pint;
+    tokudb_row_format                        = optional (enum ["tokudb_default" "tokudb_fast" "tokudb_small" "tokudb_zlib" "tokudb_quicklz" "tokudb_lzma" "tokudb_uncompressed"]);
+    tokudb_rpl_check_readonly                = optional bool;
+    tokudb_rpl_lookup_rows                   = optional bool;
+    tokudb_rpl_lookup_rows_delay             = optional pint;
+    tokudb_rpl_unique_checks                 = optional bool;
+    tokudb_rpl_unique_checks_delay           = optional pint;
+    tokudb_support_xa                        = optional bool;
+    tokudb_tmp_dir                           = optional path;
+    tokudb_write_status_frequency            = optional pint;
     wait_timeout                             = optional int;
+
   };
   config = {
     ignore_db_dirs = [ "lost+found" ];
