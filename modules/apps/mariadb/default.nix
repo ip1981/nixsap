@@ -134,18 +134,22 @@ let
     mysql_upgrade --user=${cfg.user}
     mysql_tzinfo_to_sql "$TZDIR" | mysql mysql
     mysql mysql < ${./procedures.sql}
-    cat <<'__SQL__' | mysql
+
+    cat <<'__SQL__' | mysql -N mysql | mysql -v mysql
+    SELECT CONCAT("DROP USER IF EXISTS '", User, "'@'", Host, "';")
+    FROM user
+    WHERE User IN ('root', ${"''"})
+       OR (User='${cfg.user}' AND Host <> 'localhost')
+       ;
+    __SQL__
+
+    cat <<'__SQL__' | mysql -v mysql
     DROP DATABASE IF EXISTS test;
-    DELETE FROM mysql.db WHERE Db='test' OR Db='test%';
-    DELETE FROM mysql.user WHERE User='${cfg.user}' AND Host NOT IN ('localhost');
-    DELETE FROM mysql.user WHERE User=${"''"};
-    DELETE FROM mysql.user WHERE User='root';
-    DELETE FROM mysql.proxies_priv WHERE User='root';
-    FLUSH PRIVILEGES;
     ${concatMapStrings (db: ''
     CREATE DATABASE IF NOT EXISTS `${db}`;
     '') cfg.databases}
     __SQL__
+
     ${optionalString hasMasters "mysql -e 'START ALL SLAVES'"}
   '';
 
