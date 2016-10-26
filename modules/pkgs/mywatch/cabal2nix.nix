@@ -6,11 +6,11 @@
 }:
 mkDerivation {
   pname = "mywatch";
-  version = "0.2.0";
+  version = "0.2.1";
   src = fetchgit {
     url = "https://github.com/zalora/mywatch.git";
-    sha256 = "f1ae1b776cdbc11da24819381d5d1fe057be3c5ef69314024c9e0fc043085cd2";
-    rev = "afd12c0190f64527a320a99cc6df97f6cfca57d7";
+    sha256 = "7c646cb69958fd1010682873c193afad0f5d93a4abb8f5ce728c0500fb43912b";
+    rev = "523b6029eb4b8569504086dfb5b8538330e5f522";
   };
   isLibrary = false;
   isExecutable = true;
