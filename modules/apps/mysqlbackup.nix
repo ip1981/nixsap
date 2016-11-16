@@ -15,9 +15,9 @@ let
 
   gpgPubKeys = flatten [ cfg.encrypt ];
   gpg = "${pkgs.gpg}/bin/gpg2";
-  pubring = pkgs.runCommand "pubring.gpg" {} ''
+  pubring = pkgs.runCommand "pubring.kbx" {} ''
     ${gpg} --homedir . --import ${toString gpgPubKeys}
-    cp pubring.gpg $out
+    cp pubring.kbx $out
   '';
 
   default = d: t: mkOption { type = t; default = d; };
@@ -287,7 +287,7 @@ let
     ${optionalString (gpgPubKeys != []) ''
       # shellcheck disable=SC2174
       mkdir --mode=0700 -p '${privateDir}/gnupg'
-      ln -sf ${pubring} '${privateDir}/gnupg/pubring.gpg'
+      ln -sf ${pubring} '${privateDir}/gnupg/pubring.kbx'
     ''}
 
     ${concatStringsSep "\n" (
