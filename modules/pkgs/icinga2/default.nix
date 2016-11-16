@@ -1,6 +1,6 @@
 { stdenv, fetchurl
 , bison, boost, cmake, flex
-, libedit, mysql, openssl, yajl
+, libedit, mariadb, openssl, yajl
 }:
 
 stdenv.mkDerivation rec {
@@ -26,8 +26,8 @@ stdenv.mkDerivation rec {
     "-DICINGA2_RUNDIR=/run"
     "-DICINGA2_USER=icinga"
     "-DICINGA2_WITH_PGSQL=OFF"
-    "-DMYSQL_INCLUDE_DIR=${mysql.lib}/include/mysql"
-    "-DMYSQL_LIB_DIR=${mysql.lib}/lib"
+    "-DMYSQL_INCLUDE_DIR=${mariadb.client.dev}/include/mysql"
+    "-DMYSQL_LIB_DIR=${mariadb.client.out}/lib"
   ];
 
   # XXX Without DESTDIR it tries to write to /icinga2 and /run:
