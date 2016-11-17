@@ -2,15 +2,14 @@
 
 let
 
-  inherit (lib) types
-    mkIf mkOption mkEnableOption mkDefault hasPrefix
-    concatMapStringsSep filterAttrs recursiveUpdate mapAttrsToList
-    concatStringsSep isString genAttrs attrNames
-    optionalString mkOptionType any;
-  inherit (types)
-    bool str int lines path either
-    nullOr attrsOf listOf enum submodule unspecified;
-  inherit (builtins) toString;
+  inherit (lib)
+    any attrNames concatMapStringsSep concatStringsSep filterAttrs
+    genAttrs hasPrefix isString mapAttrsToList mkDefault
+    mkEnableOption mkIf mkOption mkOptionType mkOverride optionalString
+    recursiveUpdate ;
+  inherit (lib.types)
+    attrsOf bool either enum int lines listOf nullOr package path
+    str submodule unspecified ;
 
   localIcinga = config.nixsap.apps.icinga2.enable;
 
@@ -272,10 +271,17 @@ in {
       type = path;
       default = "/icingaweb2";
     };
-    fpmPool = mkOption {
-      description = "Options for the PHP FPM pool";
-      type = attrsOf unspecified;
-      default = {};
+    php-fpm = {
+      package = mkOption {
+        description = "PHP package to use";
+        type = package;
+        default = pkgs.php;
+      };
+      pool = mkOption {
+        description = "Options for the PHP FPM pool";
+        type = attrsOf unspecified;
+        default = {};
+      };
     };
 
     resources = mkOption {
@@ -358,8 +364,11 @@ in {
   config = mkIf cfg.enable {
     nixsap.deployment.keyrings.root = keys;
     users.users.icingaweb2.extraGroups = mkIf localIcinga [ config.nixsap.apps.icinga2.commandGroup ];
-    nixsap.apps.php-fpm.icingaweb2.pool =
-      recursiveUpdate defaultPool (cfg.fpmPool // { user = cfg.user ;});
+
+    nixsap.apps.php-fpm.icingaweb2 = mkOverride 0 {
+      inherit (cfg.php-fpm) package;
+      pool = recursiveUpdate defaultPool (cfg.php-fpm.pool // { user = cfg.user ;});
+    };
 
     nixsap.apps.nginx.http.servers.icingaweb2 = ''
       ${cfg.nginxServer}
