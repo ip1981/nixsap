@@ -9,8 +9,8 @@ let
   cfg = config.nixsap.apps.mysqlbackup;
   privateDir = "/run/mysqlbackup";
 
-  mysql = "${pkgs.mysql}/bin/mysql";
-  mysqldump = "${pkgs.mysql}/bin/mysqldump";
+  mysql = "${pkgs.mariadb.client.bin}/bin/mysql";
+  mysqldump = "${pkgs.mariadb.client.bin}/bin/mysqldump";
   s3cmd = "${pkgs.s3cmd}/bin/s3cmd ${optionalString (cfg.s3cfg != null) "-c '${cfg.s3cfg}'"}";
 
   gpgPubKeys = flatten [ cfg.encrypt ];
