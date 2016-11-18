@@ -85,7 +85,7 @@ let
           return EXIT_FAILURE;
         }
       '';
-    in pkgs.runCommand name {} "gcc -Wall -Wextra -Werror -std=gnu99 -O2 ${src} -o $out";
+    in pkgs.runCommand name {} "gcc -Wall -Wextra -Werror -s -std=gnu99 -O2 ${src} -o $out";
 
   cliapp = submodule({name, ...}:
   {
