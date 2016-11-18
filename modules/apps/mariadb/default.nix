@@ -435,7 +435,7 @@ in {
         mkdir -p ${concatMapStringsSep " " (d: "'${d}'") mydirs}
         if [ ! -f '${cfg.mysqld.datadir}/mysql/user.MYI' ]; then
           rm -rf '${cfg.mysqld.datadir}/mysql'
-          ${cfg.package}/bin/mysql_install_db --defaults-file=${mysqldCnf}
+          ${cfg.package}/bin/mysql_install_db --defaults-file=${mysqldCnf} --basedir='${cfg.package}'
         fi
         chown -Rc '${cfg.user}':$(id -g -n '${cfg.user}') '${rundir}' ${concatMapStringsSep " " (d: "'${d}'") mydirs}
         chmod -Rc u=rwX,g=rX,o= ${concatMapStringsSep " " (d: "'${d}'") mydirs}
