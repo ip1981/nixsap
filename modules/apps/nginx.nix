@@ -51,7 +51,7 @@ let
       default_type application/octet-stream;
 
       access_log off;
-      error_log stderr;
+      error_log stderr info;
 
       gzip on;
       keepalive_timeout 65;
