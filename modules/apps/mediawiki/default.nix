@@ -5,16 +5,17 @@ let
   inherit (lib)
     concatMapStrings concatMapStringsSep concatStringsSep
     filterAttrs genAttrs hasPrefix mapAttrs mapAttrsToList mkDefault
-    mkEnableOption mkIf mkOption optionalAttrs optionalString
-    recursiveUpdate types;
-  inherit (types)
-    attrsOf bool either enum int lines listOf nullOr path str
-    submodule unspecified;
+    mkEnableOption mkIf mkOption mkOverride optionalAttrs optionalString
+    recursiveUpdate;
+  inherit (lib.types)
+    attrsOf bool either enum int lines listOf nullOr package path
+    str submodule unspecified ;
   inherit (builtins)
-    attrNames elem isAttrs isBool isList isString toString;
+    attrNames elem isAttrs isBool isList isString ;
 
   cfg = config.nixsap.apps.mediawiki;
   user = config.nixsap.apps.mediawiki.user;
+  php = cfg.php-fpm.package;
 
   defaultPool = {
     listen.owner = config.nixsap.apps.nginx.user;
@@ -139,14 +140,14 @@ let
       ''}
 
       export MEDIAWIKI_LOCAL_SETTINGS='${localSettings}'
-      ${pkgs.php}/bin/php ${pkgs.mediawiki}/maintenance/update.php
+      ${php}/bin/php ${pkgs.mediawiki}/maintenance/update.php
       ${concatMapAttrsSep "" (n: o: ''
         pw=$(cat '${o.password-file}')
           if [ -z "$pw" ]; then
             echo 'WARNING: Using random password, because ${o.password-file} is empty or cannot be read' >&2
             pw=$(${pkgs.pwgen}/bin/pwgen -1 13)
           fi
-        ${pkgs.php}/bin/php ${pkgs.mediawiki}/maintenance/createAndPromote.php \
+        ${php}/bin/php ${pkgs.mediawiki}/maintenance/createAndPromote.php \
           --force --${o.role} '${n}' "$pw"
       '') cfg.users}
     '';
@@ -240,10 +241,17 @@ in {
         server_name wiki.example.net;
       '';
     };
-    fpmPool = mkOption {
-      description = "Options for the PHP FPM pool";
-      type = attrsOf unspecified;
-      default = {};
+    php-fpm = {
+      package = mkOption {
+        description = "PHP package to use";
+        type = package;
+        default = pkgs.php;
+      };
+      pool = mkOption {
+        description = "Options for the PHP FPM pool";
+        type = attrsOf unspecified;
+        default = {};
+      };
     };
     logo = mkOption {
       description = "The site logo (the image displayed in the upper-left corner of the page)";
@@ -287,11 +295,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    nixsap.apps.php-fpm.mediawiki.pool =
-      recursiveUpdate defaultPool (cfg.fpmPool // { user = cfg.user ;});
     nixsap.deployment.keyrings.${user} = keys;
     users.users.${config.nixsap.apps.nginx.user}.extraGroups =
       mkIf cfg.localSettings.wgEnableUploads [ user ];
+
+    nixsap.apps.php-fpm.mediawiki = mkOverride 0 {
+      inherit (cfg.php-fpm) package;
+      pool = recursiveUpdate defaultPool (cfg.php-fpm.pool // { user = cfg.user ;});
+    };
 
     nixsap.apps.nginx.http.servers.mediawiki = nginx;
 
