@@ -46,8 +46,9 @@ in pkgs.stdenv.mkDerivation rec {
 
     cat <<'EOF' > $out/LocalSettings.php
     <?php
-      if (isset($_ENV['MEDIAWIKI_LOCAL_SETTINGS'])) {
-        require_once ($_ENV['MEDIAWIKI_LOCAL_SETTINGS']);
+      $MEDIAWIKI_LOCAL_SETTINGS = getenv('MEDIAWIKI_LOCAL_SETTINGS');
+      if (isset($MEDIAWIKI_LOCAL_SETTINGS)) {
+        require_once ($MEDIAWIKI_LOCAL_SETTINGS);
       };
     ?>
     EOF
