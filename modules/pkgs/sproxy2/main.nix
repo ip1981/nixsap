@@ -8,11 +8,11 @@
 }:
 mkDerivation {
   pname = "sproxy2";
-  version = "1.90.0";
+  version = "1.90.1";
   src = fetchgit {
     url = "https://github.com/ip1981/sproxy2.git";
-    sha256 = "1dpdaparvrd3ykwpac99wqfsnywqvbvscdj7j3v2xyc1sa4vbkda";
-    rev = "4a9f329a6ea9bfa03352ca0d9dd1d556b93bec36";
+    sha256 = "1vxacv58xl7k4y71v04icjs8l810ln0g885bf1km4pkz404vxx6v";
+    rev = "7578b8d710c235c1b8c1fc76e2e37e4eb46d89d5";
   };
   isLibrary = false;
   isExecutable = true;
