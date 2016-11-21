@@ -128,6 +128,11 @@ in {
       type = enum [ "error" "warn" "info" "debug" ];
       default = "info";
     };
+    key = mkOption {
+      description = "File with a key used to sign cookies and state (secret)";
+      type = nullOr path;
+      default = null;
+    };
     database = mkOption {
       description = "PostgreSQL connection string";
       type = nullOr str;
