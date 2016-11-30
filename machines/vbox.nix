@@ -80,7 +80,7 @@ in {
     "/root/.vbox-nixops-client-key"
   ];
 
-  nixsap.apps.postgresql.fcebkl = mkIf apps.sproxy.enable {
+  nixsap.apps.postgresql.fcebkl = mkIf apps.sproxy-web.enable {
     package = pkgs.postgresql95;
     server = {
       data_directory = "/postgresql/9.5/fcebkl";
