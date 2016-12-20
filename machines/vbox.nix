@@ -9,6 +9,7 @@ let
 in {
   deployment.targetEnv = "virtualbox";
   deployment.virtualbox = {
+    headless = mkDefault true;
     memorySize = mkDefault 1024; # megabytes
     disks = {
       sdb = { port = 1; size = 30000; };
