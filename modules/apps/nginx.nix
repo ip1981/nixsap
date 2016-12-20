@@ -3,7 +3,7 @@
 let
 
   inherit (builtins)
-    filter isBool toString ;
+    elem filter isBool ;
 
   inherit (lib)
     concatMapStrings concatStringsSep filterAttrs mapAttrsToList mkEnableOption
