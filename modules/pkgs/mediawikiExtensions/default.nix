@@ -11,13 +11,13 @@ in genAttrs bundled (e: mediawiki.${e}) //
   EmbedVideo= fetchgit {
     url = https://github.com/HydraWiki/mediawiki-embedvideo.git;
     rev = "1c1904bfc040bc948726719cbef41708c62546b3";
-    sha256 = "07sxpaks1hik710izilpslnqlcjz2nphqkx9b9qh6qv9xb0a9n6v";
+    sha256 = "1vlls0ywvfmzx29abgwhhcrjl8lhfhiphj2bsfq0sx76213wci8l";
   };
 
   GraphViz = fetchgit {
     url = https://gerrit.wikimedia.org/r/p/mediawiki/extensions/GraphViz.git;
     rev = "c968ec19090ab6febcd12ccd5816c5875fddc9df";
-    sha256 = "a0f9b7a67c1b166bba7ce3100b9b2666938af50666a526b1e9e4a83359e4a10d";
+    sha256 = "1f82dnjzyszpdhy8lcjllxfppqwaqiykhv0hvnzgggr4dq747ga1";
   };
 
 /* TODO Use with Mediawiki 1.26+
@@ -37,7 +37,7 @@ in genAttrs bundled (e: mediawiki.${e}) //
   MsUpload = fetchgit {
     url = https://phabricator.wikimedia.org/diffusion/EMSU/extension-msupload.git;
     rev = "d2983b9cd44203173b39e64bf25cdcd73612fcc0";
-    sha256 = "18n4iyvp85ipgggjgwrk6pn75gciwrkjb7mr1zvqsh9kv3rpd5n9";
+    sha256 = "1ssngwhr9j598v1rcrwxrpdnl9jk7843qfsngz5ba10c14ba58rx";
   };
 
   Sproxy = ./Sproxy; # TODO: review, update & publish
@@ -45,7 +45,7 @@ in genAttrs bundled (e: mediawiki.${e}) //
   UserPageEditProtection = fetchgit {
     url = https://gerrit.wikimedia.org/r/p/mediawiki/extensions/UserPageEditProtection.git;
     rev = "13ff835e8278654ab8cfae03c8b8196bdfe6e410";
-    sha256 = "0hjsgq8hhqw6wxqfc14jq1wb09q8zf9xv7jz0hkhl5ma6338j7q9";
+    sha256 = "106acsi4g05wgnhsc7rcdnmy0c0l46bnlq6dgnq1a6j0giilz87w";
   };
 
 }

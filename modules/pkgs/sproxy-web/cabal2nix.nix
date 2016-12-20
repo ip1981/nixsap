@@ -9,7 +9,7 @@ mkDerivation {
   version = "0.4.1";
   src = fetchgit {
     url = "https://github.com/zalora/sproxy-web.git";
-    sha256 = "529597548a3fbd0999acdbd3a382ed4f152043db01f275b08d4c4883b8fe5f5f";
+    sha256 = "01cybqrbf2i6sfxibdmri8sicnhxzqdhmrngzmgz9vizffyf9fbd";
     rev = "5d7ee61deb55359ae8ce6013dd7fe81bcdc0f9a9";
   };
   isLibrary = false;

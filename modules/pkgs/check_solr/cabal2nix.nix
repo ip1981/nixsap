@@ -7,7 +7,7 @@ mkDerivation {
   version = "0.1.0";
   src = fetchgit {
     url = "https://github.com/ip1981/check-solr.git";
-    sha256 = "839199942e5cf110428dd589f1d9610ac504d7199b2b7053d5ee136206890309";
+    sha256 = "0hama3kglnn4kyzkssl1llb61kcgyhynpbbk6xsf015hvi90hsa0";
     rev = "869c945fb56f0ff187125ee352a6876002eba596";
   };
   isLibrary = true;
