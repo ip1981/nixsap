@@ -47,30 +47,15 @@ let
     }
 
     http {
-      include ${pkgs.nginx}/conf/mime.types;
-      default_type application/octet-stream;
+    ${cfg.conf.http.context}
 
-      access_log off;
-      error_log stderr info;
-
-      gzip on;
-      keepalive_timeout 65;
-      sendfile on;
-      ssl_prefer_server_ciphers on;
-      ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-      tcp_nodelay on;
-      tcp_nopush on;
-      types_hash_max_size 2048;
-
-      # https://www.nginx.com/blog/mitigating-the-httpoxy-vulnerability-with-nginx/
-      fastcgi_param HTTP_PROXY "";
-      proxy_set_header Proxy "";
-
-      ${concatMapStrings (s: "include ${s};\n") (mapAttrsToList mkServer cfg.conf.http.servers)}
+    ${concatMapStrings (s: "include ${s};\n") (mapAttrsToList mkServer cfg.conf.http.servers)}
     }
   '';
 
   exec = "${pkgs.nginx}/bin/nginx -c ${nginx-conf} -p ${cfg.stateDir}";
+
+  enabled = {} != explicit cfg.conf.http.servers;
 
 in {
 
@@ -116,13 +101,46 @@ in {
 
       http = default {} (attrs {
         servers = default {} (attrsOf lines);
+        context = mkOption {
+          description = ''
+            Default directives in the http context.  You normally don't
+            need to change it, because most of directives can be overriden
+            in server or location contexts.  This parameter has a reasonale
+            default value which you should append in nixos modules, i. e. by
+            adding geoip directives or maps. Use `lib.mkForce` to completely
+            omit default directives.
+          '';
+          type = lines;
+        };
       });
     });
   };
 
-  config = mkIf ({} != explicit cfg.conf.http.servers) {
-    nixsap.system.users.daemons = [ cfg.user ];
-    systemd.services.nginx = {
+  config = {
+    nixsap.apps.nginx.conf.http.context = ''
+      include ${pkgs.nginx}/conf/mime.types;
+      default_type application/octet-stream;
+
+      access_log off;
+      error_log stderr info;
+
+      gzip on;
+      keepalive_timeout 65;
+      sendfile on;
+      ssl_prefer_server_ciphers on;
+      ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+      tcp_nodelay on;
+      tcp_nopush on;
+      types_hash_max_size 2048;
+
+      # https://www.nginx.com/blog/mitigating-the-httpoxy-vulnerability-with-nginx/
+      fastcgi_param HTTP_PROXY "";
+      proxy_set_header Proxy "";
+    '';
+
+    nixsap.system.users.daemons = mkIf enabled [ cfg.user ];
+
+    systemd.services.nginx = mkIf enabled {
       description = "web/proxy server";
       wants = [ "keys.target" ];
       after = [ "keys.target" "local-fs.target" "network.target" ];
