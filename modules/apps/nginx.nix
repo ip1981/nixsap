@@ -40,10 +40,10 @@ let
     user ${cfg.user} ${cfg.user};
     pid ${cfg.runDir}/nginx.pid;
 
-    ${format "" cfg.main}
+    ${format "" (filterAttrs (n: _: ! elem n ["events" "http"]) cfg.conf)}
 
     events {
-    ${format "  " cfg.events}
+    ${format "  " cfg.conf.events}
     }
 
     http {
@@ -66,7 +66,7 @@ let
       fastcgi_param HTTP_PROXY "";
       proxy_set_header Proxy "";
 
-      ${concatMapStrings (s: "include ${s};\n") (mapAttrsToList mkServer cfg.http.servers)}
+      ${concatMapStrings (s: "include ${s};\n") (mapAttrsToList mkServer cfg.conf.http.servers)}
     }
   '';
 
@@ -97,7 +97,7 @@ in {
       default = "/run/nginx";
     };
 
-    main = default {} (attrs {
+    conf = default {} (attrs {
       pcre_jit = optional bool;
       timer_resolution = optional int;
       worker_cpu_affinity = optional str;
@@ -105,22 +105,22 @@ in {
       worker_processes = default "auto" (either int (enum ["auto"]));
       worker_rlimit_core = optional int;
       worker_rlimit_nofile = optional int;
-    });
 
-    events = default {} (attrs {
-      accept_mutex = optional bool;
-      accept_mutex_delay = optional int;
-      multi_accept = optional bool;
-      worker_aio_requests = optional int;
-      worker_connections = optional int;
-    });
+      events = default {} (attrs {
+        accept_mutex = optional bool;
+        accept_mutex_delay = optional int;
+        multi_accept = optional bool;
+        worker_aio_requests = optional int;
+        worker_connections = optional int;
+      });
 
-    http = default {} (attrs {
-      servers = default {} (attrsOf lines);
+      http = default {} (attrs {
+        servers = default {} (attrsOf lines);
+      });
     });
   };
 
-  config = mkIf ({} != explicit cfg.http.servers) {
+  config = mkIf ({} != explicit cfg.conf.http.servers) {
     nixsap.system.users.daemons = [ cfg.user ];
     systemd.services.nginx = {
       description = "web/proxy server";

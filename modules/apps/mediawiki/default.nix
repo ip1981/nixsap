@@ -304,7 +304,7 @@ in {
       pool = recursiveUpdate defaultPool (cfg.php-fpm.pool // { user = cfg.user ;});
     };
 
-    nixsap.apps.nginx.http.servers.mediawiki = nginx;
+    nixsap.apps.nginx.conf.http.servers.mediawiki = nginx;
 
     systemd.services.mediawiki-db = {
       description = "configure Mediawiki database";

@@ -370,7 +370,7 @@ in {
       pool = recursiveUpdate defaultPool (cfg.php-fpm.pool // { user = cfg.user ;});
     };
 
-    nixsap.apps.nginx.http.servers.icingaweb2 = ''
+    nixsap.apps.nginx.conf.http.servers.icingaweb2 = ''
       ${cfg.nginxServer}
 
       root ${pkgs.icingaweb2}/public;
