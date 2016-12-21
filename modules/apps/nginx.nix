@@ -70,6 +70,15 @@ in {
       type = path;
       default = "/nginx";
     };
+    logDir = mkOption {
+      description = ''
+        Nginx directory for logs. This is read-only. Use it in configuration
+        files of nginx itself or logrotate.
+      '';
+      type = path;
+      readOnly = true;
+      default = "${cfg.stateDir}/logs";
+    };
     runDir = mkOption {
       description = ''
         Directory for sockets and PID-file.
