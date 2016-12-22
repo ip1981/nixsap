@@ -6,8 +6,8 @@ let
     elem filter isBool ;
 
   inherit (lib)
-    concatMapStrings concatStringsSep filterAttrs mapAttrsToList mkEnableOption
-    mkIf mkOption ;
+    concatMapStrings concatStringsSep filterAttrs mapAttrsToList mkDefault
+    mkEnableOption mkIf mkOption ;
 
   inherit (lib.types)
     attrsOf bool either enum int lines nullOr path str submodule ;
@@ -148,6 +148,20 @@ in {
     '';
 
     nixsap.system.users.daemons = mkIf enabled [ cfg.user ];
+
+    nixsap.apps.logrotate.conf.nginx = mkIf enabled {
+      files = "${cfg.logDir}/*.log";
+      directives = {
+        delaycompress = mkDefault true;
+        missingok = mkDefault true;
+        notifempty = mkDefault true;
+        rotate = mkDefault 14;
+        sharedscripts = true;
+        daily = mkDefault true;
+        create = mkDefault "0640 ${cfg.user} ${cfg.user}";
+        postrotate = pkgs.writeBashScript "logrotate-nginx-postrotate" "systemctl kill -s SIGUSR1 nginx.service";
+      };
+    };
 
     systemd.services.nginx = mkIf enabled {
       description = "web/proxy server";
