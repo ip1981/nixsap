@@ -7,17 +7,24 @@ let
     concatMapStringsSep concatStringsSep filterAttrs imap
     mapAttrsToList mkEnableOption mkIf mkOption optionalString ;
   inherit (lib.types)
-    attrsOf bool enum int listOf nullOr path str submodule ;
+    attrsOf bool either enum int listOf nullOr path str submodule ;
 
+  default = v: type: mkOption { type = type; default = v; };
   explicit = filterAttrs (n: v: n != "_module" && v != null);
   mandatory = t: mkOption { type = t; };
   optional = t: mkOption { type = nullOr t; default = null; };
+
+  secret = either str (
+    submodule { options = { file = mandatory path; }; }
+  );
+
   concatMapAttrsSep = s: f: attrs: concatStringsSep s (mapAttrsToList f attrs);
 
   cfg = config.nixsap.apps.sproxy2;
 
   show = v:
-         if isString v then ''"${v}"''
+         if v ? file then "!include '${v.file}'"
+    else if isString v then "'${v}'"
     else if isBool v then (if v then "true" else "false")
     else toString v;
 
@@ -58,8 +65,9 @@ let
     ...
   '';
 
-  keys = [ cfg.ssl_key cfg.pgpassfile ]
-       ++ mapAttrsToList (_: c: c.client_secret) (explicit cfg.oauth2)
+  maybeKey = a: if a ? file then a.file else null;
+  keys = [ cfg.ssl_key cfg.pgpassfile ( maybeKey cfg.key ) ]
+       ++ mapAttrsToList (_: c: maybeKey c.client_secret) (explicit cfg.oauth2)
        ;
 
   oauth2 = mkOption {
@@ -70,7 +78,7 @@ let
     type = attrsOf (submodule {
       options = {
         client_id = mandatory str;
-        client_secret = mandatory path;
+        client_secret = mandatory secret;
       };
     });
   };
@@ -123,14 +131,24 @@ in {
       type = nullOr bool;
       default = null;
     };
+    ssl = mkOption {
+      description = "Whether SSL is enabled.";
+      type = nullOr bool;
+      default = null;
+    };
+    https_port = mkOption {
+      description = "Port used in redirect to HTTPS";
+      type = nullOr int;
+      default = null;
+    };
     log_level = mkOption {
       description = "Log level";
       type = enum [ "error" "warn" "info" "debug" ];
       default = "info";
     };
     key = mkOption {
-      description = "File with a key used to sign cookies and state (secret)";
-      type = nullOr path;
+      description = "A key used to sign cookies and state (secret)";
+      type = nullOr secret;
       default = null;
     };
     database = mkOption {
@@ -144,13 +162,20 @@ in {
       type = nullOr path;
       default = null;
     };
+    datafile = mkOption {
+      description = "Read permissions from this file";
+      type = nullOr path;
+      default = null;
+    };
     ssl_key = mkOption {
       description = "SSL key (PEM format) - secret";
-      type = path;
+      type = nullOr path;
+      default = null;
     };
     ssl_cert = mkOption {
       description = "SSL certificate (PEM format)";
-      type = path;
+      type = nullOr path;
+      default = null;
     };
     ssl_cert_chain = mkOption {
       description = "SSL certificate chain";
