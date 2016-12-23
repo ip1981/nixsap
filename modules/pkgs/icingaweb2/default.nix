@@ -3,12 +3,12 @@
 }:
 
 stdenv.mkDerivation rec {
-  version = "2.3.4";
+  version = "2.4.0";
   name = "icingaweb2-${version}";
 
   src = fetchurl {
     url = "https://github.com/Icinga/icingaweb2/archive/v${version}.tar.gz";
-    sha256 = "0kmxvwbr7g6daj2mqabzvmw3910igd85wrzwilkz83fizgmrszh5";
+    sha256 = "15kn0sm4dcpm6hcpbinas2dvbz2ln2frrcsw0i3acnk51qm1p35a";
   };
 
   patches = [ ./sproxy.patch ];
