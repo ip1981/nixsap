@@ -118,16 +118,7 @@ function sproxy_email()
 
 function sproxy_username()
 {
-  // We can't rely on X-Given-Name/X-Family name because they can be
-  // set by the user. I've personally seen someone set their name to
-  // "ZALORA".
-  //
-  // Instead, we'll try to extract the real name from the first part
-  // of the email address.
-  list($username, $_) = explode('@', sproxy_email());
-  // So we have something like firstname.lastname or firstname.l or
-  // firstname.
-  return $username;
+  return sproxy_email();
 }
 
 function sproxy_real_name()
