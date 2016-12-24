@@ -130,6 +130,12 @@ in {
       include ${pkgs.nginx}/conf/mime.types;
       default_type application/octet-stream;
 
+      # This is `combined` format with $remote_user replaced by $http_from.
+      # $http_from is provided by Sproxy: https://hackage.haskell.org/package/sproxy2
+      log_format sproxy '$remote_addr - $http_from [$time_local] '
+                    '"$request" $status $body_bytes_sent '
+                    '"$http_referer" "$http_user_agent"';
+
       access_log off;
       error_log stderr info;
 
