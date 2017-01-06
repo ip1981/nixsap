@@ -3,7 +3,7 @@
 let
 
   inherit (builtins)
-    filter isAttrs isBool toString ;
+    filter isAttrs isBool ;
   inherit (lib)
     concatStringsSep filterAttrs foldl hasPrefix
     mapAttrsToList mkIf mkOption types ;
