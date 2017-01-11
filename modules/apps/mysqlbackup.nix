@@ -317,7 +317,7 @@ let
     log="${cfg.dumpDir}/$DATE/joblog.txt"
 
     {
-      cd '${privateDir}/jobs' && find -type l -printf '%P\n';
+      cd '${privateDir}/jobs' && ${pkgs.findutils}/bin/find . -type l -printf '%P\n';
     } | ${pkgs.parallel}/bin/parallel \
       --halt-on-error 0 \
       --joblog "$log" \
