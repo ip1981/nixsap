@@ -43,7 +43,7 @@ in {
         "packets" "parse" "pcache" "shell" "stats" "stats2" "sync"
         "trace"
         ]);
-      default = [ "acl" "ber" "config" "conns" ];
+      default = [ "acl" "config" ];
     };
 
     urlList = mkOption {
