@@ -1,14 +1,11 @@
-{ mkDerivation, base, fetchgit, HUnit, openldap, stdenv }:
+{ mkDerivation, base, HUnit, cyrus_sasl, openldap, stdenv }:
 mkDerivation {
   pname = "LDAP";
-  version = "0.7.0";
-  src = fetchgit {
-    url = "https://github.com/ip1981/ldap-haskell.git";
-    sha256 = "1lb746ifqz216cxgxli30r30bx49f8l1an4k4w7sa87gdchjka4y";
-    rev = "1d47f5712fc09bbf00c49bb58907aaf355fdf2e2";
-  };
+  version = "0.6.11";
+  doCheck = false; # XXX: missing file in tarball
+  sha256 = "1cwh3272zi5r0zznmixghf87vskz7s35bmz6ifyky0xk3s04ijq1";
   libraryHaskellDepends = [ base ];
-  librarySystemDepends = [ openldap ];
+  librarySystemDepends = [ cyrus_sasl openldap ];
   testHaskellDepends = [ base HUnit ];
   testSystemDepends = [ openldap ];
   homepage = "https://github.com/ezyang/ldap-haskell";
