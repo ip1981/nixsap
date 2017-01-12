@@ -1,8 +1,8 @@
-{ haskell, haskellPackages, openldap }:
+{ haskell, haskellPackages }:
 
 let myHaskellPkgs = haskellPackages.override {
   overrides = self: super: {
-    LDAP = self.callPackage ./ldap.nix { inherit openldap; }; # Version with ldapExternalSaslBind
+    LDAP = self.callPackage ./ldap.nix { }; # Version with ldapExternalSaslBind
     ldif = haskell.lib.dontCheck super.ldif; # requires ancient HUnit == 1.2.*
   };
 };
