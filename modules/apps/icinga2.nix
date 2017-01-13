@@ -223,7 +223,7 @@ let
     chown ${cfg.user}:${cfg.commandGroup} ${dirOf cfg.livestatusSocket}
   '';
 
-  ExecStart = pkgs.writeBashScript "icinga2-start" ''
+  start = pkgs.writeBashScriptBin "icinga2" ''
     set -euo pipefail
 
     umask 0077
@@ -348,7 +348,7 @@ in {
       wantedBy = [ "multi-user.target" ];
       inherit environment preStart;
       serviceConfig = {
-        inherit ExecStart;
+        ExecStart = "${start}/bin/icinga2";
         KillMode = "mixed";
         PermissionsStartOnly = true;
         Restart = "always";
