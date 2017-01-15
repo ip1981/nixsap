@@ -197,7 +197,6 @@ in {
 
   config = {
     nixsap.deployment.keyrings = keyrings;
-    environment.systemPackages = [ pkgs.postgresql ];
     systemd.services = foldl (a: b: a//b) {} (mapAttrsToList mkService instances);
     nixsap.system.users.daemons = users;
   };
