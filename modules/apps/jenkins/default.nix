@@ -49,7 +49,7 @@ let
 
         cd '${cfg.home}'
 
-        find -maxdepth 1 \( \
+        find . -maxdepth 1 \( \
              -iname '*.xml' \
           -o -iname '*.bak' \
           -o -iname '*.log' \
