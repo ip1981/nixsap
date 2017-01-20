@@ -164,7 +164,7 @@ let
   roleType =
     let
       objects = mkOption {
-        type = either str (listOf str);
+        type = listOf str;
         default = [];
         example = [
           "%bleep.%.created\_at"
@@ -177,7 +177,7 @@ let
         ];
       };
       basicRole = submodule {
-        options.nixsap = {
+        options = {
           "ALL"       = objects;
           "ALTER"     = objects;
           "CREATE"    = objects;
