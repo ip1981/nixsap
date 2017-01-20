@@ -9,6 +9,8 @@ let
   inherit (types)
     attrsOf either listOf str submodule ;
 
+  cfg = config.nixsap.apps.mariadb;
+
   explicit = filterAttrs (n: v: n != "_module" && v != null);
 
   inherit (config.nixsap.apps.mariadb) roles;
@@ -127,13 +129,13 @@ let
     }
 
     while true; do
-      while ! mysql -e ';'; do
+      while ! ${cfg.package}/bin/mysql -e ';'; do
         sleep 5s
       done
       tmp=$(mktemp)
       trap 'rm -f "$tmp"' EXIT
-      mysql -N mysql < ${refreshRolesSQL} >> "$tmp"
-      mysql -v mysql < "$tmp"
+      ${cfg.package}/bin/mysql -N mysql < ${refreshRolesSQL} >> "$tmp"
+      ${cfg.package}/bin/mysql -v mysql < "$tmp"
       doze
     done
   '';
@@ -238,7 +240,6 @@ in {
       description = "refresh MariaDB basic roles";
       after = [ "mariadb.service" "mariadb-maintenance.service" ];
       wantedBy = [ "multi-user.target" ];
-      path = [ pkgs.mariadb ];
       serviceConfig = {
         ExecStart = "${refreshRoles}/bin/refreshRoles";
         User = config.nixsap.apps.mariadb.user;

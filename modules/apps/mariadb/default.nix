@@ -116,9 +116,9 @@ let
 
   await = pkgs.writeBashScript "await" ''
     count=0
-    while ! mysql -e ';' 2>/dev/null; do
+    while ! ${cfg.package}/bin/mysql -e ';' 2>/dev/null; do
       if ! (( count % 60 )); then
-        mysql -e ';'
+        ${cfg.package}/bin/mysql -e ';'
       fi
       sleep 5s
       (( ++count ))
@@ -133,22 +133,22 @@ let
       ${optionalString (cfg.configure' != "") ''
         tmp=$(mktemp)
         trap 'rm -f "$tmp"' EXIT
-        mysql -N mysql < ${pkgs.writeText "mariadb-make-conf2.sql" cfg.configure'} > "$tmp"
-        mysql -v mysql < "$tmp"
+        ${cfg.package}/bin/mysql -N mysql < ${pkgs.writeText "mariadb-make-conf2.sql" cfg.configure'} > "$tmp"
+        ${cfg.package}/bin/mysql -v mysql < "$tmp"
       ''}
-      mysql -v mysql < ${pkgs.writeText "mariadb-conf.sql" cfg.configure}
+      ${cfg.package}/bin/mysql -v mysql < ${pkgs.writeText "mariadb-conf.sql" cfg.configure}
     '';
 
   maintenance = pkgs.writeBashScriptBin "mariadb-maint" ''
     set -euo pipefail
     trap "" SIGHUP
     ${await}
-    ${optionalString hasMasters "mysql -e 'STOP ALL SLAVES SQL_THREAD'"}
-    mysql_upgrade --user=${cfg.user}
-    mysql_tzinfo_to_sql "$TZDIR" | mysql mysql
-    mysql mysql < ${./procedures.sql}
+    ${optionalString hasMasters "${cfg.package}/bin/mysql -e 'STOP ALL SLAVES SQL_THREAD'"}
+    ${cfg.package}/bin/mysql_upgrade --user=${cfg.user}
+    ${cfg.package}/bin/mysql_tzinfo_to_sql "$TZDIR" | ${cfg.package}/bin/mysql mysql
+    ${cfg.package}/bin/mysql mysql < ${./procedures.sql}
 
-    cat <<'__SQL__' | mysql -N mysql | mysql -v mysql
+    cat <<'__SQL__' | ${cfg.package}/bin/mysql -N mysql | ${cfg.package}/bin/mysql -v mysql
     SELECT CONCAT("DROP USER IF EXISTS '", User, "'@'", Host, "';")
     FROM user
     WHERE User IN ('root', ${"''"})
@@ -156,14 +156,14 @@ let
        ;
     __SQL__
 
-    cat <<'__SQL__' | mysql -v mysql
+    cat <<'__SQL__' | ${cfg.package}/bin/mysql -v mysql
     DROP DATABASE IF EXISTS test;
     ${concatMapStrings (db: ''
     CREATE DATABASE IF NOT EXISTS `${db}`;
     '') cfg.databases}
     __SQL__
 
-    ${optionalString hasMasters "mysql -e 'START ALL SLAVES'"}
+    ${optionalString hasMasters "${cfg.package}/bin/mysql -e 'START ALL SLAVES'"}
   '';
 
   changeMaster =
@@ -197,7 +197,7 @@ let
           cnf = "${rundir}/master-${ch}.cnf";
           mysqldumpOptions = filterAttrs (n: _: n != "password-file" && n != "path")
             (explicit opts.mysqldump);
-          binary = if opts.mysqldump.path != null then opts.mysqldump.path else "mysqldump";
+          binary = if opts.mysqldump.path != null then opts.mysqldump.path else "${cfg.package}/bin/mysqldump";
           mysqldump = concatStringsSep " " (
               [ binary "--defaults-file=${cnf}" "--skip-comments" "--force" ]
               ++ mapAttrsToList (n: v: "--${n}=${show n v}") mysqldumpOptions);
@@ -225,7 +225,7 @@ let
     );
 
   watchdog = pkgs.writeBashScript "slave-watchdog"
-    (import ./slave-watchdog.nix {inherit importDump changeMaster;});
+    (import ./slave-watchdog.nix {inherit cfg importDump changeMaster;});
 
   slaves =
     let
@@ -244,16 +244,16 @@ let
       touch ${old}
       chmod 0600 ${old}
       trap 'rm -f ${old}' EXIT
-      mysql -e 'SHOW ALL SLAVES STATUS\G' \
+      ${cfg.package}/bin/mysql -e 'SHOW ALL SLAVES STATUS\G' \
         | awk '/Connection_name:/ {printf $2 ":"}; /Master_Host:/ {print $2}' \
         | sort > ${old}
       obsolete=$(comm -23 ${old} ${new} | cut -d: -f1)
       for ch in $obsolete; do
         echo "Deleting obsolete slave $ch"
-        mysql -e "CALL mysql.resetSlave('$ch')"
+        ${cfg.package}/bin/mysql -e "CALL mysql.resetSlave('$ch')"
       done
       ${optionalString hasMasters ''
-        mysql -f < ${truncateIgnored} || echo '(errors ignored)' >&2
+        ${cfg.package}/bin/mysql -f < ${truncateIgnored} || echo '(errors ignored)' >&2
         export PARALLEL_SHELL=${pkgs.bash}/bin/bash
         export HOME='${rundir}'
         {
@@ -380,7 +380,7 @@ in {
       requires = [ "mariadb.service" ];
       after = [ "mariadb.service" "mariadb-maintenance.service" ];
       wantedBy = [ "multi-user.target" ];
-      path = with pkgs; [ gnused gawk cfg.package utillinux parallel ];
+      path = with pkgs; [ gnused gawk utillinux parallel ];
       serviceConfig = {
         ExecStart = "${slaves}/bin/mariadb-slaves";
         User = cfg.user;
@@ -397,7 +397,6 @@ in {
       description = "MariaDB maintenance";
       after = [ "mariadb.service" ];
       wantedBy = [ "multi-user.target" ];
-      path = [ cfg.package ];
       serviceConfig = {
         ExecStart = "${maintenance}/bin/mariadb-maint";
         User = cfg.user;
@@ -410,7 +409,6 @@ in {
       description = "MariaDB configuration";
       after = [ "mariadb.service" "mariadb-maintenance.service" ];
       wantedBy = [ "multi-user.target" ];
-      path = [ cfg.package ];
       serviceConfig = {
         ExecStart = "${conf}/bin/mariadb-conf";
         User = cfg.user;
