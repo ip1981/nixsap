@@ -1,12 +1,15 @@
 { config, lib, pkgs, ... }:
 let
+
   inherit (builtins)
-    elemAt filter isAttrs isList length trace ;
+    elemAt filter isAttrs isList length ;
+
   inherit (lib)
     attrNames concatMapStrings concatMapStringsSep concatStrings
-    concatStringsSep filterAttrs flatten mapAttrsToList mkIf mkOption
-    optionalString replaceStrings splitString types ;
-  inherit (types)
+    concatStringsSep filterAttrs flatten mapAttrsToList mkIf mkOption mkOrder
+    optionalString replaceStrings splitString ;
+
+  inherit (lib.types)
     attrsOf either listOf str submodule ;
 
   cfg = config.nixsap.apps.mariadb;
@@ -116,6 +119,9 @@ let
       '') basicRoles;
     in pkgs.writeText "refresh-roles.sql" sql;
 
+
+  # XXX Why not timer? This should run periodically, but,
+  # if changed, this also should run on deploy.
   refreshRoles = pkgs.writeBashScriptBin "refreshRoles" ''
     set -euo pipefail
 
@@ -140,27 +146,54 @@ let
     done
   '';
 
-  addRoles = ''
-    ${concatMapStrings (r: "CREATE ROLE IF NOT EXISTS '${r}';\n") (attrNames roles)}
+  configureRoles = ''
+    CREATE TEMPORARY TABLE __roles (u CHAR(80));
+    ${optionalString (allRoles != []) ''
+      INSERT INTO __roles VALUES
+        ${concatMapStringsSep "," (r: "('${r}')") allRoles}
+        ;
+    ''}
 
-    ${concatStrings
-       (mapAttrsToList (role: subroles: ''
-        ${concatMapStringsSep "\n" (r: "GRANT '${r}' TO '${role}';") subroles}
-        '') topRoles)
-    }
-  '';
+    -- Add new roles.
+    SELECT CONCAT('CREATE ROLE \''', u, '\';')
+    FROM __roles
+    LEFT OUTER JOIN user
+    ON u = user
+    WHERE user IS NULL ;
 
-  revokeRoles = ''
+    -- Remove old roles.
+    SELECT CONCAT('DROP ROLE \''', user, '\';')
+    FROM __roles
+    RIGHT OUTER JOIN user
+    ON u = user
+    WHERE u IS NULL AND is_role = 'Y' ;
+
+    DROP TABLE __roles;
+
+
+    CREATE TEMPORARY TABLE __roles_mapping (u CHAR(80), r CHAR(80));
     ${concatMapAttrs (role: subroles: ''
-      SELECT CONCAT('REVOKE \''', role, '\' FROM \''', user, '\';') FROM roles_mapping
-        WHERE user = '${role}'
-        AND role NOT IN (${sqlList subroles});
-    '') topRoles
-    }
+      INSERT INTO __roles_mapping VALUES
+      ${concatMapStringsSep "," (r: "('${role}', '${r}')") subroles}
+      ;
+    '') topRoles}
 
-    SELECT CONCAT('DROP ROLE \''', user, '\';') FROM user WHERE is_role='Y'
-      ${optionalString (allRoles != []) "AND user NOT IN (${sqlList allRoles})"}
-    ;
+    -- Add new mappings.
+    SELECT CONCAT('GRANT \''', r, '\' TO \''', u, '\';')
+    FROM __roles_mapping
+    LEFT OUTER JOIN roles_mapping
+    ON r = role AND u = user
+    WHERE user IS NULL OR role IS NULL ;
+
+    -- Remove old mappings. Empty hosts correspond to roles.
+    SELECT CONCAT('REVOKE \''', role, '\' FROM \''', user, '\';')
+    FROM __roles_mapping
+    RIGHT OUTER JOIN roles_mapping
+    ON r = role AND u = user
+    WHERE (u IS NULL OR r IS NULL) AND host = ${"''"} ;
+
+    DROP TABLE __roles_mapping;
+
   '';
 
   roleType =
@@ -207,7 +240,7 @@ in {
         roles MySQL wildcards ("%" and "_") can be used to specify objects
         to be granted on, including databases, tables and columns names. A
         script runs periodically to find all matching objects and grants on
-        them. Objects are denoted as "schema[.table[.column]]".
+        them. Objects are denoted as "database[.table[.column]]".
       '';
       example = {
         top_role = [ "basic_role" ];
@@ -233,12 +266,11 @@ in {
   };
 
   config = {
-    nixsap.apps.mariadb.configure = optionalString (roles != {}) addRoles;
-    nixsap.apps.mariadb.configure' = revokeRoles;
+    nixsap.apps.mariadb.configure' = mkOrder 0 configureRoles;
 
     systemd.services.mariadb-roles = mkIf (basicRoles != {}) {
       description = "refresh MariaDB basic roles";
-      after = [ "mariadb.service" "mariadb-maintenance.service" ];
+      after = [ "mariadb-conf.service" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         ExecStart = "${refreshRoles}/bin/refreshRoles";
