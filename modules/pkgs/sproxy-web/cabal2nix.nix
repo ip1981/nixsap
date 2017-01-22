@@ -1,17 +1,13 @@
 { mkDerivation, aeson, base, blaze-html, blaze-markup, bytestring
-, data-default-class, directory, docopt, fast-logger, fetchgit
-, filepath, http-types, interpolatedstring-perl6, mtl, network
+, data-default-class, directory, docopt, fast-logger, filepath
+, http-types, interpolatedstring-perl6, mtl, network
 , postgresql-simple, resource-pool, scotty, stdenv, text, unix, wai
 , wai-extra, wai-middleware-static, warp
 }:
 mkDerivation {
   pname = "sproxy-web";
   version = "0.4.1";
-  src = fetchgit {
-    url = "https://github.com/zalora/sproxy-web.git";
-    sha256 = "01cybqrbf2i6sfxibdmri8sicnhxzqdhmrngzmgz9vizffyf9fbd";
-    rev = "5d7ee61deb55359ae8ce6013dd7fe81bcdc0f9a9";
-  };
+  sha256 = "0jvkvk5yqp4gibg61q67iczaqvfszikxvvgf04fg6xs23gjkpihp";
   isLibrary = false;
   isExecutable = true;
   executableHaskellDepends = [

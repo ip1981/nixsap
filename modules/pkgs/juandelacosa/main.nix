@@ -1,17 +1,13 @@
 { mkDerivation, base, base64-bytestring, bytestring
-, data-default-class, docopt, entropy, fast-logger, fetchgit
-, http-types, interpolatedstring-perl6, mtl, mysql, mysql-simple
-, network, resource-pool, scotty, stdenv, text, unix, wai
-, wai-extra, wai-middleware-static, warp
+, data-default-class, docopt, entropy, fast-logger, http-types
+, interpolatedstring-perl6, mtl, mysql, mysql-simple, network
+, resource-pool, scotty, stdenv, text, unix, wai, wai-extra
+, wai-middleware-static, warp
 }:
 mkDerivation {
   pname = "juandelacosa";
   version = "0.1.1";
-  src = fetchgit {
-    url = "https://github.com/zalora/juandelacosa.git";
-    sha256 = "c260feae989f518484881e7dc7ebcd51d5b25fcda92412445942a5e34c1f9459";
-    rev = "0940da0cdfb1201768d35c58433891feacbaedd5";
-  };
+  sha256 = "060zq739i3xhr7w448p460r7x3jyyzf7pn61abp7f9g8vjn6vqw7";
   isLibrary = false;
   isExecutable = true;
   executableHaskellDepends = [

@@ -1,6 +1,6 @@
 { mkDerivation, aeson, base, base64-bytestring, blaze-builder
 , bytestring, cereal, conduit, containers, cookie, docopt, entropy
-, fetchgit, Glob, http-client, http-conduit, http-types
+, Glob, http-client, http-conduit, http-types
 , interpolatedstring-perl6, network, postgresql-simple
 , resource-pool, SHA, sqlite-simple, stdenv, text, time, unix
 , unordered-containers, wai, wai-conduit, warp, warp-tls, word8
@@ -9,11 +9,7 @@
 mkDerivation {
   pname = "sproxy2";
   version = "1.93.0";
-  src = fetchgit {
-    url = "https://github.com/ip1981/sproxy2.git";
-    sha256 = "0kg3904v3ij5l6qlal4yqd4412dxk73jn0gqsxdajxai6n8qmypv";
-    rev = "cfda358dfd234edf5af50fd052187ab0e464b2f5";
-  };
+  sha256 = "1jfwm9h665dpcjm4d4n18nhshcj8s4rd77mp3lh7fk8f99374b0n";
   isLibrary = false;
   isExecutable = true;
   executableHaskellDepends = [

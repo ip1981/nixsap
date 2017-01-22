@@ -1,5 +1,5 @@
 { mkDerivation, aeson, base, bytestring, ConfigFile
-, data-default-class, docopt, fast-logger, fetchgit, http-types
+, data-default-class, docopt, fast-logger, http-types
 , interpolatedstring-perl6, MissingH, mtl, mysql, mysql-simple
 , network, resource-pool, scotty, stdenv, text, unix
 , unordered-containers, wai, wai-extra, wai-middleware-static, warp
@@ -7,11 +7,7 @@
 mkDerivation {
   pname = "mywatch";
   version = "0.2.1";
-  src = fetchgit {
-    url = "https://github.com/zalora/mywatch.git";
-    sha256 = "7c646cb69958fd1010682873c193afad0f5d93a4abb8f5ce728c0500fb43912b";
-    rev = "523b6029eb4b8569504086dfb5b8538330e5f522";
-  };
+  sha256 = "1yi19mj1hqxym7baf524sf5ih3w1csmvy65izq10xdk5lalkpkzh";
   isLibrary = false;
   isExecutable = true;
   executableHaskellDepends = [
