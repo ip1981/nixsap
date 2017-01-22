@@ -48,14 +48,6 @@ in {
     ssl_key = mkForce "${pkgs.fakeSSL}/key.pem";
   };
 
-  nixsap.apps.sproxy = {
-    sslCert = mkForce "${pkgs.fakeSSL}/cert.pem";
-    sslKey = mkForce "${pkgs.fakeSSL}/key.pem";
-    cookieName = mkForce "sproxy_vbox";
-    logLevel = mkForce "debug";
-    database = mkForce "user=sproxy-readonly dbname=sproxy port=${toString apps.postgresql.fcebkl.server.port}";
-  };
-
   nixsap.apps.sproxy-web = {
     connectionString = mkForce "user=sproxy dbname=sproxy port=${toString apps.postgresql.fcebkl.server.port}";
   };
