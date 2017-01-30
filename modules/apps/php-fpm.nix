@@ -43,14 +43,13 @@ let
         else "${k} = ${show v}";
 
       mkGlobal = k: v:
-        if k == "php-ini" || k == "pool" || k == "package" then ""
-        else if isAttrs v then mkGroup k v ""
+        if isAttrs v then mkGroup k v ""
         else "${k} = ${show v}";
 
       conf = pkgs.writeText "php-fpm-${name}.conf" ''
         [global]
         daemonize = no
-        ${concatNonEmpty "\n" (mapAttrsToList mkGlobal (explicit cfg))}
+        ${concatNonEmpty "\n" (mapAttrsToList mkGlobal (explicit cfg.global))}
 
         [pool]
         ${concatNonEmpty "\n" (mapAttrsToList mkPool (explicit cfg.pool))}
@@ -77,57 +76,58 @@ in {
     (attrsOf (submodule( { config, name, ... }: {
       options = {
         package = default pkgs.php package;
-        emergency_restart_interval = optional int;
-        emergency_restart_threshold = optional int;
-        error_log = default "/var/log/php-fpm-${name}.log" path;
-        log_level = optional (enum ["alert" "error" "warning" "notice" "debug"]);
         php-ini = optional path;
-        process_control_timeout = optional int;
-        rlimit_core = optional int;
-        rlimit_files = optional int;
 
-        process = optional (attrs {
-          max      = optional int;
-          priority = optional int;
-        });
+        global = {
+          emergency_restart_interval = optional int;
+          emergency_restart_threshold = optional int;
+          error_log = default "/var/log/php-fpm-${name}.log" path;
+          log_level = optional (enum ["alert" "error" "warning" "notice" "debug"]);
+          process_control_timeout = optional int;
+          rlimit_core = optional int;
+          rlimit_files = optional int;
 
-        pool = default {} (submodule({
-          options = {
-            catch_workers_output      = optional bool;
-            chdir                     = optional path;
-            clear_env                 = optional bool;
-            env                       = default {} (attrsOf str);
-            php_admin_flag            = default {} (attrsOf bool);
-            php_admin_value           = default {} (attrsOf (either str int));
-            php_flag                  = default {} (attrsOf bool);
-            php_value                 = default {} (attrsOf (either str int));
-            request_terminate_timeout = optional int;
-            rlimit_core               = optional int;
-            rlimit_files              = optional int;
-            user                      = default "php-fpm-${name}" str;
-            listen = default {} (attrs {
-              acl_groups = optional str;
-              backlog    = optional int;
-              group      = optional str;
-              mode       = optional str;
-              owner      = default config.pool.user str;
-              socket     = default "/run/php-fpm-${name}.sock" path;
-            });
-            pm = mandatory (attrs {
-              max_children      = mandatory int;
-              max_requests      = optional int;
-              max_spare_servers = optional int;
-              min_spare_servers = optional int;
-              start_servers     = optional int;
-              status_path       = optional path;
-              strategy          = mandatory (enum ["static" "ondemand" "dynamic"]);
-            });
-            ping = optional (attrs {
-              path     = optional path;
-              response = optional str;
-            });
+          process = optional (attrs {
+            max      = optional int;
+            priority = optional int;
+          });
+        };
+
+        pool = {
+          catch_workers_output      = optional bool;
+          chdir                     = optional path;
+          clear_env                 = optional bool;
+          env                       = default {} (attrsOf str);
+          php_admin_flag            = default {} (attrsOf bool);
+          php_admin_value           = default {} (attrsOf (either str int));
+          php_flag                  = default {} (attrsOf bool);
+          php_value                 = default {} (attrsOf (either str int));
+          request_terminate_timeout = optional int;
+          rlimit_core               = optional int;
+          rlimit_files              = optional int;
+          user                      = default "php-fpm-${name}" str;
+          listen = {
+            acl_groups = optional str;
+            backlog    = optional int;
+            group      = optional str;
+            mode       = optional str;
+            owner      = default config.pool.user str;
+            socket     = default "/run/php-fpm-${name}.sock" path;
           };
-        }));
+          pm = {
+            max_children      = mandatory int;
+            max_requests      = optional int;
+            max_spare_servers = optional int;
+            min_spare_servers = optional int;
+            start_servers     = optional int;
+            status_path       = optional path;
+            strategy          = mandatory (enum ["static" "ondemand" "dynamic"]);
+          };
+          ping = {
+            path     = optional path;
+            response = optional str;
+          };
+        };
       };
     })));
 
