@@ -82,7 +82,7 @@ in {
         local   sproxy      all              peer      map=sproxymap
       '';
       ident_file = ''
-        sproxymap ${apps.sproxy.user}      sproxy-readonly
+        sproxymap ${apps.sproxy2.user}     sproxy-readonly
         sproxymap ${apps.sproxy-web.user}  sproxy
       '';
     };
