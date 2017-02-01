@@ -165,7 +165,8 @@ in {
         sharedscripts = true;
         daily = mkDefault true;
         create = mkDefault "0640 ${cfg.user} ${cfg.user}";
-        postrotate = pkgs.writeBashScript "logrotate-nginx-postrotate" "systemctl kill -s SIGUSR1 nginx.service";
+        postrotate = pkgs.writeBashScript "logrotate-nginx-postrotate"
+          "systemctl kill -s SIGUSR1 --kill-who=main nginx.service";
       };
     };
 
