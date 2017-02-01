@@ -4,12 +4,14 @@ let
 
   inherit (builtins)
     filter isAttrs isBool ;
+
   inherit (lib)
-    concatStringsSep filterAttrs foldl hasPrefix
-    mapAttrsToList mkIf mkOption types ;
-  inherit (types)
-    attrsOf bool either enum int nullOr package path str
-    submodule ;
+    concatStringsSep filterAttrs foldl hasPrefix mapAttrs' mapAttrsToList
+    mkDefault mkIf mkOption ;
+
+  inherit (lib.types)
+    attrsOf bool either enum int nullOr package path str submodule ;
+
 
   explicit = filterAttrs (n: v: n != "_module" && v != null);
   concatNonEmpty = sep: list: concatStringsSep sep (filter (s: s != "") list);
@@ -22,6 +24,26 @@ let
   instances = explicit (config.nixsap.apps.php-fpm);
 
   users = mapAttrsToList (_: v: v.user) instances;
+
+  mkLogRotate = name: cfg:
+    let instance = "php-fpm-${name}";
+    in {
+      name = instance;
+      value = {
+        files = "${cfg.logDir}/*.log";
+        directives = {
+          delaycompress = mkDefault true;
+          missingok = mkDefault true;
+          notifempty = mkDefault true;
+          rotate = mkDefault 14;
+          sharedscripts = true;
+          daily = mkDefault true;
+          create = mkDefault "0640 ${cfg.user} ${cfg.user}";
+          postrotate = pkgs.writeBashScript "logrotate-${instance}-postrotate"
+            "systemctl kill -s SIGUSR1 --kill-who=main '${instance}.service'";
+        };
+      };
+    };
 
   mkService = name: cfg:
     let
@@ -72,6 +94,7 @@ let
         '';
         serviceConfig = {
           ExecStart = exec;
+          KillMode = "mixed";
           PermissionsStartOnly = true;
           Restart = "always";
           User = cfg.user;
@@ -162,6 +185,7 @@ in {
     })));
 
   config = mkIf ({} != instances) {
+    nixsap.apps.logrotate.conf = mapAttrs' mkLogRotate instances;
     nixsap.system.users.daemons = users;
     systemd.services = foldl (a: b: a//b) {} (mapAttrsToList mkService instances);
   };
