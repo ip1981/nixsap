@@ -6,7 +6,7 @@ let
     filter isAttrs isBool ;
 
   inherit (lib)
-    concatStringsSep filterAttrs foldl hasPrefix mapAttrs' mapAttrsToList
+    concatStringsSep filterAttrs hasPrefix mapAttrs' mapAttrsToList
     mkDefault mkIf mkOption ;
 
   inherit (lib.types)
@@ -82,7 +82,8 @@ let
                then "--php-ini ${cfg.php-ini}"
                else "--no-php-ini" );
     in {
-      "php-fpm-${name}" = {
+      name = "php-fpm-${name}";
+      value = {
         description = "PHP FastCGI Process Manager (${name})";
         after = [ "local-fs.target" ];
         wantedBy = [ "multi-user.target" ];
@@ -187,7 +188,7 @@ in {
   config = mkIf ({} != instances) {
     nixsap.apps.logrotate.conf = mapAttrs' mkLogRotate instances;
     nixsap.system.users.daemons = users;
-    systemd.services = foldl (a: b: a//b) {} (mapAttrsToList mkService instances);
+    systemd.services = mapAttrs' mkService instances;
   };
 }
 
