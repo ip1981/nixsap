@@ -14,14 +14,14 @@ let
   explicit = filterAttrs (n: v: n != "_module" && v != null);
   concatNonEmpty = sep: list: concatStringsSep sep (filter (s: s != "") list);
 
-  attrs = opts: submodule { options = opts; };
   default = d: t: mkOption { type = t; default = d; };
+  readonly = d: t: mkOption { type = t; default = d; readOnly = true; };
   mandatory = t: mkOption { type = t; };
   optional = t: mkOption { type = nullOr t; default = null; };
 
   instances = explicit (config.nixsap.apps.php-fpm);
 
-  users = mapAttrsToList (_: v: v.pool.user) instances;
+  users = mapAttrsToList (_: v: v.user) instances;
 
   mkService = name: cfg:
     let
@@ -52,6 +52,7 @@ let
         ${concatNonEmpty "\n" (mapAttrsToList mkGlobal (explicit cfg.global))}
 
         [pool]
+        listen.mode = 0660
         ${concatNonEmpty "\n" (mapAttrsToList mkPool (explicit cfg.pool))}
       '';
       exec = "${cfg.package}/bin/php-fpm --fpm-config ${conf} "
@@ -63,9 +64,17 @@ let
         description = "PHP FastCGI Process Manager (${name})";
         after = [ "local-fs.target" ];
         wantedBy = [ "multi-user.target" ];
+        preStart = ''
+          mkdir -p -- '${cfg.home}' '${cfg.logDir}'
+          rm -f    -- '${cfg.pool.listen.socket}'
+          chown -Rc '${cfg.user}:${cfg.user}' -- '${cfg.home}'
+          chmod -Rc u=rwX,g=rX,o= -- '${cfg.home}'
+        '';
         serviceConfig = {
           ExecStart = exec;
+          PermissionsStartOnly = true;
           Restart = "always";
+          User = cfg.user;
         };
       };
     };
@@ -75,22 +84,47 @@ in {
   options.nixsap.apps.php-fpm = default {}
     (attrsOf (submodule( { config, name, ... }: {
       options = {
-        package = default pkgs.php package;
-        php-ini = optional path;
+        home = mkOption {
+          description = "Directory with logs and the socket";
+          type = path;
+          default = "/php-fpm/${name}";
+        };
+        logDir = mkOption {
+          description = "Directory with logs. This is convenient read-only option";
+          type = path;
+          readOnly = true;
+          default = "${config.home}/log";
+        };
+        user = mkOption {
+          description = "User to run as";
+          type = str;
+          default = "php-fpm-${name}";
+        };
+        package = mkOption {
+          description = "PHP package to use FPM from";
+          type = package;
+          default = pkgs.php;
+        };
+        php-ini = mkOption {
+          description = "php.ini file to pass to php-fpm";
+          type = nullOr path;
+          default = null;
+        };
+
 
         global = {
           emergency_restart_interval = optional int;
           emergency_restart_threshold = optional int;
-          error_log = default "/var/log/php-fpm-${name}.log" path;
+          error_log = readonly "${config.logDir}/error.log" path;
           log_level = optional (enum ["alert" "error" "warning" "notice" "debug"]);
           process_control_timeout = optional int;
           rlimit_core = optional int;
           rlimit_files = optional int;
 
-          process = optional (attrs {
+          process = {
             max      = optional int;
             priority = optional int;
-          });
+          };
         };
 
         pool = {
@@ -105,14 +139,10 @@ in {
           request_terminate_timeout = optional int;
           rlimit_core               = optional int;
           rlimit_files              = optional int;
-          user                      = default "php-fpm-${name}" str;
           listen = {
             acl_groups = optional str;
             backlog    = optional int;
-            group      = optional str;
-            mode       = optional str;
-            owner      = default config.pool.user str;
-            socket     = default "/run/php-fpm-${name}.sock" path;
+            socket     = readonly "${config.home}/sock" path;
           };
           pm = {
             max_children      = mandatory int;

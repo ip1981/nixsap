@@ -14,11 +14,10 @@ let
     attrNames elem isAttrs isBool isList isString ;
 
   cfg = config.nixsap.apps.mediawiki;
-  user = config.nixsap.apps.mediawiki.user;
+  user = cfg.user;
   php = cfg.php-fpm.package;
 
   defaultPool = {
-    listen.owner = config.nixsap.apps.nginx.user;
     pm.max_children = 10;
     pm.max_requests = 1000;
     pm.max_spare_servers = 5;
@@ -163,7 +162,7 @@ let
     }
 
     chmod -Rc u=rwX,g=rX,o= '${cfg.localSettings.wgUploadDirectory}'
-    chown -Rc '${user}:${user}' '${cfg.localSettings.wgUploadDirectory}'
+    chown -Rc '${cfg.user}:${cfg.user}' '${cfg.localSettings.wgUploadDirectory}'
   '';
 
   nginx = ''
@@ -295,13 +294,13 @@ in {
   };
 
   config = mkIf cfg.enable {
-    nixsap.deployment.keyrings.${user} = keys;
-    users.users.${config.nixsap.apps.nginx.user}.extraGroups =
-      mkIf cfg.localSettings.wgEnableUploads [ user ];
+    nixsap.deployment.keyrings.${cfg.user} = keys;
+    users.users.${config.nixsap.apps.nginx.user}.extraGroups = [ cfg.user ];
 
     nixsap.apps.php-fpm.mediawiki = mkOverride 0 {
+      inherit (cfg) user;
       inherit (cfg.php-fpm) package;
-      pool = recursiveUpdate defaultPool (cfg.php-fpm.pool // { user = cfg.user ;});
+      pool = recursiveUpdate defaultPool cfg.php-fpm.pool;
     };
 
     nixsap.apps.nginx.conf.http.servers.mediawiki = nginx;
@@ -314,7 +313,7 @@ in {
       serviceConfig = {
         RemainAfterExit = true;
         Type = "oneshot";
-        User = config.nixsap.apps.php-fpm.mediawiki.pool.user;
+        User = cfg.user;
         ExecStart = "${mediawiki-db}/bin/mediawiki-db";
       };
     };

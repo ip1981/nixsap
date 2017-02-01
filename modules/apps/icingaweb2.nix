@@ -161,7 +161,6 @@ let
   ));
 
   defaultPool = {
-    listen.owner = config.nixsap.apps.nginx.user;
     pm.max_children = 10;
     pm.max_requests = 1000;
     pm.max_spare_servers = 5;
@@ -363,11 +362,13 @@ in {
 
   config = mkIf cfg.enable {
     nixsap.deployment.keyrings.root = keys;
+    users.users.${config.nixsap.apps.nginx.user}.extraGroups = [ cfg.user ];
     users.users.icingaweb2.extraGroups = mkIf localIcinga [ config.nixsap.apps.icinga2.commandGroup ];
 
     nixsap.apps.php-fpm.icingaweb2 = mkOverride 0 {
+      inherit (cfg) user;
       inherit (cfg.php-fpm) package;
-      pool = recursiveUpdate defaultPool (cfg.php-fpm.pool // { user = cfg.user ;});
+      pool = recursiveUpdate defaultPool cfg.php-fpm.pool;
     };
 
     nixsap.apps.nginx.conf.http.servers.icingaweb2 = ''
