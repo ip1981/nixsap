@@ -189,6 +189,7 @@ in {
     innodb_buffer_pool_load_at_startup       = optional bool;
     innodb_buffer_pool_size                  = optional int;
     innodb_compression_algorithm             = optional (enum ["none" "zlib" "lz4" "lzo" "lzma" "bzip2" "snappy"]);
+    innodb_compression_default               = optional bool;
     innodb_compression_failure_threshold_pct = optional percent;
     innodb_compression_level                 = optional (enum' [0 1 2 3 4 5 6 7 8 9]);
     innodb_compression_pad_pct_max           = optional (addCheck int (i: 0 <= i && i <= 75));
