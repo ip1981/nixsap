@@ -28,6 +28,7 @@ in {
     fileSystems."${apps.icingaweb2.configDir}" = mkIf apps.icingaweb2.enable 1;
     fileSystems."${apps.mysqlbackup.dumpDir}" = mkIf (apps.mysqlbackup.servers != {}) 10;
     fileSystems."${apps.nginx.stateDir}" = mkIf (apps.nginx.conf.http.servers != {}) 1;
+    fileSystems."/jenkins" = mkIf (apps.jenkins != {}) 15;
     fileSystems."/mariadb" = mkIf apps.mariadb.enable 30;
     fileSystems."/postgresql" = mkIf (apps.postgresql != {}) 2;
     fileSystems."/tmp" = 1;
