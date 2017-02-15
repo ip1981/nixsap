@@ -1,11 +1,11 @@
 {
   "connectionCheckUrl": "http://www.google.com/",
   "core": {
-    "buildDate": "Feb 01, 2017",
+    "buildDate": "Feb 13, 2017",
     "name": "core",
-    "sha1": "hHbj4bBVXIzC7ga8yIjG/7Ohn6Y=",
-    "url": "http://updates.jenkins-ci.org/download/war/2.44/jenkins.war",
-    "version": "2.44"
+    "sha1": "kJPt7cnmzIfYUm3lOjBJUD8CI/c=",
+    "url": "http://updates.jenkins-ci.org/download/war/2.46/jenkins.war",
+    "version": "2.46"
   },
   "id": "default",
   "plugins": {
@@ -892,7 +892,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Schmant+Plugin"
     },
     "StashBranchParameter": {
-      "buildDate": "Dec 02, 2015",
+      "buildDate": "Feb 11, 2017",
       "dependencies": [],
       "developers": [
         {
@@ -902,20 +902,20 @@
         }
       ],
       "excerpt": "This uses branches and tags as parameters. Hosting has moved to [https://github.com/jenkinsci/stash-branch-parameters-plugin] ",
-      "gav": "org.jenkins-ci.plugins:StashBranchParameter:0.2.0",
+      "gav": "org.jenkins-ci.plugins:StashBranchParameter:0.3.0",
       "labels": [
         "parameter"
       ],
       "name": "StashBranchParameter",
-      "previousTimestamp": "2014-04-09T21:12:32.00Z",
-      "previousVersion": "0.1.5",
-      "releaseTimestamp": "2015-12-02T00:42:10.00Z",
+      "previousTimestamp": "2015-12-02T00:42:10.00Z",
+      "previousVersion": "0.2.0",
+      "releaseTimestamp": "2017-02-11T15:45:18.00Z",
       "requiredCore": "1.639",
       "scm": "github.com",
-      "sha1": "NtooNki5sM+s2mxlgo5Kz0RvubU=",
+      "sha1": "RIGt9ld1bcH907P94jfMpRJFypA=",
       "title": "Stash Branch Parameter Plug-In",
-      "url": "http://updates.jenkins-ci.org/download/plugins/StashBranchParameter/0.2.0/StashBranchParameter.hpi",
-      "version": "0.2.0",
+      "url": "http://updates.jenkins-ci.org/download/plugins/StashBranchParameter/0.3.0/StashBranchParameter.hpi",
+      "version": "0.3.0",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/StashBranchParameter"
     },
     "Surround-SCM-plugin": {
@@ -1449,7 +1449,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/All+Changes+Plugin"
     },
     "allure-jenkins-plugin": {
-      "buildDate": "Jan 22, 2017",
+      "buildDate": "Feb 12, 2017",
       "compatibleSinceVersion": "2.8",
       "dependencies": [
         {
@@ -1506,20 +1506,20 @@
         }
       ],
       "excerpt": "This plugin allows to automatically generate <a href='http://allure.qatools.ru'>Allure Report</a> and attach it to build during Jenkins job run.",
-      "gav": "ru.yandex.qatools.allure:allure-jenkins-plugin:2.11",
+      "gav": "ru.yandex.qatools.allure:allure-jenkins-plugin:2.13",
       "labels": [
         "report"
       ],
       "name": "allure-jenkins-plugin",
-      "previousTimestamp": "2015-12-02T11:40:50.00Z",
-      "previousVersion": "2.10",
-      "releaseTimestamp": "2017-01-22T16:23:14.00Z",
+      "previousTimestamp": "2017-02-08T16:54:08.00Z",
+      "previousVersion": "2.12",
+      "releaseTimestamp": "2017-02-12T18:20:56.00Z",
       "requiredCore": "2.7.4",
       "scm": "github.com",
-      "sha1": "7C0r/s2TXRV02fXs1Upqb2RdEQ0=",
+      "sha1": "rwsRtKySjX7jCsGN+rdfq5JS3mA=",
       "title": "Allure Jenkins Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/allure-jenkins-plugin/2.11/allure-jenkins-plugin.hpi",
-      "version": "2.11",
+      "url": "http://updates.jenkins-ci.org/download/plugins/allure-jenkins-plugin/2.13/allure-jenkins-plugin.hpi",
+      "version": "2.13",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Allure+Plugin"
     },
     "amazon-ecr": {
@@ -1574,7 +1574,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Amazon+ECR"
     },
     "amazon-ecs": {
-      "buildDate": "Jan 20, 2017",
+      "buildDate": "Feb 06, 2017",
       "dependencies": [
         {
           "name": "aws-java-sdk",
@@ -1595,21 +1595,21 @@
         }
       ],
       "excerpt": "Use Amazon ECS Containers to setup (docker-based) elastic build executors. ",
-      "gav": "com.cloudbees.jenkins.plugins:amazon-ecs:1.9",
+      "gav": "com.cloudbees.jenkins.plugins:amazon-ecs:1.10",
       "labels": [
         "cluster",
         "slaves"
       ],
       "name": "amazon-ecs",
-      "previousTimestamp": "2017-01-13T21:51:34.00Z",
-      "previousVersion": "1.8",
-      "releaseTimestamp": "2017-01-20T15:07:44.00Z",
+      "previousTimestamp": "2017-01-20T15:07:44.00Z",
+      "previousVersion": "1.9",
+      "releaseTimestamp": "2017-02-06T23:25:46.00Z",
       "requiredCore": "1.609",
       "scm": "github.com",
-      "sha1": "DUIHLHNZe130nJs5kdtq5Ufylqk=",
+      "sha1": "kwxoWykgBKjDRd1vyEWzw1kjMQE=",
       "title": "Amazon EC2 Container Service plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/amazon-ecs/1.9/amazon-ecs.hpi",
-      "version": "1.9",
+      "url": "http://updates.jenkins-ci.org/download/plugins/amazon-ecs/1.10/amazon-ecs.hpi",
+      "version": "1.10",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Amazon+EC2+Container+Service+Plugin"
     },
     "analysis-collector": {
@@ -1751,7 +1751,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Static+Code+Analysis+Plug-ins"
     },
     "anchore-container-scanner": {
-      "buildDate": "Dec 06, 2016",
+      "buildDate": "Feb 03, 2017",
       "dependencies": [],
       "developers": [
         {
@@ -1761,22 +1761,22 @@
         }
       ],
       "excerpt": "Allows users to add a build step to run the <a href='https://www.anchore.com/'>Anchore</a> container image scanner.",
-      "gav": "org.jenkins-ci.plugins:anchore-container-scanner:1.0.4",
+      "gav": "org.jenkins-ci.plugins:anchore-container-scanner:1.0.5",
       "labels": [
         "builder",
         "scm",
         "security"
       ],
       "name": "anchore-container-scanner",
-      "previousTimestamp": "2016-11-01T16:07:06.00Z",
-      "previousVersion": "1.0.3",
-      "releaseTimestamp": "2016-12-06T12:15:38.00Z",
+      "previousTimestamp": "2016-12-06T12:15:38.00Z",
+      "previousVersion": "1.0.4",
+      "releaseTimestamp": "2017-02-03T13:06:42.00Z",
       "requiredCore": "1.625.3",
       "scm": "github.com",
-      "sha1": "dCMuS5DWX8qiS4GHG03G0+Hl3ug=",
+      "sha1": "avLIb6NlP8UN33lRNYVxTkHhwos=",
       "title": "Anchore Container Image Scanner Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/anchore-container-scanner/1.0.4/anchore-container-scanner.hpi",
-      "version": "1.0.4",
+      "url": "http://updates.jenkins-ci.org/download/plugins/anchore-container-scanner/1.0.5/anchore-container-scanner.hpi",
+      "version": "1.0.5",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Anchore+Container+Image+Scanner+Plugin"
     },
     "android-emulator": {
@@ -1879,7 +1879,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Android+Lint+Plugin"
     },
     "android-signing": {
-      "buildDate": "Jan 18, 2017",
+      "buildDate": "Feb 07, 2017",
       "compatibleSinceVersion": "1.100",
       "dependencies": [
         {
@@ -1896,19 +1896,21 @@
         }
       ],
       "excerpt": "<a href='https://developer.android.com/studio/publish/app-signing.html'>Sign</a> Android APKs using Jenkins-managed <a href='JENKINS:Credentials Plugin'>credentials</a>.  See the <a href='https://github.com/jenkinsci/android-signing-plugin'>README</a> for detailed information.",
-      "gav": "org.jenkins-ci.plugins:android-signing:2.0.7",
+      "gav": "org.jenkins-ci.plugins:android-signing:2.0.8",
       "labels": [
         "builder",
         "android"
       ],
       "name": "android-signing",
-      "releaseTimestamp": "2017-01-18T17:20:42.00Z",
+      "previousTimestamp": "2017-01-18T17:20:42.00Z",
+      "previousVersion": "2.0.7",
+      "releaseTimestamp": "2017-02-07T14:42:04.00Z",
       "requiredCore": "1.625.3",
       "scm": "github.com",
-      "sha1": "6vocg2euStU2uMNRUKvAcUZn/KM=",
+      "sha1": "8XqfKhnEOol7FpQG08Aqdhmo+MM=",
       "title": "Android Signing Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/android-signing/2.0.7/android-signing.hpi",
-      "version": "2.0.7",
+      "url": "http://updates.jenkins-ci.org/download/plugins/android-signing/2.0.8/android-signing.hpi",
+      "version": "2.0.8",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Android+Signing+Plugin"
     },
     "ansible": {
@@ -2360,7 +2362,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Applitools+Eyes+Plugin"
     },
     "aqua-security-scanner": {
-      "buildDate": "Oct 15, 2016",
+      "buildDate": "Feb 05, 2017",
       "dependencies": [],
       "developers": [
         {
@@ -2369,20 +2371,20 @@
         }
       ],
       "excerpt": "Adds a Build Step for scanning Docker images, local or hosted on registries, for security vulnerabilities, using the API provided by <a href='https://www.aquasec.com'>Aqua Security</a>.",
-      "gav": "org.jenkins-ci.plugins:aqua-security-scanner:1.3.3",
+      "gav": "org.jenkins-ci.plugins:aqua-security-scanner:2.0",
       "labels": [
         "builder"
       ],
       "name": "aqua-security-scanner",
-      "previousTimestamp": "2016-09-11T09:47:12.00Z",
-      "previousVersion": "1.3.2",
-      "releaseTimestamp": "2016-10-15T20:37:32.00Z",
+      "previousTimestamp": "2016-10-15T20:37:32.00Z",
+      "previousVersion": "1.3.3",
+      "releaseTimestamp": "2017-02-05T23:33:56.00Z",
       "requiredCore": "1.625.3",
       "scm": "github.com",
-      "sha1": "L0gydZJJmEw6VMwf+7zx6527rtc=",
+      "sha1": "goFhtFlsX2Yr8fiJKFBV4n9IrBM=",
       "title": "Aqua Security Scanner",
-      "url": "http://updates.jenkins-ci.org/download/plugins/aqua-security-scanner/1.3.3/aqua-security-scanner.hpi",
-      "version": "1.3.3",
+      "url": "http://updates.jenkins-ci.org/download/plugins/aqua-security-scanner/2.0/aqua-security-scanner.hpi",
+      "version": "2.0",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Aqua+Security+Scanner+Plugin"
     },
     "archived-artifact-url-viewer": {
@@ -2924,8 +2926,8 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Authentication+Tokens+API+Plugin"
     },
     "authorize-project": {
-      "buildDate": "May 28, 2016",
-      "compatibleSinceVersion": "1.1.0",
+      "buildDate": "Feb 12, 2017",
+      "compatibleSinceVersion": "1.3.0",
       "dependencies": [],
       "developers": [
         {
@@ -2934,20 +2936,20 @@
         }
       ],
       "excerpt": "Configure projects to run with specified authorization.",
-      "gav": "org.jenkins-ci.plugins:authorize-project:1.2.2",
+      "gav": "org.jenkins-ci.plugins:authorize-project:1.3.0",
       "labels": [
         "user"
       ],
       "name": "authorize-project",
-      "previousTimestamp": "2016-04-03T14:24:36.00Z",
-      "previousVersion": "1.2.1",
-      "releaseTimestamp": "2016-05-28T13:08:56.00Z",
+      "previousTimestamp": "2016-05-28T13:08:56.00Z",
+      "previousVersion": "1.2.2",
+      "releaseTimestamp": "2017-02-12T12:37:14.00Z",
       "requiredCore": "1.625",
       "scm": "github.com",
-      "sha1": "kT4ukhcUXd4hlIg5QX4TyWsQ4Hk=",
+      "sha1": "HOwyoWVjxRufDKwD55Agp0KjmEA=",
       "title": "Authorize Project",
-      "url": "http://updates.jenkins-ci.org/download/plugins/authorize-project/1.2.2/authorize-project.hpi",
-      "version": "1.2.2",
+      "url": "http://updates.jenkins-ci.org/download/plugins/authorize-project/1.3.0/authorize-project.hpi",
+      "version": "1.3.0",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Authorize+Project+plugin"
     },
     "avatar": {
@@ -3001,6 +3003,49 @@
       "url": "http://updates.jenkins-ci.org/download/plugins/aws-beanstalk-publisher-plugin/1.7.2/aws-beanstalk-publisher-plugin.hpi",
       "version": "1.7.2",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/AWS+Beanstalk+Publisher+Plugin"
+    },
+    "aws-bucket-credentials": {
+      "buildDate": "Feb 13, 2017",
+      "dependencies": [
+        {
+          "name": "credentials-binding",
+          "optional": false,
+          "version": "1.7"
+        },
+        {
+          "name": "aws-java-sdk",
+          "optional": false,
+          "version": "1.11.68"
+        },
+        {
+          "name": "credentials",
+          "optional": false,
+          "version": "2.1.11"
+        }
+      ],
+      "developers": [
+        {
+          "developerId": "stevegal",
+          "email": "stephenjgalbraith+jenkins_support@gmail.com",
+          "name": "Stephen Galbraith"
+        }
+      ],
+      "excerpt": "Allows the retrieval of kms encrypted credentials from an s3 bucket using Amazon Web Services ",
+      "gav": "uk.co.stevegal:aws-bucket-credentials:0.1.1",
+      "labels": [
+        "credential"
+      ],
+      "name": "aws-bucket-credentials",
+      "previousTimestamp": "2017-02-12T20:00:20.00Z",
+      "previousVersion": "0.1",
+      "releaseTimestamp": "2017-02-13T20:33:24.00Z",
+      "requiredCore": "1.596.1",
+      "scm": "github.com",
+      "sha1": "WhwQLddS8q0uO7ujqM2lysD2Dos=",
+      "title": "Amazon S3 Bucket Credentials Plugin",
+      "url": "http://updates.jenkins-ci.org/download/plugins/aws-bucket-credentials/0.1.1/aws-bucket-credentials.hpi",
+      "version": "0.1.1",
+      "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/AWS+Bucket+Credentials+Plugin"
     },
     "aws-cloudwatch-logs-publisher": {
       "buildDate": "Jan 19, 2017",
@@ -3071,7 +3116,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/AWS+CodeBuild+Plugin"
     },
     "aws-codepipeline": {
-      "buildDate": "Jan 26, 2017",
+      "buildDate": "Feb 06, 2017",
       "dependencies": [],
       "developers": [
         {
@@ -3081,21 +3126,21 @@
         }
       ],
       "excerpt": "&#65279;<a href='https://aws.amazon.com/codepipeline/'>AWS CodePipeline</a> is a continuous delivery service for fast and reliable application updates.",
-      "gav": "com.amazonaws:aws-codepipeline:0.26",
+      "gav": "com.amazonaws:aws-codepipeline:0.27",
       "labels": [
         "scm",
         "post-build"
       ],
       "name": "aws-codepipeline",
-      "previousTimestamp": "2016-12-08T14:39:42.00Z",
-      "previousVersion": "0.23",
-      "releaseTimestamp": "2017-01-26T16:06:44.00Z",
+      "previousTimestamp": "2017-01-26T16:06:44.00Z",
+      "previousVersion": "0.26",
+      "releaseTimestamp": "2017-02-06T11:08:54.00Z",
       "requiredCore": "1.479",
       "scm": "github.com",
-      "sha1": "GbdXHjgJKkr1TzFh28oterHSuhA=",
+      "sha1": "bqrcrjZf8L9TDh/WLSNVMfYJqRg=",
       "title": "AWS CodePipeline Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/aws-codepipeline/0.26/aws-codepipeline.hpi",
-      "version": "0.26",
+      "url": "http://updates.jenkins-ci.org/download/plugins/aws-codepipeline/0.27/aws-codepipeline.hpi",
+      "version": "0.27",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/AWS+CodePipeline+Plugin"
     },
     "aws-credentials": {
@@ -4193,77 +4238,77 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Block+queued+job+plugin"
     },
     "blueocean": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
+        {
+          "name": "blueocean-web",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "blueocean-jwt",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "blueocean-commons",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "blueocean-github-pipeline",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "blueocean-i18n",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "blueocean-rest",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "blueocean-config",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "blueocean-pipeline-api-impl",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "blueocean-dashboard",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "blueocean-display-url",
+          "optional": false,
+          "version": "1.5.1"
+        },
+        {
+          "name": "blueocean-rest-impl",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "blueocean-git-pipeline",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
         {
           "name": "blueocean-autofavorite",
           "optional": false,
           "version": "0.6"
         },
         {
-          "name": "blueocean-rest-impl",
-          "optional": false,
-          "version": "1.0.0-b21"
-        },
-        {
-          "name": "blueocean-github-pipeline",
-          "optional": false,
-          "version": "1.0.0-b21"
-        },
-        {
-          "name": "blueocean-jwt",
-          "optional": false,
-          "version": "1.0.0-b21"
-        },
-        {
-          "name": "blueocean-config",
-          "optional": false,
-          "version": "1.0.0-b21"
-        },
-        {
-          "name": "blueocean-rest",
-          "optional": false,
-          "version": "1.0.0-b21"
-        },
-        {
-          "name": "blueocean-commons",
-          "optional": false,
-          "version": "1.0.0-b21"
-        },
-        {
-          "name": "blueocean-pipeline-api-impl",
-          "optional": false,
-          "version": "1.0.0-b21"
-        },
-        {
           "name": "blueocean-personalization",
           "optional": false,
-          "version": "1.0.0-b21"
-        },
-        {
-          "name": "blueocean-web",
-          "optional": false,
-          "version": "1.0.0-b21"
-        },
-        {
-          "name": "blueocean-i18n",
-          "optional": false,
-          "version": "1.0.0-b21"
-        },
-        {
-          "name": "blueocean-git-pipeline",
-          "optional": false,
-          "version": "1.0.0-b21"
-        },
-        {
-          "name": "blueocean-display-url",
-          "optional": false,
-          "version": "1.4"
-        },
-        {
-          "name": "blueocean-dashboard",
-          "optional": false,
-          "version": "1.0.0-b21"
+          "version": "1.0.0-b23"
         }
       ],
       "developers": [
@@ -4329,21 +4374,21 @@
         }
       ],
       "excerpt": "A new user experience for Jenkins",
-      "gav": "io.jenkins.blueocean:blueocean:1.0.0-b21",
+      "gav": "io.jenkins.blueocean:blueocean:1.0.0-b23",
       "labels": [
         "external",
         "ui"
       ],
       "name": "blueocean",
-      "previousTimestamp": "2017-01-26T17:19:20.00Z",
-      "previousVersion": "1.0.0-b20",
-      "releaseTimestamp": "2017-02-01T15:37:32.00Z",
+      "previousTimestamp": "2017-02-02T20:51:56.00Z",
+      "previousVersion": "1.0.0-b22",
+      "releaseTimestamp": "2017-02-13T10:51:06.00Z",
       "requiredCore": "2.7.1",
       "scm": "github.com",
-      "sha1": "XGxXWAKina/Iv/dvQV6tCWYt5Sk=",
+      "sha1": "1U6aluNssPPCyzKZYx0XWP9xi7Q=",
       "title": "Blue Ocean beta",
-      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean/1.0.0-b21/blueocean.hpi",
-      "version": "1.0.0-b21",
+      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean/1.0.0-b23/blueocean.hpi",
+      "version": "1.0.0-b23",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
     },
     "blueocean-autofavorite": {
@@ -4393,7 +4438,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Autofavorite+Plugin"
     },
     "blueocean-commons": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [],
       "developers": [
         {
@@ -4458,40 +4503,40 @@
         }
       ],
       "excerpt": "A new user experience for Jenkins",
-      "gav": "io.jenkins.blueocean:blueocean-commons:1.0.0-b21",
+      "gav": "io.jenkins.blueocean:blueocean-commons:1.0.0-b23",
       "labels": [
         "external",
         "ui"
       ],
       "name": "blueocean-commons",
-      "previousTimestamp": "2017-01-26T17:09:36.00Z",
-      "previousVersion": "1.0.0-b20",
-      "releaseTimestamp": "2017-02-01T15:28:04.00Z",
+      "previousTimestamp": "2017-02-02T20:41:16.00Z",
+      "previousVersion": "1.0.0-b22",
+      "releaseTimestamp": "2017-02-13T10:41:44.00Z",
       "requiredCore": "2.7.1",
       "scm": "github.com",
-      "sha1": "zrmNkHQHzPNQWrY7V+TeyZKMS70=",
+      "sha1": "VgUWswhYAS16NETTzUJsFGeNiNw=",
       "title": "Common API for Blue Ocean",
-      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-commons/1.0.0-b21/blueocean-commons.hpi",
-      "version": "1.0.0-b21",
+      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-commons/1.0.0-b23/blueocean-commons.hpi",
+      "version": "1.0.0-b23",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
     },
     "blueocean-config": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
         {
           "name": "blueocean-commons",
           "optional": false,
-          "version": "1.0.0-b21"
+          "version": "1.0.0-b23"
         },
         {
           "name": "blueocean-rest-impl",
           "optional": false,
-          "version": "1.0.0-b21"
+          "version": "1.0.0-b23"
         },
         {
           "name": "blueocean-web",
           "optional": false,
-          "version": "1.0.0-b21"
+          "version": "1.0.0-b23"
         }
       ],
       "developers": [
@@ -4557,30 +4602,30 @@
         }
       ],
       "excerpt": "A new user experience for Jenkins",
-      "gav": "io.jenkins.blueocean:blueocean-config:1.0.0-b21",
+      "gav": "io.jenkins.blueocean:blueocean-config:1.0.0-b23",
       "labels": [
         "external",
         "ui"
       ],
       "name": "blueocean-config",
-      "previousTimestamp": "2017-01-26T17:18:32.00Z",
-      "previousVersion": "1.0.0-b20",
-      "releaseTimestamp": "2017-02-01T15:36:44.00Z",
+      "previousTimestamp": "2017-02-02T20:51:02.00Z",
+      "previousVersion": "1.0.0-b22",
+      "releaseTimestamp": "2017-02-13T10:50:20.00Z",
       "requiredCore": "2.7.1",
       "scm": "github.com",
-      "sha1": "I08hSHmCJFhiWEkG86qCkWnHBHk=",
+      "sha1": "z1oHv38jG+tA6RdUgn+2VZ/Vt3M=",
       "title": "Config API for Blue Ocean",
-      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-config/1.0.0-b21/blueocean-config.hpi",
-      "version": "1.0.0-b21",
+      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-config/1.0.0-b23/blueocean-config.hpi",
+      "version": "1.0.0-b23",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
     },
     "blueocean-dashboard": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
         {
           "name": "blueocean-events",
           "optional": false,
-          "version": "1.0.0-b21"
+          "version": "1.0.0-b23"
         }
       ],
       "developers": [
@@ -4646,21 +4691,21 @@
         }
       ],
       "excerpt": "A new user experience for Jenkins",
-      "gav": "io.jenkins.blueocean:blueocean-dashboard:1.0.0-b21",
+      "gav": "io.jenkins.blueocean:blueocean-dashboard:1.0.0-b23",
       "labels": [
         "external",
         "ui"
       ],
       "name": "blueocean-dashboard",
-      "previousTimestamp": "2017-01-26T17:15:26.00Z",
-      "previousVersion": "1.0.0-b20",
-      "releaseTimestamp": "2017-02-01T15:33:40.00Z",
+      "previousTimestamp": "2017-02-02T20:47:32.00Z",
+      "previousVersion": "1.0.0-b22",
+      "releaseTimestamp": "2017-02-13T10:47:26.00Z",
       "requiredCore": "2.7.1",
       "scm": "github.com",
-      "sha1": "qbJPq91q5cgk+MDdCrWPUExXHrw=",
+      "sha1": "oaEyfY9U2Z1rSt6diIndmuO1qL4=",
       "title": "Dashboard for Blue Ocean",
-      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-dashboard/1.0.0-b21/blueocean-dashboard.hpi",
-      "version": "1.0.0-b21",
+      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-dashboard/1.0.0-b23/blueocean-dashboard.hpi",
+      "version": "1.0.0-b23",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
     },
     "blueocean-display-url": {
@@ -4705,17 +4750,17 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/BlueOcean+Display+URL+Plugin"
     },
     "blueocean-events": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
         {
           "name": "blueocean-pipeline-api-impl",
           "optional": false,
-          "version": "1.0.0-b21"
+          "version": "1.0.0-b23"
         },
         {
           "name": "pubsub-light",
           "optional": false,
-          "version": "1.6"
+          "version": "1.7"
         },
         {
           "name": "sse-gateway",
@@ -4786,30 +4831,30 @@
         }
       ],
       "excerpt": "A new user experience for Jenkins",
-      "gav": "io.jenkins.blueocean:blueocean-events:1.0.0-b21",
+      "gav": "io.jenkins.blueocean:blueocean-events:1.0.0-b23",
       "labels": [
         "external",
         "ui"
       ],
       "name": "blueocean-events",
-      "previousTimestamp": "2017-01-26T17:14:06.00Z",
-      "previousVersion": "1.0.0-b20",
-      "releaseTimestamp": "2017-02-01T15:32:16.00Z",
+      "previousTimestamp": "2017-02-02T20:45:58.00Z",
+      "previousVersion": "1.0.0-b22",
+      "releaseTimestamp": "2017-02-13T10:46:02.00Z",
       "requiredCore": "2.7.1",
       "scm": "github.com",
-      "sha1": "cK20FnJsY+vM8rBjnL//ZlwO7mk=",
+      "sha1": "GdbWzLgVZC1dADVZsZZ1etQnm0M=",
       "title": "Events API for Blue Ocean",
-      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-events/1.0.0-b21/blueocean-events.hpi",
-      "version": "1.0.0-b21",
+      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-events/1.0.0-b23/blueocean-events.hpi",
+      "version": "1.0.0-b23",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
     },
     "blueocean-git-pipeline": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
         {
           "name": "blueocean-pipeline-api-impl",
           "optional": false,
-          "version": "1.0.0-b21"
+          "version": "1.0.0-b23"
         }
       ],
       "developers": [
@@ -4875,40 +4920,40 @@
         }
       ],
       "excerpt": "A new user experience for Jenkins",
-      "gav": "io.jenkins.blueocean:blueocean-git-pipeline:1.0.0-b21",
+      "gav": "io.jenkins.blueocean:blueocean-git-pipeline:1.0.0-b23",
       "labels": [
         "external",
         "ui"
       ],
       "name": "blueocean-git-pipeline",
-      "previousTimestamp": "2017-01-26T17:19:06.00Z",
-      "previousVersion": "1.0.0-b20",
-      "releaseTimestamp": "2017-02-01T15:37:18.00Z",
+      "previousTimestamp": "2017-02-02T20:51:42.00Z",
+      "previousVersion": "1.0.0-b22",
+      "releaseTimestamp": "2017-02-13T10:50:52.00Z",
       "requiredCore": "2.7.1",
       "scm": "github.com",
-      "sha1": "U5NCHhEEekT9yjnQGeEB4fryz6I=",
+      "sha1": "K/BaErvvus+xtj4RL3IpjYTl5ds=",
       "title": "Git Pipeline for Blue Ocean",
-      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-git-pipeline/1.0.0-b21/blueocean-git-pipeline.hpi",
-      "version": "1.0.0-b21",
+      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-git-pipeline/1.0.0-b23/blueocean-git-pipeline.hpi",
+      "version": "1.0.0-b23",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
     },
     "blueocean-github-pipeline": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
         {
           "name": "blueocean-pipeline-api-impl",
           "optional": false,
-          "version": "1.0.0-b21"
+          "version": "1.0.0-b23"
         },
         {
           "name": "github-branch-source",
           "optional": false,
-          "version": "1.8.1"
+          "version": "2.0.1"
         },
         {
           "name": "github-organization-folder",
           "optional": false,
-          "version": "1.5"
+          "version": "1.6"
         }
       ],
       "developers": [
@@ -4974,30 +5019,30 @@
         }
       ],
       "excerpt": "A new user experience for Jenkins",
-      "gav": "io.jenkins.blueocean:blueocean-github-pipeline:1.0.0-b21",
+      "gav": "io.jenkins.blueocean:blueocean-github-pipeline:1.0.0-b23",
       "labels": [
         "external",
         "ui"
       ],
       "name": "blueocean-github-pipeline",
-      "previousTimestamp": "2017-01-26T17:18:48.00Z",
-      "previousVersion": "1.0.0-b20",
-      "releaseTimestamp": "2017-02-01T15:37:02.00Z",
+      "previousTimestamp": "2017-02-02T20:51:22.00Z",
+      "previousVersion": "1.0.0-b22",
+      "releaseTimestamp": "2017-02-13T10:50:38.00Z",
       "requiredCore": "2.7.1",
       "scm": "github.com",
-      "sha1": "69SGyTJ8rS4EzF7hOPnLYZbbRwM=",
+      "sha1": "Zno3Kk0plSXYWluedlf3EXrGzug=",
       "title": "GitHub Pipeline for Blue Ocean",
-      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-github-pipeline/1.0.0-b21/blueocean-github-pipeline.hpi",
-      "version": "1.0.0-b21",
+      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-github-pipeline/1.0.0-b23/blueocean-github-pipeline.hpi",
+      "version": "1.0.0-b23",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
     },
     "blueocean-i18n": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
         {
           "name": "blueocean-rest",
           "optional": false,
-          "version": "1.0.0-b21"
+          "version": "1.0.0-b23"
         }
       ],
       "developers": [
@@ -5063,35 +5108,35 @@
         }
       ],
       "excerpt": "A new user experience for Jenkins",
-      "gav": "io.jenkins.blueocean:blueocean-i18n:1.0.0-b21",
+      "gav": "io.jenkins.blueocean:blueocean-i18n:1.0.0-b23",
       "labels": [
         "external",
         "ui"
       ],
       "name": "blueocean-i18n",
-      "previousTimestamp": "2017-01-26T17:11:40.00Z",
-      "previousVersion": "1.0.0-b20",
-      "releaseTimestamp": "2017-02-01T15:30:08.00Z",
+      "previousTimestamp": "2017-02-02T20:43:38.00Z",
+      "previousVersion": "1.0.0-b22",
+      "releaseTimestamp": "2017-02-13T10:43:46.00Z",
       "requiredCore": "2.7.1",
       "scm": "github.com",
-      "sha1": "ntu33Bs3HvrX2j3bL+Lf/jPxdDU=",
+      "sha1": "CUzUgp4EtV53dYLqgGj4IroembY=",
       "title": "i18n for Blue Ocean",
-      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-i18n/1.0.0-b21/blueocean-i18n.hpi",
-      "version": "1.0.0-b21",
+      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-i18n/1.0.0-b23/blueocean-i18n.hpi",
+      "version": "1.0.0-b23",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
     },
     "blueocean-jwt": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
         {
           "name": "blueocean-commons",
           "optional": false,
-          "version": "1.0.0-b21"
+          "version": "1.0.0-b23"
         },
         {
           "name": "mailer",
           "optional": false,
-          "version": "1.16"
+          "version": "1.19"
         }
       ],
       "developers": [
@@ -5157,30 +5202,30 @@
         }
       ],
       "excerpt": "A new user experience for Jenkins",
-      "gav": "io.jenkins.blueocean:blueocean-jwt:1.0.0-b21",
+      "gav": "io.jenkins.blueocean:blueocean-jwt:1.0.0-b23",
       "labels": [
         "external",
         "ui"
       ],
       "name": "blueocean-jwt",
-      "previousTimestamp": "2017-01-26T17:11:48.00Z",
-      "previousVersion": "1.0.0-b20",
-      "releaseTimestamp": "2017-02-01T15:30:18.00Z",
+      "previousTimestamp": "2017-02-02T20:43:46.00Z",
+      "previousVersion": "1.0.0-b22",
+      "releaseTimestamp": "2017-02-13T10:43:54.00Z",
       "requiredCore": "2.7.1",
       "scm": "github.com",
-      "sha1": "mzmhwFZUgEUlZKzZSVnChTInZGM=",
+      "sha1": "8bfBJqmnpuNFwaen0gFAMVxoalw=",
       "title": "JWT for Blue Ocean",
-      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-jwt/1.0.0-b21/blueocean-jwt.hpi",
-      "version": "1.0.0-b21",
+      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-jwt/1.0.0-b23/blueocean-jwt.hpi",
+      "version": "1.0.0-b23",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
     },
     "blueocean-personalization": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
         {
           "name": "blueocean-events",
           "optional": false,
-          "version": "1.0.0-b21"
+          "version": "1.0.0-b23"
         }
       ],
       "developers": [
@@ -5246,30 +5291,30 @@
         }
       ],
       "excerpt": "A new user experience for Jenkins",
-      "gav": "io.jenkins.blueocean:blueocean-personalization:1.0.0-b21",
+      "gav": "io.jenkins.blueocean:blueocean-personalization:1.0.0-b23",
       "labels": [
         "external",
         "ui"
       ],
       "name": "blueocean-personalization",
-      "previousTimestamp": "2017-01-26T17:17:22.00Z",
-      "previousVersion": "1.0.0-b20",
-      "releaseTimestamp": "2017-02-01T15:35:34.00Z",
+      "previousTimestamp": "2017-02-02T20:49:46.00Z",
+      "previousVersion": "1.0.0-b22",
+      "releaseTimestamp": "2017-02-13T10:49:14.00Z",
       "requiredCore": "2.7.1",
       "scm": "github.com",
-      "sha1": "xrbMW67AB2HYdr/Oa7qjGAFjOa4=",
+      "sha1": "AqykxjkReaLIC5f/fbUmw1xQWsE=",
       "title": "Personalization for Blue Ocean",
-      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-personalization/1.0.0-b21/blueocean-personalization.hpi",
-      "version": "1.0.0-b21",
+      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-personalization/1.0.0-b23/blueocean-personalization.hpi",
+      "version": "1.0.0-b23",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
     },
     "blueocean-pipeline-api-impl": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
         {
           "name": "blueocean-rest-impl",
           "optional": false,
-          "version": "1.0.0-b21"
+          "version": "1.0.0-b23"
         },
         {
           "name": "workflow-api",
@@ -5279,7 +5324,7 @@
         {
           "name": "workflow-cps",
           "optional": false,
-          "version": "2.19"
+          "version": "2.25"
         },
         {
           "name": "workflow-durable-task-step",
@@ -5289,362 +5334,60 @@
         {
           "name": "workflow-job",
           "optional": false,
-          "version": "2.6"
+          "version": "2.9"
         },
         {
           "name": "workflow-multibranch",
           "optional": false,
-          "version": "2.8"
+          "version": "2.12"
         },
         {
           "name": "workflow-step-api",
           "optional": false,
-          "version": "2.3"
+          "version": "2.8"
         },
         {
           "name": "workflow-support",
           "optional": false,
-          "version": "2.2"
+          "version": "2.12"
+        },
+        {
+          "name": "branch-api",
+          "optional": false,
+          "version": "2.0.2"
         },
         {
           "name": "credentials",
           "optional": false,
-          "version": "2.1.6"
+          "version": "2.1.11"
         },
         {
           "name": "git",
           "optional": false,
-          "version": "2.4.2"
+          "version": "3.0.4"
         },
         {
           "name": "github-branch-source",
           "optional": false,
-          "version": "1.8.1"
+          "version": "2.0.1"
         },
         {
           "name": "pipeline-graph-analysis",
           "optional": false,
-          "version": "1.1"
+          "version": "1.3"
+        },
+        {
+          "name": "pipeline-stage-step",
+          "optional": false,
+          "version": "2.2"
         },
         {
           "name": "scm-api",
           "optional": false,
-          "version": "1.1"
+          "version": "2.0.2"
         },
         {
           "name": "pipeline-model-definition",
-          "optional": false,
-          "version": "0.8.1"
-        }
-      ],
-      "developers": [
-        {
-          "developerId": "scherler",
-          "name": "Thorsten Iberian Sumurai"
-        },
-        {
-          "developerId": "cliffmeyers",
-          "name": "Cliff Meyers"
-        },
-        {
-          "developerId": "tfennelly",
-          "name": "Tom Fennelly"
-        },
-        {
-          "developerId": "vivek",
-          "name": "Vivek Pandey"
-        },
-        {
-          "developerId": "kohsuke",
-          "name": "Kohsuke"
-        },
-        {
-          "developerId": "sophistifunk",
-          "name": "Josh McDonald"
-        },
-        {
-          "developerId": "imeredith",
-          "name": "Ivan Meredith"
-        },
-        {
-          "developerId": "michaelneale",
-          "name": "Michael Neale"
-        },
-        {
-          "developerId": "kzantow",
-          "name": "Keith Zantow"
-        },
-        {
-          "developerId": "i386",
-          "name": "James Dumay"
-        },
-        {
-          "developerId": "marcesher",
-          "name": "Marc"
-        },
-        {
-          "developerId": "dragoonis",
-          "name": "Paul Dragoonis"
-        },
-        {
-          "developerId": "pragmaticivan",
-          "name": "Ivan Santos"
-        },
-        {
-          "developerId": "PeterDaveHello",
-          "name": "Peter Dave Hello"
-        },
-        {
-          "developerId": "alexsomai",
-          "name": "Alexandru Somai"
-        }
-      ],
-      "excerpt": "A new user experience for Jenkins",
-      "gav": "io.jenkins.blueocean:blueocean-pipeline-api-impl:1.0.0-b21",
-      "labels": [
-        "external",
-        "ui"
-      ],
-      "name": "blueocean-pipeline-api-impl",
-      "previousTimestamp": "2017-01-26T17:12:50.00Z",
-      "previousVersion": "1.0.0-b20",
-      "releaseTimestamp": "2017-02-01T15:31:10.00Z",
-      "requiredCore": "2.7.1",
-      "scm": "github.com",
-      "sha1": "S/ezShsnxLXyHHQg3vTlewYidus=",
-      "title": "Pipeline REST API for Blue Ocean",
-      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-pipeline-api-impl/1.0.0-b21/blueocean-pipeline-api-impl.hpi",
-      "version": "1.0.0-b21",
-      "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
-    },
-    "blueocean-rest": {
-      "buildDate": "Feb 01, 2017",
-      "dependencies": [
-        {
-          "name": "blueocean-commons",
-          "optional": false,
-          "version": "1.0.0-b21"
-        },
-        {
-          "name": "blueocean-web",
-          "optional": false,
-          "version": "1.0.0-b21"
-        }
-      ],
-      "developers": [
-        {
-          "developerId": "scherler",
-          "name": "Thorsten Iberian Sumurai"
-        },
-        {
-          "developerId": "cliffmeyers",
-          "name": "Cliff Meyers"
-        },
-        {
-          "developerId": "tfennelly",
-          "name": "Tom Fennelly"
-        },
-        {
-          "developerId": "vivek",
-          "name": "Vivek Pandey"
-        },
-        {
-          "developerId": "kohsuke",
-          "name": "Kohsuke"
-        },
-        {
-          "developerId": "sophistifunk",
-          "name": "Josh McDonald"
-        },
-        {
-          "developerId": "imeredith",
-          "name": "Ivan Meredith"
-        },
-        {
-          "developerId": "michaelneale",
-          "name": "Michael Neale"
-        },
-        {
-          "developerId": "kzantow",
-          "name": "Keith Zantow"
-        },
-        {
-          "developerId": "i386",
-          "name": "James Dumay"
-        },
-        {
-          "developerId": "marcesher",
-          "name": "Marc"
-        },
-        {
-          "developerId": "dragoonis",
-          "name": "Paul Dragoonis"
-        },
-        {
-          "developerId": "pragmaticivan",
-          "name": "Ivan Santos"
-        },
-        {
-          "developerId": "PeterDaveHello",
-          "name": "Peter Dave Hello"
-        },
-        {
-          "developerId": "alexsomai",
-          "name": "Alexandru Somai"
-        }
-      ],
-      "excerpt": "A new user experience for Jenkins",
-      "gav": "io.jenkins.blueocean:blueocean-rest:1.0.0-b21",
-      "labels": [
-        "external",
-        "ui"
-      ],
-      "name": "blueocean-rest",
-      "previousTimestamp": "2017-01-26T17:11:32.00Z",
-      "previousVersion": "1.0.0-b20",
-      "releaseTimestamp": "2017-02-01T15:30:00.00Z",
-      "requiredCore": "2.7.1",
-      "scm": "github.com",
-      "sha1": "uEYKTnEzV5zxGoCPIUXKkC7GYKk=",
-      "title": "REST API for Blue Ocean",
-      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-rest/1.0.0-b21/blueocean-rest.hpi",
-      "version": "1.0.0-b21",
-      "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
-    },
-    "blueocean-rest-impl": {
-      "buildDate": "Feb 01, 2017",
-      "dependencies": [
-        {
-          "name": "blueocean-jwt",
-          "optional": false,
-          "version": "1.0.0-b21"
-        },
-        {
-          "name": "blueocean-rest",
-          "optional": false,
-          "version": "1.0.0-b21"
-        },
-        {
-          "name": "cloudbees-folder",
-          "optional": false,
-          "version": "5.12"
-        },
-        {
-          "name": "mailer",
-          "optional": false,
-          "version": "1.16"
-        },
-        {
-          "name": "scm-api",
-          "optional": false,
-          "version": "1.2"
-        },
-        {
-          "name": "token-macro",
-          "optional": false,
-          "version": "1.12.1"
-        },
-        {
-          "name": "favorite",
-          "optional": false,
-          "version": "2.0.2"
-        }
-      ],
-      "developers": [
-        {
-          "developerId": "scherler",
-          "name": "Thorsten Iberian Sumurai"
-        },
-        {
-          "developerId": "cliffmeyers",
-          "name": "Cliff Meyers"
-        },
-        {
-          "developerId": "tfennelly",
-          "name": "Tom Fennelly"
-        },
-        {
-          "developerId": "vivek",
-          "name": "Vivek Pandey"
-        },
-        {
-          "developerId": "kohsuke",
-          "name": "Kohsuke"
-        },
-        {
-          "developerId": "sophistifunk",
-          "name": "Josh McDonald"
-        },
-        {
-          "developerId": "imeredith",
-          "name": "Ivan Meredith"
-        },
-        {
-          "developerId": "michaelneale",
-          "name": "Michael Neale"
-        },
-        {
-          "developerId": "kzantow",
-          "name": "Keith Zantow"
-        },
-        {
-          "developerId": "i386",
-          "name": "James Dumay"
-        },
-        {
-          "developerId": "marcesher",
-          "name": "Marc"
-        },
-        {
-          "developerId": "dragoonis",
-          "name": "Paul Dragoonis"
-        },
-        {
-          "developerId": "pragmaticivan",
-          "name": "Ivan Santos"
-        },
-        {
-          "developerId": "PeterDaveHello",
-          "name": "Peter Dave Hello"
-        },
-        {
-          "developerId": "alexsomai",
-          "name": "Alexandru Somai"
-        }
-      ],
-      "excerpt": "A new user experience for Jenkins",
-      "gav": "io.jenkins.blueocean:blueocean-rest-impl:1.0.0-b21",
-      "labels": [
-        "external",
-        "ui"
-      ],
-      "name": "blueocean-rest-impl",
-      "previousTimestamp": "2017-01-26T17:12:00.00Z",
-      "previousVersion": "1.0.0-b20",
-      "releaseTimestamp": "2017-02-01T15:30:28.00Z",
-      "requiredCore": "2.7.1",
-      "scm": "github.com",
-      "sha1": "AwaFKEF4kO0NJfMa/vlirf2MBFE=",
-      "title": "REST Implementation for Blue Ocean",
-      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-rest-impl/1.0.0-b21/blueocean-rest-impl.hpi",
-      "version": "1.0.0-b21",
-      "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
-    },
-    "blueocean-web": {
-      "buildDate": "Feb 01, 2017",
-      "dependencies": [
-        {
-          "name": "blueocean-commons",
-          "optional": false,
-          "version": "1.0.0-b21"
-        },
-        {
-          "name": "metrics",
-          "optional": false,
-          "version": "3.0.9"
-        },
-        {
-          "name": "variant",
           "optional": false,
           "version": "1.0"
         }
@@ -5712,21 +5455,393 @@
         }
       ],
       "excerpt": "A new user experience for Jenkins",
-      "gav": "io.jenkins.blueocean:blueocean-web:1.0.0-b21",
+      "gav": "io.jenkins.blueocean:blueocean-pipeline-api-impl:1.0.0-b23",
+      "labels": [
+        "external",
+        "ui"
+      ],
+      "name": "blueocean-pipeline-api-impl",
+      "previousTimestamp": "2017-02-02T20:44:42.00Z",
+      "previousVersion": "1.0.0-b22",
+      "releaseTimestamp": "2017-02-13T10:44:50.00Z",
+      "requiredCore": "2.7.1",
+      "scm": "github.com",
+      "sha1": "lTfYsKrQ5olA3TnT5UVL8VL64mo=",
+      "title": "Pipeline REST API for Blue Ocean",
+      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-pipeline-api-impl/1.0.0-b23/blueocean-pipeline-api-impl.hpi",
+      "version": "1.0.0-b23",
+      "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
+    },
+    "blueocean-pipeline-editor": {
+      "buildDate": "Feb 14, 2017",
+      "dependencies": [
+        {
+          "name": "blueocean-commons",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "blueocean-pipeline-api-impl",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "blueocean-rest",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "blueocean-web",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "pipeline-model-definition",
+          "optional": false,
+          "version": "1.0"
+        }
+      ],
+      "developers": [
+        {
+          "developerId": "sophistifunk",
+          "name": "Josh McDonald"
+        },
+        {
+          "developerId": "kzantow",
+          "name": "Keith Zantow"
+        },
+        {
+          "developerId": "abayer",
+          "name": "Andrew Bayer"
+        }
+      ],
+      "excerpt": "The Blue Ocean Pipeline Editor is the simplest way for anyone wanting to get started with creating Pipelines in Jenkins ",
+      "gav": "io.jenkins.blueocean:blueocean-pipeline-editor:0.1-preview-4",
+      "labels": [
+        "pipeline"
+      ],
+      "name": "blueocean-pipeline-editor",
+      "previousTimestamp": "2017-02-10T11:25:42.00Z",
+      "previousVersion": "0.1-preview-3",
+      "releaseTimestamp": "2017-02-14T23:15:38.00Z",
+      "requiredCore": "2.7.1",
+      "scm": "github.com",
+      "sha1": "KaLwYsJqPiGom54SPwOIoBv/t+A=",
+      "title": "Blue Ocean Pipeline Editor",
+      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-pipeline-editor/0.1-preview-4/blueocean-pipeline-editor.hpi",
+      "version": "0.1-preview-4",
+      "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/BlueOcean+Pipeline+Editor+Plugin"
+    },
+    "blueocean-rest": {
+      "buildDate": "Feb 13, 2017",
+      "dependencies": [
+        {
+          "name": "blueocean-commons",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "blueocean-web",
+          "optional": false,
+          "version": "1.0.0-b23"
+        }
+      ],
+      "developers": [
+        {
+          "developerId": "scherler",
+          "name": "Thorsten Iberian Sumurai"
+        },
+        {
+          "developerId": "cliffmeyers",
+          "name": "Cliff Meyers"
+        },
+        {
+          "developerId": "tfennelly",
+          "name": "Tom Fennelly"
+        },
+        {
+          "developerId": "vivek",
+          "name": "Vivek Pandey"
+        },
+        {
+          "developerId": "kohsuke",
+          "name": "Kohsuke"
+        },
+        {
+          "developerId": "sophistifunk",
+          "name": "Josh McDonald"
+        },
+        {
+          "developerId": "imeredith",
+          "name": "Ivan Meredith"
+        },
+        {
+          "developerId": "michaelneale",
+          "name": "Michael Neale"
+        },
+        {
+          "developerId": "kzantow",
+          "name": "Keith Zantow"
+        },
+        {
+          "developerId": "i386",
+          "name": "James Dumay"
+        },
+        {
+          "developerId": "marcesher",
+          "name": "Marc"
+        },
+        {
+          "developerId": "dragoonis",
+          "name": "Paul Dragoonis"
+        },
+        {
+          "developerId": "pragmaticivan",
+          "name": "Ivan Santos"
+        },
+        {
+          "developerId": "PeterDaveHello",
+          "name": "Peter Dave Hello"
+        },
+        {
+          "developerId": "alexsomai",
+          "name": "Alexandru Somai"
+        }
+      ],
+      "excerpt": "A new user experience for Jenkins",
+      "gav": "io.jenkins.blueocean:blueocean-rest:1.0.0-b23",
+      "labels": [
+        "external",
+        "ui"
+      ],
+      "name": "blueocean-rest",
+      "previousTimestamp": "2017-02-02T20:43:26.00Z",
+      "previousVersion": "1.0.0-b22",
+      "releaseTimestamp": "2017-02-13T10:43:36.00Z",
+      "requiredCore": "2.7.1",
+      "scm": "github.com",
+      "sha1": "5CBA/lI5a0nWIienX6+XHqQc8LQ=",
+      "title": "REST API for Blue Ocean",
+      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-rest/1.0.0-b23/blueocean-rest.hpi",
+      "version": "1.0.0-b23",
+      "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
+    },
+    "blueocean-rest-impl": {
+      "buildDate": "Feb 13, 2017",
+      "dependencies": [
+        {
+          "name": "blueocean-jwt",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "blueocean-rest",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "cloudbees-folder",
+          "optional": false,
+          "version": "5.17"
+        },
+        {
+          "name": "junit",
+          "optional": false,
+          "version": "1.19"
+        },
+        {
+          "name": "mailer",
+          "optional": false,
+          "version": "1.19"
+        },
+        {
+          "name": "scm-api",
+          "optional": false,
+          "version": "2.0.2"
+        },
+        {
+          "name": "favorite",
+          "optional": false,
+          "version": "2.0.4"
+        }
+      ],
+      "developers": [
+        {
+          "developerId": "scherler",
+          "name": "Thorsten Iberian Sumurai"
+        },
+        {
+          "developerId": "cliffmeyers",
+          "name": "Cliff Meyers"
+        },
+        {
+          "developerId": "tfennelly",
+          "name": "Tom Fennelly"
+        },
+        {
+          "developerId": "vivek",
+          "name": "Vivek Pandey"
+        },
+        {
+          "developerId": "kohsuke",
+          "name": "Kohsuke"
+        },
+        {
+          "developerId": "sophistifunk",
+          "name": "Josh McDonald"
+        },
+        {
+          "developerId": "imeredith",
+          "name": "Ivan Meredith"
+        },
+        {
+          "developerId": "michaelneale",
+          "name": "Michael Neale"
+        },
+        {
+          "developerId": "kzantow",
+          "name": "Keith Zantow"
+        },
+        {
+          "developerId": "i386",
+          "name": "James Dumay"
+        },
+        {
+          "developerId": "marcesher",
+          "name": "Marc"
+        },
+        {
+          "developerId": "dragoonis",
+          "name": "Paul Dragoonis"
+        },
+        {
+          "developerId": "pragmaticivan",
+          "name": "Ivan Santos"
+        },
+        {
+          "developerId": "PeterDaveHello",
+          "name": "Peter Dave Hello"
+        },
+        {
+          "developerId": "alexsomai",
+          "name": "Alexandru Somai"
+        }
+      ],
+      "excerpt": "A new user experience for Jenkins",
+      "gav": "io.jenkins.blueocean:blueocean-rest-impl:1.0.0-b23",
+      "labels": [
+        "external",
+        "ui"
+      ],
+      "name": "blueocean-rest-impl",
+      "previousTimestamp": "2017-02-02T20:43:58.00Z",
+      "previousVersion": "1.0.0-b22",
+      "releaseTimestamp": "2017-02-13T10:44:06.00Z",
+      "requiredCore": "2.7.1",
+      "scm": "github.com",
+      "sha1": "IdHyKKTIRsacXes6qnjonRbMXg0=",
+      "title": "REST Implementation for Blue Ocean",
+      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-rest-impl/1.0.0-b23/blueocean-rest-impl.hpi",
+      "version": "1.0.0-b23",
+      "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
+    },
+    "blueocean-web": {
+      "buildDate": "Feb 13, 2017",
+      "dependencies": [
+        {
+          "name": "blueocean-commons",
+          "optional": false,
+          "version": "1.0.0-b23"
+        },
+        {
+          "name": "metrics",
+          "optional": false,
+          "version": "3.1.2.9"
+        },
+        {
+          "name": "variant",
+          "optional": false,
+          "version": "1.1"
+        }
+      ],
+      "developers": [
+        {
+          "developerId": "scherler",
+          "name": "Thorsten Iberian Sumurai"
+        },
+        {
+          "developerId": "cliffmeyers",
+          "name": "Cliff Meyers"
+        },
+        {
+          "developerId": "tfennelly",
+          "name": "Tom Fennelly"
+        },
+        {
+          "developerId": "vivek",
+          "name": "Vivek Pandey"
+        },
+        {
+          "developerId": "kohsuke",
+          "name": "Kohsuke"
+        },
+        {
+          "developerId": "sophistifunk",
+          "name": "Josh McDonald"
+        },
+        {
+          "developerId": "imeredith",
+          "name": "Ivan Meredith"
+        },
+        {
+          "developerId": "michaelneale",
+          "name": "Michael Neale"
+        },
+        {
+          "developerId": "kzantow",
+          "name": "Keith Zantow"
+        },
+        {
+          "developerId": "i386",
+          "name": "James Dumay"
+        },
+        {
+          "developerId": "marcesher",
+          "name": "Marc"
+        },
+        {
+          "developerId": "dragoonis",
+          "name": "Paul Dragoonis"
+        },
+        {
+          "developerId": "pragmaticivan",
+          "name": "Ivan Santos"
+        },
+        {
+          "developerId": "PeterDaveHello",
+          "name": "Peter Dave Hello"
+        },
+        {
+          "developerId": "alexsomai",
+          "name": "Alexandru Somai"
+        }
+      ],
+      "excerpt": "A new user experience for Jenkins",
+      "gav": "io.jenkins.blueocean:blueocean-web:1.0.0-b23",
       "labels": [
         "external",
         "ui"
       ],
       "name": "blueocean-web",
-      "previousTimestamp": "2017-01-26T17:10:50.00Z",
-      "previousVersion": "1.0.0-b20",
-      "releaseTimestamp": "2017-02-01T15:29:18.00Z",
+      "previousTimestamp": "2017-02-02T20:42:42.00Z",
+      "previousVersion": "1.0.0-b22",
+      "releaseTimestamp": "2017-02-13T10:42:58.00Z",
       "requiredCore": "2.7.1",
       "scm": "github.com",
-      "sha1": "WVQhK9Fol0lg3zEngYZTPnRK2vs=",
+      "sha1": "qCZylEDaTLHld1f6udjcYUJgRf8=",
       "title": "Web for Blue Ocean",
-      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-web/1.0.0-b21/blueocean-web.hpi",
-      "version": "1.0.0-b21",
+      "url": "http://updates.jenkins-ci.org/download/plugins/blueocean-web/1.0.0-b23/blueocean-web.hpi",
+      "version": "1.0.0-b23",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin"
     },
     "bmc-rpd": {
@@ -5903,18 +6018,18 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Brakeman+Plugin"
     },
     "branch-api": {
-      "buildDate": "Nov 04, 2016",
-      "compatibleSinceVersion": "1.11",
+      "buildDate": "Feb 14, 2017",
+      "compatibleSinceVersion": "2.0.0",
       "dependencies": [
         {
           "name": "cloudbees-folder",
           "optional": false,
-          "version": "5.10"
+          "version": "5.17"
         },
         {
           "name": "scm-api",
           "optional": false,
-          "version": "1.2"
+          "version": "2.0.4"
         },
         {
           "name": "structs",
@@ -5929,18 +6044,18 @@
         }
       ],
       "excerpt": "This plugin provides an API for multiple branch based projects. ",
-      "gav": "org.jenkins-ci.plugins:branch-api:1.11.1",
+      "gav": "org.jenkins-ci.plugins:branch-api:2.0.6",
       "labels": [],
       "name": "branch-api",
-      "previousTimestamp": "2016-09-23T09:55:24.00Z",
-      "previousVersion": "1.11",
-      "releaseTimestamp": "2016-11-04T16:06:54.00Z",
+      "previousTimestamp": "2017-02-14T10:04:26.00Z",
+      "previousVersion": "2.0.5",
+      "releaseTimestamp": "2017-02-14T21:46:36.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "QSUVyWtRo9H+FQA9a59TdI46wCc=",
+      "sha1": "7JJc/es/6b9RCX76sh+dktpGfqk=",
       "title": "Branch API Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/branch-api/1.11.1/branch-api.hpi",
-      "version": "1.11.1",
+      "url": "http://updates.jenkins-ci.org/download/plugins/branch-api/2.0.6/branch-api.hpi",
+      "version": "2.0.6",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Branch+API+Plugin"
     },
     "browser-axis-plugin": {
@@ -7790,7 +7905,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/ChatWork+Plugin"
     },
     "checkmarx": {
-      "buildDate": "Sep 22, 2016",
+      "buildDate": "Feb 07, 2017",
       "dependencies": [
         {
           "name": "maven-plugin",
@@ -7809,21 +7924,21 @@
         }
       ],
       "excerpt": "This plugin adds an ability to perform automatic code scan by Checkmarx server and shows results summary and trend in Jenkins interface.",
-      "gav": "com.checkmarx.jenkins:checkmarx:8.2.0",
+      "gav": "com.checkmarx.jenkins:checkmarx:8.41.0",
       "labels": [
         "external",
         "report"
       ],
       "name": "checkmarx",
-      "previousTimestamp": "2016-07-11T15:47:42.00Z",
-      "previousVersion": "8.1.0-2",
-      "releaseTimestamp": "2016-09-22T15:24:58.00Z",
+      "previousTimestamp": "2016-09-22T15:24:58.00Z",
+      "previousVersion": "8.2.0",
+      "releaseTimestamp": "2017-02-07T18:07:42.00Z",
       "requiredCore": "1.579",
       "scm": "github.com",
-      "sha1": "ckkFRYEml0tYqc4GihOIeK8OITw=",
+      "sha1": "PrGxrGduBFGCgGZcjK0XzUg99vA=",
       "title": "Jenkins Checkmarx Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/checkmarx/8.2.0/checkmarx.hpi",
-      "version": "8.2.0",
+      "url": "http://updates.jenkins-ci.org/download/plugins/checkmarx/8.41.0/checkmarx.hpi",
+      "version": "8.41.0",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Checkmarx+CxSAST+Plugin"
     },
     "checkstyle": {
@@ -8571,14 +8686,8 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/CLI+Commander+Plugin"
     },
     "clif-performance-testing": {
-      "buildDate": "Feb 02, 2017",
-      "dependencies": [
-        {
-          "name": "ant",
-          "optional": false,
-          "version": "1.1"
-        }
-      ],
+      "buildDate": "Feb 03, 2017",
+      "dependencies": [],
       "developers": [
         {
           "email": "vincent1.rossignol (at) orange.com",
@@ -8598,20 +8707,22 @@
         }
       ],
       "excerpt": "Enables running performance tests defined with <a href='http://clif.ow2.org/'>CLIF</a> from Jenkins, and getting a variety of automatically generated performance reports and charts.  Useful for: automated performance testing, performance testing in continuous integration, providing a simple web user interface for CLIF, monitoring QoS or applications QoE and possibly send alerts in case of bad responsiveness. ",
-      "gav": "org.jenkins-ci.plugins:clif-performance-testing:1.0.0",
+      "gav": "org.jenkins-ci.plugins:clif-performance-testing:1.0.1",
       "labels": [
         "builder",
         "report",
         "misc"
       ],
       "name": "clif-performance-testing",
-      "releaseTimestamp": "2017-02-02T14:56:46.00Z",
+      "previousTimestamp": "2017-02-02T14:56:46.00Z",
+      "previousVersion": "1.0.0",
+      "releaseTimestamp": "2017-02-03T16:13:34.00Z",
       "requiredCore": "2.13",
       "scm": "github.com",
-      "sha1": "lqx0YNVUBr/V8hHl+x3WrkMuhMg=",
+      "sha1": "6G3QtI9z6iGrUD6QmQBAfs2BzBU=",
       "title": "CLIF Performance Testing",
-      "url": "http://updates.jenkins-ci.org/download/plugins/clif-performance-testing/1.0.0/clif-performance-testing.hpi",
-      "version": "1.0.0",
+      "url": "http://updates.jenkins-ci.org/download/plugins/clif-performance-testing/1.0.1/clif-performance-testing.hpi",
+      "version": "1.0.1",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/CLIF+Performance+Testing+Plugin"
     },
     "clone-workspace-scm": {
@@ -8705,8 +8816,8 @@
         "scm"
       ],
       "name": "cloudbees-bitbucket-branch-source",
-      "previousTimestamp": "2016-12-28T13:20:38.00Z",
-      "previousVersion": "1.9",
+      "previousTimestamp": "2017-01-23T17:44:16.00Z",
+      "previousVersion": "2.0.1",
       "releaseTimestamp": "2017-02-02T10:45:50.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
@@ -8785,13 +8896,13 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Simple+Disk+Usage+Plugin"
     },
     "cloudbees-folder": {
-      "buildDate": "Jan 10, 2017",
+      "buildDate": "Feb 02, 2017",
       "compatibleSinceVersion": "5.2",
       "dependencies": [
         {
           "name": "credentials",
           "optional": true,
-          "version": "2.1.0"
+          "version": "2.1.11"
         }
       ],
       "developers": [
@@ -8800,21 +8911,21 @@
         }
       ],
       "excerpt": "This plugin allows users to create &quot;folders&quot; to organize jobs. Users can define custom taxonomies (like by project type, organization type etc). Folders are nestable and you can define views within folders.",
-      "gav": "org.jenkins-ci.plugins:cloudbees-folder:5.16",
+      "gav": "org.jenkins-ci.plugins:cloudbees-folder:5.17",
       "labels": [
         "ui",
         "misc"
       ],
       "name": "cloudbees-folder",
-      "previousTimestamp": "2016-12-14T11:01:20.00Z",
-      "previousVersion": "5.15",
-      "releaseTimestamp": "2017-01-10T10:35:58.00Z",
+      "previousTimestamp": "2017-01-10T10:35:58.00Z",
+      "previousVersion": "5.16",
+      "releaseTimestamp": "2017-02-02T09:39:08.00Z",
       "requiredCore": "1.609.1",
       "scm": "github.com",
-      "sha1": "nBW6NEapIXv3ct36w0tsv/X59b4=",
+      "sha1": "J6JnHr45qjFIUZH8rWlBs4KhM4M=",
       "title": "Folders Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/cloudbees-folder/5.16/cloudbees-folder.hpi",
-      "version": "5.16",
+      "url": "http://updates.jenkins-ci.org/download/plugins/cloudbees-folder/5.17/cloudbees-folder.hpi",
+      "version": "5.17",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Folders+Plugin"
     },
     "cloudbees-plugin-gateway": {
@@ -8880,6 +8991,44 @@
       "url": "http://updates.jenkins-ci.org/download/plugins/cloudfoundry/1.5/cloudfoundry.hpi",
       "version": "1.5",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Cloud+Foundry+Plugin"
+    },
+    "cloudshare-docker": {
+      "buildDate": "Feb 13, 2017",
+      "dependencies": [
+        {
+          "name": "workflow-step-api",
+          "optional": false,
+          "version": "2.4"
+        },
+        {
+          "name": "workflow-cps",
+          "optional": false,
+          "version": "2.21"
+        }
+      ],
+      "developers": [
+        {
+          "developerId": "CloudShare",
+          "email": "assaf@cloudshare.com",
+          "name": "Assaf Lavie"
+        }
+      ],
+      "excerpt": "Execute Docker commands on dedicated docker-machines on CloudShare, instead of running on the Jenkins host itself.",
+      "gav": "org.jenkins-ci.plugins:cloudshare-docker:1.0",
+      "labels": [
+        "buildwrapper",
+        "cloud",
+        "pipeline"
+      ],
+      "name": "cloudshare-docker",
+      "releaseTimestamp": "2017-02-13T15:26:20.00Z",
+      "requiredCore": "1.638",
+      "scm": "github.com",
+      "sha1": "oxk2Ua/7XP1wbGb1BLEg/rudHB4=",
+      "title": "CloudShare Docker-Machine Plugin",
+      "url": "http://updates.jenkins-ci.org/download/plugins/cloudshare-docker/1.0/cloudshare-docker.hpi",
+      "version": "1.0",
+      "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/CloudShare+Docker-Machine+Plugin"
     },
     "cloudtest": {
       "buildDate": "Jun 13, 2016",
@@ -9394,8 +9543,14 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/AWS+Codedeploy+plugin"
     },
     "codedx": {
-      "buildDate": "Oct 12, 2016",
-      "dependencies": [],
+      "buildDate": "Feb 14, 2017",
+      "dependencies": [
+        {
+          "name": "token-macro",
+          "optional": false,
+          "version": "1.12.1"
+        }
+      ],
       "developers": [
         {
           "developerId": "samuelbjohnson",
@@ -9406,23 +9561,28 @@
           "developerId": "baf",
           "email": "robert.ferris@codedx.com",
           "name": "Robert Ferris"
+        },
+        {
+          "developerId": "dylemma",
+          "email": "dylan.halperin@codedx.com",
+          "name": "Dylan Halperin"
         }
       ],
       "excerpt": "Allows Jenkins to push source and build artifacts to <a href='http://codedx.com'>Code Dx</a> and display the aggregated results of its <a href='http://codedx.com/supported-tools/'>full suite</a> of analysis tools.",
-      "gav": "org.jenkins-ci.plugins:codedx:2.3",
+      "gav": "org.jenkins-ci.plugins:codedx:2.4",
       "labels": [
         "report"
       ],
       "name": "codedx",
-      "previousTimestamp": "2016-08-08T15:07:40.00Z",
-      "previousVersion": "2.1.1",
-      "releaseTimestamp": "2016-10-12T08:10:22.00Z",
+      "previousTimestamp": "2016-10-12T08:10:22.00Z",
+      "previousVersion": "2.3",
+      "releaseTimestamp": "2017-02-14T13:47:50.00Z",
       "requiredCore": "1.509.3",
       "scm": "github.com",
-      "sha1": "kUAWX5Ea/ilTqp3dDCRgamctzI0=",
+      "sha1": "sQyPZ+TOloSZstdXpkVB5Ppl6do=",
       "title": "Code Dx Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/codedx/2.3/codedx.hpi",
-      "version": "2.3",
+      "url": "http://updates.jenkins-ci.org/download/plugins/codedx/2.4/codedx.hpi",
+      "version": "2.4",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Code+Dx+Plugin"
     },
     "codefresh": {
@@ -10022,7 +10182,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Config+AutoRefresh+Plugin"
     },
     "config-file-provider": {
-      "buildDate": "Jan 19, 2017",
+      "buildDate": "Feb 13, 2017",
       "compatibleSinceVersion": "2.15",
       "dependencies": [
         {
@@ -10062,22 +10222,22 @@
         }
       ],
       "excerpt": "Adds the ability to provide configuration files (i.e., settings.xml for maven, XML, groovy, custom files, etc.) loaded through the Jenkins UI which will be copied to the job's workspace.",
-      "gav": "org.jenkins-ci.plugins:config-file-provider:2.15.5",
+      "gav": "org.jenkins-ci.plugins:config-file-provider:2.15.6",
       "labels": [
         "maven",
         "external",
         "groovy-related"
       ],
       "name": "config-file-provider",
-      "previousTimestamp": "2017-01-13T15:50:20.00Z",
-      "previousVersion": "2.15.4",
-      "releaseTimestamp": "2017-01-19T13:16:12.00Z",
+      "previousTimestamp": "2017-01-19T13:16:12.00Z",
+      "previousVersion": "2.15.5",
+      "releaseTimestamp": "2017-02-13T10:03:16.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "EshgGE2wpkayde4uWwOO5PDvSM4=",
+      "sha1": "rhWkoYGTZldoxy9jVh8syd3qtSM=",
       "title": "Config File Provider Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/config-file-provider/2.15.5/config-file-provider.hpi",
-      "version": "2.15.5",
+      "url": "http://updates.jenkins-ci.org/download/plugins/config-file-provider/2.15.6/config-file-provider.hpi",
+      "version": "2.15.6",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Config+File+Provider+Plugin"
     },
     "config-rotator": {
@@ -10392,7 +10552,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Consul-KV-Builder+Plugin"
     },
     "contrast-continuous-application-security": {
-      "buildDate": "Nov 29, 2016",
+      "buildDate": "Feb 03, 2017",
       "dependencies": [
         {
           "name": "matrix-project",
@@ -10408,18 +10568,18 @@
         }
       ],
       "excerpt": "This plugin downloads the latest Contrast java agent from a Saas or on-premise Teamserver environment, and  allows failing the build on vulnerability detection.&amp;nbsp;Plugin graphs history of vulnerability detection.&amp;nbsp; ",
-      "gav": "org.jenkins-ci.plugins:contrast-continuous-application-security:1.4",
+      "gav": "org.jenkins-ci.plugins:contrast-continuous-application-security:1.6",
       "labels": [],
       "name": "contrast-continuous-application-security",
-      "previousTimestamp": "2016-08-03T13:51:18.00Z",
-      "previousVersion": "1.3",
-      "releaseTimestamp": "2016-11-29T14:26:32.00Z",
+      "previousTimestamp": "2016-11-29T14:26:32.00Z",
+      "previousVersion": "1.4",
+      "releaseTimestamp": "2017-02-03T11:19:08.00Z",
       "requiredCore": "1.625.3",
       "scm": "github.com",
-      "sha1": "9Wi+bW8fuFHoTcCm61g3BwnFLyI=",
+      "sha1": "0cBggIJ+yBaKUfsWua+8prHrdR8=",
       "title": "Contrast Continuous Application Security",
-      "url": "http://updates.jenkins-ci.org/download/plugins/contrast-continuous-application-security/1.4/contrast-continuous-application-security.hpi",
-      "version": "1.4",
+      "url": "http://updates.jenkins-ci.org/download/plugins/contrast-continuous-application-security/1.6/contrast-continuous-application-security.hpi",
+      "version": "1.6",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Contrast+Continuous+Application+Security+Plugin"
     },
     "convertigo-mobile-platform": {
@@ -11347,7 +11507,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/CRX+Content+Package+Deployer+Plugin"
     },
     "cucumber-living-documentation": {
-      "buildDate": "Oct 24, 2016",
+      "buildDate": "Feb 07, 2017",
       "dependencies": [],
       "developers": [
         {
@@ -11357,18 +11517,18 @@
         }
       ],
       "excerpt": "Brings Cucumber living documentation to your continuous integration environment via <a href='https://github.com/rmpestano/cukedoctor'>Cukedoctor</a>. ",
-      "gav": "org.jenkins-ci.plugins:cucumber-living-documentation:1.0.6",
+      "gav": "org.jenkins-ci.plugins:cucumber-living-documentation:1.0.7",
       "labels": [],
       "name": "cucumber-living-documentation",
-      "previousTimestamp": "2016-09-04T21:15:22.00Z",
-      "previousVersion": "1.0.5",
-      "releaseTimestamp": "2016-10-24T14:23:30.00Z",
+      "previousTimestamp": "2016-10-24T14:23:30.00Z",
+      "previousVersion": "1.0.6",
+      "releaseTimestamp": "2017-02-07T15:56:46.00Z",
       "requiredCore": "1.580.1",
       "scm": "github.com",
-      "sha1": "TpWUZwHdJELoffl0QUOsimgpFrU=",
+      "sha1": "D8tmV4bsiutGEhlOailcMIltKMo=",
       "title": "Cucumber Living Documentation Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/cucumber-living-documentation/1.0.6/cucumber-living-documentation.hpi",
-      "version": "1.0.6",
+      "url": "http://updates.jenkins-ci.org/download/plugins/cucumber-living-documentation/1.0.7/cucumber-living-documentation.hpi",
+      "version": "1.0.7",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Cucumber+Living+Documentation+Plugin"
     },
     "cucumber-perf": {
@@ -11399,7 +11559,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Cucumber+Performance+Reports+Plugin"
     },
     "cucumber-reports": {
-      "buildDate": "Jan 06, 2017",
+      "buildDate": "Feb 12, 2017",
       "dependencies": [],
       "developers": [
         {
@@ -11414,20 +11574,20 @@
         }
       ],
       "excerpt": "This project provides pretty html reports for Cucumber. It works by generating html from the cucumber json report formatter. Can be used anywhere a json report is generated (Java, Ruby, JavaScript and other implementations).",
-      "gav": "net.masterthought.jenkins:cucumber-reports:3.4.0",
+      "gav": "net.masterthought.jenkins:cucumber-reports:3.5.0",
       "labels": [
         "report"
       ],
       "name": "cucumber-reports",
-      "previousTimestamp": "2016-12-03T20:25:40.00Z",
-      "previousVersion": "3.3.0",
-      "releaseTimestamp": "2017-01-06T16:30:30.00Z",
+      "previousTimestamp": "2017-01-06T16:30:30.00Z",
+      "previousVersion": "3.4.0",
+      "releaseTimestamp": "2017-02-12T22:15:26.00Z",
       "requiredCore": "1.625.3",
       "scm": "github.com",
-      "sha1": "42wpS4c8AUwPZk7jB7QlbZsXJuc=",
+      "sha1": "0QysIEfo4t9tLnTVTWpbxOdQbbU=",
       "title": "Cucumber reports",
-      "url": "http://updates.jenkins-ci.org/download/plugins/cucumber-reports/3.4.0/cucumber-reports.hpi",
-      "version": "3.4.0",
+      "url": "http://updates.jenkins-ci.org/download/plugins/cucumber-reports/3.5.0/cucumber-reports.hpi",
+      "version": "3.5.0",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Cucumber+Reports+Plugin"
     },
     "cucumber-slack-notifier": {
@@ -12738,7 +12898,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Deployer+Framework+Plugin"
     },
     "deployit-plugin": {
-      "buildDate": "Jan 13, 2017",
+      "buildDate": "Feb 08, 2017",
       "dependencies": [
         {
           "name": "credentials",
@@ -12759,22 +12919,22 @@
         }
       ],
       "excerpt": "The XL Deploy Plugin integrates Jenkins with <a href='https://xebialabs.com/products/xl-deploy'>XebiaLabs XL Deploy</a>  ",
-      "gav": "com.xebialabs.deployit.ci:deployit-plugin:6.1.0",
+      "gav": "com.xebialabs.deployit.ci:deployit-plugin:6.1.1",
       "labels": [
         "upload",
         "external",
         "post-build"
       ],
       "name": "deployit-plugin",
-      "previousTimestamp": "2016-12-20T18:14:08.00Z",
-      "previousVersion": "6.0.0",
-      "releaseTimestamp": "2017-01-13T10:17:18.00Z",
+      "previousTimestamp": "2017-01-13T10:17:18.00Z",
+      "previousVersion": "6.1.0",
+      "releaseTimestamp": "2017-02-08T12:58:52.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "708K2KdsS++hPpq62cEGMNLWkEE=",
+      "sha1": "1ZexN9Y1OfECU3aICpMiVMveChA=",
       "title": "XebiaLabs XL Deploy Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/deployit-plugin/6.1.0/deployit-plugin.hpi",
-      "version": "6.1.0",
+      "url": "http://updates.jenkins-ci.org/download/plugins/deployit-plugin/6.1.1/deployit-plugin.hpi",
+      "version": "6.1.1",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/XL+Deploy+Plugin"
     },
     "deployment-notification": {
@@ -13377,17 +13537,17 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Build+and+Publish+plugin"
     },
     "docker-build-step": {
-      "buildDate": "Jan 18, 2017",
+      "buildDate": "Feb 08, 2017",
       "dependencies": [
-        {
-          "name": "docker-commons",
-          "optional": false,
-          "version": "1.4.0"
-        },
         {
           "name": "credentials",
           "optional": false,
           "version": "1.22"
+        },
+        {
+          "name": "docker-commons",
+          "optional": false,
+          "version": "1.4.0"
         }
       ],
       "developers": [
@@ -13397,20 +13557,20 @@
         }
       ],
       "excerpt": "This plugin allows to add various <a href='https://www.docker.com/'>Docker</a> commands into your job as a build step ",
-      "gav": "org.jenkins-ci.plugins:docker-build-step:1.38",
+      "gav": "org.jenkins-ci.plugins:docker-build-step:1.39",
       "labels": [
         "builder"
       ],
       "name": "docker-build-step",
-      "previousTimestamp": "2017-01-05T10:41:50.00Z",
-      "previousVersion": "1.37",
-      "releaseTimestamp": "2017-01-18T21:24:00.00Z",
+      "previousTimestamp": "2017-01-18T21:24:00.00Z",
+      "previousVersion": "1.38",
+      "releaseTimestamp": "2017-02-08T15:37:44.00Z",
       "requiredCore": "1.554.1",
       "scm": "github.com",
-      "sha1": "GO8OY89r4s/K3oOrrolae9ydXVM=",
+      "sha1": "PLrBtIE9kMl8NqXu/G0aYCrHcy0=",
       "title": "Docker build step plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/docker-build-step/1.38/docker-build-step.hpi",
-      "version": "1.38",
+      "url": "http://updates.jenkins-ci.org/download/plugins/docker-build-step/1.39/docker-build-step.hpi",
+      "version": "1.39",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Docker+build+step+plugin"
     },
     "docker-commons": {
@@ -13622,32 +13782,22 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Traceability"
     },
     "docker-workflow": {
-      "buildDate": "Nov 14, 2016",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
-        {
-          "name": "docker-commons",
-          "optional": false,
-          "version": "1.5"
-        },
-        {
-          "name": "workflow-step-api",
-          "optional": false,
-          "version": "2.2"
-        },
-        {
-          "name": "script-security",
-          "optional": false,
-          "version": "1.17"
-        },
         {
           "name": "workflow-cps",
           "optional": false,
-          "version": "2.7"
+          "version": "2.25"
         },
         {
           "name": "workflow-durable-task-step",
           "optional": false,
-          "version": "2.4"
+          "version": "2.8"
+        },
+        {
+          "name": "docker-commons",
+          "optional": false,
+          "version": "1.5"
         }
       ],
       "developers": [
@@ -13656,21 +13806,21 @@
         }
       ],
       "excerpt": "Allows to build and use Docker containers from <a href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin'>pipelines</a>. ",
-      "gav": "org.jenkins-ci.plugins:docker-workflow:1.9.1",
+      "gav": "org.jenkins-ci.plugins:docker-workflow:1.10",
       "labels": [
         "deployment",
         "devops"
       ],
       "name": "docker-workflow",
-      "previousTimestamp": "2016-10-05T13:10:34.00Z",
-      "previousVersion": "1.9",
-      "releaseTimestamp": "2016-11-14T09:37:46.00Z",
+      "previousTimestamp": "2016-11-14T09:37:46.00Z",
+      "previousVersion": "1.9.1",
+      "releaseTimestamp": "2017-02-13T16:40:38.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "LmWoNY5rUs8eH/m4IZq3s+0offk=",
+      "sha1": "U+qezTwbFSoCwa8ovNdVXqEc5m8=",
       "title": "Docker Pipeline",
-      "url": "http://updates.jenkins-ci.org/download/plugins/docker-workflow/1.9.1/docker-workflow.hpi",
-      "version": "1.9.1",
+      "url": "http://updates.jenkins-ci.org/download/plugins/docker-workflow/1.10/docker-workflow.hpi",
+      "version": "1.10",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Docker+Pipeline+Plugin"
     },
     "dockerhub-notification": {
@@ -14851,12 +15001,12 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Elasticsearch+Query+Plugin"
     },
     "email-ext": {
-      "buildDate": "Jan 22, 2017",
+      "buildDate": "Feb 14, 2017",
       "dependencies": [
         {
-          "name": "workflow-job",
-          "optional": true,
-          "version": "1.10"
+          "name": "matrix-project",
+          "optional": false,
+          "version": "1.4"
         },
         {
           "name": "junit",
@@ -14864,9 +15014,9 @@
           "version": "1.2"
         },
         {
-          "name": "token-macro",
-          "optional": false,
-          "version": "2.0"
+          "name": "workflow-step-api",
+          "optional": true,
+          "version": "1.10"
         },
         {
           "name": "analysis-core",
@@ -14874,9 +15024,9 @@
           "version": "1.54"
         },
         {
-          "name": "config-file-provider",
+          "name": "workflow-job",
           "optional": true,
-          "version": "2.15.4"
+          "version": "1.10"
         },
         {
           "name": "mailer",
@@ -14884,14 +15034,14 @@
           "version": "1.5"
         },
         {
-          "name": "workflow-step-api",
-          "optional": true,
-          "version": "1.10"
+          "name": "token-macro",
+          "optional": false,
+          "version": "2.0"
         },
         {
-          "name": "matrix-project",
-          "optional": false,
-          "version": "1.4"
+          "name": "config-file-provider",
+          "optional": true,
+          "version": "2.15.6"
         }
       ],
       "developers": [
@@ -14926,20 +15076,20 @@
         }
       ],
       "excerpt": "This plugin allows you to configure every aspect of email notifications. You can customize when an email is sent, who should receive it, and what the email says.",
-      "gav": "org.jenkins-ci.plugins:email-ext:2.54",
+      "gav": "org.jenkins-ci.plugins:email-ext:2.56",
       "labels": [
         "notifier"
       ],
       "name": "email-ext",
-      "previousTimestamp": "2016-12-23T18:31:16.00Z",
-      "previousVersion": "2.53",
-      "releaseTimestamp": "2017-01-22T11:44:58.00Z",
+      "previousTimestamp": "2017-02-11T13:45:54.00Z",
+      "previousVersion": "2.55",
+      "releaseTimestamp": "2017-02-14T17:53:22.00Z",
       "requiredCore": "1.609.2",
       "scm": "github.com",
-      "sha1": "WfQ5GBP1mQKw4jLNq/jr5tgWRgM=",
+      "sha1": "ygLzaxrFBDVmseT+YzOZo85lxn4=",
       "title": "Email Extension Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/email-ext/2.54/email-ext.hpi",
-      "version": "2.54",
+      "url": "http://updates.jenkins-ci.org/download/plugins/email-ext/2.56/email-ext.hpi",
+      "version": "2.56",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Email-ext+plugin"
     },
     "email-ext-recipients-column": {
@@ -16763,7 +16913,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Fogbugz+Plugin"
     },
     "foreman-node-sharing": {
-      "buildDate": "Jan 26, 2017",
+      "buildDate": "Feb 06, 2017",
       "dependencies": [
         {
           "name": "ssh-slaves",
@@ -16784,20 +16934,20 @@
         }
       ],
       "excerpt": "Allow multiple masters to share a node that is defined as a resource on a <a href='http://theforeman.org/'>Foreman</a> instance. ",
-      "gav": "org.jenkins-ci.plugins:foreman-node-sharing:1.2.1",
+      "gav": "org.jenkins-ci.plugins:foreman-node-sharing:1.2.2",
       "labels": [
         "slaves"
       ],
       "name": "foreman-node-sharing",
-      "previousTimestamp": "2016-12-05T09:42:20.00Z",
-      "previousVersion": "1.2.0",
-      "releaseTimestamp": "2017-01-26T09:32:54.00Z",
+      "previousTimestamp": "2017-01-26T09:32:54.00Z",
+      "previousVersion": "1.2.1",
+      "releaseTimestamp": "2017-02-06T15:01:48.00Z",
       "requiredCore": "1.609.3",
       "scm": "github.com",
-      "sha1": "kFAtenHjAJu1SmC/7we78ocS7+4=",
+      "sha1": "35hGPlAqWuUORid1mZBkKOclf40=",
       "title": "Foreman Node Sharing Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/foreman-node-sharing/1.2.1/foreman-node-sharing.hpi",
-      "version": "1.2.1",
+      "url": "http://updates.jenkins-ci.org/download/plugins/foreman-node-sharing/1.2.2/foreman-node-sharing.hpi",
+      "version": "1.2.2",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Foreman+Node+Sharing+Plugin"
     },
     "form-element-path": {
@@ -17460,7 +17610,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/GitHub+pull+request+builder+plugin"
     },
     "git": {
-      "buildDate": "Nov 19, 2016",
+      "buildDate": "Feb 09, 2017",
       "dependencies": [
         {
           "name": "workflow-scm-step",
@@ -17495,7 +17645,7 @@
         {
           "name": "scm-api",
           "optional": false,
-          "version": "1.3"
+          "version": "2.0.3"
         },
         {
           "name": "ssh-credentials",
@@ -17525,20 +17675,20 @@
         }
       ],
       "excerpt": "This plugin allows use of <a href='http://git-scm.com/'>Git</a> as a build SCM, including repository browsers for several providers. A recent Git runtime is required (1.7.9 minimum, 1.8.x recommended). Interaction with the Git runtime is performed by the use of the [JENKINS:Git Client Plugin], which is only tested on official <a href='http://git-scm.com/'>git client</a>. Use exotic installations at your own risk.",
-      "gav": "org.jenkins-ci.plugins:git:3.0.1",
+      "gav": "org.jenkins-ci.plugins:git:3.0.5",
       "labels": [
         "scm"
       ],
       "name": "git",
-      "previousTimestamp": "2016-09-10T22:07:04.00Z",
-      "previousVersion": "3.0.0",
-      "releaseTimestamp": "2016-11-19T01:08:26.00Z",
+      "previousTimestamp": "2017-02-02T10:04:44.00Z",
+      "previousVersion": "3.0.4",
+      "releaseTimestamp": "2017-02-09T15:19:10.00Z",
       "requiredCore": "1.625.3",
       "scm": "github.com",
-      "sha1": "X6xWQw4GC/FiHFzX0qqK+yh/gEo=",
+      "sha1": "SvO/Ms1h7/64sN+cRyfmLyvlQ5Q=",
       "title": "Jenkins Git plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/git/3.0.1/git.hpi",
-      "version": "3.0.1",
+      "url": "http://updates.jenkins-ci.org/download/plugins/git/3.0.5/git.hpi",
+      "version": "3.0.5",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Git+Plugin"
     },
     "git-changelog": {
@@ -17691,13 +17841,8 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/git-notes+Plugin"
     },
     "git-parameter": {
-      "buildDate": "Jan 23, 2017",
+      "buildDate": "Feb 06, 2017",
       "dependencies": [
-        {
-          "name": "jquery",
-          "optional": false,
-          "version": "1.11.2-0"
-        },
         {
           "name": "rebuild",
           "optional": true,
@@ -17707,6 +17852,11 @@
           "name": "git",
           "optional": false,
           "version": "2.4.4"
+        },
+        {
+          "name": "jquery",
+          "optional": false,
+          "version": "1.11.2-0"
         }
       ],
       "developers": [
@@ -17726,21 +17876,21 @@
         }
       ],
       "excerpt": "This plugin allows you to choose between Git tags or sha1 of your SCM repository so Git Plugin installed is required.",
-      "gav": "org.jenkins-ci.tools:git-parameter:0.7.2",
+      "gav": "org.jenkins-ci.tools:git-parameter:0.8.0",
       "labels": [
         "scm-related",
         "parameter"
       ],
       "name": "git-parameter",
-      "previousTimestamp": "2016-11-27T16:50:58.00Z",
-      "previousVersion": "0.7.1",
-      "releaseTimestamp": "2017-01-23T22:35:22.00Z",
+      "previousTimestamp": "2017-01-23T22:35:22.00Z",
+      "previousVersion": "0.7.2",
+      "releaseTimestamp": "2017-02-06T22:58:12.00Z",
       "requiredCore": "1.651.1",
       "scm": "github.com",
-      "sha1": "WumL3ysA6NBLJ+XNMDy9G0vcngQ=",
+      "sha1": "n2HmhsU6vykVdgOun1qXDjhOJSY=",
       "title": "Git Parameter Plug-In",
-      "url": "http://updates.jenkins-ci.org/download/plugins/git-parameter/0.7.2/git-parameter.hpi",
-      "version": "0.7.2",
+      "url": "http://updates.jenkins-ci.org/download/plugins/git-parameter/0.8.0/git-parameter.hpi",
+      "version": "0.8.0",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Git+Parameter+Plugin"
     },
     "git-server": {
@@ -17913,7 +18063,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Gitcolony+Plugin"
     },
     "github": {
-      "buildDate": "Jan 12, 2017",
+      "buildDate": "Feb 10, 2017",
       "dependencies": [
         {
           "name": "credentials",
@@ -17936,6 +18086,11 @@
           "version": "1.1"
         },
         {
+          "name": "scm-api",
+          "optional": false,
+          "version": "2.0.3"
+        },
+        {
           "name": "token-macro",
           "optional": false,
           "version": "1.11"
@@ -17952,20 +18107,20 @@
         }
       ],
       "excerpt": "This plugin integrates Jenkins with <a href='http://github.com/'>Github</a> projects.",
-      "gav": "com.coravy.hudson.plugins.github:github:1.25.1",
+      "gav": "com.coravy.hudson.plugins.github:github:1.26.0",
       "labels": [
         "external"
       ],
       "name": "github",
-      "previousTimestamp": "2016-12-12T00:57:44.00Z",
-      "previousVersion": "1.25.0",
-      "releaseTimestamp": "2017-01-12T21:27:18.00Z",
+      "previousTimestamp": "2017-01-12T21:27:18.00Z",
+      "previousVersion": "1.25.1",
+      "releaseTimestamp": "2017-02-10T13:55:14.00Z",
       "requiredCore": "1.609",
       "scm": "github.com",
-      "sha1": "XSfyaYQ8NCUlqRepW+lmiTg9MTE=",
+      "sha1": "91in1nKb9kFGQIjoSnFIdAVc1yU=",
       "title": "GitHub plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/github/1.25.1/github.hpi",
-      "version": "1.25.1",
+      "url": "http://updates.jenkins-ci.org/download/plugins/github/1.26.0/github.hpi",
+      "version": "1.26.0",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/GitHub+Plugin"
     },
     "github-api": {
@@ -17994,59 +18149,60 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/GitHub+API+Plugin"
     },
     "github-branch-source": {
-      "buildDate": "Nov 28, 2016",
+      "buildDate": "Feb 14, 2017",
+      "compatibleSinceVersion": "2.0.0",
       "dependencies": [
+        {
+          "name": "github",
+          "optional": false,
+          "version": "1.26.0"
+        },
+        {
+          "name": "credentials",
+          "optional": false,
+          "version": "2.1.6"
+        },
         {
           "name": "display-url-api",
           "optional": false,
           "version": "0.1"
         },
         {
-          "name": "github-api",
-          "optional": false,
-          "version": "1.75"
-        },
-        {
-          "name": "github",
-          "optional": false,
-          "version": "1.14.1"
-        },
-        {
           "name": "git",
           "optional": false,
-          "version": "2.3"
+          "version": "2.6.4"
         },
         {
-          "name": "credentials",
+          "name": "github-api",
           "optional": false,
-          "version": "1.22"
+          "version": "1.84"
         },
         {
           "name": "scm-api",
           "optional": false,
-          "version": "1.2"
+          "version": "2.0.4"
         }
       ],
       "developers": [
         {
-          "developerId": "recena"
+          "developerId": "stephenc"
         }
       ],
       "excerpt": "Multibranch projects and organization folders from GitHub.",
-      "gav": "org.jenkins-ci.plugins:github-branch-source:1.10.1",
+      "gav": "org.jenkins-ci.plugins:github-branch-source:2.0.3",
       "labels": [
         "scm"
       ],
       "name": "github-branch-source",
-      "previousTimestamp": "2016-09-21T08:57:58.00Z",
-      "previousVersion": "1.10",
-      "releaseTimestamp": "2016-11-28T16:58:08.00Z",
+      "previousTimestamp": "2017-02-10T16:47:46.00Z",
+      "previousVersion": "2.0.2",
+      "releaseTimestamp": "2017-02-14T21:38:22.00Z",
       "requiredCore": "1.609.3",
       "scm": "github.com",
-      "sha1": "skyJyp3SXtgx6FNFbjcdq5XzTS4=",
+      "sha1": "AramLL7Q0ODlyRVd4oMGvQ+UD2g=",
       "title": "GitHub Branch Source Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/github-branch-source/1.10.1/github-branch-source.hpi",
-      "version": "1.10.1",
+      "url": "http://updates.jenkins-ci.org/download/plugins/github-branch-source/2.0.3/github-branch-source.hpi",
+      "version": "2.0.3",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/GitHub+Branch+Source+Plugin"
     },
     "github-issues": {
@@ -18142,32 +18298,13 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/GitHub+OAuth+Plugin"
     },
     "github-organization-folder": {
-      "buildDate": "Sep 07, 2016",
+      "buildDate": "Jan 16, 2017",
+      "compatibleSinceVersion": "1.6",
       "dependencies": [
         {
-          "name": "branch-api",
+          "name": "cloudbees-folder",
           "optional": false,
-          "version": "1.10"
-        },
-        {
-          "name": "workflow-cps",
-          "optional": false,
-          "version": "2.14"
-        },
-        {
-          "name": "scm-api",
-          "optional": false,
-          "version": "1.3"
-        },
-        {
-          "name": "workflow-multibranch",
-          "optional": false,
-          "version": "2.8"
-        },
-        {
-          "name": "workflow-cps-global-lib",
-          "optional": false,
-          "version": "2.3"
+          "version": "5.16"
         },
         {
           "name": "workflow-scm-step",
@@ -18175,14 +18312,34 @@
           "version": "2.2"
         },
         {
+          "name": "workflow-multibranch",
+          "optional": false,
+          "version": "2.10"
+        },
+        {
+          "name": "workflow-cps",
+          "optional": false,
+          "version": "2.14"
+        },
+        {
+          "name": "pipeline-github-lib",
+          "optional": false,
+          "version": "1.0"
+        },
+        {
           "name": "workflow-step-api",
           "optional": false,
           "version": "2.3"
         },
         {
-          "name": "cloudbees-folder",
+          "name": "workflow-cps-global-lib",
           "optional": false,
-          "version": "5.12"
+          "version": "2.3"
+        },
+        {
+          "name": "github-branch-source",
+          "optional": false,
+          "version": "2.0.0"
         },
         {
           "name": "workflow-job",
@@ -18190,29 +18347,39 @@
           "version": "2.5"
         },
         {
-          "name": "github-branch-source",
+          "name": "branch-api",
           "optional": false,
-          "version": "1.9"
+          "version": "2.0.0"
+        },
+        {
+          "name": "scm-api",
+          "optional": false,
+          "version": "2.0.1"
+        },
+        {
+          "name": "github",
+          "optional": false,
+          "version": "1.25.1"
         }
       ],
       "developers": [
         {
-          "developerId": "jglick"
+          "developerId": "stephenc"
         }
       ],
       "excerpt": "Pipeline-as-Code support for a whole GitHub organization. Scans all the branches &amp; repositories in GitHub organization and build them via <a href='http://jenkins-ci.org/solutions/pipeline/'>Jenkins pipelines</a> automatically",
-      "gav": "org.jenkins-ci.plugins:github-organization-folder:1.5",
+      "gav": "org.jenkins-ci.plugins:github-organization-folder:1.6",
       "labels": [],
       "name": "github-organization-folder",
-      "previousTimestamp": "2016-07-28T12:53:56.00Z",
-      "previousVersion": "1.4",
-      "releaseTimestamp": "2016-09-07T15:42:42.00Z",
+      "previousTimestamp": "2016-09-07T15:42:42.00Z",
+      "previousVersion": "1.5",
+      "releaseTimestamp": "2017-01-16T18:50:40.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "MmXinsDhjJibEgdMqHqtg1Hf3jY=",
+      "sha1": "+SSxfeaurbPmPmjVVlDF0nx15l8=",
       "title": "GitHub Organization Folder Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/github-organization-folder/1.5/github-organization-folder.hpi",
-      "version": "1.5",
+      "url": "http://updates.jenkins-ci.org/download/plugins/github-organization-folder/1.6/github-organization-folder.hpi",
+      "version": "1.6",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/GitHub+Organization+Folder+Plugin"
     },
     "github-pr-comment-build": {
@@ -18282,7 +18449,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/GitHub+PR+Coverage+Status+Plugin"
     },
     "github-pullrequest": {
-      "buildDate": "Feb 02, 2017",
+      "buildDate": "Feb 15, 2017",
       "dependencies": [
         {
           "name": "github",
@@ -18337,21 +18504,21 @@
         }
       ],
       "excerpt": "Advanced trigger for GitHub Pull Requests and Branches.",
-      "gav": "org.jenkins-ci.plugins:github-pullrequest:0.1.0-rc19",
+      "gav": "org.jenkins-ci.plugins:github-pullrequest:0.1.0-rc20",
       "labels": [
         "emailext",
         "trigger"
       ],
       "name": "github-pullrequest",
-      "previousTimestamp": "2016-12-15T02:49:18.00Z",
-      "previousVersion": "0.1.0-rc18",
-      "releaseTimestamp": "2017-02-02T00:49:28.00Z",
+      "previousTimestamp": "2017-02-02T00:49:28.00Z",
+      "previousVersion": "0.1.0-rc19",
+      "releaseTimestamp": "2017-02-15T03:49:54.00Z",
       "requiredCore": "1.625.3",
       "scm": "github.com",
-      "sha1": "NtLDUOoIFeSP34K4nOBJmMMoBXs=",
+      "sha1": "IFYL1E9+DUCP4+YFkQ282KLZOGk=",
       "title": "GitHub Integration Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/github-pullrequest/0.1.0-rc19/github-pullrequest.hpi",
-      "version": "0.1.0-rc19",
+      "url": "http://updates.jenkins-ci.org/download/plugins/github-pullrequest/0.1.0-rc20/github-pullrequest.hpi",
+      "version": "0.1.0-rc20",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/GitHub+Integration+Plugin"
     },
     "github-sqs-plugin": {
@@ -18530,14 +18697,9 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/GitLab+OAuth+Plugin"
     },
     "gitlab-plugin": {
-      "buildDate": "Jan 04, 2017",
+      "buildDate": "Feb 14, 2017",
       "compatibleSinceVersion": "1.4.0",
       "dependencies": [
-        {
-          "name": "plain-credentials",
-          "optional": true,
-          "version": "1.1"
-        },
         {
           "name": "git",
           "optional": false,
@@ -18557,6 +18719,11 @@
           "name": "git-client",
           "optional": false,
           "version": "1.19.0"
+        },
+        {
+          "name": "plain-credentials",
+          "optional": true,
+          "version": "1.1"
         }
       ],
       "developers": [
@@ -18577,20 +18744,20 @@
         }
       ],
       "excerpt": "This plugin is a build trigger that allows GitLab to trigger Jenkins builds when code is pushed or a merge request is created. Configuration done on a per-job basis.",
-      "gav": "org.jenkins-ci.plugins:gitlab-plugin:1.4.4",
+      "gav": "org.jenkins-ci.plugins:gitlab-plugin:1.4.5",
       "labels": [
         "trigger"
       ],
       "name": "gitlab-plugin",
-      "previousTimestamp": "2016-11-01T11:32:28.00Z",
-      "previousVersion": "1.4.3",
-      "releaseTimestamp": "2017-01-04T12:05:26.00Z",
+      "previousTimestamp": "2017-01-04T12:05:26.00Z",
+      "previousVersion": "1.4.4",
+      "releaseTimestamp": "2017-02-14T13:49:18.00Z",
       "requiredCore": "1.609.3",
       "scm": "github.com",
-      "sha1": "gIXq3ZDusK3waoM6n2NpJOar6FM=",
+      "sha1": "UDhzmKVAwl7vPiZB/H/nZDTAIzY=",
       "title": "GitLab Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/gitlab-plugin/1.4.4/gitlab-plugin.hpi",
-      "version": "1.4.4",
+      "url": "http://updates.jenkins-ci.org/download/plugins/gitlab-plugin/1.4.5/gitlab-plugin.hpi",
+      "version": "1.4.5",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/GitLab+Plugin"
     },
     "global-build-stats": {
@@ -19275,8 +19442,15 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Google+Analytics+Plugin"
     },
     "gradle": {
-      "buildDate": "Jul 15, 2016",
-      "dependencies": [],
+      "buildDate": "Feb 13, 2017",
+      "compatibleSinceVersion": "1.0",
+      "dependencies": [
+        {
+          "name": "structs",
+          "optional": false,
+          "version": "1.3"
+        }
+      ],
       "developers": [
         {
           "developerId": "wolfs",
@@ -19284,20 +19458,20 @@
         }
       ],
       "excerpt": "This plugin makes it possible to invoke a <a href='http://www.gradle.org/'>Gradle</a> build script as the main build step.",
-      "gav": "org.jenkins-ci.plugins:gradle:1.25",
+      "gav": "org.jenkins-ci.plugins:gradle:1.26",
       "labels": [
         "builder"
       ],
       "name": "gradle",
-      "previousTimestamp": "2014-07-17T00:59:50.00Z",
-      "previousVersion": "1.24",
-      "releaseTimestamp": "2016-07-15T23:05:28.00Z",
+      "previousTimestamp": "2016-07-15T23:05:28.00Z",
+      "previousVersion": "1.25",
+      "releaseTimestamp": "2017-02-13T18:57:32.00Z",
       "requiredCore": "1.580.1",
       "scm": "github.com",
-      "sha1": "Vy0NnmLk5O1Y+FrEagk24KBSwBc=",
+      "sha1": "Kelz+W3Iuf68OyV+QBAJLxRoIoI=",
       "title": "Gradle Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/gradle/1.25/gradle.hpi",
-      "version": "1.25",
+      "url": "http://updates.jenkins-ci.org/download/plugins/gradle/1.26/gradle.hpi",
+      "version": "1.26",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Gradle+Plugin"
     },
     "grails": {
@@ -19931,7 +20105,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Hidden+Parameter+Plugin"
     },
     "hipchat": {
-      "buildDate": "Oct 28, 2016",
+      "buildDate": "Feb 07, 2017",
       "dependencies": [
         {
           "name": "workflow-step-api",
@@ -19962,6 +20136,11 @@
           "name": "plain-credentials",
           "optional": false,
           "version": "1.3"
+        },
+        {
+          "name": "token-macro",
+          "optional": false,
+          "version": "2.0"
         }
       ],
       "developers": [
@@ -19971,20 +20150,20 @@
         }
       ],
       "excerpt": "A Build status publisher that notifies channels on a HipChat server",
-      "gav": "org.jvnet.hudson.plugins:hipchat:2.0.0",
+      "gav": "org.jvnet.hudson.plugins:hipchat:2.1.0",
       "labels": [
         "notifier"
       ],
       "name": "hipchat",
-      "previousTimestamp": "2016-01-09T00:28:38.00Z",
-      "previousVersion": "1.0.0",
-      "releaseTimestamp": "2016-10-28T00:42:10.00Z",
+      "previousTimestamp": "2016-10-28T00:42:10.00Z",
+      "previousVersion": "2.0.0",
+      "releaseTimestamp": "2017-02-07T22:17:32.00Z",
       "requiredCore": "1.609.2",
       "scm": "github.com",
-      "sha1": "Y1B3OB1zTsHaP1ar+hRd16QMufQ=",
+      "sha1": "ltd7npbAUxvRL+kYSLxTZo25MZg=",
       "title": "Jenkins HipChat Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/hipchat/2.0.0/hipchat.hpi",
-      "version": "2.0.0",
+      "url": "http://updates.jenkins-ci.org/download/plugins/hipchat/2.1.0/hipchat.hpi",
+      "version": "2.1.0",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/HipChat+Plugin"
     },
     "hockeyapp": {
@@ -20856,6 +21035,31 @@
       "version": "1.0.5.7",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/iceScrum+Plugin"
     },
+    "icn-plugin-loader": {
+      "buildDate": "Feb 14, 2017",
+      "dependencies": [],
+      "developers": [
+        {
+          "developerId": "gdelory",
+          "email": "gdelory@gmail.com",
+          "name": "Guillaume Delory"
+        }
+      ],
+      "excerpt": "Allows users to remotely reload IBM Content Navigator Plug-ins from Jenkins.",
+      "gav": "org.jenkins-ci.plugins:icn-plugin-loader:1.0",
+      "labels": [
+        "misc"
+      ],
+      "name": "icn-plugin-loader",
+      "releaseTimestamp": "2017-02-14T19:53:38.00Z",
+      "requiredCore": "1.638",
+      "scm": "github.com",
+      "sha1": "3mNXEHWnC+mnXjzh6/z/n0pb1ac=",
+      "title": "IBM Content Navigator remote plug-in reloader",
+      "url": "http://updates.jenkins-ci.org/download/plugins/icn-plugin-loader/1.0/icn-plugin-loader.hpi",
+      "version": "1.0",
+      "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/ICN+Plugin+Loader+Plugin"
+    },
     "icon-shim": {
       "buildDate": "Feb 23, 2016",
       "dependencies": [],
@@ -21067,12 +21271,12 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Inedo+ProGet+Plugin"
     },
     "influxdb": {
-      "buildDate": "Jan 17, 2017",
+      "buildDate": "Feb 10, 2017",
       "dependencies": [
         {
-          "name": "robot",
+          "name": "junit",
           "optional": false,
-          "version": "1.6.0"
+          "version": "1.2-beta-4"
         },
         {
           "name": "performance",
@@ -21080,9 +21284,9 @@
           "version": "1.15"
         },
         {
-          "name": "junit",
+          "name": "jacoco",
           "optional": false,
-          "version": "1.2-beta-4"
+          "version": "1.0.9"
         },
         {
           "name": "cobertura",
@@ -21090,9 +21294,9 @@
           "version": "1.9.7"
         },
         {
-          "name": "jacoco",
+          "name": "robot",
           "optional": false,
-          "version": "1.0.9"
+          "version": "1.6.0"
         }
       ],
       "developers": [
@@ -21103,21 +21307,21 @@
         }
       ],
       "excerpt": "Sends Jenkins build metrics into InfluxDB",
-      "gav": "org.jenkins-ci.plugins:influxdb:1.10.2",
+      "gav": "org.jenkins-ci.plugins:influxdb:1.10.3",
       "labels": [
         "post-build",
         "report"
       ],
       "name": "influxdb",
-      "previousTimestamp": "2016-12-30T10:08:00.00Z",
-      "previousVersion": "1.10.1",
-      "releaseTimestamp": "2017-01-17T09:29:26.00Z",
+      "previousTimestamp": "2017-01-17T09:29:26.00Z",
+      "previousVersion": "1.10.2",
+      "releaseTimestamp": "2017-02-10T14:46:54.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "K5aS7n38f8AtreYjsZkwpi3SalU=",
+      "sha1": "Q3UnKooNTFtdT2xHSnRvtMCfTSM=",
       "title": "InfluxDB Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/influxdb/1.10.2/influxdb.hpi",
-      "version": "1.10.2",
+      "url": "http://updates.jenkins-ci.org/download/plugins/influxdb/1.10.3/influxdb.hpi",
+      "version": "1.10.3",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/InfluxDB+Plugin"
     },
     "installshield": {
@@ -21973,13 +22177,18 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/JCaptcha+Plugin"
     },
     "jclouds-jenkins": {
-      "buildDate": "Dec 16, 2016",
+      "buildDate": "Feb 14, 2017",
       "compatibleSinceVersion": "2.9",
       "dependencies": [
         {
+          "name": "bouncycastle-api",
+          "optional": false,
+          "version": "2.16.0"
+        },
+        {
           "name": "config-file-provider",
           "optional": false,
-          "version": "2.13"
+          "version": "2.15.6"
         },
         {
           "name": "credentials",
@@ -22030,22 +22239,22 @@
         }
       ],
       "excerpt": "This plugin uses <a href='http://jclouds.org/'>JClouds</a> to provide slave launching on most of the currently usable Cloud infrastructures.",
-      "gav": "org.jenkins-ci.plugins:jclouds-jenkins:2.12",
+      "gav": "org.jenkins-ci.plugins:jclouds-jenkins:2.14",
       "labels": [
         "slaves",
         "cluster",
         "cloud"
       ],
       "name": "jclouds-jenkins",
-      "previousTimestamp": "2016-12-05T04:06:34.00Z",
-      "previousVersion": "2.11",
-      "releaseTimestamp": "2016-12-16T12:02:02.00Z",
+      "previousTimestamp": "2017-02-13T14:20:48.00Z",
+      "previousVersion": "2.13",
+      "releaseTimestamp": "2017-02-14T02:10:24.00Z",
       "requiredCore": "2.19.3",
       "scm": "github.com",
-      "sha1": "VB/fRiCp6GDrsQiOInQthiCsxSc=",
+      "sha1": "adGdiGufx7pv2Jpl4UGN2OgUCx8=",
       "title": "Jenkins JClouds plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/jclouds-jenkins/2.12/jclouds-jenkins.hpi",
-      "version": "2.12",
+      "url": "http://updates.jenkins-ci.org/download/plugins/jclouds-jenkins/2.14/jclouds-jenkins.hpi",
+      "version": "2.14",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/JClouds+Plugin"
     },
     "jdepend": {
@@ -22351,8 +22560,13 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Appspider+Build+Scanner+Plugin"
     },
     "jenkinslint": {
-      "buildDate": "Oct 01, 2015",
+      "buildDate": "Feb 12, 2017",
       "dependencies": [
+        {
+          "name": "maven-plugin",
+          "optional": true,
+          "version": "2.8"
+        },
         {
           "name": "javadoc",
           "optional": false,
@@ -22367,20 +22581,20 @@
         }
       ],
       "excerpt": "Detects whether your Jenkins configuration follows those best practices&amp;nbsp;  This plugin has mainly two goals: * To make it easier to detect issues in your Jenkins configuration that will cause Jenkins to blow up when you attempt to run those jobs. * To encourage discussion within the Jenkins community on the more subjective stuff. Having a set of checks to base discussion on helps drive out what we as a community think is good style. ",
-      "gav": "org.jenkins-ci.plugins:jenkinslint:0.5.0",
+      "gav": "org.jenkins-ci.plugins:jenkinslint:0.6.0",
       "labels": [
         "misc"
       ],
       "name": "jenkinslint",
-      "previousTimestamp": "2015-08-27T21:24:54.00Z",
-      "previousVersion": "0.4.0",
-      "releaseTimestamp": "2015-10-01T18:58:10.00Z",
+      "previousTimestamp": "2015-10-01T18:58:10.00Z",
+      "previousVersion": "0.5.0",
+      "releaseTimestamp": "2017-02-12T15:39:58.00Z",
       "requiredCore": "1.554.1",
       "scm": "github.com",
-      "sha1": "CY2Sf0lKu7xfwUV7stzSP2b9q8Q=",
+      "sha1": "tVRIZXJKNUGeB/r4PnIKKIiUmBw=",
       "title": "JenkinsLint Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/jenkinslint/0.5.0/jenkinslint.hpi",
-      "version": "0.5.0",
+      "url": "http://updates.jenkins-ci.org/download/plugins/jenkinslint/0.6.0/jenkinslint.hpi",
+      "version": "0.6.0",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/JenkinsLint+Plugin"
     },
     "jenkinswalldisplay": {
@@ -22411,7 +22625,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Wall+Display+Plugin"
     },
     "jgiven": {
-      "buildDate": "Jan 09, 2017",
+      "buildDate": "Feb 11, 2017",
       "dependencies": [
         {
           "name": "job-dsl",
@@ -22427,20 +22641,20 @@
         }
       ],
       "excerpt": "This plugin lets you generate <a href='http://jgiven.org/'>JGiven</a> reports as a post-build action.",
-      "gav": "org.jenkins-ci.plugins:jgiven:0.14.0",
+      "gav": "org.jenkins-ci.plugins:jgiven:0.14.1",
       "labels": [
         "report"
       ],
       "name": "jgiven",
-      "previousTimestamp": "2017-01-09T15:16:02.00Z",
-      "previousVersion": "0.13.1",
-      "releaseTimestamp": "2017-01-09T15:19:18.00Z",
+      "previousTimestamp": "2017-01-09T15:19:18.00Z",
+      "previousVersion": "0.14.0",
+      "releaseTimestamp": "2017-02-11T17:43:16.00Z",
       "requiredCore": "1.625.3",
       "scm": "github.com",
-      "sha1": "75ONzU9cTLFXYqQPUtLzXflIGMk=",
+      "sha1": "vS3jDBO34Nwu0f808/Dv3sJh/vA=",
       "title": "JGiven Jenkins Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/jgiven/0.14.0/jgiven.hpi",
-      "version": "0.14.0",
+      "url": "http://updates.jenkins-ci.org/download/plugins/jgiven/0.14.1/jgiven.hpi",
+      "version": "0.14.1",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/JGiven+Plugin"
     },
     "jianliao": {
@@ -22631,7 +22845,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/JIRA+Trigger+Plugin"
     },
     "jms-messaging": {
-      "buildDate": "Jan 16, 2017",
+      "buildDate": "Feb 10, 2017",
       "dependencies": [
         {
           "name": "workflow-step-api",
@@ -22652,22 +22866,22 @@
         }
       ],
       "excerpt": "The JMS Messaging Plugin provides the following functionality:  * A build trigger to submit jenkins jobs upon receipt of a matching message. * A post-build action that may be used to submit a message to the topic upon the completion of a job  JMS Messaging Providers  * This plugin supports the following JMS Message Provider types ** ActiveMQ ** FedMsg ",
-      "gav": "org.jenkins-ci.plugins:jms-messaging:1.0.7",
+      "gav": "org.jenkins-ci.plugins:jms-messaging:1.0.9",
       "labels": [
         "post-build",
         "builder",
         "trigger"
       ],
       "name": "jms-messaging",
-      "previousTimestamp": "2017-01-13T10:01:06.00Z",
-      "previousVersion": "1.0.6",
-      "releaseTimestamp": "2017-01-16T15:22:34.00Z",
+      "previousTimestamp": "2017-02-06T15:46:32.00Z",
+      "previousVersion": "1.0.8",
+      "releaseTimestamp": "2017-02-10T08:11:54.00Z",
       "requiredCore": "1.651.3",
       "scm": "github.com",
-      "sha1": "WCB72eSiaAaPi1zoOPpKvwNQaZs=",
+      "sha1": "S5V4iLXekCBEFAcO4wWW+mwQ2uU=",
       "title": "JMS Messaging Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/jms-messaging/1.0.7/jms-messaging.hpi",
-      "version": "1.0.7",
+      "url": "http://updates.jenkins-ci.org/download/plugins/jms-messaging/1.0.9/jms-messaging.hpi",
+      "version": "1.0.9",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/JMS+Messaging+Plugin"
     },
     "job-direct-mail": {
@@ -23748,7 +23962,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Jucies+Plugin"
     },
     "junit": {
-      "buildDate": "Oct 17, 2016",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
         {
           "name": "structs",
@@ -23758,24 +23972,24 @@
       ],
       "developers": [
         {
-          "developerId": "ogondza"
+          "developerId": "jglick"
         }
       ],
       "excerpt": "Allows JUnit-format test results to be published.",
-      "gav": "org.jenkins-ci.plugins:junit:1.19",
+      "gav": "org.jenkins-ci.plugins:junit:1.20",
       "labels": [
         "report"
       ],
       "name": "junit",
-      "previousTimestamp": "2016-08-08T15:10:34.00Z",
-      "previousVersion": "1.18",
-      "releaseTimestamp": "2016-10-17T12:15:20.00Z",
+      "previousTimestamp": "2016-10-17T12:15:20.00Z",
+      "previousVersion": "1.19",
+      "releaseTimestamp": "2017-02-13T10:05:40.00Z",
       "requiredCore": "1.580.1",
       "scm": "github.com",
-      "sha1": "f3jcYlxz6/8PK43W3KL5LFtz7ro=",
+      "sha1": "rZ0R80BwZ39OzRX67cChIhogMy8=",
       "title": "JUnit Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/junit/1.19/junit.hpi",
-      "version": "1.19",
+      "url": "http://updates.jenkins-ci.org/download/plugins/junit/1.20/junit.hpi",
+      "version": "1.20",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/JUnit+Plugin"
     },
     "junit-attachments": {
@@ -24062,7 +24276,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Keyboard+Shortcuts+Plugin"
     },
     "kiuwanJenkinsPlugin": {
-      "buildDate": "Dec 22, 2016",
+      "buildDate": "Feb 09, 2017",
       "dependencies": [],
       "developers": [
         {
@@ -24071,21 +24285,21 @@
         }
       ],
       "excerpt": "This plugin allows you to Run <a href='http://kiuwan.com'>Kiuwan</a> static analysis of your code as part of your continuous integration process with Jenkins. You can  update your code quality information in Kiuwan automatically.",
-      "gav": "org.jenkins-ci.plugins:kiuwanJenkinsPlugin:1.4.2",
+      "gav": "org.jenkins-ci.plugins:kiuwanJenkinsPlugin:1.4.3",
       "labels": [
         "external",
         "post-build"
       ],
       "name": "kiuwanJenkinsPlugin",
-      "previousTimestamp": "2016-09-22T15:53:12.00Z",
-      "previousVersion": "1.4.1",
-      "releaseTimestamp": "2016-12-22T11:16:24.00Z",
+      "previousTimestamp": "2016-12-22T11:16:24.00Z",
+      "previousVersion": "1.4.2",
+      "releaseTimestamp": "2017-02-09T10:30:36.00Z",
       "requiredCore": "1.532.2",
       "scm": "github.com",
-      "sha1": "2BM52h/WXXMvnzeg/dGaA75M/vQ=",
+      "sha1": "PF46sqtlUX+xyOdoGhXBcSuCci8=",
       "title": "Jenkins Kiuwan plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/kiuwanJenkinsPlugin/1.4.2/kiuwanJenkinsPlugin.hpi",
-      "version": "1.4.2",
+      "url": "http://updates.jenkins-ci.org/download/plugins/kiuwanJenkinsPlugin/1.4.3/kiuwanJenkinsPlugin.hpi",
+      "version": "1.4.3",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Kiuwan+Plugin"
     },
     "klaros-testmanagement": {
@@ -26337,7 +26551,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Mattermost+Plugin"
     },
     "maven-artifact-choicelistprovider": {
-      "buildDate": "Jan 19, 2017",
+      "buildDate": "Feb 03, 2017",
       "dependencies": [
         {
           "name": "extensible-choice-parameter",
@@ -26347,32 +26561,31 @@
         {
           "name": "credentials",
           "optional": false,
-          "version": "2.1.10"
+          "version": "2.1.11"
         }
       ],
       "developers": [
         {
           "developerId": "phreakadelle",
-          "email": "m@phrk.de",
           "name": "Stephan Watermeyer"
         }
       ],
       "excerpt": "This Plugin adds an additional ChoiceListProvider to famous <a href='JENKINS:Extensible Choice Parameter plugin'>Extensible Choice Parameter Plugin</a> to select Artifacts from any Nexus or Maven Central Repository. ",
-      "gav": "org.jenkins-ci.plugins:maven-artifact-choicelistprovider:1.1.1",
+      "gav": "org.jenkins-ci.plugins:maven-artifact-choicelistprovider:1.1.2",
       "labels": [
         "parameter",
         "maven"
       ],
       "name": "maven-artifact-choicelistprovider",
-      "previousTimestamp": "2017-01-18T22:23:06.00Z",
-      "previousVersion": "1.1.0",
-      "releaseTimestamp": "2017-01-19T21:18:30.00Z",
+      "previousTimestamp": "2017-01-19T21:18:30.00Z",
+      "previousVersion": "1.1.1",
+      "releaseTimestamp": "2017-02-03T14:42:12.00Z",
       "requiredCore": "1.609.3",
       "scm": "github.com",
-      "sha1": "eF0s4EKq68ilMXgsFWTRUB5GQnE=",
+      "sha1": "nWrsDNhjIng4uXCFxNfY3/z/LTA=",
       "title": "Maven Artifact ChoiceListProvider (Nexus)",
-      "url": "http://updates.jenkins-ci.org/download/plugins/maven-artifact-choicelistprovider/1.1.1/maven-artifact-choicelistprovider.hpi",
-      "version": "1.1.1",
+      "url": "http://updates.jenkins-ci.org/download/plugins/maven-artifact-choicelistprovider/1.1.2/maven-artifact-choicelistprovider.hpi",
+      "version": "1.1.2",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Maven+Artifact+ChoiceListProvider+Plugin"
     },
     "maven-dependency-update-trigger": {
@@ -27062,12 +27275,12 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Questa+VRM+Plugin"
     },
     "mercurial": {
-      "buildDate": "Oct 12, 2016",
+      "buildDate": "Feb 09, 2017",
       "dependencies": [
         {
           "name": "credentials",
           "optional": false,
-          "version": "1.9.4"
+          "version": "2.1.10"
         },
         {
           "name": "matrix-project",
@@ -27082,7 +27295,7 @@
         {
           "name": "scm-api",
           "optional": false,
-          "version": "1.1"
+          "version": "2.0.3"
         },
         {
           "name": "ssh-credentials",
@@ -27118,20 +27331,20 @@
         }
       ],
       "excerpt": "This plugin integrates the <a href='http://selenic.com/mercurial/'>Mercurial version control system</a> with Jenkins.",
-      "gav": "org.jenkins-ci.plugins:mercurial:1.57",
+      "gav": "org.jenkins-ci.plugins:mercurial:1.59",
       "labels": [
         "scm"
       ],
       "name": "mercurial",
-      "previousTimestamp": "2016-07-13T13:30:58.00Z",
-      "previousVersion": "1.56",
-      "releaseTimestamp": "2016-10-12T13:07:10.00Z",
+      "previousTimestamp": "2017-01-16T17:15:26.00Z",
+      "previousVersion": "1.58",
+      "releaseTimestamp": "2017-02-09T14:13:38.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "yh5VyO+EAVKJzuxhoGnz2C/277A=",
+      "sha1": "EKde5FKm8JczhEBOcdgJ0a7UH7s=",
       "title": "Jenkins Mercurial plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/mercurial/1.57/mercurial.hpi",
-      "version": "1.57",
+      "url": "http://updates.jenkins-ci.org/download/plugins/mercurial/1.59/mercurial.hpi",
+      "version": "1.59",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Mercurial+Plugin"
     },
     "mesos": {
@@ -27420,7 +27633,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Minio+Storage+Plugin"
     },
     "mission-control-view": {
-      "buildDate": "Nov 24, 2016",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [],
       "developers": [
         {
@@ -27430,20 +27643,20 @@
         }
       ],
       "excerpt": "Full screen dashboard view featuring job history, build queue, and current status of jobs and nodes.",
-      "gav": "tech.andrey.jenkins:mission-control-view:0.9.8",
+      "gav": "tech.andrey.jenkins:mission-control-view:0.9.9",
       "labels": [
         "ui"
       ],
       "name": "mission-control-view",
-      "previousTimestamp": "2016-10-18T17:58:20.00Z",
-      "previousVersion": "0.9.7",
-      "releaseTimestamp": "2016-11-24T20:57:04.00Z",
+      "previousTimestamp": "2016-11-24T20:57:04.00Z",
+      "previousVersion": "0.9.8",
+      "releaseTimestamp": "2017-02-13T01:48:46.00Z",
       "requiredCore": "1.580.1",
       "scm": "github.com",
-      "sha1": "5JtpDHhtMzwldxGb8JkrRAAAv/Y=",
+      "sha1": "91EqrJnmO/cJbc3NWW4Rg1kBO4k=",
       "title": "Mission Control Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/mission-control-view/0.9.8/mission-control-view.hpi",
-      "version": "0.9.8",
+      "url": "http://updates.jenkins-ci.org/download/plugins/mission-control-view/0.9.9/mission-control-view.hpi",
+      "version": "0.9.9",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Mission+Control+Plugin"
     },
     "mktmpio": {
@@ -27809,7 +28022,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/MQ+Notifier+Plugin"
     },
     "mqtt-notification-plugin": {
-      "buildDate": "Jan 09, 2016",
+      "buildDate": "Feb 12, 2017",
       "dependencies": [
         {
           "name": "credentials",
@@ -27825,20 +28038,20 @@
         }
       ],
       "excerpt": "A simple notifier that can publish build notifications to a topic on a&amp;nbsp;<a href='http://mqtt.org'>MQTT</a>&amp;nbsp;broker. ",
-      "gav": "jenkins.plugins:mqtt-notification-plugin:1.3",
+      "gav": "jenkins.plugins:mqtt-notification-plugin:1.4.2",
       "labels": [
         "notifier"
       ],
       "name": "mqtt-notification-plugin",
-      "previousTimestamp": "2016-01-06T16:36:08.00Z",
-      "previousVersion": "1.2.1",
-      "releaseTimestamp": "2016-01-09T23:32:24.00Z",
-      "requiredCore": "1.600",
+      "previousTimestamp": "2017-02-12T22:05:52.00Z",
+      "previousVersion": "1.4.1",
+      "releaseTimestamp": "2017-02-12T22:27:34.00Z",
+      "requiredCore": "1.651.3",
       "scm": "github.com",
-      "sha1": "41On0MxkvfkXVDgP/shMONe7Zek=",
+      "sha1": "HIgBpUM4grHuVQThGocVzVrVrNE=",
       "title": "MQTT Notification Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/mqtt-notification-plugin/1.3/mqtt-notification-plugin.hpi",
-      "version": "1.3",
+      "url": "http://updates.jenkins-ci.org/download/plugins/mqtt-notification-plugin/1.4.2/mqtt-notification-plugin.hpi",
+      "version": "1.4.2",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/MQTT+Notification+Plugin"
     },
     "msbuild": {
@@ -28524,7 +28737,7 @@
           "name": "Suresh Kumar"
         }
       ],
-      "excerpt": "This plugin goal is to upload artifacts generated from non-maven projects to Nexus  This plugin now supports Nexus-2.x &amp; Nexus-3.x.  Use Jenkins credentials support, from next release entering username &amp; password fields will be removed.   ",
+      "excerpt": "This plugin goal is to upload artifacts generated from non-maven projects to Nexus  This plugin now supports Nexus-2.x &amp; Nexus-3.x.    ",
       "gav": "sp.sd:nexus-artifact-uploader:2.9",
       "labels": [
         "upload"
@@ -28616,7 +28829,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Node+Iterator+API+Plugin"
     },
     "nodejs": {
-      "buildDate": "Jan 27, 2017",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
         {
           "name": "config-file-provider",
@@ -28642,18 +28855,18 @@
         }
       ],
       "excerpt": "Provides Jenkins integration for NodeJS &amp; npm packages.",
-      "gav": "org.jenkins-ci.plugins:nodejs:1.0",
+      "gav": "org.jenkins-ci.plugins:nodejs:1.1.0",
       "labels": [],
       "name": "nodejs",
-      "previousTimestamp": "2016-12-12T10:02:46.00Z",
-      "previousVersion": "0.2.2",
-      "releaseTimestamp": "2017-01-27T01:30:18.00Z",
+      "previousTimestamp": "2017-02-03T21:08:36.00Z",
+      "previousVersion": "1.0.1",
+      "releaseTimestamp": "2017-02-13T15:45:12.00Z",
       "requiredCore": "1.625.3",
       "scm": "github.com",
-      "sha1": "eZOlgvda83n4RW3dLv4dDV2ohqc=",
+      "sha1": "GQCz5bQakBzB8qzIo55qt6Cfb3g=",
       "title": "NodeJS Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/nodejs/1.0/nodejs.hpi",
-      "version": "1.0",
+      "url": "http://updates.jenkins-ci.org/download/plugins/nodejs/1.1.0/nodejs.hpi",
+      "version": "1.1.0",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/NodeJS+Plugin"
     },
     "nodelabelparameter": {
@@ -29452,12 +29665,12 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/openSCADA+Exporter"
     },
     "openshift-client": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
         {
-          "name": "durable-task",
+          "name": "workflow-cps",
           "optional": false,
-          "version": "1.12"
+          "version": "2.17"
         },
         {
           "name": "credentials",
@@ -29465,9 +29678,9 @@
           "version": "2.1.9"
         },
         {
-          "name": "workflow-cps",
+          "name": "durable-task",
           "optional": false,
-          "version": "2.17"
+          "version": "1.12"
         }
       ],
       "developers": [
@@ -29478,19 +29691,21 @@
         }
       ],
       "excerpt": "The OpenShift Client Plugin aims to provide a readable, concise, comprehensive, and fluent  Jenkins Pipeline DSL syntax for rich interactions with an OpenShift API Server. The  plugin leverages the OpenShift command line tool (oc) which must be available on the Jenkins nodes executing the Pipeline.",
-      "gav": "com.openshift.jenkins.plugins:openshift-client:0.8",
+      "gav": "com.openshift.jenkins.plugins:openshift-client:0.9.1",
       "labels": [
         "misc",
         "devops"
       ],
       "name": "openshift-client",
-      "releaseTimestamp": "2017-02-01T17:20:48.00Z",
+      "previousTimestamp": "2017-02-07T11:37:20.00Z",
+      "previousVersion": "0.9.0",
+      "releaseTimestamp": "2017-02-13T13:53:08.00Z",
       "requiredCore": "1.625.3",
       "scm": "github.com",
-      "sha1": "XxzrpcNHSEdMKy6jVZGplrOsLX8=",
+      "sha1": "dzua4gCxioRoffW36Mzb3BXYUjM=",
       "title": "OpenShift Client Jenkins Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/openshift-client/0.8/openshift-client.hpi",
-      "version": "0.8",
+      "url": "http://updates.jenkins-ci.org/download/plugins/openshift-client/0.9.1/openshift-client.hpi",
+      "version": "0.9.1",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/OpenShift+Client+Plugin"
     },
     "openshift-deployer": {
@@ -29871,30 +30086,30 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Ownership+Plugin"
     },
     "p4": {
-      "buildDate": "Jan 10, 2017",
+      "buildDate": "Feb 10, 2017",
       "dependencies": [
         {
-          "name": "scm-api",
+          "name": "mailer",
           "optional": true,
-          "version": "0.1"
+          "version": "1.16"
         },
         {
-          "name": "credentials",
-          "optional": false,
-          "version": "1.22"
-        },
-        {
-          "name": "workflow-cps",
+          "name": "workflow-job",
           "optional": true,
           "version": "1.6"
         },
         {
-          "name": "multiple-scms",
+          "name": "workflow-basic-steps",
           "optional": true,
-          "version": "0.4"
+          "version": "1.6"
         },
         {
-          "name": "workflow-job",
+          "name": "workflow-aggregator",
+          "optional": true,
+          "version": "1.6"
+        },
+        {
+          "name": "workflow-cps",
           "optional": true,
           "version": "1.6"
         },
@@ -29909,19 +30124,19 @@
           "version": "1.6"
         },
         {
-          "name": "mailer",
+          "name": "multiple-scms",
           "optional": true,
-          "version": "1.16"
+          "version": "0.4"
         },
         {
-          "name": "workflow-aggregator",
-          "optional": true,
-          "version": "1.6"
+          "name": "credentials",
+          "optional": false,
+          "version": "1.22"
         },
         {
-          "name": "workflow-basic-steps",
+          "name": "scm-api",
           "optional": true,
-          "version": "1.6"
+          "version": "0.1"
         }
       ],
       "developers": [
@@ -29932,20 +30147,20 @@
         }
       ],
       "excerpt": "P4 Plugin - By <a href='http://perforce.com'>Perforce Software</a>. Jenkins plugin for a Perforce Helix Versioning Engine.",
-      "gav": "org.jenkins-ci.plugins:p4:1.4.13",
+      "gav": "org.jenkins-ci.plugins:p4:1.4.14",
       "labels": [
         "scm"
       ],
       "name": "p4",
-      "previousTimestamp": "2016-12-20T17:39:08.00Z",
-      "previousVersion": "1.4.12",
-      "releaseTimestamp": "2017-01-10T14:49:10.00Z",
+      "previousTimestamp": "2017-01-10T14:49:10.00Z",
+      "previousVersion": "1.4.13",
+      "releaseTimestamp": "2017-02-10T15:53:28.00Z",
       "requiredCore": "1.596.1",
       "scm": "github.com",
-      "sha1": "PUEt2Ur7vJvHISTYFmMr7ENnZCc=",
+      "sha1": "bTcCEV7ha4VhGZ6KBsxH8D3nZBk=",
       "title": "P4 Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/p4/1.4.13/p4.hpi",
-      "version": "1.4.13",
+      "url": "http://updates.jenkins-ci.org/download/plugins/p4/1.4.14/p4.hpi",
+      "version": "1.4.14",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/P4+Plugin"
     },
     "paaslane-estimate": {
@@ -30079,6 +30294,31 @@
       "version": "1.11",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Packagecloud+Plugin"
     },
+    "packageversion": {
+      "buildDate": "Feb 13, 2017",
+      "dependencies": [],
+      "developers": [
+        {
+          "developerId": "johnlayton",
+          "email": "johnstewartlayton@gmail.com",
+          "name": "john layton"
+        }
+      ],
+      "excerpt": "J enkins plugin which when configured with repository and package name will add a build step requiring selection of the specified package version. This package version is added as",
+      "gav": "org.lilicurroad.jenkins:packageversion:1.0.1",
+      "labels": [
+        "misc"
+      ],
+      "name": "packageversion",
+      "releaseTimestamp": "2017-02-13T19:24:56.00Z",
+      "requiredCore": "1.580",
+      "scm": "github.com",
+      "sha1": "qP5o1K/xBI95uuoEJnYRstJsMfE=",
+      "title": "Package Version",
+      "url": "http://updates.jenkins-ci.org/download/plugins/packageversion/1.0.1/packageversion.hpi",
+      "version": "1.0.1",
+      "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Package+Version+Plugin"
+    },
     "packer": {
       "buildDate": "Apr 22, 2016",
       "dependencies": [],
@@ -30107,7 +30347,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Packer+Plugin"
     },
     "pagerduty": {
-      "buildDate": "Mar 30, 2016",
+      "buildDate": "Feb 10, 2017",
       "dependencies": [],
       "developers": [
         {
@@ -30117,20 +30357,20 @@
         }
       ],
       "excerpt": "Allows users to trigger postbuild incidents via <a href='https://www.pagerduty.com/'>PagerDuty</a> ",
-      "gav": "org.jenkins-ci.plugins:pagerduty:0.2.4",
+      "gav": "org.jenkins-ci.plugins:pagerduty:0.2.5",
       "labels": [
         "notifier"
       ],
       "name": "pagerduty",
-      "previousTimestamp": "2016-03-09T17:31:40.00Z",
-      "previousVersion": "0.2.3",
-      "releaseTimestamp": "2016-03-30T16:43:00.00Z",
-      "requiredCore": "1.580.1",
+      "previousTimestamp": "2016-03-30T16:43:00.00Z",
+      "previousVersion": "0.2.4",
+      "releaseTimestamp": "2017-02-10T21:17:20.00Z",
+      "requiredCore": "1.625.3",
       "scm": "github.com",
-      "sha1": "q/l9d7rbCL4lfQsJdm9Yae2sOfw=",
+      "sha1": "5Qn9oJ8OBENsi5aqR0rSGE5ay5U=",
       "title": "PagerDuty Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/pagerduty/0.2.4/pagerduty.hpi",
-      "version": "0.2.4",
+      "url": "http://updates.jenkins-ci.org/download/plugins/pagerduty/0.2.5/pagerduty.hpi",
+      "version": "0.2.5",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/PagerDuty+Plugin"
     },
     "pam-auth": {
@@ -31380,6 +31620,38 @@
       "version": "0.1.0",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Classpath+Step+Plugin"
     },
+    "pipeline-github-lib": {
+      "buildDate": "Jan 16, 2017",
+      "dependencies": [
+        {
+          "name": "workflow-cps-global-lib",
+          "optional": false,
+          "version": "2.5"
+        },
+        {
+          "name": "git",
+          "optional": false,
+          "version": "3.0.2"
+        }
+      ],
+      "developers": [
+        {
+          "developerId": "stephenc"
+        }
+      ],
+      "excerpt": "Allows Pipeline Groovy libraries to be loaded on the fly from GitHub.  ",
+      "gav": "org.jenkins-ci.plugins:pipeline-github-lib:1.0",
+      "labels": [],
+      "name": "pipeline-github-lib",
+      "releaseTimestamp": "2017-01-16T17:28:56.00Z",
+      "requiredCore": "1.642.3",
+      "scm": "github.com",
+      "sha1": "KyCdLYYd7CHYN4vIoedEPzkhd5Q=",
+      "title": "Pipeline: GitHub Groovy Libraries",
+      "url": "http://updates.jenkins-ci.org/download/plugins/pipeline-github-lib/1.0/pipeline-github-lib.hpi",
+      "version": "1.0",
+      "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+GitHub+Library+Plugin"
+    },
     "pipeline-githubnotify-step": {
       "buildDate": "Dec 24, 2016",
       "dependencies": [
@@ -31614,7 +31886,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Milestone+Step+Plugin"
     },
     "pipeline-model-api": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 10, 2017",
       "dependencies": [
         {
           "name": "workflow-step-api",
@@ -31634,25 +31906,25 @@
         }
       ],
       "excerpt": "Declarative Jenkins Pipelines",
-      "gav": "org.jenkinsci.plugins:pipeline-model-api:1.0",
+      "gav": "org.jenkinsci.plugins:pipeline-model-api:1.0.1",
       "labels": [
         "pipeline",
         "misc"
       ],
       "name": "pipeline-model-api",
-      "previousTimestamp": "2017-01-27T09:17:28.00Z",
-      "previousVersion": "0.9.1",
-      "releaseTimestamp": "2017-02-01T06:04:04.00Z",
+      "previousTimestamp": "2017-02-01T06:04:04.00Z",
+      "previousVersion": "1.0",
+      "releaseTimestamp": "2017-02-10T11:39:22.00Z",
       "requiredCore": "2.7.1",
       "scm": "github.com",
-      "sha1": "S9w3aE/YmX9G4caByfZHUlN1Fsc=",
+      "sha1": "U8HA6p6i6R6K1SH+hcjdxCix+Xk=",
       "title": "Pipeline: Model API",
-      "url": "http://updates.jenkins-ci.org/download/plugins/pipeline-model-api/1.0/pipeline-model-api.hpi",
-      "version": "1.0",
+      "url": "http://updates.jenkins-ci.org/download/plugins/pipeline-model-api/1.0.1/pipeline-model-api.hpi",
+      "version": "1.0.1",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Model+Definition+Plugin"
     },
     "pipeline-model-declarative-agent": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 10, 2017",
       "dependencies": [
         {
           "name": "workflow-cps",
@@ -31667,25 +31939,25 @@
         }
       ],
       "excerpt": "Declarative Jenkins Pipelines",
-      "gav": "org.jenkinsci.plugins:pipeline-model-declarative-agent:1.0",
+      "gav": "org.jenkinsci.plugins:pipeline-model-declarative-agent:1.0.1",
       "labels": [
         "pipeline",
         "misc"
       ],
       "name": "pipeline-model-declarative-agent",
-      "previousTimestamp": "2017-01-27T09:17:52.00Z",
-      "previousVersion": "0.9.1",
-      "releaseTimestamp": "2017-02-01T06:04:32.00Z",
+      "previousTimestamp": "2017-02-01T06:04:32.00Z",
+      "previousVersion": "1.0",
+      "releaseTimestamp": "2017-02-10T11:40:02.00Z",
       "requiredCore": "2.7.1",
       "scm": "github.com",
-      "sha1": "sX7gBoGbYFlJRnpRqbqgsE8ruHI=",
+      "sha1": "ZWqitOzuTYIuKGq1PPm1F2vuxpc=",
       "title": "Pipeline: Declarative Agent API",
-      "url": "http://updates.jenkins-ci.org/download/plugins/pipeline-model-declarative-agent/1.0/pipeline-model-declarative-agent.hpi",
-      "version": "1.0",
+      "url": "http://updates.jenkins-ci.org/download/plugins/pipeline-model-declarative-agent/1.0.1/pipeline-model-declarative-agent.hpi",
+      "version": "1.0.1",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Model+Definition+Plugin"
     },
     "pipeline-model-definition": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 10, 2017",
       "compatibleSinceVersion": "0.8",
       "dependencies": [
         {
@@ -31751,17 +32023,17 @@
         {
           "name": "pipeline-model-api",
           "optional": false,
-          "version": "1.0"
+          "version": "1.0.1"
         },
         {
           "name": "pipeline-model-declarative-agent",
           "optional": false,
-          "version": "1.0"
+          "version": "1.0.1"
         },
         {
           "name": "pipeline-stage-tags-metadata",
           "optional": false,
-          "version": "1.0"
+          "version": "1.0.1"
         }
       ],
       "developers": [
@@ -31771,21 +32043,21 @@
         }
       ],
       "excerpt": "Declarative Jenkins Pipelines",
-      "gav": "org.jenkinsci.plugins:pipeline-model-definition:1.0",
+      "gav": "org.jenkinsci.plugins:pipeline-model-definition:1.0.1",
       "labels": [
         "pipeline",
         "misc"
       ],
       "name": "pipeline-model-definition",
-      "previousTimestamp": "2017-01-27T09:18:18.00Z",
-      "previousVersion": "0.9.1",
-      "releaseTimestamp": "2017-02-01T06:05:04.00Z",
+      "previousTimestamp": "2017-02-01T06:05:04.00Z",
+      "previousVersion": "1.0",
+      "releaseTimestamp": "2017-02-10T11:40:30.00Z",
       "requiredCore": "2.7.1",
       "scm": "github.com",
-      "sha1": "r9mjbY4yuo9IhQ5KyWrSxIO/SP8=",
+      "sha1": "u2CGLdRVKxET38BXVfdzDkUpM0I=",
       "title": "Pipeline: Model Definition",
-      "url": "http://updates.jenkins-ci.org/download/plugins/pipeline-model-definition/1.0/pipeline-model-definition.hpi",
-      "version": "1.0",
+      "url": "http://updates.jenkins-ci.org/download/plugins/pipeline-model-definition/1.0.1/pipeline-model-definition.hpi",
+      "version": "1.0.1",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Model+Definition+Plugin"
     },
     "pipeline-multibranch-defaults": {
@@ -31831,7 +32103,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Multibranch+Defaults+Plugin"
     },
     "pipeline-npm": {
-      "buildDate": "Jan 30, 2017",
+      "buildDate": "Feb 10, 2017",
       "dependencies": [
         {
           "name": "workflow-step-api",
@@ -31852,24 +32124,36 @@
         }
       ],
       "excerpt": "Allows pipelines to configure an NPM environment via managed npmrc files",
-      "gav": "org.jenkins-ci.plugins:pipeline-npm:0.9.0",
+      "gav": "org.jenkins-ci.plugins:pipeline-npm:0.9.1",
       "labels": [
         "pipeline",
         "npm"
       ],
       "name": "pipeline-npm",
-      "releaseTimestamp": "2017-01-30T09:53:18.00Z",
+      "previousTimestamp": "2017-01-30T09:53:18.00Z",
+      "previousVersion": "0.9.0",
+      "releaseTimestamp": "2017-02-10T16:23:04.00Z",
       "requiredCore": "1.642.4",
       "scm": "github.com",
-      "sha1": "DalA60NLksbprgu7CIk9goeNGN0=",
+      "sha1": "bZnaPmRGQt2ThM+7IoqBsMW4QSE=",
       "title": "Pipeline NPM Integration Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/pipeline-npm/0.9.0/pipeline-npm.hpi",
-      "version": "0.9.0",
+      "url": "http://updates.jenkins-ci.org/download/plugins/pipeline-npm/0.9.1/pipeline-npm.hpi",
+      "version": "0.9.1",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+NPM+Plugin"
     },
     "pipeline-rest-api": {
-      "buildDate": "Nov 29, 2016",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
+        {
+          "name": "workflow-api",
+          "optional": false,
+          "version": "2.4"
+        },
+        {
+          "name": "workflow-support",
+          "optional": false,
+          "version": "2.1"
+        },
         {
           "name": "workflow-job",
           "optional": false,
@@ -31886,24 +32170,14 @@
           "version": "2.0"
         },
         {
-          "name": "pipeline-stage-step",
-          "optional": false,
-          "version": "2.2"
-        },
-        {
-          "name": "workflow-support",
-          "optional": false,
-          "version": "2.1"
-        },
-        {
-          "name": "workflow-api",
-          "optional": false,
-          "version": "2.4"
-        },
-        {
           "name": "workflow-step-api",
           "optional": false,
           "version": "2.1"
+        },
+        {
+          "name": "pipeline-stage-step",
+          "optional": false,
+          "version": "2.2"
         }
       ],
       "developers": [
@@ -31912,20 +32186,20 @@
         }
       ],
       "excerpt": "Provides a REST API to access pipeline and pipeline run data",
-      "gav": "org.jenkins-ci.plugins.pipeline-stage-view:pipeline-rest-api:2.4",
+      "gav": "org.jenkins-ci.plugins.pipeline-stage-view:pipeline-rest-api:2.5",
       "labels": [
         "ui"
       ],
       "name": "pipeline-rest-api",
-      "previousTimestamp": "2016-11-22T11:20:56.00Z",
-      "previousVersion": "2.3",
-      "releaseTimestamp": "2016-11-29T15:39:24.00Z",
+      "previousTimestamp": "2016-11-29T15:39:24.00Z",
+      "previousVersion": "2.4",
+      "releaseTimestamp": "2017-02-13T18:38:42.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "fEMlC9ZrY1XFiWG3LZWiqU0zMSw=",
+      "sha1": "VwIdV40SWGSK/lKmFuv4OoSR+UY=",
       "title": "Pipeline: REST API Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/pipeline-rest-api/2.4/pipeline-rest-api.hpi",
-      "version": "2.4",
+      "url": "http://updates.jenkins-ci.org/download/plugins/pipeline-rest-api/2.5/pipeline-rest-api.hpi",
+      "version": "2.5",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Stage+View+Plugin"
     },
     "pipeline-stage-step": {
@@ -31966,7 +32240,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Stage+Step+Plugin"
     },
     "pipeline-stage-tags-metadata": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 10, 2017",
       "dependencies": [],
       "developers": [
         {
@@ -31975,25 +32249,25 @@
         }
       ],
       "excerpt": "Declarative Jenkins Pipelines",
-      "gav": "org.jenkinsci.plugins:pipeline-stage-tags-metadata:1.0",
+      "gav": "org.jenkinsci.plugins:pipeline-stage-tags-metadata:1.0.1",
       "labels": [
         "pipeline",
         "misc"
       ],
       "name": "pipeline-stage-tags-metadata",
-      "previousTimestamp": "2017-01-27T09:17:10.00Z",
-      "previousVersion": "0.9.1",
-      "releaseTimestamp": "2017-02-01T06:03:48.00Z",
+      "previousTimestamp": "2017-02-01T06:03:48.00Z",
+      "previousVersion": "1.0",
+      "releaseTimestamp": "2017-02-10T11:38:32.00Z",
       "requiredCore": "2.7.1",
       "scm": "github.com",
-      "sha1": "EKN6rHY+9Gaei2yEaiVSuI88IjE=",
+      "sha1": "ZuyQJ7w2aH8CTGVKrq+Yr9OS2Yg=",
       "title": "Pipeline: Stage Tags Metadata",
-      "url": "http://updates.jenkins-ci.org/download/plugins/pipeline-stage-tags-metadata/1.0/pipeline-stage-tags-metadata.hpi",
-      "version": "1.0",
+      "url": "http://updates.jenkins-ci.org/download/plugins/pipeline-stage-tags-metadata/1.0.1/pipeline-stage-tags-metadata.hpi",
+      "version": "1.0.1",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Model+Definition+Plugin"
     },
     "pipeline-stage-view": {
-      "buildDate": "Nov 29, 2016",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
         {
           "name": "momentjs",
@@ -32001,24 +32275,24 @@
           "version": "1.1"
         },
         {
-          "name": "pipeline-rest-api",
-          "optional": false,
-          "version": "2.4"
-        },
-        {
           "name": "handlebars",
           "optional": false,
           "version": "1.1"
         },
         {
-          "name": "jquery-detached",
+          "name": "pipeline-rest-api",
           "optional": false,
-          "version": "1.2.1"
+          "version": "2.5"
         },
         {
           "name": "workflow-job",
           "optional": false,
           "version": "2.0"
+        },
+        {
+          "name": "jquery-detached",
+          "optional": false,
+          "version": "1.2.1"
         }
       ],
       "developers": [
@@ -32027,20 +32301,20 @@
         }
       ],
       "excerpt": "Provides a swimlane view of the different stages in a pipeline.",
-      "gav": "org.jenkins-ci.plugins.pipeline-stage-view:pipeline-stage-view:2.4",
+      "gav": "org.jenkins-ci.plugins.pipeline-stage-view:pipeline-stage-view:2.5",
       "labels": [
         "ui"
       ],
       "name": "pipeline-stage-view",
-      "previousTimestamp": "2016-11-22T11:22:10.00Z",
-      "previousVersion": "2.3",
-      "releaseTimestamp": "2016-11-29T15:40:16.00Z",
+      "previousTimestamp": "2016-11-29T15:40:16.00Z",
+      "previousVersion": "2.4",
+      "releaseTimestamp": "2017-02-13T18:39:36.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "0hn6iGRy68UwagipHN7jh5akRJ0=",
+      "sha1": "keMEiockyZIoi2zjkzmk4SdTTk0=",
       "title": "Pipeline: Stage View Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/pipeline-stage-view/2.4/pipeline-stage-view.hpi",
-      "version": "2.4",
+      "url": "http://updates.jenkins-ci.org/download/plugins/pipeline-stage-view/2.5/pipeline-stage-view.hpi",
+      "version": "2.5",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Stage+View+Plugin"
     },
     "pipeline-utility-steps": {
@@ -33189,7 +33463,7 @@
           "name": "Ville Alatalo"
         }
       ],
-      "excerpt": "This plugin allows Jenkins builds to scan the resulting build artifacts with Synopsys Protecode SC static analysis tool.  More information of Synopsys Protecode SC is available from http://www.synopsys.com/software/protecode/Pages/default.aspx  ",
+      "excerpt": "This plugin allows Jenkins builds to scan the resulting build artifacts with Synopsys Protecode SC static analysis tool.  More information of Synopsys Protecode SC is available from [http://www.synopsys.com/software/protecode/Pages/default.aspx] ",
       "gav": "com.synopsys:protecode-sc:0.10",
       "labels": [
         "report"
@@ -33386,7 +33660,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Publish+Over+FTP+Plugin"
     },
     "publish-over-ssh": {
-      "buildDate": "Mar 24, 2016",
+      "buildDate": "Feb 04, 2017",
       "compatibleSinceVersion": "0.3",
       "dependencies": [],
       "developers": [
@@ -33397,25 +33671,25 @@
         }
       ],
       "excerpt": "Publish files and/or execute commands over SSH (SCP using SFTP) ",
-      "gav": "org.jenkins-ci.plugins:publish-over-ssh:1.14",
+      "gav": "org.jenkins-ci.plugins:publish-over-ssh:1.17",
       "labels": [
         "upload",
         "builder"
       ],
       "name": "publish-over-ssh",
-      "previousTimestamp": "2015-05-19T20:51:46.00Z",
-      "previousVersion": "1.13",
-      "releaseTimestamp": "2016-03-24T22:48:26.00Z",
-      "requiredCore": "1.554.3",
+      "previousTimestamp": "2016-03-24T22:48:26.00Z",
+      "previousVersion": "1.14",
+      "releaseTimestamp": "2017-02-04T05:12:00.00Z",
+      "requiredCore": "1.580.1",
       "scm": "github.com",
-      "sha1": "XG249OojGRYTN6EVz77wjR2lydw=",
+      "sha1": "1lXjMgjP8DJ10vciFr8E7KaUEJU=",
       "title": "Publish Over SSH",
-      "url": "http://updates.jenkins-ci.org/download/plugins/publish-over-ssh/1.14/publish-over-ssh.hpi",
-      "version": "1.14",
+      "url": "http://updates.jenkins-ci.org/download/plugins/publish-over-ssh/1.17/publish-over-ssh.hpi",
+      "version": "1.17",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Publish+Over+SSH+Plugin"
     },
     "pubsub-light": {
-      "buildDate": "Jan 26, 2017",
+      "buildDate": "Feb 08, 2017",
       "dependencies": [],
       "developers": [
         {
@@ -33423,18 +33697,18 @@
         }
       ],
       "excerpt": "PubSub Light Plugin",
-      "gav": "org.jenkins-ci.plugins:pubsub-light:1.6",
+      "gav": "org.jenkins-ci.plugins:pubsub-light:1.7",
       "labels": [],
       "name": "pubsub-light",
-      "previousTimestamp": "2017-01-26T09:58:20.00Z",
-      "previousVersion": "1.5",
-      "releaseTimestamp": "2017-01-26T18:11:22.00Z",
+      "previousTimestamp": "2017-01-26T18:11:22.00Z",
+      "previousVersion": "1.6",
+      "releaseTimestamp": "2017-02-08T21:38:34.00Z",
       "requiredCore": "2.0",
       "scm": "github.com",
-      "sha1": "YOHKX/1OTd/aGHkNCrCNr+GyCsE=",
+      "sha1": "tMSFrHkfWwHy2QNm0IWEbSnXYws=",
       "title": "Jenkins Pub-Sub \"light\" Bus",
-      "url": "http://updates.jenkins-ci.org/download/plugins/pubsub-light/1.6/pubsub-light.hpi",
-      "version": "1.6",
+      "url": "http://updates.jenkins-ci.org/download/plugins/pubsub-light/1.7/pubsub-light.hpi",
+      "version": "1.7",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/PubSub+Light+Plugin"
     },
     "puppet": {
@@ -35227,7 +35501,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Robot+Framework+Plugin"
     },
     "rocketchatnotifier": {
-      "buildDate": "Jan 26, 2017",
+      "buildDate": "Feb 10, 2017",
       "compatibleSinceVersion": "2.0",
       "dependencies": [
         {
@@ -35249,20 +35523,20 @@
         }
       ],
       "excerpt": "Allows users to send build notifications via <a href='https://rocket.chat'>RocketChat</a>",
-      "gav": "org.jenkins-ci.plugins:rocketchatnotifier:0.4.5",
+      "gav": "org.jenkins-ci.plugins:rocketchatnotifier:0.5.0",
       "labels": [
         "rocketchatnotifier"
       ],
       "name": "rocketchatnotifier",
-      "previousTimestamp": "2016-12-30T12:12:04.00Z",
-      "previousVersion": "0.4.4",
-      "releaseTimestamp": "2017-01-26T05:14:24.00Z",
+      "previousTimestamp": "2017-01-26T05:14:24.00Z",
+      "previousVersion": "0.4.5",
+      "releaseTimestamp": "2017-02-10T11:41:24.00Z",
       "requiredCore": "1.653",
       "scm": "github.com",
-      "sha1": "bqetNm/5nX48xaAFRWwr3+VdjvY=",
+      "sha1": "l+I779sOLFiZUkLheV8WqkTjpuk=",
       "title": "RocketChat Notifier",
-      "url": "http://updates.jenkins-ci.org/download/plugins/rocketchatnotifier/0.4.5/rocketchatnotifier.hpi",
-      "version": "0.4.5",
+      "url": "http://updates.jenkins-ci.org/download/plugins/rocketchatnotifier/0.5.0/rocketchatnotifier.hpi",
+      "version": "0.5.0",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/RocketChat+Plugin"
     },
     "role-strategy": {
@@ -35421,7 +35695,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Ruby+Plugin"
     },
     "ruby-runtime": {
-      "buildDate": "Aug 11, 2016",
+      "buildDate": "Jul 05, 2013",
       "dependencies": [],
       "developers": [
         {
@@ -35436,22 +35710,22 @@
         }
       ],
       "excerpt": "Provides the Ruby runtime and bindings required to implement <a href='Jenkins plugin development in Ruby'>plugins in Ruby</a>.",
-      "gav": "org.jenkins-ci.plugins:ruby-runtime:0.13",
+      "gav": "org.jenkins-ci.plugins:ruby-runtime:0.12",
       "labels": [],
       "name": "ruby-runtime",
-      "previousTimestamp": "2013-07-05T18:53:46.00Z",
-      "previousVersion": "0.12",
-      "releaseTimestamp": "2016-08-11T09:13:24.00Z",
-      "requiredCore": "1.609.1",
+      "previousTimestamp": "2013-06-25T15:05:16.00Z",
+      "previousVersion": "0.11",
+      "releaseTimestamp": "2013-07-05T18:53:46.00Z",
+      "requiredCore": "1.509.2",
       "scm": "github.com",
-      "sha1": "xkRwZUf7TlB6WXoWAOMvwD0sHiM=",
+      "sha1": "x2DYA56Ag+RD8STv5dzIMXxwMFU=",
       "title": "Ruby Runtime Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/ruby-runtime/0.13/ruby-runtime.hpi",
-      "version": "0.13",
+      "url": "http://updates.jenkins-ci.org/download/plugins/ruby-runtime/0.12/ruby-runtime.hpi",
+      "version": "0.12",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Ruby+Runtime+Plugin"
     },
     "rubyMetrics": {
-      "buildDate": "Sep 29, 2016",
+      "buildDate": "Feb 07, 2017",
       "compatibleSinceVersion": "4.0",
       "dependencies": [
         {
@@ -35473,21 +35747,21 @@
         }
       ],
       "excerpt": "Ruby metric reports for Jenkins. <a href='http://eigenclass.org/hiki.rb?rcov'>Rcov</a>, Rails stats, Rails notes and <a href='http://ruby.sadi.st/Flog.html'>Flog</a>.",
-      "gav": "org.jenkins-ci.plugins:rubyMetrics:1.6.4",
+      "gav": "org.jenkins-ci.plugins:rubyMetrics:1.6.5",
       "labels": [
         "report",
         "ruby"
       ],
       "name": "rubyMetrics",
-      "previousTimestamp": "2014-11-24T00:47:52.00Z",
-      "previousVersion": "1.6.3",
-      "releaseTimestamp": "2016-09-29T15:25:44.00Z",
+      "previousTimestamp": "2016-09-29T15:25:44.00Z",
+      "previousVersion": "1.6.4",
+      "releaseTimestamp": "2017-02-07T00:25:00.00Z",
       "requiredCore": "1.625.3",
       "scm": "github.com",
-      "sha1": "2fynKLwq8qlPRZVsAumn4YFIM80=",
+      "sha1": "i9XeJAlbyq5PZGAFdO4K80XIp+8=",
       "title": "RubyMetrics plugin for Jenkins",
-      "url": "http://updates.jenkins-ci.org/download/plugins/rubyMetrics/1.6.4/rubyMetrics.hpi",
-      "version": "1.6.4",
+      "url": "http://updates.jenkins-ci.org/download/plugins/rubyMetrics/1.6.5/rubyMetrics.hpi",
+      "version": "1.6.5",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/RubyMetrics+plugin"
     },
     "rubymotion": {
@@ -35915,12 +36189,22 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Salesforce+Migration+Assistant+Plugin"
     },
     "saltstack": {
-      "buildDate": "May 06, 2016",
+      "buildDate": "Feb 11, 2017",
       "dependencies": [
         {
           "name": "credentials",
           "optional": false,
-          "version": "1.23"
+          "version": "2.1.8"
+        },
+        {
+          "name": "structs",
+          "optional": false,
+          "version": "1.2"
+        },
+        {
+          "name": "workflow-basic-steps",
+          "optional": false,
+          "version": "1.2"
         }
       ],
       "developers": [
@@ -35931,20 +36215,20 @@
         }
       ],
       "excerpt": "This plugin sends a SaltStack cherrypy API message as a build step",
-      "gav": "org.jenkins-ci.plugins:saltstack:1.7.1",
+      "gav": "org.jenkins-ci.plugins:saltstack:2.0.0",
       "labels": [
         "builder"
       ],
       "name": "saltstack",
-      "previousTimestamp": "2016-02-29T09:20:10.00Z",
-      "previousVersion": "1.7.0",
-      "releaseTimestamp": "2016-05-06T15:05:46.00Z",
-      "requiredCore": "1.580.1",
+      "previousTimestamp": "2016-05-06T15:05:46.00Z",
+      "previousVersion": "1.7.1",
+      "releaseTimestamp": "2017-02-11T02:18:58.00Z",
+      "requiredCore": "1.625.3",
       "scm": "github.com",
-      "sha1": "V8kTNNO2luoof0O9WEEyt5/CWEM=",
+      "sha1": "3FYRXM0AbAbrXPsQH3yzPT8sJCc=",
       "title": "Jenkins SaltStack plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/saltstack/1.7.1/saltstack.hpi",
-      "version": "1.7.1",
+      "url": "http://updates.jenkins-ci.org/download/plugins/saltstack/2.0.0/saltstack.hpi",
+      "version": "2.0.0",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/saltstack-plugin"
     },
     "sametime": {
@@ -36223,7 +36507,8 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Schedule+Build+Plugin"
     },
     "scm-api": {
-      "buildDate": "Sep 07, 2016",
+      "buildDate": "Feb 14, 2017",
+      "compatibleSinceVersion": "2.0.0",
       "dependencies": [],
       "developers": [
         {
@@ -36232,18 +36517,18 @@
         }
       ],
       "excerpt": "This plugin provides a new enhanced API for interacting with SCM systems. ",
-      "gav": "org.jenkins-ci.plugins:scm-api:1.3",
+      "gav": "org.jenkins-ci.plugins:scm-api:2.0.4",
       "labels": [],
       "name": "scm-api",
-      "previousTimestamp": "2016-04-11T21:10:20.00Z",
-      "previousVersion": "1.2",
-      "releaseTimestamp": "2016-09-07T13:59:32.00Z",
+      "previousTimestamp": "2017-02-07T17:29:44.00Z",
+      "previousVersion": "2.0.3",
+      "releaseTimestamp": "2017-02-14T21:31:00.00Z",
       "requiredCore": "1.609.3",
       "scm": "github.com",
-      "sha1": "GSoCVeUDmMHHd4hvIx6GHlvzA1g=",
+      "sha1": "/BaZksOeQnmvnLBwWtYakDwUtMk=",
       "title": "SCM API Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/scm-api/1.3/scm-api.hpi",
-      "version": "1.3",
+      "url": "http://updates.jenkins-ci.org/download/plugins/scm-api/2.0.4/scm-api.hpi",
+      "version": "2.0.4",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/SCM+API+Plugin"
     },
     "scm-sqs": {
@@ -36564,7 +36849,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Script+SCM+Plugin"
     },
     "script-security": {
-      "buildDate": "Jan 03, 2017",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [],
       "developers": [
         {
@@ -36572,20 +36857,20 @@
         }
       ],
       "excerpt": "Allows Jenkins administrators to control what in-process scripts can be run by less-privileged users.",
-      "gav": "org.jenkins-ci.plugins:script-security:1.25",
+      "gav": "org.jenkins-ci.plugins:script-security:1.26",
       "labels": [
         "security"
       ],
       "name": "script-security",
-      "previousTimestamp": "2016-10-20T10:23:26.00Z",
-      "previousVersion": "1.24",
-      "releaseTimestamp": "2017-01-03T11:24:32.00Z",
+      "previousTimestamp": "2017-01-03T11:24:32.00Z",
+      "previousVersion": "1.25",
+      "releaseTimestamp": "2017-02-13T14:47:34.00Z",
       "requiredCore": "1.580.1",
       "scm": "github.com",
-      "sha1": "QiWIqO1elJWsuvIbM8IYKVkg780=",
+      "sha1": "kHYm6xZEn7AUOZR4UsyeEZWD7f0=",
       "title": "Script Security Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/script-security/1.25/script-security.hpi",
-      "version": "1.25",
+      "url": "http://updates.jenkins-ci.org/download/plugins/script-security/1.26/script-security.hpi",
+      "version": "1.26",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Script+Security+Plugin"
     },
     "scripted-cloud-plugin": {
@@ -38963,23 +39248,23 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/SSH+plugin"
     },
     "ssh-agent": {
-      "buildDate": "Jun 20, 2016",
+      "buildDate": "Feb 10, 2017",
       "compatibleSinceVersion": "1.5",
       "dependencies": [
         {
           "name": "workflow-step-api",
           "optional": false,
-          "version": "1.9"
-        },
-        {
-          "name": "credentials",
-          "optional": false,
-          "version": "1.22"
+          "version": "1.14.2"
         },
         {
           "name": "bouncycastle-api",
           "optional": false,
           "version": "1.0.2"
+        },
+        {
+          "name": "credentials",
+          "optional": false,
+          "version": "2.1.1"
         },
         {
           "name": "ssh-credentials",
@@ -38994,18 +39279,18 @@
         }
       ],
       "excerpt": "This plugin allows you to provide SSH credentials to builds via a ssh-agent in Jenkins.",
-      "gav": "org.jenkins-ci.plugins:ssh-agent:1.13",
+      "gav": "org.jenkins-ci.plugins:ssh-agent:1.14",
       "labels": [],
       "name": "ssh-agent",
-      "previousTimestamp": "2016-06-20T13:39:58.00Z",
-      "previousVersion": "1.12",
-      "releaseTimestamp": "2016-06-20T14:06:38.00Z",
+      "previousTimestamp": "2016-06-20T14:06:38.00Z",
+      "previousVersion": "1.13",
+      "releaseTimestamp": "2017-02-10T14:33:38.00Z",
       "requiredCore": "1.609.3",
       "scm": "github.com",
-      "sha1": "GZqMyGiXmum0qU7506qRN5GxdZA=",
+      "sha1": "78ZWE42rk7U6Y8baZi5hpa7Y4L4=",
       "title": "SSH Agent Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/ssh-agent/1.13/ssh-agent.hpi",
-      "version": "1.13",
+      "url": "http://updates.jenkins-ci.org/download/plugins/ssh-agent/1.14/ssh-agent.hpi",
+      "version": "1.14",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/SSH+Agent+Plugin"
     },
     "ssh-credentials": {
@@ -39565,7 +39850,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Strawboss+Plugin"
     },
     "structs": {
-      "buildDate": "Aug 30, 2016",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [],
       "developers": [
         {
@@ -39573,18 +39858,18 @@
         }
       ],
       "excerpt": "Library plugin for DSL plugins that need concise names for Jenkins extensions",
-      "gav": "org.jenkins-ci.plugins:structs:1.5",
+      "gav": "org.jenkins-ci.plugins:structs:1.6",
       "labels": [],
       "name": "structs",
-      "previousTimestamp": "2016-08-26T14:11:44.00Z",
-      "previousVersion": "1.4",
-      "releaseTimestamp": "2016-08-30T14:10:10.00Z",
+      "previousTimestamp": "2016-08-30T14:10:10.00Z",
+      "previousVersion": "1.5",
+      "releaseTimestamp": "2017-02-13T18:11:16.00Z",
       "requiredCore": "1.580.1",
       "scm": "github.com",
-      "sha1": "fK+F0PEfSS//DOqmNJvX2rQYabo=",
+      "sha1": "itYZehxQAQU3aaDbCmTs+NW66mY=",
       "title": "Structs Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/structs/1.5/structs.hpi",
-      "version": "1.5",
+      "url": "http://updates.jenkins-ci.org/download/plugins/structs/1.6/structs.hpi",
+      "version": "1.6",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Structs+plugin"
     },
     "subversion": {
@@ -40070,7 +40355,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/SVN+Publisher"
     },
     "swarm": {
-      "buildDate": "Jul 27, 2016",
+      "buildDate": "Feb 10, 2017",
       "dependencies": [],
       "developers": [
         {
@@ -40079,20 +40364,20 @@
         }
       ],
       "excerpt": "This plugin enables slaves to auto-discover nearby Jenkins master and join it automatically, thereby forming an ad-hoc cluster.",
-      "gav": "org.jenkins-ci.plugins:swarm:2.2",
+      "gav": "org.jenkins-ci.plugins:swarm:3.3",
       "labels": [
         "slaves"
       ],
       "name": "swarm",
-      "previousTimestamp": "2016-05-20T14:43:44.00Z",
-      "previousVersion": "2.1",
-      "releaseTimestamp": "2016-07-27T00:01:14.00Z",
-      "requiredCore": "1.480.3",
+      "previousTimestamp": "2016-07-27T00:01:14.00Z",
+      "previousVersion": "2.2",
+      "releaseTimestamp": "2017-02-10T09:19:38.00Z",
+      "requiredCore": "1.625.3",
       "scm": "github.com",
-      "sha1": "NpZxgGqBqDHFtduystDzZ4zSAkE=",
+      "sha1": "+S0WyEEVSR+XAbA2tFpbwMyP+hM=",
       "title": "Jenkins Self-Organizing Swarm Plug-in Modules",
-      "url": "http://updates.jenkins-ci.org/download/plugins/swarm/2.2/swarm.hpi",
-      "version": "2.2",
+      "url": "http://updates.jenkins-ci.org/download/plugins/swarm/3.3/swarm.hpi",
+      "version": "3.3",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Swarm+Plugin"
     },
     "synergy": {
@@ -42897,12 +43182,12 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Violation+Columns+Plugin"
     },
     "violation-comments-to-github": {
-      "buildDate": "Nov 06, 2016",
+      "buildDate": "Feb 06, 2017",
       "dependencies": [
         {
-          "name": "maven-plugin",
+          "name": "plain-credentials",
           "optional": false,
-          "version": "2.9"
+          "version": "1.2"
         },
         {
           "name": "credentials",
@@ -42910,9 +43195,9 @@
           "version": "2.1.4"
         },
         {
-          "name": "plain-credentials",
+          "name": "maven-plugin",
           "optional": false,
-          "version": "1.2"
+          "version": "2.9"
         }
       ],
       "developers": [
@@ -42923,22 +43208,22 @@
         }
       ],
       "excerpt": "This plugin uses <a href='https://github.com/tomasbjerre/violation-comments-to-github-lib'>Violation Comments to GitHub Lib</a>. It will find report files from static code analysis and comment GitHub pull requests with the content. ",
-      "gav": "org.jenkins-ci.plugins:violation-comments-to-github:1.27",
+      "gav": "org.jenkins-ci.plugins:violation-comments-to-github:1.29",
       "labels": [],
       "name": "violation-comments-to-github",
-      "previousTimestamp": "2016-11-01T20:07:18.00Z",
-      "previousVersion": "1.26",
-      "releaseTimestamp": "2016-11-06T08:13:34.00Z",
+      "previousTimestamp": "2016-11-06T08:13:34.00Z",
+      "previousVersion": "1.27",
+      "releaseTimestamp": "2017-02-06T19:22:36.00Z",
       "requiredCore": "1.609.3",
       "scm": "github.com",
-      "sha1": "TyAJTQI9uSWhnX+sopeZ4A3SxcU=",
+      "sha1": "brbtj35USGSDkLkraygF/Q0cC9s=",
       "title": "Jenkins Violation Comments to GitHub Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/violation-comments-to-github/1.27/violation-comments-to-github.hpi",
-      "version": "1.27",
+      "url": "http://updates.jenkins-ci.org/download/plugins/violation-comments-to-github/1.29/violation-comments-to-github.hpi",
+      "version": "1.29",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Violation+Comments+to+GitHub+Plugin"
     },
     "violation-comments-to-stash": {
-      "buildDate": "Dec 21, 2016",
+      "buildDate": "Feb 06, 2017",
       "dependencies": [
         {
           "name": "credentials",
@@ -42959,7 +43244,7 @@
         }
       ],
       "excerpt": "Analyzes Jenkins workspace to find code analyzer report files, comments Bitbucket Server (or Stash) pull requests with code analyzer comments. ",
-      "gav": "org.jenkins-ci.plugins:violation-comments-to-stash:1.42",
+      "gav": "org.jenkins-ci.plugins:violation-comments-to-stash:1.43",
       "labels": [
         "maven",
         "dotnet",
@@ -42969,15 +43254,15 @@
         "post-build"
       ],
       "name": "violation-comments-to-stash",
-      "previousTimestamp": "2016-12-12T18:17:06.00Z",
-      "previousVersion": "1.37",
-      "releaseTimestamp": "2016-12-21T19:20:14.00Z",
+      "previousTimestamp": "2016-12-21T19:20:14.00Z",
+      "previousVersion": "1.42",
+      "releaseTimestamp": "2017-02-06T19:10:48.00Z",
       "requiredCore": "1.609.3",
       "scm": "github.com",
-      "sha1": "VKDE7t4ns1B9YjG3hAUmE01mWdE=",
+      "sha1": "HM1J2zjss2Sc3eLFozr5GSiYSq0=",
       "title": "Jenkins Violation Comments to Bitbucket Server Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/violation-comments-to-stash/1.42/violation-comments-to-stash.hpi",
-      "version": "1.42",
+      "url": "http://updates.jenkins-ci.org/download/plugins/violation-comments-to-stash/1.43/violation-comments-to-stash.hpi",
+      "version": "1.43",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Violation+Comments+to+Bitbucket+Server+Plugin"
     },
     "violations": {
@@ -44180,48 +44465,53 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin"
     },
     "workflow-api": {
-      "buildDate": "Dec 01, 2016",
+      "buildDate": "Feb 14, 2017",
       "dependencies": [
         {
           "name": "workflow-step-api",
           "optional": false,
-          "version": "1.15"
+          "version": "2.7"
+        },
+        {
+          "name": "scm-api",
+          "optional": false,
+          "version": "1.3"
         }
       ],
       "developers": [
         {
-          "developerId": "svanoort"
+          "developerId": "jglick"
         }
       ],
       "excerpt": "Plugin that defines Pipeline API.",
-      "gav": "org.jenkins-ci.plugins.workflow:workflow-api:2.8",
+      "gav": "org.jenkins-ci.plugins.workflow:workflow-api:2.11",
       "labels": [
         "misc"
       ],
       "name": "workflow-api",
-      "previousTimestamp": "2016-11-29T11:51:02.00Z",
-      "previousVersion": "2.7",
-      "releaseTimestamp": "2016-12-01T10:19:40.00Z",
+      "previousTimestamp": "2017-02-07T13:50:02.00Z",
+      "previousVersion": "2.10",
+      "releaseTimestamp": "2017-02-14T16:54:06.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "3gZrIjz/AFgJDQc/T+OGzY+o9ns=",
+      "sha1": "OxXovsgsugpMGfUKQ+rAZYIANIA=",
       "title": "Pipeline: API",
-      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-api/2.8/workflow-api.hpi",
-      "version": "2.8",
+      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-api/2.11/workflow-api.hpi",
+      "version": "2.11",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+API+Plugin"
     },
     "workflow-basic-steps": {
-      "buildDate": "Nov 01, 2016",
+      "buildDate": "Feb 10, 2017",
       "dependencies": [
         {
           "name": "workflow-api",
           "optional": false,
-          "version": "2.4"
+          "version": "2.8"
         },
         {
           "name": "workflow-step-api",
           "optional": false,
-          "version": "2.3"
+          "version": "2.9"
         },
         {
           "name": "mailer",
@@ -44231,7 +44521,7 @@
         {
           "name": "structs",
           "optional": false,
-          "version": "1.4"
+          "version": "1.5"
         }
       ],
       "developers": [
@@ -44240,31 +44530,31 @@
         }
       ],
       "excerpt": "Commonly used steps for Pipelines.",
-      "gav": "org.jenkins-ci.plugins.workflow:workflow-basic-steps:2.3",
+      "gav": "org.jenkins-ci.plugins.workflow:workflow-basic-steps:2.4",
       "labels": [
         "pipeline",
         "misc"
       ],
       "name": "workflow-basic-steps",
-      "previousTimestamp": "2016-09-23T16:37:34.00Z",
-      "previousVersion": "2.2",
-      "releaseTimestamp": "2016-11-01T14:42:18.00Z",
+      "previousTimestamp": "2016-11-01T14:42:18.00Z",
+      "previousVersion": "2.3",
+      "releaseTimestamp": "2017-02-10T13:39:08.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "J5BFS2kNlL/UeuAz0celbDo2u50=",
+      "sha1": "iXjJBHByzfB8dOruNEjlq4PQayQ=",
       "title": "Pipeline: Basic Steps",
-      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-basic-steps/2.3/workflow-basic-steps.hpi",
-      "version": "2.3",
+      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-basic-steps/2.4/workflow-basic-steps.hpi",
+      "version": "2.4",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Basic+Steps+Plugin"
     },
     "workflow-cps": {
-      "buildDate": "Feb 01, 2017",
+      "buildDate": "Feb 13, 2017",
       "compatibleSinceVersion": "2.18",
       "dependencies": [
         {
           "name": "workflow-api",
           "optional": false,
-          "version": "2.6"
+          "version": "2.10"
         },
         {
           "name": "workflow-scm-step",
@@ -44279,7 +44569,7 @@
         {
           "name": "workflow-support",
           "optional": false,
-          "version": "2.11"
+          "version": "2.13"
         },
         {
           "name": "scm-api",
@@ -44318,29 +44608,29 @@
         }
       ],
       "excerpt": "Pipeline execution engine based on continuation passing style transformation of Groovy scripts.",
-      "gav": "org.jenkins-ci.plugins.workflow:workflow-cps:2.25",
+      "gav": "org.jenkins-ci.plugins.workflow:workflow-cps:2.27",
       "labels": [
         "misc"
       ],
       "name": "workflow-cps",
-      "previousTimestamp": "2017-01-17T14:24:26.00Z",
-      "previousVersion": "2.24",
-      "releaseTimestamp": "2017-02-01T16:57:32.00Z",
+      "previousTimestamp": "2017-02-07T14:06:32.00Z",
+      "previousVersion": "2.26",
+      "releaseTimestamp": "2017-02-13T17:37:14.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "IsI02dYnL736wQwrVmtpmiL4KAQ=",
+      "sha1": "mikjcD7NK7rbFHNQM3NHltZGyGY=",
       "title": "Pipeline: Groovy",
-      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-cps/2.25/workflow-cps.hpi",
-      "version": "2.25",
+      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-cps/2.27/workflow-cps.hpi",
+      "version": "2.27",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Groovy+Plugin"
     },
     "workflow-cps-global-lib": {
-      "buildDate": "Nov 21, 2016",
+      "buildDate": "Feb 10, 2017",
       "dependencies": [
         {
           "name": "workflow-cps",
           "optional": false,
-          "version": "2.23"
+          "version": "2.25"
         },
         {
           "name": "workflow-scm-step",
@@ -44374,30 +44664,25 @@
         }
       ],
       "excerpt": "Shared libraries for Pipeline scripts.",
-      "gav": "org.jenkins-ci.plugins.workflow:workflow-cps-global-lib:2.5",
+      "gav": "org.jenkins-ci.plugins.workflow:workflow-cps-global-lib:2.6",
       "labels": [
         "misc"
       ],
       "name": "workflow-cps-global-lib",
-      "previousTimestamp": "2016-10-05T11:05:02.00Z",
-      "previousVersion": "2.4",
-      "releaseTimestamp": "2016-11-21T17:19:26.00Z",
+      "previousTimestamp": "2016-11-21T17:19:26.00Z",
+      "previousVersion": "2.5",
+      "releaseTimestamp": "2017-02-10T16:09:24.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "izyKInIe9XQAmXfJsZHG8Ip7Pxg=",
+      "sha1": "QO5AR8ZBDNXivnPg9joNXGXwgRQ=",
       "title": "Pipeline: Shared Groovy Libraries",
-      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-cps-global-lib/2.5/workflow-cps-global-lib.hpi",
-      "version": "2.5",
+      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-cps-global-lib/2.6/workflow-cps-global-lib.hpi",
+      "version": "2.6",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Shared+Groovy+Libraries+Plugin"
     },
     "workflow-durable-task-step": {
-      "buildDate": "Jan 13, 2017",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
-        {
-          "name": "workflow-support",
-          "optional": false,
-          "version": "2.12"
-        },
         {
           "name": "workflow-api",
           "optional": false,
@@ -44409,14 +44694,19 @@
           "version": "2.7"
         },
         {
-          "name": "script-security",
+          "name": "workflow-support",
           "optional": false,
-          "version": "1.25"
+          "version": "2.13"
         },
         {
           "name": "durable-task",
           "optional": false,
-          "version": "1.12"
+          "version": "1.13"
+        },
+        {
+          "name": "script-security",
+          "optional": false,
+          "version": "1.25"
         }
       ],
       "developers": [
@@ -44425,26 +44715,31 @@
         }
       ],
       "excerpt": "Pipeline steps locking agents and workspaces, and running external processes that may survive a Jenkins restart or slave reconnection.",
-      "gav": "org.jenkins-ci.plugins.workflow:workflow-durable-task-step:2.8",
+      "gav": "org.jenkins-ci.plugins.workflow:workflow-durable-task-step:2.9",
       "labels": [
         "pipeline",
         "misc"
       ],
       "name": "workflow-durable-task-step",
-      "previousTimestamp": "2017-01-10T15:56:54.00Z",
-      "previousVersion": "2.7",
-      "releaseTimestamp": "2017-01-13T13:34:46.00Z",
+      "previousTimestamp": "2017-01-13T13:34:46.00Z",
+      "previousVersion": "2.8",
+      "releaseTimestamp": "2017-02-13T17:09:36.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "fNSIcxIj1V2PrpXh/5pGrh+Ts1o=",
+      "sha1": "tL5+sOY1m30ZX1fjBwqG/d6uwtc=",
       "title": "Pipeline: Nodes and Processes",
-      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-durable-task-step/2.8/workflow-durable-task-step.hpi",
-      "version": "2.8",
+      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-durable-task-step/2.9/workflow-durable-task-step.hpi",
+      "version": "2.9",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Nodes+and+Processes+Plugin"
     },
     "workflow-job": {
-      "buildDate": "Nov 10, 2016",
+      "buildDate": "Feb 10, 2017",
       "dependencies": [
+        {
+          "name": "workflow-step-api",
+          "optional": false,
+          "version": "2.9"
+        },
         {
           "name": "workflow-support",
           "optional": false,
@@ -44457,29 +44752,39 @@
         }
       ],
       "excerpt": "Defines a new job type for pipelines and provides their generic user interface.",
-      "gav": "org.jenkins-ci.plugins.workflow:workflow-job:2.9",
+      "gav": "org.jenkins-ci.plugins.workflow:workflow-job:2.10",
       "labels": [
         "misc"
       ],
       "name": "workflow-job",
-      "previousTimestamp": "2016-10-24T16:19:02.00Z",
-      "previousVersion": "2.8",
-      "releaseTimestamp": "2016-11-10T12:39:10.00Z",
+      "previousTimestamp": "2016-11-10T12:39:10.00Z",
+      "previousVersion": "2.9",
+      "releaseTimestamp": "2017-02-10T11:55:14.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "OH+ItuSn8lUo0PkVL1MtA9IyYUs=",
+      "sha1": "NLkUkIJ7V/0vQlauGc5P/wBAT78=",
       "title": "Pipeline: Job",
-      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-job/2.9/workflow-job.hpi",
-      "version": "2.9",
+      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-job/2.10/workflow-job.hpi",
+      "version": "2.10",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Job+Plugin"
     },
     "workflow-multibranch": {
-      "buildDate": "Nov 09, 2016",
+      "buildDate": "Feb 02, 2017",
       "dependencies": [
         {
-          "name": "branch-api",
+          "name": "workflow-api",
           "optional": false,
-          "version": "1.11"
+          "version": "2.3"
+        },
+        {
+          "name": "workflow-cps",
+          "optional": false,
+          "version": "2.19"
+        },
+        {
+          "name": "workflow-job",
+          "optional": false,
+          "version": "2.7"
         },
         {
           "name": "workflow-scm-step",
@@ -44487,61 +44792,56 @@
           "version": "2.2"
         },
         {
-          "name": "script-security",
+          "name": "workflow-step-api",
           "optional": false,
-          "version": "1.23"
+          "version": "2.7"
         },
         {
-          "name": "workflow-api",
+          "name": "branch-api",
           "optional": false,
-          "version": "2.3"
-        },
-        {
-          "name": "scm-api",
-          "optional": false,
-          "version": "1.3"
+          "version": "2.0.2"
         },
         {
           "name": "cloudbees-folder",
           "optional": false,
-          "version": "5.12"
+          "version": "5.17"
         },
         {
-          "name": "workflow-job",
+          "name": "scm-api",
           "optional": false,
-          "version": "2.6"
+          "version": "2.0.2"
         },
         {
-          "name": "workflow-cps",
+          "name": "script-security",
           "optional": false,
-          "version": "2.17"
+          "version": "1.23"
         }
       ],
       "developers": [
         {
-          "developerId": "jglick"
+          "developerId": "stephenc"
         }
       ],
       "excerpt": "Enhances Pipeline plugin to handle branches better by automatically grouping builds from different branches.",
-      "gav": "org.jenkins-ci.plugins.workflow:workflow-multibranch:2.9.2",
+      "gav": "org.jenkins-ci.plugins.workflow:workflow-multibranch:2.12",
       "labels": [
         "misc",
         "scm-related"
       ],
       "name": "workflow-multibranch",
-      "previousTimestamp": "2016-11-09T15:18:46.00Z",
-      "previousVersion": "2.9.1",
-      "releaseTimestamp": "2016-11-09T21:23:20.00Z",
+      "previousTimestamp": "2017-02-02T10:39:58.00Z",
+      "previousVersion": "2.11",
+      "releaseTimestamp": "2017-02-02T18:13:12.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "ktwsV6xVx+Nhx07E2L6brWExqag=",
+      "sha1": "iJGWjIFP/w8GWDiTUaC0E5HFBjI=",
       "title": "Pipeline: Multibranch",
-      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-multibranch/2.9.2/workflow-multibranch.hpi",
-      "version": "2.9.2",
+      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-multibranch/2.12/workflow-multibranch.hpi",
+      "version": "2.12",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Multibranch+Plugin"
     },
     "workflow-remote-loader": {
-      "buildDate": "Sep 10, 2016",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
         {
           "name": "workflow-aggregator",
@@ -44554,21 +44854,25 @@
           "developerId": "oleg_nenashev",
           "email": "o.v.nenashev@gmail.com",
           "name": "Oleg Nenashev"
+        },
+        {
+          "developerId": "escoem",
+          "name": "Emilio Escobar"
         }
       ],
       "excerpt": "Allows loading <a href='https://github.com/jenkinsci/workflow-plugin'>Pipeline</a> scripts from remote locations (enhanced version of the built-in load command) ",
-      "gav": "org.jenkins-ci.plugins:workflow-remote-loader:1.3",
+      "gav": "org.jenkins-ci.plugins:workflow-remote-loader:1.4",
       "labels": [],
       "name": "workflow-remote-loader",
-      "previousTimestamp": "2016-05-09T12:59:42.00Z",
-      "previousVersion": "1.2",
-      "releaseTimestamp": "2016-09-10T00:08:28.00Z",
+      "previousTimestamp": "2016-09-10T00:08:28.00Z",
+      "previousVersion": "1.3",
+      "releaseTimestamp": "2017-02-13T12:15:52.00Z",
       "requiredCore": "1.609.1",
       "scm": "github.com",
-      "sha1": "jB4mYFcZG12DN2vj12f/8dmMj/s=",
+      "sha1": "gleTx4JYiXQXhukViSDyRnqnp5A=",
       "title": "Jenkins Pipeline Remote Loader Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-remote-loader/1.3/workflow-remote-loader.hpi",
-      "version": "1.3",
+      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-remote-loader/1.4/workflow-remote-loader.hpi",
+      "version": "1.4",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Remote+Loader+Plugin"
     },
     "workflow-scm-step": {
@@ -44604,7 +44908,7 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+SCM+Step+Plugin"
     },
     "workflow-step-api": {
-      "buildDate": "Feb 02, 2017",
+      "buildDate": "Feb 08, 2017",
       "dependencies": [
         {
           "name": "structs",
@@ -44614,28 +44918,28 @@
       ],
       "developers": [
         {
-          "developerId": "svanoort"
+          "developerId": "jglick"
         }
       ],
       "excerpt": "API for asynchronous build step primitive.",
-      "gav": "org.jenkins-ci.plugins.workflow:workflow-step-api:2.8",
+      "gav": "org.jenkins-ci.plugins.workflow:workflow-step-api:2.9",
       "labels": [
         "misc"
       ],
       "name": "workflow-step-api",
-      "previousTimestamp": "2017-01-10T15:26:44.00Z",
-      "previousVersion": "2.7",
-      "releaseTimestamp": "2017-02-02T10:38:20.00Z",
+      "previousTimestamp": "2017-02-02T10:38:20.00Z",
+      "previousVersion": "2.8",
+      "releaseTimestamp": "2017-02-08T10:05:24.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "6xvm1M3ZkI93xqckb1luY8HHK0A=",
+      "sha1": "GPlqPt5O7BRGCuAU+5ZnrhBTshU=",
       "title": "Pipeline: Step API",
-      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-step-api/2.8/workflow-step-api.hpi",
-      "version": "2.8",
+      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-step-api/2.9/workflow-step-api.hpi",
+      "version": "2.9",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Step+API+Plugin"
     },
     "workflow-support": {
-      "buildDate": "Jan 10, 2017",
+      "buildDate": "Feb 13, 2017",
       "dependencies": [
         {
           "name": "workflow-api",
@@ -44659,20 +44963,20 @@
         }
       ],
       "excerpt": "Common utility implementations to build Pipeline Plugin",
-      "gav": "org.jenkins-ci.plugins.workflow:workflow-support:2.12",
+      "gav": "org.jenkins-ci.plugins.workflow:workflow-support:2.13",
       "labels": [
         "misc"
       ],
       "name": "workflow-support",
-      "previousTimestamp": "2016-11-11T13:14:26.00Z",
-      "previousVersion": "2.11",
-      "releaseTimestamp": "2017-01-10T15:36:06.00Z",
+      "previousTimestamp": "2017-01-10T15:36:06.00Z",
+      "previousVersion": "2.12",
+      "releaseTimestamp": "2017-02-13T09:05:24.00Z",
       "requiredCore": "1.642.3",
       "scm": "github.com",
-      "sha1": "4aNBtdhvS3CMDfa30gNLcDn5hPI=",
+      "sha1": "/OimnTnpaDbw3DU1hKd2W+UcQSc=",
       "title": "Pipeline: Supporting APIs",
-      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-support/2.12/workflow-support.hpi",
-      "version": "2.12",
+      "url": "http://updates.jenkins-ci.org/download/plugins/workflow-support/2.13/workflow-support.hpi",
+      "version": "2.13",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Supporting+APIs+Plugin"
     },
     "workplace-notifier": {
@@ -45357,12 +45661,12 @@
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Yandex+Metrica+Plugin"
     },
     "yet-another-docker-plugin": {
-      "buildDate": "Nov 24, 2016",
+      "buildDate": "Feb 10, 2017",
       "dependencies": [
         {
-          "name": "icon-shim",
+          "name": "ssh-slaves",
           "optional": false,
-          "version": "1.0.3"
+          "version": "1.10"
         },
         {
           "name": "credentials",
@@ -45370,14 +45674,14 @@
           "version": "2.1.3"
         },
         {
-          "name": "jucies",
+          "name": "ssh-credentials",
           "optional": true,
-          "version": "0.2.0"
+          "version": "1.11"
         },
         {
-          "name": "ssh-slaves",
+          "name": "cloud-stats",
           "optional": false,
-          "version": "1.10"
+          "version": "0.5"
         },
         {
           "name": "docker-commons",
@@ -45385,14 +45689,19 @@
           "version": "1.3.1"
         },
         {
-          "name": "ssh-credentials",
-          "optional": true,
-          "version": "1.11"
+          "name": "icon-shim",
+          "optional": false,
+          "version": "1.0.3"
         },
         {
           "name": "durable-task",
           "optional": false,
           "version": "1.3"
+        },
+        {
+          "name": "jucies",
+          "optional": true,
+          "version": "0.2.0"
         }
       ],
       "developers": [
@@ -45402,22 +45711,22 @@
         }
       ],
       "excerpt": "Allows to run Docker Jenkins Cloud Slaves.",
-      "gav": "com.github.kostyasha.yet-another-docker:yet-another-docker-plugin:0.1.0-rc30",
+      "gav": "com.github.kostyasha.yet-another-docker:yet-another-docker-plugin:0.1.0-rc31",
       "labels": [
         "cluster",
         "cloud",
         "slaves"
       ],
       "name": "yet-another-docker-plugin",
-      "previousTimestamp": "2016-11-05T02:12:26.00Z",
-      "previousVersion": "0.1.0-rc29",
-      "releaseTimestamp": "2016-11-24T21:03:56.00Z",
+      "previousTimestamp": "2016-11-24T21:03:56.00Z",
+      "previousVersion": "0.1.0-rc30",
+      "releaseTimestamp": "2017-02-10T04:30:04.00Z",
       "requiredCore": "1.625.3",
       "scm": "github.com",
-      "sha1": "+7U5TPSPYrgOvq5oyFPcO20D20k=",
+      "sha1": "S2BIZKPXv0AJMsFdUuVV0kT6T80=",
       "title": "Yet Another Docker Plugin",
-      "url": "http://updates.jenkins-ci.org/download/plugins/yet-another-docker-plugin/0.1.0-rc30/yet-another-docker-plugin.hpi",
-      "version": "0.1.0-rc30",
+      "url": "http://updates.jenkins-ci.org/download/plugins/yet-another-docker-plugin/0.1.0-rc31/yet-another-docker-plugin.hpi",
+      "version": "0.1.0-rc31",
       "wiki": "https://wiki.jenkins-ci.org/display/JENKINS/Yet+Another+Docker+Plugin"
     },
     "youtrack-plugin": {
@@ -45701,10 +46010,10 @@
     "certificates": [
       "MIIC3TCCAcUCBQDerb74MA0GCSqGSIb3DQEBCwUAMIGKMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTERMA8GA1UEBxMIU2FuIEpvc2UxGDAWBgNVBAoTD0plbmtpbnMgUHJvamVjdDEaMBgGA1UEAxMRS29oc3VrZSBLYXdhZ3VjaGkxHTAbBgkqhkiG9w0BCQEWDmtrQGtvaHN1a2Uub3JnMB4XDTE3MDEwNjAwMDEyNFoXDTE4MDEwNjAwMDEyNFowXjELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExGDAWBgNVBAoTD0plbmtpbnMgUHJvamVjdDEgMB4GA1UEAxMXQ29tbXVuaXR5IFVwZGF0ZSBDZW50ZXIwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKTDDxjInVBgniu4TpRQoI29ci8lwzXsPX4anFI+1LiPsPk2RmIg05WEohD6RCzldgiNtaPGujyeR/+xXYd8Gev3Abm1OjlN6bZbzZHAX8FoDr4PJJWftq0LDg+YVki1p8eF65ByoHIVHmNeE7NH09kAnbT4w2DNGstwHcFO90RbAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAJrDKF0DViGn1eKILYI7p4yzHyCmT+x2ToqAXIsOBAbq9l7Xm7woG5AQ8jF9369IsGpMOVlHNFd/Gi1L9JN48Sz1KAADMOI+sWp5pGbP6J+6LTgTA0m/oPpVL9rmaRwMd3fdHjRFXiG9LMoQ+5XqIhNrWJsupGX9eMT4sECyP0gikywYGMPKYu9pnUttVsfTJ564rk3+cz4YGDHQBdg3MrohuuG1k4Q4GXqUv3EhBZrVRCI+8cnjaeJooEMgAiGxj/s5bsDPgj9MZWyQuZSoboZRDZOf6NXFlUSt6kk1qZ2A8+oli6cUMpEsUNQs5OZOwITwfis5vrLa8m9mr3xdKdk="
     ],
-    "correct_digest": "lCCGpjBN972GTjuDgE+HnUC0EMQ=",
-    "correct_signature": "AQBi5DYesuPmx1snD20Dtt9udWNHMrcsn4BD0GZgtoXnLadPsFCTV04SaGmm4rOwaLFcmhlQx2xPcTAXhivCivhdolNNii3Z62hbN0Vj4Vp5yuEP6V4C4XDJWkqXN+orID+nWOxdSihkzl1HcQFunxhPTahgzu8jALISkzP8Dq0=",
-    "digest": "ANycSSmsB1yLGqFlmwnqj+5VzC4=",
-    "signature": "npVYd+qtA1+vNXmvbJpVhxLT5IZD0EKP7Dboymj/MPB/Eusl6dLw8w2LD9w0ZuotgADc+aULah9pUpxWQTET6GCNgYlLxJYxgHO+1u3YRB2LqDEwGYvy3wamD7D7Xq+jLsaIfCl0RdcGiXRjTP7I8W9M9DJDCYgyy2DQqLLUe3E="
+    "correct_digest": "vS2eEbIHwsxSXxSBuSkd0AN1hd4=",
+    "correct_signature": "XspWc+Qb7QkfI0BZF8YZtm2nZSywDms8MXanYOuqJIc1GPIuzsflcm0GFBgR+3OGBWtBzzf861xHgcBQpwts3Z51SMQqDMHiIEYJmdBGSm5dbxrwwcAAiJhN8wve1C0foqrRi16mdubcatbTTevGqIKX1fcw+lvy8NXO72Fugvg=",
+    "digest": "toakrGfaLiqLC+uTzJL9HUwNJ1E=",
+    "signature": "nYXrDZoaSp5K6DBZp70Wh8ic9fp/3GCmjesXKethyrEhidwanUIi7ps/TnrdRbY8yp/Rgb9o5EmhxBhwyQRPSKAnQOcEkhRbPQmhUs2vtlyjHox2uem5WwDLrM6As+kn9dkeFuWQUN1Mr5Keo2RnkkZyWMnJQ6UwazDqhxhUv80="
   },
   "updateCenterVersion": "1",
   "warnings": [
@@ -45713,7 +46022,7 @@
       "message": "Authentication bypass vulnerability",
       "name": "google-login",
       "type": "plugin",
-      "url": "https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2015-10-12",
+      "url": "https://jenkins.io/security/advisory/2015-10-12/",
       "versions": [
         {
           "lastVersion": "1.1",
@@ -45726,7 +46035,7 @@
       "message": "Stored XSS vulnerability",
       "name": "extra-columns",
       "type": "plugin",
-      "url": "https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2016-04-11",
+      "url": "https://jenkins.io/security/advisory/2016-04-11/",
       "versions": [
         {
           "lastVersion": "1.16",
@@ -45739,7 +46048,7 @@
       "message": "Groovy sandbox protection incomplete",
       "name": "script-security",
       "type": "plugin",
-      "url": "https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2016-04-11",
+      "url": "https://jenkins.io/security/advisory/2016-04-11/",
       "versions": [
         {
           "lastVersion": "1.18",
@@ -45752,7 +46061,7 @@
       "message": "Path traversal vulnerability",
       "name": "tap",
       "type": "plugin",
-      "url": "https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2016-06-20",
+      "url": "https://jenkins.io/security/advisory/2016-06-20/",
       "versions": [
         {
           "lastVersion": "1.24",
@@ -45765,7 +46074,7 @@
       "message": "Path traversal vulnerability",
       "name": "image-gallery",
       "type": "plugin",
-      "url": "https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2016-06-20",
+      "url": "https://jenkins.io/security/advisory/2016-06-20/",
       "versions": [
         {
           "lastVersion": "1.3",
@@ -45778,7 +46087,7 @@
       "message": "Cross-site scripting vulnerability",
       "name": "build-failure-analyzer",
       "type": "plugin",
-      "url": "https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2016-06-20",
+      "url": "https://jenkins.io/security/advisory/2016-06-20/",
       "versions": [
         {
           "lastVersion": "1.15.0",
@@ -45791,7 +46100,7 @@
       "message": "Improper certificate validation",
       "name": "async-http-client",
       "type": "plugin",
-      "url": "https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2016-06-20",
+      "url": "https://jenkins.io/security/advisory/2016-06-20/",
       "versions": [
         {
           "lastVersion": "1.7.24",
@@ -45804,7 +46113,7 @@
       "message": "Plugin disables Content-Security-Policy for files served by Jenkins",
       "name": "cucumber-reports",
       "type": "plugin",
-      "url": "https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2016-07-27",
+      "url": "https://jenkins.io/security/advisory/2016-07-27/",
       "versions": [
         {
           "firstVersion": "1.3.0",
@@ -45818,7 +46127,7 @@
       "message": "Multiple security vulnerabilities in Jenkins",
       "name": "core",
       "type": "core",
-      "url": "https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2017-02-01",
+      "url": "https://jenkins.io/security/advisory/2017-02-01/",
       "versions": [
         {
           "lastVersion": "2.43",
