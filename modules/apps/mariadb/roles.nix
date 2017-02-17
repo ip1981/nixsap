@@ -161,15 +161,6 @@ let
     ON u = user
     WHERE user IS NULL ;
 
-    -- Remove old roles.
-    SELECT CONCAT('DROP ROLE \''', user, '\';')
-    FROM __roles
-    RIGHT OUTER JOIN user
-    ON u = user
-    WHERE u IS NULL AND is_role = 'Y' ;
-
-    DROP TABLE __roles;
-
 
     CREATE TEMPORARY TABLE __roles_mapping (u CHAR(80), r CHAR(80));
     ${concatMapAttrs (role: subroles: ''
@@ -193,6 +184,15 @@ let
     WHERE (u IS NULL OR r IS NULL) AND host = ${"''"} ;
 
     DROP TABLE __roles_mapping;
+
+    -- Remove old roles.
+    SELECT CONCAT('DROP ROLE \''', user, '\';')
+    FROM __roles
+    RIGHT OUTER JOIN user
+    ON u = user
+    WHERE u IS NULL AND is_role = 'Y' ;
+
+    DROP TABLE __roles;
 
   '';
 
