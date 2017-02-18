@@ -15,7 +15,7 @@ in {
     user = mkOption {
       description = ''
         User to run as ang keyring owner. This option is required.
-        Note that this user is not created automaically.
+        Note that this user is not created automatically.
       '';
       type = str;
     };
