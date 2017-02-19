@@ -42,11 +42,13 @@ let
         yes
         CONF
 
-        # XXX forking:
+        # XXX forking.
+        # XXX is 30 years enough?
         ${cfg.package}/bin/gpg-agent \
           --homedir '${cfg.home}' \
           --allow-preset-passphrase \
           --batch \
+          --max-cache-ttl 999999999 \
           --quiet \
           --daemon
 
