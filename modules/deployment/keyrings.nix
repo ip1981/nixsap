@@ -17,7 +17,7 @@ let
   #     error: the contents of the file ‘...’ cannot be represented as a Nix string
   read = key:
     let
-      m = match "^([^(]*)\\[.+\\]$" key;
+      m = match "^(.+)@[^@]+$" key;
       s = if m != null then head m else key;
     in if cfg.secrets != null
       then readFile (cfg.secrets + "/${s}")
