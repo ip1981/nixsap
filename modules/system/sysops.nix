@@ -1,8 +1,7 @@
 { config, lib, ...}:
 let
 
-  inherit (lib) concatMapStringsSep concatStringsSep mkOption types;
-  inherit (types) str listOf;
+  inherit (lib) concatStringsSep genAttrs mkIf ;
 
   bindir = "/run/current-system/sw/bin";
 
@@ -27,9 +26,17 @@ let
 
 in {
 
-  config = {
+  config = mkIf ( [] != config.nixsap.system.users.sysops ) {
+    nixsap.system.groups = [ "sysops" ];
+
+    users.users = genAttrs config.nixsap.system.users.sysops (
+      name: {
+        extraGroups = [ "sysops" "systemd-journal" "proc" ];
+      }
+    );
+
     security.sudo.extraConfig = ''
-      %wheel ALL=(ALL) NOPASSWD: ${commands}
+      %sysops ALL=(ALL) NOPASSWD: ${commands}
     '';
   };
 }
