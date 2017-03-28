@@ -226,7 +226,11 @@ in {
     max_connect_errors                       = optional int;
     max_connections                          = optional int;
     max_heap_table_size                      = optional int;
+    max_length_for_sort_data                 = optional int;
+    max_prepared_stmt_count                  = optional int;
     max_relay_log_size                       = optional int;
+    max_sort_length                          = optional int;
+    max_statement_time                       = optional int;
     max_user_connections                     = optional int;
     net_read_timeout                         = optional int;
     net_write_timeout                        = optional int;
