@@ -94,6 +94,7 @@ everything = stdenv.mkDerivation (common // {
 
   patches = [
     ./MDEV-10463.patch
+    ./MDEV-12366.patch
   ];
 
   nativeBuildInputs = common.nativeBuildInputs ++ [ bison ];

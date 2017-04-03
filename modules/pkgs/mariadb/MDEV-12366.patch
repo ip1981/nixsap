@@ -1,0 +1,17 @@
+Description: Fix FLUSH PRIVILEGES can miss some roles
+Bug: https://jira.mariadb.org/browse/MDEV-12366
+diff --git a/sql/sql_acl.cc b/sql/sql_acl.cc
+index cb4c3cb1049..bf6a7b847f5 100644
+--- a/sql/sql_acl.cc
++++ b/sql/sql_acl.cc
+@@ -6754,9 +6754,7 @@ static my_bool role_propagate_grants_action(void *ptr,
+   if (role->counter)
+     return 0;
+ 
+-  mysql_mutex_assert_owner(&acl_cache->lock);
+-  PRIVS_TO_MERGE data= { PRIVS_TO_MERGE::ALL, 0, 0 };
+-  traverse_role_graph_up(role, &data, NULL, merge_role_privileges);
++  propagate_role_grants(role, PRIVS_TO_MERGE::ALL, NULL, NULL);
+   return 0;
+ }
+ 
