@@ -21,7 +21,7 @@ let
       "${bindir}/tcpdump *"
       "${bindir}/traceroute *"
     ] ++ map (c: "${bindir}/systemctl ${c} *")
-        [ "kill" "reload" "restart" "start" "status" "stop" ]
+        [ "kill" "reload" "reset-failed" "restart" "start" "status" "stop" ]
   );
 
 in {
