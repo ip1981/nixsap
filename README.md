@@ -9,20 +9,6 @@ From vanila Nixpkgs, Nixsap relies only on basic services like systemd, ssh, ntp
 and package set (extenting and overriding it).
 
 
-Requirements
-============
-
-* [nixpkgs](https://nixos.org/nixpkgs/) >= 16.09
-
-
-License
-=======
-
-This project is under the MIT license (see [LICENSE](LICENSE)),
-unless stated otherwise in individual files.
-
-
-
 Features
 ========
 
@@ -107,4 +93,17 @@ be 3306 by default.
 
 If application default value is known to be insecure, we should set our own,
 _secure_, default value.
+
+
+Requirements
+============
+
+* [nixpkgs](https://nixos.org/nixpkgs/) >= 16.09
+
+
+License
+=======
+
+This project is under the MIT license (see [LICENSE](LICENSE)),
+unless stated otherwise in individual files.
 
