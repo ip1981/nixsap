@@ -33,11 +33,13 @@ Automatic unix user id
 -----------------------
 
 To create daemon users just add their names into the list
-`nixsap.system.users.daemons`.  List `nixsap.system.users.normal` does the
-same for users with login shell, and `nixsap.system.groups` - for unix groups.
-See examples in the [applications directory](./modules/apps) and implementation
-in [modules/system/users.nix](modules/system/users.nix). This feature is
-used throughout `nixsap.apps`.
+`nixsap.system.users.daemons`.  List `nixsap.system.users.normal`
+does the same for users with login shell, and `nixsap.system.groups`
+for unix groups.  Users and groups will automatically get their
+ids based on their names in a deterministic manner.  See examples
+in the [applications directory](./modules/apps) and implementation in
+[modules/system/users.nix](modules/system/users.nix). This feature is used
+throughout `nixsap.apps`.
 
 Examples:
 
