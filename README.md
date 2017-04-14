@@ -57,6 +57,18 @@ Examples:
 
 
 
+Keyrings
+--------
+
+[Keyrings](modules/deployment/keyrings.nix) provide a means of
+deploying secret files with sensitive content.  It's inspired by
+[NixOps](https://nixos.org/nixops/) and relies on it as on reference
+implementation. Most applications from `nixsap.apps` recognize keys from their
+parameters or extract them from configuration files and automatically build
+their keyrings.
+
+
+
 Ideas
 =====
 
