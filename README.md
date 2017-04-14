@@ -6,7 +6,7 @@ Nixsap is a set of modules built on top of
 provides NixOS modules in the `nixsap` "namespace", e. g. `nixsap.apps.mariadb`
 or `nixsap.system.users`, and adds or overrides some packages in Nixpkgs.
 From vanila Nixpkgs, Nixsap relies only on basic services like systemd, ssh, ntpd
-and package set (extenting and overriding it).
+and package set (extending and overriding it).
 
 
 Features
