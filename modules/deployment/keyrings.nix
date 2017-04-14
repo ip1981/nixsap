@@ -3,7 +3,7 @@
 let
 
   inherit (builtins)
-    attrNames baseNameOf head match pathExists readFile toString ;
+    attrNames baseNameOf head match pathExists readFile ;
   inherit (lib)
     filter foldl genAttrs hasPrefix mapAttrsToList mkOption
     optionalAttrs unique ;
@@ -51,15 +51,15 @@ in {
       description = ''
         Binds keys to a user. It's possible to share the same key between
         multiple users, of course by different names: "/run/keys/foo"
-        and "/run/keys/foo[bar]" will use the same secret file "foo". Any
-        file whose path does not start with <nixsap.deployment.keyStore> is
+        and "/run/keys/foo@bar" will use the same secret file "foo". Any
+        file whose path does not start with `nixsap.deployment.keyStore` is
         deliberately ignored. E. i. you can pass any file names, and nixsap
         will pick up keys for you. For convenience, it it allowed to pass
         null values, which are filtered-out as well.
       '';
       default = {};
       example = { mysqlbackup = [ "/run/keys/s3cmd.cfg" ];
-                  pgbackup = [ "/run/keys/s3cmd.cfg[pgbackup]" ];
+                  pgbackup = [ "/run/keys/s3cmd.cfg@pgbackup" ];
                 };
     };
   };
