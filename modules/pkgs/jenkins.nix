@@ -1,1 +1,1 @@
-{ jenkinsWithPlugins }: jenkinsWithPlugins (_: [])
+{ jenkinsWithPlugins }: jenkinsWithPlugins (_: {})

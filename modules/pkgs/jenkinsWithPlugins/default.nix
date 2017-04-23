@@ -2,8 +2,24 @@
 
 /*
 
-  This is a function that should return a list of plugins to be included in the WAR.
-  Example: pkgs.jenkinsWithPlugins (plugins: [ plugins.BlameSubversion ... ])
+  `pluginsFunc` is a function that should return an attribute set of plugins
+  to be included in the WAR.
+
+  The plugins are provided by `pkgs.jenkinsUpdateCenter.plugins`.
+  Dependencies between those plugins are automatically resolved within the
+  same jenkinsUpdateCenter.
+
+  Example:
+
+    pkgs.jenkinsWithPlugins
+      (plugins: {
+        inherit (plugins) BlameSubversion ... ;
+        inherit (pkgs) my-plugin;
+      })
+
+  Each attribute of `plugins` is a derivation and you can return in
+  the set any other plugins that are not available in Jenkins registry
+  (https://updates.jenkins-ci.org/) or replacing plugins in the registry.
 
   Non-optional dependencies, if any, are automatically added. Optional
   dependencies are ignored, you have to add them explicitly.
@@ -14,55 +30,68 @@ pluginsFunc:
 
 let
 
-  inherit (builtins) fromJSON readFile;
-  fromBase64 = import ./fromBase64.nix;
+  inherit (builtins)
+    attrNames fromJSON readFile ;
 
   inherit (lib)
-    concatMapStrings filter flatten unique ;
+    concatStrings filter filterAttrs flatten genAttrs mapAttrs
+    mapAttrsToList unique ;
 
-  updateCenter = fromJSON (readFile pkgs.jenkinsUpdateCenter);
+  fromBase64 = import ./fromBase64.nix;
 
-  core = with updateCenter.core; fetchurl {
-    inherit url;
-    name = "jenkins-${version}-core.war";
-    sha1 = fromBase64 sha1;
-  };
+  updateCenter =
+    let
+      registry = fromJSON (readFile pkgs.jenkinsUpdateCenter);
+    in
+      registry // {
+        core = with registry.core; fetchurl {
+          inherit url;
+          name = "jenkins-core-${version}.war";
+          sha1 = fromBase64 sha1;
+          meta = registry.core;
+        };
 
-  plugin = p: fetchurl {
-    inherit (p) url;
-    sha1 = fromBase64 p.sha1;
-    name = "jenkins-plugin-${p.name}-${p.version}.hpi";
-  };
+        plugins = mapAttrs (
+          _: plugin: fetchurl {
+            inherit (plugin) url;
+            sha1 = fromBase64 plugin.sha1;
+            name = "jenkins-plugin-${plugin.name}-${plugin.version}.hpi";
+            meta = plugin;
+          }
+        ) registry.plugins;
+      };
 
-  pluginsPack = list: stdenv.mkDerivation {
+  inherit (updateCenter) core;
+
+  neededPlugins =
+    let
+      rootPlugins = pluginsFunc updateCenter.plugins;
+      hasDeps = _: p: (p ? meta) && (p.meta ? dependencies);
+      directDeps = nn:
+        let
+          isRequired = d: ! (d ? optional && d.optional);
+          deps = p: map (d: d.name) (filter isRequired p.meta.dependencies);
+        in flatten (map (n: deps updateCenter.plugins.${n}) nn);
+
+      getDepsRecursive = nn: if nn == [] then [] else nn ++ getDepsRecursive (directDeps nn);
+      depNames = unique (getDepsRecursive (attrNames (filterAttrs hasDeps rootPlugins)));
+      deps = genAttrs depNames (n: updateCenter.plugins.${n});
+    in deps // rootPlugins;
+
+  pluginsPack = stdenv.mkDerivation {
     name = "jenkins-plugins-pack";
     phases = [ "installPhase" ];
     installPhase = ''
       mkdir -p $out
-      ${concatMapStrings (p: ''
-        ln -svf "${plugin p}" "$out/${p.name}.hpi"
-      '') list}
+      ${concatStrings (
+        mapAttrsToList (n: p: ''
+          ln -svf '${p}' "$out/${n}.hpi"
+        '') neededPlugins)}
     '';
   };
 
-  neededPlugins =
-    let
-      rootPlugins = map (p: p.name) (pluginsFunc updateCenter.plugins);
-      directDeps = names:
-        let
-          pluginDeps = p: map (d: d.name) (filter (d: ! d.optional) p.dependencies);
-          deps = map (n: pluginDeps updateCenter.plugins.${n}) names;
-        in flatten deps;
-
-      getDepsRecursive = names:
-        if names == [] then []
-        else names ++ getDepsRecursive (directDeps names)
-        ;
-      all = unique ( getDepsRecursive rootPlugins );
-    in map (n: updateCenter.plugins.${n}) all;
-
   pack =  stdenv.mkDerivation rec {
-    name = "jenkins-${updateCenter.core.version}+plugins.war";
+    name = "jenkins-${core.meta.version}+plugins.war";
 
     # https://wiki.jenkins-ci.org/display/JENKINS/Bundling+plugins+with+Jenkins
     build-xml = pkgs.writeXML "jenkins.build.xml"
@@ -72,7 +101,7 @@ let
         <target name="bundle" description="Merge plugins into jenkins.war">
           <zip destfile="jenkins.war" level="9">
             <zipfileset src="${core}" />
-            <zipfileset dir="${pluginsPack neededPlugins}" prefix="WEB-INF/plugins" />
+            <zipfileset dir="${pluginsPack}" prefix="WEB-INF/plugins" />
           </zip>
         </target>
       </project>
