@@ -1,5 +1,5 @@
 { stdenv, fetchbzr
-, cmake, glib, mysql, openssl
+, cmake, glib, mariadb, openssl
 , pcre, pkgconfig, zlib
 }:
 
@@ -13,5 +13,5 @@ stdenv.mkDerivation rec {
     sha256 = "0kbhgbh6mqkxwbs5yd20s1k3h3f3jqp2i041dhmlrnzl6irgqbg5";
   };
 
-  buildInputs = [ cmake glib mysql.lib openssl pcre pkgconfig zlib ];
+  buildInputs = [ cmake glib mariadb.client.dev openssl pcre pkgconfig zlib ];
 }
