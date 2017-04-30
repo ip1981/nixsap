@@ -207,7 +207,8 @@ let
   mkJobs = name: server: pkgs.writeBashScript "mkjobs-${name}" ''
     set -euo pipefail
     mkdir -p '${privateDir}/jobs/${name}'
-    for db in $(${mysql} --defaults-file=${defaultsFile name server} -N < ${showDatabases name server} | shuf)
+    ${mysql} --defaults-file=${defaultsFile name server} -N < ${showDatabases name server} \
+    | while read -r db
     do
       ln -svf ${job name server} "${privateDir}/jobs/${name}/$db"
     done
@@ -297,6 +298,7 @@ let
       '') (filterAttrs (_: s: s.connection.password-file != null) cfg.servers)
     )}
 
+    failedServers=0
     {
     cat <<'LIST'
     ${concatStringsSep "\n" (mapAttrsToList (mkJobs) cfg.servers)}
@@ -311,11 +313,10 @@ let
       --shuf \
       --tagstr '* {}:' \
       --timeout ${toString (10 * 60)} \
-      || true
+      || failedServers=$?
 
-    failed=0
+    failedJobs=0
     log="${cfg.dumpDir}/$DATE/joblog.txt"
-
     {
       cd '${privateDir}/jobs' && ${pkgs.findutils}/bin/find . -type l -printf '%P\n';
     } | ${pkgs.parallel}/bin/parallel \
@@ -328,13 +329,18 @@ let
       --retries 2 \
       --tagstr '* {}:' \
       --timeout ${toString (6 * 60 * 60)} \
-      '${privateDir}/jobs/{}' || failed=$?
+      '${privateDir}/jobs/{}' || failedJobs=$?
 
     cat "$log"
     clean
 
     du -sh "${cfg.dumpDir}/$DATE" || true
-    exit "$failed"
+
+    if [ "$failedServers" -gt "$failedJobs" ]; then
+      exit "$failedServers"
+    else
+      exit "$failedJobs"
+    fi
   '';
 
 in {
