@@ -156,7 +156,7 @@ in {
     nixsap.system.users.daemons = mkIf enabled [ cfg.user ];
 
     nixsap.apps.logrotate.conf.nginx = mkIf enabled {
-      files = "${cfg.logDir}/*.log";
+      files = [ "${cfg.logDir}/*.log" ];
       directives = {
         delaycompress = mkDefault true;
         missingok = mkDefault true;

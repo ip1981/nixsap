@@ -2,20 +2,20 @@
 let
 
   inherit (builtins)
-    elem isBool isList isString toString ;
+    elem isBool isList isString ;
   inherit (lib)
     concatMapStringsSep concatStringsSep filterAttrs
-    findFirst flatten hasPrefix mapAttrsToList mkIf
+    findFirst hasPrefix mapAttrsToList mkIf
     mkOption optionalString removeSuffix ;
   inherit (lib.types)
-    bool either enum int listOf nullOr path str submodule ;
+    bool enum int listOf nullOr path str submodule ;
 
   cfg = config.nixsap.apps.pgbackup;
   privateDir = "/run/pgbackup";
 
   s3cmd = "${pkgs.s3cmd}/bin/s3cmd ${optionalString (cfg.s3cfg != null) "-c '${cfg.s3cfg}'"}";
 
-  gpgPubKeys = flatten [ cfg.encrypt ];
+  gpgPubKeys = cfg.encrypt;
   gpg = "${pkgs.gpg}/bin/gpg2";
   pubring = pkgs.runCommand "pubring.kbx" {} ''
     ${gpg} --homedir . --import ${toString gpgPubKeys}
@@ -35,9 +35,9 @@ let
       create                  = optional bool;
       data-only               = optional bool;
       dbname                  = optional str;
-      exclude-schema          = optional (either str (listOf str));
-      exclude-table           = optional (either str (listOf str));
-      exclude-table-data      = optional (either str (listOf str));
+      exclude-schema          = optional (listOf str);
+      exclude-table           = optional (listOf str);
+      exclude-table-data      = optional (listOf str);
       format                  = default "plain" (enum ["plain" "custom" "directory" "tar"]);
       host                    = optional str;
       if-exists               = optional bool;
@@ -47,10 +47,10 @@ let
       port                    = optional int;
       quote-all-identifiers   = optional bool;
       role                    = optional str;
-      schema                  = optional (either str (listOf str));
+      schema                  = optional (listOf str);
       schema-only             = optional bool;
       serializable-deferrable = optional bool;
-      table                   = optional (either str (listOf str));
+      table                   = optional (listOf str);
       username                = optional str;
     };
 
@@ -289,7 +289,7 @@ in {
     encrypt = mkOption {
       description = "Public GPG key(s) for encrypting the dumps";
       default = [ ];
-      type = either path (listOf path);
+      type = listOf path;
     };
 
     s3cfg = mkOption {

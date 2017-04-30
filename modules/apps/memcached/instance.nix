@@ -9,7 +9,7 @@ let
     mkOption mkOptionType ;
 
   inherit (lib.types)
-    bool either enum int listOf nullOr package path str submodule ;
+    bool enum int listOf nullOr package path str submodule ;
 
   default = v: type: mkOption { type = type; default = v; };
   optional = type: mkOption { type = nullOr type; default = null; };
@@ -46,7 +46,7 @@ in {
           B = optional (enum ["auto" "ascii" "binary"]);
           I = optional int;
           L = optional bool;
-          l = default "127.0.0.1" (either str (listOf str));
+          l = default ["127.0.0.1"] (listOf str);
           b = optional int;
           c = optional int;
           f = optional float;

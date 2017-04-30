@@ -20,24 +20,24 @@ let
     { ca2        = optional str; }
     { cert       = optional path; }
     { cert2      = optional path; }
-    { dns        = optional (either str (listOf str)); }
+    { dns        = optional (listOf str); }
     { firewall   = optional boolean; }
-    { groups     = optional (either str (listOf str)); }
+    { groups     = optional (listOf str); }
     { hostaccess = optional boolean; }
     { id         = optional str; }
     { id2        = optional str; }
-    { policy     = optional (either str (listOf str)); }
+    { policy     = optional (listOf str); }
     { sendcert   = optional (boolOr [ "never" "always" "ifasked" ]); }
-    { sigkey     = optional (either str path); }
+    { sigkey     = optional str; }
     { sourceip   = optional str; }
-    { subnet     = optional (either str (listOf str)); }
+    { subnet     = optional (listOf str); }
     { updown     = optional path; }
   ];
 
   conn = leftright ++ [
     { aaa_identity   = optional str; }
     { aggressive     = optional boolean; }
-    { ah             = optional (either str (listOf str)); }
+    { ah             = optional (listOf str); }
     { also           = optional str; }
     { authby         = optional (enum [ "pubkey" "rsasig" "ecdsasig" "psk" "secret" "xauthrsasig" "xauthpsk" "never" ]); }
     { auto           = optional (enum [ "ignore" "add" "route" "start" ]); }
@@ -47,10 +47,10 @@ let
     { dpddelay       = optional int; }
     { dpdtimeout     = optional int; }
     { eap_identity   = optional str; }
-    { esp            = optional (either str (listOf str)); }
+    { esp            = optional (listOf str); }
     { forceencaps    = optional boolean; }
     { fragmentation  = optional (boolOr [ "force" ]); }
-    { ike            = optional (either str (listOf str)); }
+    { ike            = optional (listOf str); }
     { ikedscp        = optional str; }
     { ikelifetime    = optional int; }
     { inactivity     = optional int; }

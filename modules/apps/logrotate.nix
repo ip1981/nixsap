@@ -6,7 +6,7 @@ let
     elem isBool isString ;
 
   inherit (lib)
-    concatMapStringsSep concatStringsSep filter filterAttrs flatten
+    concatMapStringsSep concatStringsSep filter filterAttrs
     mapAttrsToList mkIf mkOption optionalString ;
 
   inherit (lib.types)
@@ -21,7 +21,7 @@ let
 
   mkConf = name: opts:
     let
-      files = concatMapStringsSep " " (f: ''"${f}"'') (flatten [opts.files]);
+      files = concatMapStringsSep " " (f: ''"${f}"'') opts.files;
       show = k: v:
              if elem k ["postrotate" "preremove" "prerotate"]
                 then "  ${k}\n    ${v}\n  endscript"
@@ -48,7 +48,7 @@ let
 
   entry = {
     options = {
-      files = mandatory (either path (listOf path));
+      files = mandatory (listOf path);
       directives = {
         compress        = optional bool;
         compresscmd     = optional path;

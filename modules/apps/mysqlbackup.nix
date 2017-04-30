@@ -13,7 +13,7 @@ let
   mysqldump = "${pkgs.mariadb.client.bin}/bin/mysqldump";
   s3cmd = "${pkgs.s3cmd}/bin/s3cmd ${optionalString (cfg.s3cfg != null) "-c '${cfg.s3cfg}'"}";
 
-  gpgPubKeys = flatten [ cfg.encrypt ];
+  gpgPubKeys = cfg.encrypt;
   gpg = "${pkgs.gpg}/bin/gpg2";
   pubring = pkgs.runCommand "pubring.kbx" {} ''
     ${gpg} --homedir . --import ${toString gpgPubKeys}
@@ -53,8 +53,8 @@ let
           Databases to dump. MySQL wildcards (_ and %) are supported.
           Logical OR is applied to all entries.
           '';
-        type = either str (listOf str);
-        default = "%";
+        type = listOf str;
+        default = [ "%" ];
         example = [ "%\\_live\\_%" ];
       };
       not-like = mkOption {
@@ -63,7 +63,7 @@ let
           You don't need to specify `performance_schema` or `information_schema`
           here, they are always ignored. Logical AND is applied to all entries.
           '';
-        type = either str (listOf str);
+        type = listOf str;
         default = [];
         example = [ "tmp\\_%" "snap\\_%" ];
       };
@@ -74,7 +74,7 @@ let
           Each table template can be prefixed with a database template.
           In that case it will be applied to matching databases only,
           instead of all databases'';
-        type = either str (listOf str);
+        type = listOf str;
         default = [];
         example = [ "bob%.alice\\_message" ];
       };
@@ -84,7 +84,7 @@ let
           Each table template can be prefixed with a database template.
           In that case it will be applied to matching databases only,
           instead of all databases'';
-        type = either str (listOf str);
+        type = listOf str;
         default = [];
         example = [ "tmp%" "%\\_backup" ];
       };
@@ -103,8 +103,8 @@ let
 
   showDatabases = name: server: pkgs.writeText "show-databases-${name}.sql" ''
     SHOW DATABASES WHERE `Database` NOT IN ('information_schema', 'performance_schema', 'tmp', 'innodb')
-      AND (${concatMapStringsSep " OR " (e: "`Database` LIKE '${e}'") (flatten [server.databases.like])})
-      ${concatMapStringsSep " " (e: "AND `Database` NOT LIKE '${e}'") (flatten [server.databases.not-like])}
+      AND (${concatMapStringsSep " OR " (e: "`Database` LIKE '${e}'") server.databases.like})
+      ${concatMapStringsSep " " (e: "AND `Database` NOT LIKE '${e}'") server.databases.not-like}
       ;
   '';
 
@@ -378,7 +378,7 @@ in {
     encrypt = mkOption {
       description = "Public GPG key(s) for encrypting the dumps";
       default = [ ];
-      type = either path (listOf path);
+      type = listOf path;
     };
 
     servers = mkOption {

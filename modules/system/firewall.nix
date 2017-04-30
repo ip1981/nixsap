@@ -2,14 +2,14 @@
 
 let
   inherit (builtins) length toString replaceStrings;
-  inherit (lib) flatten concatMapStringsSep optionalString splitString mkOption;
-  inherit (lib.types) listOf int either submodule enum str;
+  inherit (lib) concatMapStringsSep optionalString splitString mkOption;
+  inherit (lib.types) listOf int submodule enum str;
 
   inherit (config.nixsap.system.firewall) whitelist;
 
   iptablesAllow = { dport, protocol, source, comment, ... }:
     let
-      ports = concatMapStringsSep "," toString (flatten [dport]);
+      ports = concatMapStringsSep "," toString dport;
       iptables = if 1 < length (splitString ":" source)
                  then "ip6tables" else "iptables";
     in "${iptables} -w -A nixos-fw -m multiport "
@@ -24,8 +24,8 @@ in {
     type = listOf (submodule {
       options = {
         dport = mkOption {
-          description = "Destination port or list of ports";
-          type = either int (listOf int);
+          description = "Destination ports";
+          type = listOf int;
         };
         source = mkOption {
           description = "Source specification: a network IP address (with optional /mask)";

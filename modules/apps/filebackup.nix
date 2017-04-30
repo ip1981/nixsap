@@ -2,20 +2,20 @@
 let
 
   inherit (builtins)
-    isBool isList isString toString ;
+    isBool isList isString ;
   inherit (lib)
     concatMapStringsSep concatStringsSep filterAttrs
-    flatten hasPrefix mapAttrsToList mkIf
+    hasPrefix mapAttrsToList mkIf
     mkOption optionalString removeSuffix ;
   inherit (lib.types)
-    attrsOf bool either enum int listOf nullOr path str submodule ;
+    attrsOf bool enum int listOf nullOr path str submodule ;
 
   cfg = config.nixsap.apps.filebackup;
   privateDir = "/run/filebackup";
 
   s3cmd = "${pkgs.s3cmd}/bin/s3cmd ${optionalString (cfg.s3cfg != null) "-c '${cfg.s3cfg}'"}";
 
-  gpgPubKeys = flatten [ cfg.encrypt ];
+  gpgPubKeys = cfg.encrypt;
   gpg = "${pkgs.gpg}/bin/gpg2";
   pubring = pkgs.runCommand "pubring.kbx" {} ''
     ${gpg} --homedir . --import ${toString gpgPubKeys}
@@ -31,7 +31,7 @@ let
   command = sub
     {
       absolute-names      = optional bool;
-      exclude             = optional (either str (listOf str));
+      exclude             = optional (listOf str);
       exclude-from        = optional path;
       exclude-vcs         = optional bool;
       exclude-vcs-ignores = optional bool;
@@ -39,7 +39,7 @@ let
       ignore-case         = optional bool;
       mode                = optional str;
       owner               = optional str;
-      path                = mandatory (either path (listOf path));
+      path                = mandatory (listOf path);
     };
 
   job = name: o:
@@ -75,7 +75,7 @@ let
       }
 
       if ! [ -r "$aim" ]; then
-        ${tar} ${concatMapStringsSep " " (p: "'${p}'") (flatten [o.path])} \
+        ${tar} ${concatMapStringsSep " " (p: "'${p}'") o.path} \
           | ${pkgs.pxz}/bin/pxz -2 -T2 > "$tarball.tmp"
         mv "$tarball".tmp "$tarball"
 
@@ -238,7 +238,7 @@ in {
     encrypt = mkOption {
       description = "Public GPG key(s) for encrypting the dumps";
       default = [ ];
-      type = either path (listOf path);
+      type = listOf path;
     };
 
     s3cfg = mkOption {

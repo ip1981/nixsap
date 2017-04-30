@@ -30,7 +30,7 @@ let
     in {
       name = instance;
       value = {
-        files = "${cfg.logDir}/*.log";
+        files = [ "${cfg.logDir}/*.log" ];
         directives = {
           delaycompress = mkDefault true;
           missingok = mkDefault true;
