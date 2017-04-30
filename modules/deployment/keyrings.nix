@@ -54,7 +54,7 @@ in {
         and "/run/keys/foo@bar" will use the same secret file "foo". Any
         file whose path does not start with `nixsap.deployment.keyStore` is
         deliberately ignored. E. i. you can pass any file names, and nixsap
-        will pick up keys for you. For convenience, it it allowed to pass
+        will pick up keys for you. For convenience, it is allowed to pass
         null values, which are filtered-out as well.
       '';
       default = {};
