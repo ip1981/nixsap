@@ -17,6 +17,7 @@ in stdenv.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/libexec/nix-serve
+    perl -c "$src"
     cat "$src" > "$out/libexec/nix-serve.psgi"
 
     mkdir -p $out/bin
