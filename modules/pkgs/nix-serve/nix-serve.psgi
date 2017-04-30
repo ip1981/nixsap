@@ -19,15 +19,24 @@ my $app = sub {
         return [200, ['Content-Type' => 'text/plain'], ["StoreDir: $Nix::Config::storeDir\nWantMassQuery: 1\nPriority: 30\n"]];
     }
 
-    elsif ($path =~ "/([0-9a-z]+)\.narinfo") {
+    elsif ($path =~ '/([0-9a-z]+)\.narinfo$') {
         my $hashPart = $1;
         my $storePath = queryPathFromHashPart($hashPart);
         return [404, ['Content-Type' => 'text/plain'], ["No such path.\n"]] unless $storePath;
         my ($deriver, $narHash, $time, $narSize, $refs) = queryPathInfo($storePath, 1) or die;
+        my $compression;
+        my $ext;
+        if ($narSize < 1024) {
+            $compression = 'none';
+            $ext = '';
+        } else {
+            $compression = 'xz';
+            $ext = '.xz';
+        }
         my $res =
             "StorePath: $storePath\n" .
-            "URL: nar/$hashPart.nar.xz\n" .
-            "Compression: xz\n" .
+            "URL: nar/$hashPart.nar$ext\n" .
+            "Compression: $compression\n" .
             "NarHash: $narHash\n" .
             "NarSize: $narSize\n";
         $res .= "References: " . join(" ", map { stripPath($_) } @$refs) . "\n"
@@ -46,13 +55,22 @@ my $app = sub {
         return [200, ['Content-Type' => 'text/x-nix-narinfo'], [$res]];
     }
 
-    elsif ($path =~ "/nar/([0-9a-z]+)\.nar.xz") {
+    elsif ($path =~ '/nar/([0-9a-z]+)\.nar.xz$') {
         my $hashPart = $1;
         my $storePath = queryPathFromHashPart($hashPart);
         return [404, ['Content-Type' => 'text/plain'], ["No such path.\n"]] unless $storePath;
         my $fh = new IO::Handle;
         open $fh, "nix-store --dump '$storePath' | nice -n 19 pxz -0 |";
         return [200, ['Content-Type' => 'application/x-xz'], $fh];
+    }
+
+    elsif ($path =~ '/nar/([0-9a-z]+)\.nar$') {
+        my $hashPart = $1;
+        my $storePath = queryPathFromHashPart($hashPart);
+        return [404, ['Content-Type' => 'text/plain'], ["No such path.\n"]] unless $storePath;
+        my $fh = new IO::Handle;
+        open $fh, "nix-store --dump '$storePath' |";
+        return [200, ['Content-Type' => 'application/octet-stream'], $fh];
     }
 
     else {
