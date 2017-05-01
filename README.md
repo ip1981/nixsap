@@ -26,7 +26,10 @@ For example:
     modules/pkgs/writeXML.nix        => pkgs.writeXML
     modules/pkgs/rdsdump/default.nix => pkgs.rdsdump
 
-You can use this technics in your own projects.
+You can use this technics in your own projects. You can take out any modules
+or packages and put them into your project with your modifications without
+maintaning a fork of Nixsap.  When taking modules you have to change the
+`nixsap` namespace to something different to avoid conflicts.
 
 
 Automatic unix user id
@@ -68,9 +71,34 @@ parameters or extract them from configuration files and automatically build
 their keyrings.
 
 
+Multi-instance applications
+---------------------------
 
-Ideas
-=====
+For most [applications](./modules/apps) it is possible to run multiple
+instances of them on the same machine. Each instance may have its own
+home directory and user. For example `jenkins-foo` with home directory
+`/jenkins/foo` and user `jenkins-foo`.  Not all applications allow that
+purely for historical reasons, and this will be fixed eventually.
+
+
+
+
+Design
+======
+
+
+Static analysis
+---------------
+
+There are a handful of tools used thoughout the applications to ensure
+correctness at build time: `writeBashScript`, `writeXML`, `writePHPFile`.
+`writeBashScript` uses [shellcheck](https://www.shellcheck.net/). `writeXML`
+runs [xmllint](http://xmlsoft.org/xmllint.html). `writePHPFile` relies on
+PHP's built-in syntax checker.
+
+The objective it to do static analysis and linting for every single file
+_at build time_. What is wanted: configuration files for Nginx, Icinga;
+MySQL and PostgreSQL scripts, etc.
 
 
 Parametrization
