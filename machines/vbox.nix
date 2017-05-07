@@ -49,6 +49,11 @@ in {
     ssl_key = mkForce "${pkgs.fakeSSL}/key.pem";
   };
 
+  nixsap.apps.sproxy2 = {
+    ssl_cert = mkForce "${pkgs.fakeSSL}/cert.pem";
+    ssl_key = mkForce "${pkgs.fakeSSL}/key.pem";
+  };
+
   nixsap.apps.sproxy-web = {
     connectionString = mkForce "user=sproxy dbname=sproxy port=${toString apps.postgresql.fcebkl.server.port}";
   };
