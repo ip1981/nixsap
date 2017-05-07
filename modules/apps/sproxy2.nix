@@ -2,7 +2,7 @@
 
 let
 
-  inherit (builtins) elem isBool isString;
+  inherit (builtins) elem isBool isInt isString;
   inherit (lib)
     concatMapStringsSep concatStringsSep filterAttrs imap
     mapAttrsToList mkIf mkOption optionalString ;
@@ -24,9 +24,9 @@ let
 
   show = v:
          if v ? file then "!include '${v.file}'"
-    else if isString v then "'${v}'"
+    else if isInt v then "${toString v}"
     else if isBool v then (if v then "true" else "false")
-    else toString v;
+    else "'${v}'";
 
   top = concatMapAttrsSep "\n" (k: v: "${k}: ${show v}")
     (filterAttrs (n: _:
