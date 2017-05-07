@@ -5,7 +5,7 @@ let
   inherit (builtins) elem isBool isString;
   inherit (lib)
     concatMapStringsSep concatStringsSep filterAttrs imap
-    mapAttrsToList mkEnableOption mkIf mkOption optionalString ;
+    mapAttrsToList mkIf mkOption optionalString ;
   inherit (lib.types)
     attrsOf bool either enum int listOf nullOr path str submodule ;
 
@@ -100,11 +100,17 @@ let
         socket         = optional path;
       };
     });
+    default = [];
   };
 
 in {
   options.nixsap.apps.sproxy2 = {
-    enable = mkEnableOption "sproxy2";
+    enable = mkOption {
+      description = "Enable Sproxy2";
+      type = bool;
+      default = (cfg.backends != []);
+    };
+
     inherit oauth2 backends;
     user = mkOption {
       description = "User to run as";
