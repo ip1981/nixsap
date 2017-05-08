@@ -46,6 +46,7 @@ let
         set -euo pipefail
         umask 0027
         export HOME='${cfg.home}'
+        export SHELL='${pkgs.bash}/bin/bash'
 
         cd '${cfg.home}'
 
