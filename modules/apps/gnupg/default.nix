@@ -31,7 +31,7 @@ let
         cp pubring.kbx $out
       '';
 
-      start = pkgs.writeBashScriptBin "gnupg-${name}-start" ''
+      start = pkgs.writeBashScriptBin "gnupg-${name}" ''
         set -euo pipefail
         umask 0077
 
@@ -88,7 +88,7 @@ let
         '';
 
         serviceConfig = {
-          ExecStart = "${start}/bin/gnupg-${name}-start";
+          ExecStart = "${start}/bin/gnupg-${name}";
           PermissionsStartOnly = true;
           Restart = "always";
           Type = "forking";
