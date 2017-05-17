@@ -42,7 +42,7 @@ let
       path = ".war.path";
       tmpdir = "${cfg.home}/tmp";
 
-      startJenkins = pkgs.writeBashScript "jenkins-${name}-start" ''
+      start = pkgs.writeBashScriptBin "jenkins-${name}" ''
         set -euo pipefail
         umask 0027
         export HOME='${cfg.home}'
@@ -126,7 +126,7 @@ let
 
         '';
         serviceConfig = {
-          ExecStart = startJenkins;
+          ExecStart = "${start}/bin/jenkins-${name}";
           KillMode = "mixed";
           PermissionsStartOnly = true;
           Restart = "always";
