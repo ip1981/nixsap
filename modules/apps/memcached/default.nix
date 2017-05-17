@@ -29,7 +29,7 @@ let
 
       args = flatten (mapAttrsToList show (explicit cfg.args));
 
-      start = pkgs.writeBashScriptBin "memcached-${name}-start" ''
+      start = pkgs.writeBashScriptBin "memcached-${name}" ''
         set -euo pipefail
         umask 0027
 
@@ -43,7 +43,7 @@ let
         wantedBy = [ "multi-user.target" ];
         after = [ "keys.target" "network.target" "local-fs.target" ];
         serviceConfig = {
-          ExecStart = "${start}/bin/memcached-${name}-start";
+          ExecStart = "${start}/bin/memcached-${name}";
           Restart = "always";
           User = cfg.user;
         };
