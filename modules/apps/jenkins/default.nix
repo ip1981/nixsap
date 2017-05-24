@@ -3,7 +3,7 @@
 let
 
   inherit (builtins)
-    attrNames isBool isString ;
+    attrNames isBool isString replaceStrings ;
 
   inherit (lib)
     concatMapStringsSep concatStringsSep escape filterAttrs foldAttrs foldl
@@ -18,7 +18,10 @@ let
   instances = explicit config.nixsap.apps.jenkins;
   users = mapAttrsToList (_: i: i.user) instances;
 
-  maybeFile = n: c: if hasPrefix "/" c then c else pkgs.writeXML n c;
+  maybeFile = name: cnt:
+    let norm = replaceStrings [" "] ["-"] name;
+    in if hasPrefix "/" cnt then cnt else pkgs.writeXML norm cnt;
+
   configFiles = name: cfg: mapAttrs (n: v: maybeFile "jenkins-${name}-${n}" v) cfg.config;
   jobFiles = name: cfg: mapAttrs (n: v: maybeFile "jenkins-${name}-job-${n}.xml" v) cfg.jobs;
 
