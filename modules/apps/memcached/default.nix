@@ -6,8 +6,8 @@ let
     elem filter isBool isList ;
 
   inherit (lib)
-    concatMapStringsSep concatStringsSep filterAttrs flatten foldAttrs foldl
-    mapAttrsToList mkOption optionalString ;
+    concatMapStringsSep concatStringsSep filterAttrs flatten
+    foldAttrs mapAttrs' mapAttrsToList mkOption optionalString ;
 
   inherit (lib.types)
     attrsOf submodule ;
@@ -38,7 +38,8 @@ let
       '';
 
     in {
-      "memcached-${name}" = {
+      name = "memcached-${name}";
+      value = {
         description = "memcached (${name})";
         wantedBy = [ "multi-user.target" ];
         after = [ "keys.target" "network.target" "local-fs.target" ];
@@ -59,7 +60,7 @@ in {
   };
 
   config = {
-    systemd.services = foldl (a: b: a//b) {} (mapAttrsToList mkService instances);
+    systemd.services = mapAttrs' mkService instances;
     nixsap.system.users.daemons = users;
   };
 
