@@ -26,10 +26,17 @@ For example:
     modules/pkgs/writeXML.nix        => pkgs.writeXML
     modules/pkgs/rdsdump/default.nix => pkgs.rdsdump
 
-You can use this technics in your own projects. You can take out any modules
+You can use this techniques in your own projects. You can take out any modules
 or packages and put them into your project with your modifications without
 maintaning a fork of Nixsap.  When taking modules you have to change the
 `nixsap` namespace to something different to avoid conflicts.
+
+It is also possible to build and install packages that are overridden
+by Nixsap, for example:
+
+```
+nix-env -I nixpkgs=/path/to/vanila/nixpkgs -f /path/to/nixsap/pkgs -i nodejs-sass
+```
 
 
 Automatic unix user id
