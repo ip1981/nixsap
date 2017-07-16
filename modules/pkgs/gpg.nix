@@ -5,5 +5,5 @@ gnupg.override {
   openldap   = null;
   pinentry   = null;
   readline   = null;
-  x11Support = false;
+  guiSupport = false;
 }
