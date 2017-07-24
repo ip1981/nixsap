@@ -5,9 +5,8 @@ let
   inherit (builtins)
     toString ;
   inherit (lib)
-    concatMapStrings filterAttrs mapAttrsToList mkOption
-    types unique ;
-  inherit (types)
+    concatMapStrings filterAttrs mapAttrs mapAttrsToList mkOption unique ;
+  inherit (lib.types)
     attrsOf path str submodule ;
 
   explicit = filterAttrs (n: v: n != "_module" && v != null);
@@ -126,14 +125,13 @@ in {
 
   config = {
     nixsap.system.users.daemons = unique (mapAttrsToList (_: a: a.user) apps);
-    security.setuidOwners = mapAttrsToList (n: a:
-      { program = n;
+    security.wrappers = mapAttrs (n: a:
+      { source = exec n a;
         owner = "root";
         group = a.user;
         setuid = true;
         setgid = false;
         permissions = "u+rx,g+x,o=";
-        source = exec n a;
       }) apps;
   };
 }

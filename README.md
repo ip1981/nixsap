@@ -147,7 +147,7 @@ _secure_, default value.
 Requirements
 ============
 
-* [nixpkgs](https://nixos.org/nixpkgs/) >= 16.09
+* [nixpkgs](https://nixos.org/nixpkgs/) >= 17.03
 
 
 License
