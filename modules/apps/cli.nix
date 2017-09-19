@@ -2,8 +2,6 @@
 
 let
 
-  inherit (builtins)
-    toString ;
   inherit (lib)
     concatMapStrings filterAttrs mapAttrs mapAttrsToList mkOption unique ;
   inherit (lib.types)
@@ -14,13 +12,14 @@ let
 
   exec = name: { user, command, ... }:
     let
+      cc = "${pkgs.gcc}/bin/gcc -Wall -Wextra -Werror -s -std=gnu99 -O2";
       uid = toString config.users.users.${user}.uid;
       gid = uid;
       src = pkgs.writeText "${name}.c" ''
         #include <unistd.h>
         #include <grp.h>
         #include <pwd.h>
-        #include <stdio.h> 
+        #include <stdio.h>
         #include <stdlib.h>
         #include <sys/types.h>
 
@@ -84,7 +83,7 @@ let
           return EXIT_FAILURE;
         }
       '';
-    in pkgs.runCommand name {} "gcc -Wall -Wextra -Werror -s -std=gnu99 -O2 ${src} -o $out";
+    in pkgs.runCommand name {} "${cc} -o $out ${src}";
 
   cliapp = submodule({name, ...}:
   {
