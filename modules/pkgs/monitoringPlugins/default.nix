@@ -1,37 +1,31 @@
-{ stdenv, fetchurl
-, autoreconfHook
-, procps, perl
-, fping, openssh, bind
-, mariadb
-, openssl
-}:
+{ stdenv, fetchurl, pkgs }:
 
 stdenv.mkDerivation rec {
-  version = "2.1.2";
+  version = "2.2";
   name = "monitoring-plugins-${version}";
   src = fetchurl {
     url = "https://github.com/monitoring-plugins/monitoring-plugins/archive/v${version}.tar.gz";
-    sha256 = "0mgs59326yzvx92pdqmn671d40czixd7k60dvsbz89ah2r96vps7";
+    sha256 = "0nq0ilnfmwka5ds9k3bkgqd9238cv1yfyik8xhqbvnkpc3nh1cfk";
   };
 
-  buildInputs = [
-    autoreconfHook
-    procps perl
-    fping openssh bind
-    mariadb.lib
-    openssl
+  buildInputs = with pkgs; [
+    autoreconfHook bind.dnsutils fping libdbi libtap mariadb.lib openldap.dev
+    openssh openssl.dev perl postgresql procps smbclient sudo
   ];
+
+  doCheck = false; # tests are broken badly
 
   patches = [
     ./mysql_check_slave.patch
+    ./test-str-format.patch
   ];
 
   configurePhase = ''
     ./configure \
       --prefix=$out \
       --disable-nls \
-      --with-ping-command="/var/setuid-wrappers/ping -n -U -w %d -c %d %s" \
-      --with-ping6-command="/var/setuid-wrappers/ping6 -n -U -w %d -c %d %s" \
-      --with-trusted-path=/var/setuid-wrappers:/run/current-system/sw/bin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin
+      --with-ping-command="/run/wrappers/bin/ping -n -U -w %d -c %d %s" \
+      --with-ping6-command="/run/wrappers/bin/ping6 -n -U -w %d -c %d %s" \
+      --with-trusted-path=/run/wrappers/bin:/run/current-system/sw/bin:/usr/bin
   '';
 }

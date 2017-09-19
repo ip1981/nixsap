@@ -1,0 +1,26 @@
+Description; fix warning/error
+ error: format not a string literal and no format arguments
+ [-Werror=format-security]
+--- monitoring-plugins-2.2.orig/lib/tests/test_utils.c
++++ monitoring-plugins-2.2/lib/tests/test_utils.c
+@@ -489,16 +489,16 @@ main (int argc, char **argv)
+ 		int tlen = strlen(testname);
+
+ 		strcpy(testname+tlen, states[i]);
+-		ok(i==mp_translate_state(states[i]), testname);
++		ok(i==mp_translate_state(states[i]), "%s", testname);
+
+ 		strcpy(testname+tlen, statelower);
+-		ok(i==mp_translate_state(statelower), testname);
++		ok(i==mp_translate_state(statelower), "%s", testname);
+
+ 		strcpy(testname+tlen, stateupper);
+-		ok(i==mp_translate_state(stateupper), testname);
++		ok(i==mp_translate_state(stateupper), "%s", testname);
+
+ 		strcpy(testname+tlen, statenum);
+-		ok(i==mp_translate_state(statenum), testname);
++		ok(i==mp_translate_state(statenum), "%s", testname);
+ 	}
+ 	ok(ERROR==mp_translate_state("warningfewgw"), "Translate state string with garbage");
+ 	ok(ERROR==mp_translate_state("00"), "Translate state string: bad numeric string 1");
