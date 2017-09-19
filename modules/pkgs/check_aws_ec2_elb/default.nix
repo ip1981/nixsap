@@ -17,6 +17,6 @@ stdenv.mkDerivation {
       --replace check_aws_ec2_elb "$out/bin/check_aws_ec2_elb"
 
     wrapProgram "$out/bin/check_aws_ec2_elb" \
-      --prefix PATH : "${pkgs.awscli}/bin:${pkgs.gnused}/bin:${pkgs.jq}/bin:${pkgs.bind}/bin"
+      --prefix PATH : "${pkgs.awscli}/bin:${pkgs.gnused}/bin:${pkgs.jq}/bin:${pkgs.bind.dnsutils}/bin"
   '';
 }

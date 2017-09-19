@@ -1,13 +1,13 @@
 { stdenv, pkgs, fetchurl, python27Packages }:
 let
 
-  rev = "556191f6d775f0505fb142c02f13a60ba7829ed9";
+  rev = "7f4a9852a0e470698d90afc0036d2738a4906477";
 
   pmp-check-aws-rds = stdenv.mkDerivation rec {
     name = "pmp-check-aws-rds";
     src = fetchurl {
       url = "https://raw.githubusercontent.com/percona/percona-monitoring-plugins/${rev}/nagios/bin/pmp-check-aws-rds.py";
-      sha256 = "0ghq6nl2529llxz1icf5hyg75k2hjzdkzfwgrs0d69r3f62w4q5y";
+      sha256 = "1ps7ag2hmbbzg3w6h76l6j4ijigfhlvmirj8h7v9qyrdcgzlsjma";
     };
 
     buildInputs = with python27Packages; [ python wrapPython ];
@@ -26,21 +26,22 @@ let
 in stdenv.mkDerivation {
   name = "check_aws_rds";
   outputs = [ "out" "conf" ];
-  unpackPhase = ":";
+
+  phases = [ "installPhase" "fixupPhase" ];
+  nativeBuildInputs = with pkgs; [ makeWrapper ];
+
   installPhase = ''
     mkdir -p $out/bin
 
     cp ${./check_aws_rds} $out/bin/check_aws_rds
     cp ${./check_aws_rds.conf} $conf
 
-    substituteInPlace "$out/bin/"* \
-      --replace pmp-check-aws-rds '${pmp-check-aws-rds}/bin/pmp-check-aws-rds' \
-      --replace dig '${pkgs.bind}/bin/dig'
+    chmod +x "$out/bin/"*
 
     substituteInPlace "$conf" \
       --replace check_aws_rds "$out/bin/check_aws_rds"
 
-    chmod +x "$out/bin/"*
-
+    wrapProgram "$out/bin/check_aws_rds" \
+      --prefix PATH : "${pmp-check-aws-rds}/bin:${pkgs.bind.dnsutils}/bin"
   '';
 }
