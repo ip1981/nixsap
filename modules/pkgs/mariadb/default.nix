@@ -14,11 +14,11 @@ mariadb = everything // {
 };
 
 common = rec { # attributes common to both builds
-  version = "10.1.24";
+  version = "10.1.26";
 
   src = fetchurl {
     url    = "https://downloads.mariadb.org/interstitial/mariadb-${version}/source/mariadb-${version}.tar.gz";
-    sha256 = "07jm9m7d5x4zdpasdjs98m36dkjl7ypc9jz4xmnczj0ybfp9kpxk";
+    sha256 = "0ggpdcal0if9y6h9hp1yv2q65cbkjfl4p8rqk68a5pk7k75v325s";
   };
 
   prePatch = ''
@@ -93,7 +93,6 @@ everything = stdenv.mkDerivation (common // {
   name = "mariadb-${common.version}";
 
   patches = [
-    ./MDEV-10463.patch
     ./MDEV-12366.patch
   ];
 
