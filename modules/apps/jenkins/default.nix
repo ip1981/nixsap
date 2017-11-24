@@ -75,7 +75,7 @@ let
         if [ -d jobs ]; then
           find jobs -maxdepth 1 -mindepth 1 -type d \
             ${concatMapStringsSep " " (k: "-not -name '${escape [ "[" ] k}'") (attrNames cfg.jobs)} \
-            -print0 | xargs -0 --verbose --no-run-if-empty rm -rf 
+            -print0 | xargs -0 --verbose --no-run-if-empty rm -rf
         fi
 
         ${concatStringsSep "\n" (
