@@ -20,7 +20,9 @@ let
 
   maybeFile = name: cnt:
     let norm = replaceStrings [" "] ["-"] name;
-    in if hasPrefix "/" cnt then cnt else pkgs.writeXML norm cnt;
+    in if hasPrefix "/" cnt
+       then "${cnt}"
+       else pkgs.writeXML norm cnt;
 
   configFiles = name: cfg: mapAttrs (n: v: maybeFile "jenkins-${name}-${n}" v) cfg.config;
   jobFiles = name: cfg: mapAttrs (n: v: maybeFile "jenkins-${name}-job-${n}.xml" v) cfg.jobs;
