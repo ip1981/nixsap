@@ -6,21 +6,25 @@
  Extract included files
  Prints list of included files
 -}
-
-module Main where
+module Main
+  ( main
+  ) where
 
 import Data.List (intercalate, isPrefixOf, stripPrefix)
 import Data.Maybe (fromMaybe)
 import System.Environment (getArgs)
-import Text.XML.HXT.Core ( (>>>), deep, getAttrValue, hasAttr, hasName,
-  isElem, readDocument, returnA, runX)
+import Text.XML.HXT.Core
+       ((>>>), deep, getAttrValue, hasAttr, hasName, isElem, readDocument,
+        returnA, runX)
 
 getXIncludes :: String -> IO [String]
-getXIncludes xmlFileName = runX $ readDocument [] xmlFileName
-  >>> deep (isElem >>> hasName "xi:include" >>> hasAttr "href") >>>
-  proc d -> do
-    href <- getAttrValue "href" -< d
-    returnA -< href
+getXIncludes xmlFileName =
+  runX $
+  readDocument [] xmlFileName >>>
+  deep (isElem >>> hasName "xi:include" >>> hasAttr "href") >>>
+  proc d ->
+  do href <- getAttrValue "href" -< d
+     returnA -< href
 
 getFiles :: [String] -> [String]
 getFiles = map stripScheme . filter isFile
@@ -33,7 +37,7 @@ unique :: [String] -> [String]
 unique [] = []
 unique (x:xs)
   | x `elem` xs = unique xs
-  | otherwise = x:unique xs
+  | otherwise = x : unique xs
 
 toNix :: [String] -> String
 toNix ss = "[" ++ intercalate " " (map show ss) ++ "]"
@@ -43,4 +47,3 @@ main = do
   paths <- getArgs
   includedFiles <- unique . getFiles . concat <$> mapM getXIncludes paths
   putStrLn $ toNix includedFiles
-
