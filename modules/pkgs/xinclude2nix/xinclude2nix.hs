@@ -10,14 +10,14 @@ module Main
   ( main
   ) where
 
-import Data.List (intercalate, isPrefixOf, stripPrefix)
+import Data.List (isPrefixOf, stripPrefix)
 import Data.Maybe (fromMaybe)
 import System.Environment (getArgs)
 import Text.XML.HXT.Core
        ((>>>), deep, getAttrValue, hasAttr, hasName, isElem, readDocument,
         returnA, runX)
 
-getXIncludes :: String -> IO [String]
+getXIncludes :: FilePath -> IO [String]
 getXIncludes xmlFileName =
   runX $
   readDocument [] xmlFileName >>>
@@ -40,7 +40,7 @@ unique (x:xs)
   | otherwise = x : unique xs
 
 toNix :: [String] -> String
-toNix ss = "[" ++ intercalate " " (map show ss) ++ "]"
+toNix ss = "[" ++ unwords (map show ss) ++ "]"
 
 main :: IO ()
 main = do
