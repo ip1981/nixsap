@@ -1,5 +1,5 @@
 pkgs:
-{ lib, name, ... }:
+{ lib, name, config, ... }:
 
 let
 
@@ -13,14 +13,22 @@ let
 
   default = d: t: mkOption { type = t; default = d; };
   optional = t: mkOption { type = nullOr t; default = null; };
+  readonly = d: t: mkOption { type = nullOr t; default = d; readOnly = true; };
 
 in {
   options = {
 
-    jre = mkOption {
-      description = "Java runtime package";
-      default = pkgs.jre8;
-      type = package;
+    jre = {
+      package = mkOption {
+        description = "Java runtime package";
+        default = pkgs.jre8;
+        type = package;
+      };
+
+      properties = {
+        hudson.model.DirectoryBrowserSupport.CSP = optional str;
+        java.io.tmpdir = readonly "${config.home}/tmp" path;
+      };
     };
 
     war = mkOption {

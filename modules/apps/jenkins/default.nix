@@ -40,12 +40,13 @@ let
   mkService = name: cfg:
     let
 
+      inherit (cfg.jre) properties;
+
       mkOpt = n: v: if isBool v then (if v then "--${n}" else "")
            else if isString v then "--${n}='${v}'"
            else "--${n}=${toString v}";
 
       path = ".war.path";
-      tmpdir = "${cfg.home}/tmp";
 
       start = pkgs.writeBashScriptBin "jenkins-${name}" ''
         set -euo pipefail
@@ -98,14 +99,17 @@ let
           echo '${cfg.war}' > ${path}
         fi
 
-        rm -rf -- '${tmpdir}'
-        mkdir -p -- '${tmpdir}'
-        exec ${cfg.jre}/bin/java \
+        rm   -rf -- '${cfg.jre.properties.java.io.tmpdir}'
+        mkdir -p -- '${cfg.jre.properties.java.io.tmpdir}'
+
+        # TODO: generalize properties, maybe put in a file:
+        exec ${cfg.jre.package}/bin/java \
           -DJENKINS_HOME='${cfg.home}' \
-          -Djava.io.tmpdir='${tmpdir}' \
+          ${optionalString (properties.hudson.model.DirectoryBrowserSupport.CSP != null)
+            ''-Dhudson.model.DirectoryBrowserSupport.CSP="${properties.hudson.model.DirectoryBrowserSupport.CSP}"''} \
+          -Djava.io.tmpdir='${properties.java.io.tmpdir}' \
           -jar '${cfg.war}' \
-          ${concatStringsSep " \\\n  " (
-            mapAttrsToList mkOpt (explicit cfg.options))}
+          ${concatStringsSep " \\\n  " (mapAttrsToList mkOpt (explicit cfg.options))}
       '';
 
     in {
