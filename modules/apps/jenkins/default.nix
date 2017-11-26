@@ -7,7 +7,7 @@ let
 
   inherit (lib)
     concatMapStringsSep concatStringsSep escape filterAttrs foldAttrs foldl
-    hasPrefix mapAttrs mapAttrsToList mkOption nameValuePair optionalString
+    hasPrefix mapAttrs mapAttrs' mapAttrsToList mkOption nameValuePair optionalString
     unique ;
 
   inherit (lib.types)
@@ -157,6 +157,11 @@ in {
     systemd.services = foldl (a: b: a//b) {} (mapAttrsToList mkService instances);
     nixsap.deployment.keyrings = keyrings;
     nixsap.system.users.daemons = users;
+
+    # Although jenkins user is a daemon, many tools require proper home
+    # directory and ignore $HOME (e. g. Maven). This assumes each Jenkins
+    # instance has its own user (this is true because i.user is read-only):
+    users.users = mapAttrs' (_: i: nameValuePair i.user {home = i.home;}) instances;
   };
 
 }

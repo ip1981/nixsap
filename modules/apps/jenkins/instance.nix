@@ -40,6 +40,7 @@ in {
     user = mkOption {
       description = "User to run as";
       default = "jenkins-${name}";
+      readOnly = true;
       type = str;
     };
 
