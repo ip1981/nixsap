@@ -35,7 +35,7 @@ It is also possible to build and install packages that are overridden
 by Nixsap, for example:
 
 ```
-nix-env -I nixpkgs=/path/to/vanila/nixpkgs -f /path/to/nixsap/pkgs -i nodejs-sass
+nix-env [-I nixpkgs=/path/to/vanila/nixpkgs] -f /path/to/nixsap/pkgs -i nodejs-sass
 ```
 
 
@@ -59,7 +59,7 @@ Examples:
     # id pashev
     uid=1141737888(pashev) gid=100(users) groups=100(users),21(proc),62(systemd-journal),1061782283(sysops)
 
-    # id jenkins-dumpoo 
+    # id jenkins-dumpoo
     uid=1201814562(jenkins-dumpoo) gid=1201814562(jenkins-dumpoo) groups=96(keys),1201814562(jenkins-dumpoo)
 
     # id mariadb
