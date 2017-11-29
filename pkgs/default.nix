@@ -1,12 +1,17 @@
+{ nixpkgs ? <nixpkgs>
+, system ? builtins.currentSystem
+}:
+
 let
 
-  inherit (import <nixpkgs/lib>) evalModules;
+  lib = import (nixpkgs + "/lib");
+  inherit (lib) evalModules;
 
 
   evaluated = evalModules {
     modules = [
-      { nixpkgs.system = builtins.currentSystem; }
-      (import <nixpkgs/nixos/modules/misc/nixpkgs.nix>)
+      { nixpkgs.system = system; }
+      (import (nixpkgs + "/nixos/modules/misc/nixpkgs.nix"))
       (import ../modules/pkgs)
     ];
   };
