@@ -107,6 +107,8 @@ let
           -DJENKINS_HOME='${cfg.home}' \
           ${optionalString (properties.hudson.model.DirectoryBrowserSupport.CSP != null)
             ''-Dhudson.model.DirectoryBrowserSupport.CSP="${properties.hudson.model.DirectoryBrowserSupport.CSP}"''} \
+          ${optionalString (properties.java.util.logging.config.file != null)
+            "-Djava.util.logging.config.file='${properties.java.util.logging.config.file}'"} \
           -Djava.io.tmpdir='${properties.java.io.tmpdir}' \
           -jar '${cfg.war}' \
           ${concatStringsSep " \\\n  " (mapAttrsToList mkOpt (explicit cfg.options))}

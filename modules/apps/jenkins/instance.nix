@@ -28,6 +28,7 @@ in {
       properties = {
         hudson.model.DirectoryBrowserSupport.CSP = optional str;
         java.io.tmpdir = readonly "${config.home}/tmp" path;
+        java.util.logging.config.file = optional path;
       };
     };
 
