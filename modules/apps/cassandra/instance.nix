@@ -25,7 +25,7 @@ let
       transform = n: v:
         if n == "seed_provider" then
           mapAttrsToList (p: o:
-            { class_name = p; 
+            { class_name = p;
               parameters = mapAttrsToList (a: b: { ${a} = b; }) o;
             }
           ) v
