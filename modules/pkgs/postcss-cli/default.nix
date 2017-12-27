@@ -21,10 +21,4 @@ let
     inherit (stdenv) system;
   })."${name}-${version}";
 
-in
-pkgs.runCommand "${name}-${version}" {}
-''
-  mkdir -p $out/bin
-  ln -s ${main}/bin/postcss $out/bin/postcss
-  test -x $out/bin/postcss
-''
+in main
