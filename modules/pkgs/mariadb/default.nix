@@ -1,5 +1,5 @@
 { stdenv, fetchurl, cmake, pkgconfig, ncurses, zlib, xz, lzo, lz4, bzip2, snappy
-, openssl, pcre, boost, judy, bison, libxml2
+, openssl, boost, judy, bison, libxml2
 , libaio, libevent, groff, jemalloc, cracklib, systemd, numactl, perl
 }:
 
@@ -14,11 +14,11 @@ mariadb = everything // {
 };
 
 common = rec { # attributes common to both builds
-  version = "10.1.26";
+  version = "10.1.30";
 
   src = fetchurl {
     url    = "https://downloads.mariadb.org/interstitial/mariadb-${version}/source/mariadb-${version}.tar.gz";
-    sha256 = "0ggpdcal0if9y6h9hp1yv2q65cbkjfl4p8rqk68a5pk7k75v325s";
+    sha256 = "123ck7q5lk535qm8i5b0gk1pc5j9k1f9pl1vki30m7l14id5wfhp";
   };
 
   prePatch = ''
@@ -29,7 +29,7 @@ common = rec { # attributes common to both builds
 
   nativeBuildInputs = [ cmake pkgconfig ];
 
-  buildInputs = [ ncurses openssl zlib pcre jemalloc libaio systemd ];
+  buildInputs = [ ncurses openssl zlib jemalloc libaio systemd ];
 
   cmakeFlags = [
     "-DBUILD_CONFIG=mysql_release"
@@ -43,7 +43,7 @@ common = rec { # attributes common to both builds
 
     "-DWITH_ZLIB=system"
     "-DWITH_SSL=system"
-    "-DWITH_PCRE=system"
+    "-DWITH_PCRE=auto"
 
   ]
     ;
@@ -93,7 +93,6 @@ everything = stdenv.mkDerivation (common // {
   name = "mariadb-${common.version}";
 
   patches = [
-    ./MDEV-12366.patch
   ];
 
   nativeBuildInputs = common.nativeBuildInputs ++ [ bison ];
