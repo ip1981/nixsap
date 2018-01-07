@@ -38,7 +38,9 @@ let
       ]
     ) (explicit cfg));
 
-  configFile = with cfg; pkgs.writeText "sproxy.yml" ''
+  configFile = with cfg; pkgs.writeYAML "sproxy.yml" ''
+    # yamllint disable rule:empty-lines
+    # yamllint disable rule:line-length
     ---
     ${top}
 
