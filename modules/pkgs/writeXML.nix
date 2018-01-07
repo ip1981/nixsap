@@ -1,11 +1,12 @@
-{ writeText, runCommand, libxml2 }:
+{ writeTextFile, libxml2 }:
 
 name: text:
-  let
-    f = writeText "${name}.raw" text;
-  in
-  runCommand name { } ''
-    ${libxml2}/bin/xmllint \
-      --format --noblanks --nocdata ${f} \
-        > $out
-  ''
+  writeTextFile
+  {
+    inherit name text;
+    checkPhase = ''
+      ${libxml2.bin}/bin/xmllint \
+        --format --noblanks --nocdata "$out" > linted
+      mv linted "$out"
+    '';
+  }

@@ -1,13 +1,21 @@
-{ bash, writeScript, haskellPackages, runCommand }:
+{ bash, writeTextFile, haskellPackages }:
+
+let
+
+  shellcheck = haskellPackages.ShellCheck;
+
+in
 
 name: text:
-let
-  f = writeScript name ''
-    #!${bash}/bin/bash
-    ${text}
-  '';
-in
-runCommand name { } ''
-  ${haskellPackages.ShellCheck}/bin/shellcheck ${f}
-  cp -a ${f} $out
-''
+  writeTextFile
+  {
+    inherit name;
+    executable = true;
+    text = ''
+      #!${bash}/bin/bash
+      ${text}
+    '';
+    checkPhase = ''
+      ${shellcheck}/bin/shellcheck "$out"
+    '';
+  }

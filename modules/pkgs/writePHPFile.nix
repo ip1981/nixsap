@@ -1,10 +1,10 @@
-{ php, writeText, runCommand }:
+{ writeTextFile, php }:
 
 name: text:
-let
-  f = writeText name text;
-in
-runCommand name { } ''
-  ${php}/bin/php -l '${f}'
-  cp -a '${f}' $out
-''
+  writeTextFile
+  {
+    inherit name text;
+    checkPhase = ''
+      ${php}/bin/php -l "$out"
+    '';
+  }
