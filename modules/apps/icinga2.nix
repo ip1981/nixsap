@@ -94,8 +94,6 @@ let
   icingaConf = pkgs.writeText "icinga2.conf"
     ''
       const PluginDir = "${pkgs.monitoringPlugins}/libexec"
-      const RunAsGroup = "${cfg.user}"
-      const RunAsUser = "${cfg.user}"
 
       include <itl>
       include <plugins>
@@ -341,6 +339,7 @@ in {
     nixsap.system.groups = [ cfg.commandGroup ];
     nixsap.deployment.keyrings.${cfg.user} = filter (hasPrefix config.nixsap.deployment.keyStore) cfg.configFiles;
     users.users.${cfg.user}.extraGroups = [ "proc" ];
+
     systemd.services.icinga2 = {
       description = "Icinga2 daemon";
       after = [ "local-fs.target" "keys.target" "network.target" ];
