@@ -200,16 +200,6 @@ let
     ln -sf ${icingaMutableCheckCommand} \
       ${cfg.stateDir}/etc/icinga2/conf.d/${cfg.mutable.checkCommand}.conf
 
-    # XXX: requires root (!?)
-    ${pkgs.icinga2}/bin/icinga2 api setup
-    ${pkgs.icinga2}/bin/icinga2 feature enable checker
-    ${pkgs.icinga2}/bin/icinga2 feature enable command
-    ${pkgs.icinga2}/bin/icinga2 feature enable livestatus
-
-    ${optionalString cfg.notifications ''
-      ${pkgs.icinga2}/bin/icinga2 feature enable notification
-    ''}
-
     rm -rf ${rundir}
     mkdir --mode=0755 -p ${rundir}
     mkdir --mode=2710 -p ${dirOf cfg.commandPipe}
@@ -223,8 +213,17 @@ let
 
   start = pkgs.writeBashScriptBin "icinga2" ''
     set -euo pipefail
-
     umask 0077
+
+    # XXX Requires root for no fucking reason, see https://github.com/Icinga/icinga2/issues/4947
+    ${pkgs.fakeroot}/bin/fakeroot ${pkgs.icinga2}/bin/icinga2 api setup
+    ${pkgs.fakeroot}/bin/fakeroot ${pkgs.icinga2}/bin/icinga2 feature enable checker
+    ${pkgs.fakeroot}/bin/fakeroot ${pkgs.icinga2}/bin/icinga2 feature enable command
+    ${pkgs.fakeroot}/bin/fakeroot ${pkgs.icinga2}/bin/icinga2 feature enable livestatus
+
+    ${optionalString cfg.notifications ''
+      ${pkgs.fakeroot}/bin/fakeroot ${pkgs.icinga2}/bin/icinga2 feature enable notification
+    ''}
 
     printf 'const TicketSalt = "%s"\n' "$(${pkgs.pwgen}/bin/pwgen -1 -s 23)" \
       > ${cfg.stateDir}/etc/icinga2/conf.d/ticketsalt.conf
