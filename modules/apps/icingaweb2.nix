@@ -49,7 +49,7 @@ let
     host     = mandatory str;
     passfile = optional path;
     port     = optional int;
-    type     = mandatory (enum [ "mysql" ]);
+    type     = mandatory (enum [ "mysql" "pgsql" ]);
     user     = mandatory str;
   };
 
@@ -136,25 +136,22 @@ let
   '';
 
   mkResource = name: opts:
-    let
-      mkDB = ''
-        cat <<'__EOF__'
+    ''
+      cat <<'__EOF__'
 
-        [${name}]
-        type = "db"
-        db = "${opts.type}"
-        dbname = "${opts.db}"
-        host = "${opts.host}"
-        port = "${show opts.port}"
-        username = "${opts.user}"
-        __EOF__
-        ${optionalString (opts.passfile != null) ''
-          pwd=$(cat '${opts.passfile}')
-          printf 'password="%s"\n' "$pwd"
-        ''}
-      '';
-    in if opts.type == "mysql" then mkDB
-       else "";
+      [${name}]
+      type = "db"
+      db = "${opts.type}"
+      dbname = "${opts.db}"
+      host = "${opts.host}"
+      port = "${show opts.port}"
+      username = "${opts.user}"
+      __EOF__
+      ${optionalString (opts.passfile != null) ''
+        pwd=$(cat '${opts.passfile}')
+        printf 'password="%s"\n' "$pwd"
+      ''}
+    '';
 
   genResourcesIni = pkgs.writeBashScript "resources" (concatStringsSep "\n" (
     mapAttrsToList mkResource (explicit cfg.resources)
@@ -207,41 +204,82 @@ let
     chown -R icingaweb2:icingaweb2 '${cfg.configDir}'
   '';
 
-  configureDB = with cfg.resources.icingaweb2db;
-    let
-      mkMyCnf = pkgs.writeBashScript "my.cnf.sh" ''
-        cat <<'__EOF__'
-        [client]
-        host = ${host}
-        ${optionalString (port != null) "port = ${toString port}"}
-        user = ${user}
-        __EOF__
-        ${optionalString (passfile != null) ''
-          pwd=$(cat '${passfile}')
-          printf 'password = %s\n' "$pwd"
-        ''}
+  configureDB = with cfg.resources.icingaweb2db; {
+    mysql =
+      let
+        mkMyCnf = pkgs.writeBashScript "my.cnf.sh" ''
+          cat <<'__EOF__'
+          [client]
+          host = ${host}
+          ${optionalString (port != null) "port = ${toString port}"}
+          user = ${user}
+          __EOF__
+          ${optionalString (passfile != null) ''
+            pwd=$(cat '${passfile}')
+            printf 'password = %s\n' "$pwd"
+          ''}
+        '';
+        mysql = "${pkgs.mysql.client}/bin/mysql";
+      in pkgs.writeBashScript "configureMySQL" ''
+        set -euo pipefail
+        cnf=$(mktemp)
+        trap 'rm -f "$cnf"' EXIT
+        chmod 0600 "$cnf"
+        ${mkMyCnf} > "$cnf"
+        #shellcheck disable=SC2016
+        while ! ${mysql} --defaults-file="$cnf" -e 'CREATE DATABASE IF NOT EXISTS `${db}`'; do
+          sleep 5s
+        done
+        tt=$(${mysql} --defaults-file="$cnf" -N -e 'SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = "${db}"')
+        if [ "$tt" -eq 0 ]; then
+          ${mysql} --defaults-file="$cnf" -v '${db}' < '${pkgs.icingaweb2}/etc/schema/mysql.schema.sql'
+          ${optionalString (cfg.initialRootPasswordHash != "") ''
+            #shellcheck disable=SC2016
+            ${mysql} --defaults-file="$cnf" -e \
+              'INSERT INTO icingaweb_user (name, active, password_hash) VALUES ("root", 1, "${cfg.initialRootPasswordHash}")' '${db}'
+            ''
+          }
+        fi
       '';
-    in pkgs.writeBashScript "configureDB" ''
-      set -euo pipefail
-      cnf=$(mktemp)
-      trap 'rm -f "$cnf"' EXIT
-      chmod 0600 "$cnf"
-      ${mkMyCnf} > "$cnf"
-      #shellcheck disable=SC2016
-      while ! mysql --defaults-file="$cnf" -e 'CREATE DATABASE IF NOT EXISTS `${db}`'; do
-        sleep 5s
-      done
-      tt=$(mysql --defaults-file="$cnf" -N -e 'SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = "${db}"')
-      if [ "$tt" -eq 0 ]; then
-        mysql --defaults-file="$cnf" -v '${db}' < '${pkgs.icingaweb2}/etc/schema/mysql.schema.sql'
-        ${optionalString (cfg.initialRootPasswordHash != "") ''
+
+      pgsql =
+        let
+          psql = pkgs.writeBashScript "icingaweb2pgsql" ''
+            exec ${pkgs.postgresql}/bin/psql \
+              -v ON_ERROR_STOP=1 \
+              --no-password \
+              --host='${host}' \
+              --port=${toString port} \
+              --dbname='${db}' \
+              --username='${user}' \
+              "$@"
+          '';
+        in pkgs.writeBashScript "configurePgSQL" ''
+          set -euo pipefail
+          ${optionalString (passfile != null) ''
+            pgpass=$(mktemp)
+            trap 'rm -f "$pgpass"' EXIT
+            chmod 0600 "$cnf"
+            printf '*:*:*:*:' > "$pgpass"
+            cat '${passfile}' >> "$pgpass"
+            export PGPASSFILE="$pgpass"
+          ''}
+
           #shellcheck disable=SC2016
-          mysql --defaults-file="$cnf" -e \
-            'INSERT INTO icingaweb_user (name, active, password_hash) VALUES ("root", 1, "${cfg.initialRootPasswordHash}")' '${db}'
-          ''
-        }
-      fi
-    '';
+          while ! ${psql} -c ';'; do
+            sleep 5s
+          done
+          tt=$(${psql} --tuples-only -c "SELECT count(*) FROM pg_class WHERE relname='icingaweb_user'")
+          if [ "$tt" -eq 0 ]; then
+            ${psql} --single-transaction -f '${pkgs.icingaweb2}/etc/schema/pgsql.schema.sql'
+            ${optionalString (cfg.initialRootPasswordHash != "") ''
+              ${psql} -c \
+                "INSERT INTO icingaweb_user (name, active, password_hash) VALUES ('root', 1, '${cfg.initialRootPasswordHash}')"
+              ''
+            }
+          fi
+        '';
+  };
 
   keys = [ cfg.resources.icingaweb2db.passfile
            cfg.resources.icinga2db.passfile ];
@@ -393,10 +431,9 @@ in {
       after = [ "network.target" "local-fs.target" "keys.target" ];
       wants = [ "keys.target" ];
       wantedBy = [ "multi-user.target" ];
-      path = with pkgs; [ mysql ];
       preStart = configureFiles;
       serviceConfig = {
-        ExecStart = configureDB;
+        ExecStart = configureDB.${cfg.resources.icingaweb2db.type};
         PermissionsStartOnly = true;
         RemainAfterExit = true;
         User = "icingaweb2";
