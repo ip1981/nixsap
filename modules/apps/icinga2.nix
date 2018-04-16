@@ -2,16 +2,12 @@
 
 let
   inherit (builtins)
-    attrNames dirOf toString ;
+    dirOf ;
   inherit (lib)
-    concatMapStringsSep mapAttrsToList concatStringsSep filter hasPrefix
-    isString mkEnableOption mkIf mkOption optionalString types ;
+    concatMapStringsSep concatStringsSep filter hasPrefix isString
+    mapAttrsToList mkEnableOption mkIf mkOption optionalString types ;
   inherit (types)
-    attrsOf bool either enum int listOf path str ;
-
-  environment = {
-    SSL_CERT_FILE = "/etc/ssl/certs/ca-bundle.crt";
-  };
+    attrsOf bool either enum int listOf nullOr path str submodule ;
 
   cfg = config.nixsap.apps.icinga2;
   rundir = "/run/icinga2";
@@ -91,6 +87,29 @@ let
     }
   '';
 
+  idoPasswordFile = "${rundir}/ido-password.conf";
+
+  idoConf = with cfg.ido;
+    let
+      obj = {
+        mysql = "IdoMysqlConnection";
+        pgsql = "IdoPgsqlConnection";
+      };
+    in pkgs.writeText "icinga-ido.conf" ''
+      library "db_ido_${type}"
+
+      include "${idoPasswordFile}"
+
+      # TODO: maybe more options including mysql/pgsql specific
+      object ${obj.${type}} "ido-database" {
+        database = "${database}"
+        host     = "${host}"
+        port     = ${toString port}
+        password = IdoDbPassword # XXX read from a secret file in runtime
+        user     = "${user}"
+      }
+    '';
+
   icingaConf = pkgs.writeText "icinga2.conf"
     ''
       const PluginDir = "${pkgs.monitoringPlugins}/libexec"
@@ -110,6 +129,10 @@ let
       include_recursive "${cfg.stateDir}/etc/icinga2/repository.d"
       include "${mutablePath}/*.conf"
 
+      ${optionalString (cfg.ido.type != null) ''
+        include "${idoConf}"
+      ''}
+
       ${concatMapStringsSep "\n" (f:
           if hasPrefix "/" f
           then ''include "${f}"''
@@ -126,45 +149,71 @@ let
     exec ${pkgs.icinga2}/bin/icinga2 console --connect 'https://localhost/' "$@"
   '';
 
-  configureMySQL = pkgs.writeBashScript "icinga2-mysql" ''
-    set -euo pipefail
-    nconn=$(icinga2console --eval 'len(get_objects(IdoMysqlConnection))')
-    nconn=''${nconn%.*} # float to int
-    if [ "$nconn" -eq 0 ]; then
-      exit
-    fi
-    for i in $( seq 0 $(( nconn - 1 )) ); do
-      db=$(icinga2console --eval "get_objects(IdoMysqlConnection)[$i].database")
-      host=$(icinga2console --eval "get_objects(IdoMysqlConnection)[$i].host")
-      port=$(icinga2console --eval "get_objects(IdoMysqlConnection)[$i].port")
-      pwd=$(icinga2console --eval "get_objects(IdoMysqlConnection)[$i].password")
-      user=$(icinga2console --eval "get_objects(IdoMysqlConnection)[$i].user")
+  configureDB = with cfg.ido; {
+    mysql =
+      let
+        secret = "${cfg.stateDir}.my.cnf";
+        mycnf = pkgs.writeText "icinga2-my.cnf" ''
+          [client]
+          host = ${host}
+          port = ${toString port}
+          user = ${user}
+          database = ${database}
+          ${optionalString (passfile != null) "!include ${secret}"}
+        '';
+        mysql = pkgs.writeBashScript "icinga2-mysql" ''
+          exec "${pkgs.mysql.client}/bin/mysql" \
+            --defaults-file='${mycnf}' "$@"
+        '';
+      in pkgs.writeBashScript "icinga2-mysql.sh" ''
+        set -euo pipefail
+        ${optionalString (passfile != null) ''
+          rm -f '${secret}'
+          printf '[client]\npassword=' > '${secret}'
+          cat '${passfile}' >> '${secret}'
+        ''}
+        while ! ${mysql} -e ';'; do
+          sleep 5s
+        done
+        tt=$(${mysql} -N -e 'SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = "${database}"')
+        if [ "$tt" -eq 0 ]; then
+          ${mysql} < '${pkgs.icinga2}/share/icinga2-ido-mysql/schema/mysql.sql'
+        fi
+      '';
 
-      # XXX Removing quotes:
-      db=''${db%\"}     ; db=''${db#\"}
-      host=''${host%\"} ; host=''${host#\"}
-      pwd=''${pwd%\"}   ; pwd=''${pwd#\"}
-      user=''${user%\"} ; user=''${user#\"}
-      port=''${port%.*}
-      mysql=(${pkgs.mysql}/bin/mysql --no-defaults "-h$host" "-P$port" "-u$user" "--password=$pwd")
-      while ! "''${mysql[@]}" -e ';'; do
-        sleep 20s
-      done
-      tt=$("''${mysql[@]}" -N -e "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = '$db';")
-      # TODO: Migrations:
-      if [ "$tt" -eq 0 ]; then
-        "''${mysql[@]}" -v "$db" < ${pkgs.icinga2}/share/icinga2-ido-mysql/schema/mysql.sql
-      fi
-    done
-  '';
+      pgsql =
+        let
+          pgpass = "${cfg.stateDir}/.pgpass";
+          psql = pkgs.writeBashScript "icinga2psql" ''
+            exec ${pkgs.postgresql}/bin/psql \
+              -v ON_ERROR_STOP=1 \
+              --no-password \
+              --host='${host}' \
+              --port=${toString port} \
+              --dbname='${database}' \
+              --username='${user}' \
+              "$@"
+          '';
+        in pkgs.writeBashScript "icinga2-pgsql.sh" ''
+          set -euo pipefail
+          ${optionalString (passfile != null) ''
+            rm -f '${pgpass}'
+            printf '*:*:*:*:' > '${pgpass}'
+            cat '${passfile}' >> '${pgpass}'
+            chmod 0600 '${pgpass}'
+            export PGPASSFILE='${pgpass}'
+          ''}
 
-  configureDBs = pkgs.writeBashScriptBin "icinga2db" ''
-    set -eu
-    while ! icinga2console -e '"connected to icinga"'; do
-      sleep 30s
-    done
-    ${configureMySQL}
-  '';
+          while ! ${psql} -c ';'; do
+            sleep 5s
+          done
+
+          tt=$(${psql} --tuples-only -c "SELECT count(*) FROM pg_class WHERE relname='icinga_dbversion'")
+          if [ "$tt" -eq 0 ]; then
+            ${psql} --single-transaction -f '${pkgs.icinga2}/share/icinga2-ido-pgsql/schema/pgsql.sql'
+          fi
+        '';
+  };
 
   preStart = ''
     umask 0077
@@ -225,6 +274,13 @@ let
       ${pkgs.fakeroot}/bin/fakeroot ${pkgs.icinga2}/bin/icinga2 feature enable notification
     ''}
 
+    ${optionalString (cfg.ido.type != null) ''
+      ${if (cfg.ido.passfile != null)
+        then "pwd=$(cat '${cfg.ido.passfile}'"
+        else "pwd=''"}
+      printf 'const IdoDbPassword = "%s"\n' "$pwd" > '${idoPasswordFile}'
+    ''}
+
     printf 'const TicketSalt = "%s"\n' "$(${pkgs.pwgen}/bin/pwgen -1 -s 23)" \
       > ${cfg.stateDir}/etc/icinga2/conf.d/ticketsalt.conf
 
@@ -257,6 +313,49 @@ in {
         description = "Enable notifications";
         type = bool;
         default = false;
+      };
+
+      ido = mkOption {
+        description = ''
+          Configure Icinga Data Output.  This includes automatic
+          database bootstrap (importing SQL shcema).  You may
+          opt into manual configuration with regular config files
+          (`configFiles`) for the maximum flexibility.
+        '';
+        # TODO: may add more options, backend-specific options
+        # depending on the backend type.
+        type = submodule {
+          options = {
+            type = mkOption {
+              description = "IDO backend type";
+              type = nullOr (enum ["mysql" "pgsql"]);
+              default = null;
+            };
+            host = mkOption {
+              description = "Database host. May be a directory with the UNIX-socket for pgsql";
+              type = str;
+            };
+            port = mkOption {
+              description = "Database port";
+              type = int;
+            };
+            database = mkOption {
+              description = "Database name";
+              type = str;
+              default = "icinga";
+            };
+            user = mkOption {
+              description = "Database login";
+              type = str;
+              default = cfg.user;
+            };
+            passfile = mkOption {
+              description = "A file with the password (secret)";
+              type = nullOr path;
+              default = null;
+            };
+          };
+        };
       };
 
       configFiles = mkOption {
@@ -344,7 +443,7 @@ in {
       after = [ "local-fs.target" "keys.target" "network.target" ];
       wants = [ "keys.target" ];
       wantedBy = [ "multi-user.target" ];
-      inherit environment preStart;
+      inherit preStart;
       serviceConfig = {
         ExecStart = "${start}/bin/icinga2";
         KillMode = "mixed";
@@ -355,14 +454,13 @@ in {
       };
     };
 
-    systemd.services.icinga2db = {
+    systemd.services.icinga2db = mkIf (cfg.ido.type != null) {
       description = "Icinga2 databases configurator";
       after = [ "icinga2.service" ];
       wantedBy = [ "multi-user.target" ];
       path = [ console ];
-      inherit environment;
       serviceConfig = {
-        ExecStart = "${configureDBs}/bin/icinga2db";
+        ExecStart = configureDB.${cfg.ido.type};
         User = cfg.user;
         RemainAfterExit = true;
         Restart = "on-failure";
