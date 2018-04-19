@@ -152,7 +152,7 @@ let
   configureDB = with cfg.ido; {
     mysql =
       let
-        secret = "${cfg.stateDir}.my.cnf";
+        secret = "${cfg.stateDir}/.my.cnf";
         mycnf = pkgs.writeText "icinga2-my.cnf" ''
           [client]
           host = ${host}
