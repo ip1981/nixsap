@@ -1,17 +1,20 @@
-commit 04eb7cffa84387070f48f5649a1d5a5a7843fc9c
-Author: Igor Pashev <pashev.igor@gmail.com>
-Date:   Fri Jan 1 11:05:48 2016 +0300
+From 64d9685260f93b5c2f18cc7abbc862575e5b2904 Mon Sep 17 00:00:00 2001
+From: Igor Pashev <pashev.igor@gmail.com>
+Date: Thu, 19 Apr 2018 13:27:24 +0300
+Subject: [PATCH] Add Sproxy backend
 
-    Added Sproxy backend
-
-    See https://github.com/zalora/sproxy
+---
+ .../Icinga/Authentication/User/SproxyBackend.php   | 51 ++++++++++++++++++++++
+ library/Icinga/Authentication/User/UserBackend.php |  6 +++
+ 2 files changed, 57 insertions(+)
+ create mode 100644 library/Icinga/Authentication/User/SproxyBackend.php
 
 diff --git a/library/Icinga/Authentication/User/SproxyBackend.php b/library/Icinga/Authentication/User/SproxyBackend.php
 new file mode 100644
-index 0000000..4b15b0e
+index 0000000000..f36c362374
 --- /dev/null
 +++ b/library/Icinga/Authentication/User/SproxyBackend.php
-@@ -0,0 +1,40 @@
+@@ -0,0 +1,51 @@
 +<?php
 +/* 2016 Zalora South East Asia Pte. Ltd | GPLv2+ */
 +
@@ -21,8 +24,19 @@ index 0000000..4b15b0e
 +use Icinga\User;
 +
 +/**
-+ * Login with Sproxy authentication mechanism:
-+ * https://github.com/zalora/sproxy
++ * Login with Sproxy authentication mechanism.
++ * This is similar to the "external" backend.
++ *
++ * Sproxy provides at least two HTTP headers:
++ *
++ * "From" - the user's email address.
++ * "X-Groups" - a comma-separated list of the user's groups.
++ *
++ *
++ * See <https://hackage.haskell.org/package/sproxy2>,
++ *  or <https://github.com/ip1981/sproxy2>,
++ *  or <https://gitlab.com/ip1981/sproxy2>,
++ *  or <https://bitbucket.org/IgorPashev/sproxy2>.
 + */
 +class SproxyBackend extends ExternalBackend
 +{
@@ -53,7 +67,7 @@ index 0000000..4b15b0e
 +    }
 +}
 diff --git a/library/Icinga/Authentication/User/UserBackend.php b/library/Icinga/Authentication/User/UserBackend.php
-index 3b8e210..d264365 100644
+index 8130c56cde..366b84fd4f 100644
 --- a/library/Icinga/Authentication/User/UserBackend.php
 +++ b/library/Icinga/Authentication/User/UserBackend.php
 @@ -22,6 +22,7 @@ class UserBackend implements ConfigAwareFactory
@@ -64,7 +78,7 @@ index 3b8e210..d264365 100644
          'external',
          'db',
          'ldap',
-@@ -176,6 +177,11 @@ class UserBackend implements ConfigAwareFactory
+@@ -176,6 +177,11 @@ public static function create($name, ConfigObject $backendConfig = null)
              $backend->setName($name);
              return $backend;
          }

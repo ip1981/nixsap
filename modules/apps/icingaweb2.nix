@@ -41,7 +41,7 @@ let
     users = default [] (listOf str);
     groups = default [] (listOf str);
     permissions = mandatory (listOf permission);
-    objects = mandatory str;
+    objects = optional str;
   };
 
   database = attrs {
@@ -182,7 +182,6 @@ let
     mkdir -p '${cfg.configDir}/modules/monitoring'
 
     ln -sf '${pkgs.icingaweb2}/modules/monitoring' '${cfg.configDir}/enabledModules/monitoring'
-    ln -sf '${pkgs.icingaweb2}/modules/translation' '${cfg.configDir}/enabledModules/translation'
     ${genResourcesIni} > '${cfg.configDir}/resources.ini'
     ln -sf '${authenticationIni}' '${cfg.configDir}/authentication.ini'
     ln -sf '${configIni}' '${cfg.configDir}/config.ini'
@@ -360,7 +359,6 @@ in {
         devops = {
           groups = [ "devops" ];
           permissions = [ "module/*" "monitoring/command/*" ];
-          objects = "*";
         };
         all = {
           groups = [ "all" ];
