@@ -1,4 +1,4 @@
 #!/bin/sh
 
-node2nix --flatten -i main.json -c main.nix
+node2nix -8 --bypass-cache --flatten -i main.json -c main.nix
 
