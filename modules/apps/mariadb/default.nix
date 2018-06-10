@@ -298,7 +298,7 @@ in {
       package = mkOption {
         description = "MariaDB Package (10.1.x)";
         type = package;
-        default = pkgs.mariadb;
+        default = pkgs.mariadb_10_1;
       };
 
       replicate = mkOption {
