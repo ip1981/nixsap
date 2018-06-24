@@ -9,8 +9,8 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs = with pkgs; [
-    autoreconfHook bind.dnsutils fping libdbi libtap mariadb.lib openldap.dev
-    openssh openssl.dev perl postgresql procps smbclient sudo
+    autoreconfHook bind.dnsutils fping libdbi libtap mariadb.client.dev
+    openldap.dev openssh openssl.dev perl postgresql procps smbclient sudo
   ];
 
   doCheck = false; # tests are broken badly
