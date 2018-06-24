@@ -18,6 +18,7 @@ stdenv.mkDerivation rec {
   patches = [
     ./mysql_check_slave.patch
     ./test-str-format.patch
+    ./check_mysql_MYSQL_PORT.patch
   ];
 
   configurePhase = ''
