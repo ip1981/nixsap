@@ -11,7 +11,10 @@ stdenv.mkDerivation rec {
     sha256 = "047s43amqj0i4k4xfac3n0784yvzphv3b9kirr4wycvn9pcz06d4";
   };
 
-  patches = [ ./sproxy.patch ];
+  patches = [
+    ./sproxy.patch
+    ./php72.patch
+  ];
 
   buildPhase = "true";
 
