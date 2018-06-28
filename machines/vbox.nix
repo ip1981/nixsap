@@ -67,7 +67,7 @@ in {
 
   security.sudo.wheelNeedsPassword = mkForce false;
   environment.systemPackages = with pkgs; [
-    atop curl file htop iftop iotop jq lsof mc mtr ncdu netcat nmap openssl
+    curl file htop iftop iotop jq lsof mc mtr ncdu netcat nmap openssl
     pigz pv pwgen pxz sysstat tcpdump telnet tmux traceroute tree vim wget
   ];
 
