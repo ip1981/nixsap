@@ -10,7 +10,7 @@ in stdenv.mkDerivation {
 
   src = "${./nix-serve.psgi}";
 
-  buildInputs = [ pxz perl nix ]
+  buildInputs = [ perl nix.perl-bindings ]
     ++ (with perlPackages; [ DBI DBDSQLite Plack Starman ]);
 
   phases = [ "installPhase" ];
