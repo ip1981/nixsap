@@ -144,10 +144,10 @@ If application default value is known to be insecure, we should set our own,
 _secure_, default value.
 
 
-Requirements
-============
+Recommendations
+===============
 
-* [nixpkgs](https://nixos.org/nixpkgs/) >= 17.03
+* [nixpkgs](https://nixos.org/nixpkgs/) >= 18.03
 
 
 License
