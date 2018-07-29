@@ -3,17 +3,16 @@
 }:
 
 stdenv.mkDerivation rec {
-  version = "2.5.3";
+  version = "2.6.0";
   name = "icingaweb2-${version}";
 
   src = fetchurl {
     url = "https://github.com/Icinga/icingaweb2/archive/v${version}.tar.gz";
-    sha256 = "14k5rn09v2ww71x6d8p9rh980nwsmwan2gff0b82dvcmb02576fs";
+    sha256 = "1m0gi8zbrag4jwdcqicq5bb3s07z7kz0fg41a22cbqlgx6adivaa";
   };
 
   patches = [
     ./sproxy.patch
-    ./php72.patch
   ];
 
   buildPhase = "true";
