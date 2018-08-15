@@ -5,12 +5,12 @@
 }:
 
 stdenv.mkDerivation rec {
-  version = "2.8.4";
+  version = "2.9.1";
   name = "icinga2-${version}";
 
   src = fetchurl {
     url = "https://github.com/Icinga/icinga2/archive/v${version}.tar.gz";
-    sha256 = "1rmacc6cssifgv9jig0nrib0qkxnwq8k02gfb6a5k4sxrlyaxxin";
+    sha256 = "0d6r72kcjdc9mn07dv5vrpkqncvcgaw7zwcqp6cim64fmkh1xh6v";
   };
 
   buildInputs = [
