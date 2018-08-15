@@ -12,7 +12,7 @@ let
     ;
 
   inherit (lib.types)
-    attrsOf enum int listOf path submodule
+    attrsOf enum ints nonEmptyListOf path submodule
     ;
 
   groups = filterAttrs (n: _: n != "_module") config.nixsap.system.lvm.raid0;
@@ -105,17 +105,17 @@ in {
         options = {
           stripes = mkOption {
             description = "Number of stripes";
-            type = int;
+            type = ints.positive;
             example = 2;
           };
           physical = mkOption {
             description = "List of physical devices (must be even for stripes)";
             example = [ "/dev/sdb" "/dev/sdc" ];
-            type = listOf path;
+            type = nonEmptyListOf path;
           };
           fileSystems = mkOption {
             description = "Filesystems and their sizes";
-            type = attrsOf int;
+            type = attrsOf ints.positive;
             example = { "/mariadb/db" = 100; };
           };
           units = mkOption {
