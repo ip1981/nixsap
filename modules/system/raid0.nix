@@ -1,10 +1,20 @@
 { config, pkgs, lib, ... }:
 
-with lib;
-with lib.types;
-with builtins;
-
 let
+
+  inherit (builtins)
+    attrNames
+    ;
+
+  inherit (lib)
+    concatStringsSep filterAttrs foldl genAttrs mapAttrs' mapAttrsToList
+    mkOption nameValuePair removePrefix replaceStrings
+    ;
+
+  inherit (lib.types)
+    attrsOf enum int listOf path submodule
+    ;
+
   groups = filterAttrs (n: _: n != "_module") config.nixsap.system.lvm.raid0;
 
   createLV = vg: lv: s: opts:
