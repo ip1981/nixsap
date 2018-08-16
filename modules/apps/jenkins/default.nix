@@ -87,6 +87,9 @@ let
           '') (jobFiles name cfg)
         )}
 
+        mkdir -p secrets
+        echo ${if cfg.master-access-control then "false" else "true"} > secrets/slave-to-master-security-kill-switch
+
         if [ -f ${path} ]; then
           old=$(cat ${path})
         else

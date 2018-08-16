@@ -9,7 +9,9 @@ let
     concatStrings filterAttrs hasSuffix mapAttrsToList mkOption ;
 
   inherit (lib.types)
-    addCheck attrsOf either enum int listOf nullOr package path str submodule ;
+    addCheck attrsOf bool either enum int listOf nullOr package path str
+    submodule
+    ;
 
   default = d: t: mkOption { type = t; default = d; };
   optional = t: mkOption { type = nullOr t; default = null; };
@@ -49,6 +51,15 @@ in {
       description = "Jenkins data directory";
       type = path;
       default = "/jenkins/${name}";
+    };
+
+    master-access-control = mkOption {
+      description = ''
+        Enable Agent -> Master Access Control.
+        See https://wiki.jenkins.io/display/JENKINS/Slave+To+Master+Access+Control
+        '';
+      type = bool;
+      default = true;
     };
 
     jobs = mkOption {
