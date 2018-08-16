@@ -2,6 +2,7 @@
 , bison, boost, cmake, flex
 , libedit, mariadb, postgresql
 , openssl, yajl, pkgconfig
+, makeWrapper
 }:
 
 stdenv.mkDerivation rec {
@@ -14,8 +15,8 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs = [
-    bison boost cmake flex libedit mariadb.client openssl pkgconfig
-    postgresql yajl
+    bison boost cmake flex libedit makeWrapper mariadb.client openssl
+    pkgconfig postgresql yajl
   ];
 
   patches = [
@@ -43,6 +44,10 @@ stdenv.mkDerivation rec {
     for s in $out/icinga2/etc/icinga2/scripts/* ; do
       substituteInPlace $s --replace /usr/bin/printf printf
     done
+
+    wrapProgram $out/lib/icinga2/sbin/icinga2 \
+      --prefix LD_LIBRARY_PATH : $out/lib/icinga2
+
     rm -vf $out/sbin/icinga2
     ln -svf $out/lib/icinga2/sbin/icinga2 $out/sbin/icinga2
     test -x $out/sbin/icinga2
