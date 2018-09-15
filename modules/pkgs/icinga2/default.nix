@@ -40,7 +40,17 @@ stdenv.mkDerivation rec {
     make install DESTDIR=$(pwd)/tmp
     mv -v tmp/$out $out
     mv -v tmp/icinga2 $out/icinga2
-    rm -rvf $out/run
+
+    rm -rvf \
+      $out/icinga2/cache \
+      $out/icinga2/etc/icinga2/features-enabled \
+      $out/icinga2/etc/init.d \
+      $out/icinga2/etc/logrotate.d \
+      $out/icinga2/log \
+      $out/icinga2/spool \
+      $out/run \
+      $out/share/doc/icinga2/markdown
+
     for s in $out/icinga2/etc/icinga2/scripts/* ; do
       substituteInPlace $s --replace /usr/bin/printf printf
     done
