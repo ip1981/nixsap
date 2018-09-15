@@ -26,6 +26,7 @@ let
 
   configFiles = name: cfg: mapAttrs (n: v: maybeFile "jenkins-${name}-${n}" v) cfg.config;
   jobFiles = name: cfg: mapAttrs (n: v: maybeFile "jenkins-${name}-job-${n}.xml" v) cfg.jobs;
+  nodeFiles = name: cfg: mapAttrs (n: v: maybeFile "jenkins-${name}-node-${n}.xml" v) cfg.nodes;
 
   keyrings =
     let
@@ -85,6 +86,20 @@ let
             rm -rf -- 'jobs/${n}/config.xml'
             ${pkgs.libxml2}/bin/xmllint --xinclude --format '${p}' > 'jobs/${n}/config.xml'
           '') (jobFiles name cfg)
+        )}
+
+        if [ -d nodes ]; then
+          find nodes -maxdepth 1 -mindepth 1 -type d \
+            ${concatMapStringsSep " " (k: "-not -name '${escape [ "[" ] k}'") (attrNames cfg.nodes)} \
+            -print0 | xargs -0 --verbose --no-run-if-empty rm -rf
+        fi
+
+        ${concatStringsSep "\n" (
+          mapAttrsToList (n: p: ''
+            mkdir -p -- 'nodes/${n}'
+            rm -rf -- 'nodes/${n}/config.xml'
+            ${pkgs.libxml2}/bin/xmllint --xinclude --format '${p}' > 'nodes/${n}/config.xml'
+          '') (nodeFiles name cfg)
         )}
 
         mkdir -p secrets

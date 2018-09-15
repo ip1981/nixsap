@@ -62,6 +62,15 @@ in {
       default = true;
     };
 
+    nodes = mkOption {
+      description = ''
+        Nodes. Each value is either inline XML text or an XML file.
+        Any existing nodes, not mentioned here, are physically removed.
+      '';
+      type = attrsOf (either str path);
+      default = {};
+    };
+
     jobs = mkOption {
       description = ''
         Jenkins jobs. Each value is either inline XML text or an XML file.
