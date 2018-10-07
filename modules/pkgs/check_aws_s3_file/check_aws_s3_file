@@ -1,0 +1,163 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+sizeWarn=''
+sizeCrit=''
+timeWarn=''
+timeCrit=''
+bucket=''
+key=''
+
+usage() {
+  cat <<USAGE
+
+$0: check objects size and time at Amazon S3
+
+Usage:
+  $0 [options]
+
+Options:
+
+  -f <path>            AWS CLI credentials file
+
+  -b <bucket>          S3 bucket name, required
+  -k <key>             object key, e. g. "hosts/foo/bar.gz"
+
+  -s <spec in bytes>   object size warning threshold
+  -S <spec in bytes>   object size critical threshold
+
+  -t <spec in sec>     object age warning threshold
+  -T <spec in sec>     object age critical threshold
+
+Examples:
+
+  $0 -b foobucket # check the bucket is available
+  $0 -b foobucket -k hosts/foo/file.gz
+  $0 -b foobucket -k hosts/foo/file.gz -t 86400
+  $0 -b foobucket -k hosts/foo/file.gz -t 3600: -s 1000:
+
+USAGE
+}
+
+die () {
+  echo "$0: " "$@" >&2
+  exit 1
+}
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -f) export AWS_SHARED_CREDENTIALS_FILE="$2"; shift 2;;
+    -b) bucket="$2"; shift 2;;
+    -k) key="$2"; shift 2;;
+    -s) sizeWarn="$2"; shift 2;;
+    -S) sizeCrit="$2"; shift 2;;
+    -t) timeWarn="$2"; shift 2;;
+    -T) timeCrit="$2"; shift 2;;
+    -h|--help) usage; exit 1;;
+    *) die "unsupported argument: $1";;
+  esac
+done
+
+inrange () {
+  local r v
+  local v1 v2
+  local outter
+  local sIFS
+
+  r="$1"
+  v="$2"
+
+  case "$r" in
+    @*) outter=true; r="${r/@/}";;
+    *) outter=false;;
+  esac
+
+  sIFS=$IFS
+
+  IFS=:
+  set -- $r
+  v1=${1-}
+  v2=${2-}
+  IFS=$sIFS
+
+  case "$v1" in
+    $r) v2=$v1; v1=0;;
+    ~*)  v1=;;
+  esac
+
+  if $outter; then
+    { [ -n "$v1" ] && [ "$v" -lt "$v1" ]; } || { [ -n "$v2" ] && [ "$v" -gt "$v2" ]; }
+  else
+    { [ -z "$v1" ] || [ "$v" -gt "$v1" ]; } && { [ -z "$v2" ] || [ "$v" -lt "$v2" ]; }
+  fi
+}
+
+humanSize() {
+  local n u
+
+  n=$1
+  for u in B KiB MiB GiB TiB; do
+    if (( n > 1024 )); then
+      (( n /= 1024 ))
+    else
+      break
+    fi
+  done
+
+  echo "${n} ${u}"
+}
+
+
+[ -n "$bucket" ] || die "missing S3 bucket"
+
+if [ -z "$key" ]; then
+  if out=$(aws s3api head-bucket --bucket "$bucket" 2>&1); then
+    echo "OK: bucket $bucket exists and is accessible"
+    exit 0
+  else
+    printf 'CRITICAL: %s\n' "$(echo "$out" | grep .)"
+    exit 2
+  fi
+fi
+
+if ! out=$(aws s3api head-object --bucket "$bucket" --key "$key" 2>&1); then
+  printf 'UNKNOWN: %s\n' "$(echo "$out" | grep .)"
+  exit 3
+fi
+
+json=$out
+
+size=$(echo "$json" | jq -r .ContentLength)
+date=$(echo "$json" | jq -r .LastModified)
+
+date_s=$(date -d "$date" +%s)
+now_s=$(date -d now +%s)
+age_s=$((now_s - date_s))
+size_h=$(humanSize "$size")
+
+stat="size=${size}B;${sizeWarn};${sizeCrit};0 age=${age_s}s;${timeWarn};${timeCrit}"
+
+if [ -n "$timeCrit" ] && ! inrange "$timeCrit" "$age_s"; then
+  echo "CRITICAL: last modified $date|$stat"
+  exit 2
+fi
+
+if [ -n "$sizeCrit" ] && ! inrange "$sizeCrit" "$size"; then
+  echo "CRITICAL: size $size_h|$stat"
+  exit 2
+fi
+
+if [ -n "$timeWarn" ] && ! inrange "$timeWarn" "$age_s"; then
+  echo "WARNING: last modified $date|$stat"
+  exit 1
+fi
+
+if [ -n "$sizeWarn" ] && ! inrange "$sizeWarn" "$size"; then
+  echo "WARNING: size $size_h|$stat"
+  exit 1
+fi
+
+echo "OK: size $size_h, last modified $date|$stat"
+exit 0
+
