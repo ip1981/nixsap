@@ -10,7 +10,7 @@ let
     mkEnableOption mkIf mkOption ;
 
   inherit (lib.types)
-    attrsOf bool either enum int lines nullOr path str submodule ;
+    attrsOf bool either enum int lines nullOr package path str submodule ;
 
 
   cfg = config.nixsap.apps.nginx;
@@ -53,13 +53,18 @@ let
     }
   '';
 
-  exec = "${pkgs.nginx}/bin/nginx -c ${nginx-conf} -p ${cfg.stateDir}";
+  exec = "${cfg.package}/bin/nginx -c ${nginx-conf} -p ${cfg.stateDir}";
 
   enabled = {} != explicit cfg.conf.http.servers;
 
 in {
 
   options.nixsap.apps.nginx = {
+    package = mkOption {
+      description = "Nginx package";
+      type = package;
+      default = pkgs.nginx;
+    };
     user = mkOption {
       description = "User to run as";
       type = str;
@@ -127,7 +132,7 @@ in {
 
   config = {
     nixsap.apps.nginx.conf.http.context = ''
-      include ${pkgs.nginx}/conf/mime.types;
+      include ${cfg.package}/conf/mime.types;
       default_type application/octet-stream;
 
       # This is `combined` format with $remote_user replaced by $http_from.

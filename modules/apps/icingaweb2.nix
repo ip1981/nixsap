@@ -417,7 +417,7 @@ in {
       location ~ ^/index\.php(.*)$ {
         fastcgi_pass unix:${config.nixsap.apps.php-fpm.icingaweb2.pool.listen.socket};
         fastcgi_index index.php;
-        include ${pkgs.nginx}/conf/fastcgi_params;
+        include ${config.nixsap.apps.nginx.package}/conf/fastcgi_params;
         fastcgi_param SCRIPT_FILENAME ${pkgs.icingaweb2}/public/index.php;
         fastcgi_param ICINGAWEB_CONFIGDIR ${cfg.configDir};
         fastcgi_param REMOTE_USER $remote_user;

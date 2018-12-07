@@ -216,7 +216,7 @@ let
 
     location ~ \.php$ {
       fastcgi_pass unix:${config.nixsap.apps.php-fpm.mediawiki.pool.listen.socket};
-      include ${pkgs.nginx}/conf/fastcgi_params;
+      include ${config.nixsap.apps.nginx.package}/conf/fastcgi_params;
       fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     }
   '';
