@@ -12,6 +12,7 @@ and package set (extending and overriding it).
 Features
 ========
 
+
 Plug & Play
 -----------
 
@@ -31,11 +32,16 @@ or packages and put them into your project with your modifications without
 maintaning a fork of Nixsap.  When taking modules you have to change the
 `nixsap` namespace to something different to avoid conflicts.
 
-It is also possible to build and install packages that are overridden
-by Nixsap, for example:
+
+Package Overlay
+---------------
+
+Nixsap modules use a package overlay located in [./pkgs/default.nix](./pkgs/default.nix).
+It is also possible to build and install packages from this overlay independently,
+for example:
 
 ```
-nix-env [-I nixpkgs=/path/to/vanila/nixpkgs] -f /path/to/nixsap/pkgs -i nodejs-sass
+nix-build -E '(import <nixpkgs> { overlays = [ (import ./pkgs/default.nix) ]; })' -A icinga2
 ```
 
 

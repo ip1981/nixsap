@@ -1,21 +1,12 @@
-{ nixpkgs ? <nixpkgs>
-, system ? builtins.currentSystem
-}:
-
+self: super:
 let
+  all = super.lib.attrNames (
+    super.lib.filterAttrs
+    ( n: _: n != "default.nix" && ! super.lib.hasPrefix "." n )
+    (builtins.readDir ./.)
+  );
+in super.lib.listToAttrs (map (f:
+  { name = super.lib.removeSuffix ".nix" f;
+    value = super.callPackage (./. + "/${f}") {}; }
+) all)
 
-  lib = import (nixpkgs + "/lib");
-  inherit (lib) evalModules;
-
-
-  evaluated = evalModules {
-    modules = [
-      { nixpkgs.system = system; }
-      (import (nixpkgs + "/nixos/modules/misc/nixpkgs.nix"))
-      (import ../modules/pkgs)
-    ];
-  };
-
-  inherit (evaluated.config._module.args) pkgs;
-
-in pkgs
