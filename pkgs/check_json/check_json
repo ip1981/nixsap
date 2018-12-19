@@ -1,0 +1,144 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+warn=''
+crit=''
+url=''
+query='.'
+title=''
+netrc=''
+name='value'
+unit=''
+
+usage() {
+  cat <<USAGE
+
+$0: reduce JSON response to an integer, check against thresholds.
+
+This script uses:
+  jq   - https://stedolan.github.io/jq/
+  cURL - https://curl.haxx.se/
+
+Usage:
+  $0 [options]
+
+Options:
+
+  -q <expression>    jq query, must return an integer (default: $query)
+  -u <url>           URL to fetch
+
+  -t <title>         short description of the parameter
+  -p <name>          name of the parameter (default: $name)
+  -m <unit>          unit of measure (default: $unit)
+
+  -n <file>          netrc file with credentials
+
+  -w <spec>          warning threshold
+  -c <spec>          critical threshold
+
+Examples:
+
+  $0 -u example.com/errors_list -w 1 -c 4 -q '. | length'
+  $0 -u example.net/counter -w 1:4 -m c
+
+USAGE
+}
+
+die () {
+  echo "$0: " "$@" >&2
+  exit 1
+}
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -q) query="$2"; shift 2;;
+    -u) url="$2"; shift 2;;
+    -t) title="$2"; shift 2;;
+    -p) name="$2"; shift 2;;
+    -m) unit="$2"; shift 2;;
+    -n) netrc="$2"; shift 2;;
+    -w) warn="$2"; shift 2;;
+    -c) crit="$2"; shift 2;;
+    -h|--help) usage; exit 1;;
+    *) die "unsupported argument: $1";;
+  esac
+done
+
+inrange () {
+  local r v
+  local v1 v2
+  local outter
+  local sIFS
+
+  r="$1"
+  v="$2"
+
+  case "$r" in
+    @*) outter=true; r="${r/@/}";;
+    *) outter=false;;
+  esac
+
+  sIFS=$IFS
+
+  IFS=:
+  set -- $r
+  v1=${1-}
+  v2=${2-}
+  IFS=$sIFS
+
+  case "$v1" in
+    $r) v2=$v1; v1=0;;
+    ~*)  v1=;;
+  esac
+
+  if $outter; then
+    { [ -n "$v1" ] && [ "$v" -le "$v1" ]; } || { [ -n "$v2" ] && [ "$v" -ge "$v2" ]; }
+  else
+    { [ -z "$v1" ] || [ "$v" -ge "$v1" ]; } && { [ -z "$v2" ] || [ "$v" -le "$v2" ]; }
+  fi
+}
+
+[ -n "$url" ] || die "missing url"
+
+cmd=(curl --fail --silent --show-error --location)
+if [ -n "$netrc" ]; then
+  cmd+=(--netrc-file "$netrc")
+fi
+cmd+=("$url")
+
+if ! out=$("${cmd[@]}" 2>&1); then
+  printf 'UNKNOWN: %s\n' "$(echo "$out" | grep . | head -n 1)"
+  exit 3
+fi
+
+json=$out
+
+if ! value=$(echo "$json" | jq -c -r "$query" 2>&1); then
+  printf 'UNKNOWN: %s\n' "$(echo "$value" | grep . | head -n 1)"
+  exit 3
+fi
+
+if [[ ! "$value" =~ ^[-+]?[0-9]+$ ]]; then
+  echo "UNKNOWN: not an integer: $value"
+  exit 3
+fi
+
+stat="$name=$value$unit;$warn;$crit"
+
+[ -n "$title" ] || title="some $name"
+text="$value - $title|$stat"
+
+if [ -n "$crit" ] && ! inrange "$crit" "$value"; then
+  echo "CRITICAL: $text"
+  exit 2
+fi
+
+if [ -n "$warn" ] && ! inrange "$warn" "$value"; then
+  echo "WARNING: $text"
+  exit 1
+fi
+
+echo "OK: $text"
+exit 0
+
