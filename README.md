@@ -21,11 +21,11 @@ When creating a new machine just use
 
     imports = [ <nixsap> ];
 
-Each package `foo` under the [modules/pkgs](./modules/pkgs) is automatically available as `pkgs.foo`.
+Each package `foo` under the [./pkgs](./pkgs) is automatically available as `pkgs.foo`.
 For example:
 
-    modules/pkgs/writeXML.nix        => pkgs.writeXML
-    modules/pkgs/rdsdump/default.nix => pkgs.rdsdump
+    pkgs/writeXML.nix        => pkgs.writeXML
+    pkgs/rdsdump/default.nix => pkgs.rdsdump
 
 You can use this techniques in your own projects. You can take out any modules
 or packages and put them into your project with your modifications without
