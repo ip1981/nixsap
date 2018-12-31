@@ -4,11 +4,8 @@ let
   plugins = [
     "check_disk"
     "check_file_age"
-    "check_http"
     "check_load"
     "check_log"
-    "check_mysql"
-    "check_mysql_query"
     "check_procs"
     "check_swap"
     "check_users"
