@@ -24,6 +24,8 @@ stdenv.mkDerivation rec {
   configurePhase = ''
     ./configure \
       --prefix=$out \
+      --sysconfdir=/etc \
+      --localstatedir=/var \
       --disable-nls \
       --with-ping-command="/run/wrappers/bin/ping -n -U -w %d -c %d %s" \
       --with-ping6-command="/run/wrappers/bin/ping6 -n -U -w %d -c %d %s" \
