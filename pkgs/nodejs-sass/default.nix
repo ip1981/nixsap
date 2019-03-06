@@ -20,8 +20,10 @@ let
     in m // {
       "${name}-${version}" = m."${name}-${version}".override (super: {
         # XXX: build bundled libsassl, DO NOT DOWNLOAD binaries!
+        # XXX --nodedir is to prevent gyp from downloading nodejs headers
+        # XXX: ref. https://github.com/nodejs/node-gyp/issues/1133
         preRebuild = ''
-          SASS_FORCE_BUILD=true npm run-script build
+          npm run build --nodedir=${pkgs.nodejs}
         '';
       });
     };
