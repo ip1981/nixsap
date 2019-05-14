@@ -1,1 +1,0 @@
-{ jenkinsWithPlugins }: jenkinsWithPlugins (_: {})

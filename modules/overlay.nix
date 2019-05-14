@@ -1,3 +1,0 @@
-{
-  nixpkgs.overlays = [ (import ../pkgs) ];
-}
