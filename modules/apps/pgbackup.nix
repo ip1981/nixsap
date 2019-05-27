@@ -130,8 +130,8 @@ let
         }
 
         ${optionalString (gpgPubKeys != []) ''
-          recipient=( $(${gpg} --homedir '${privateDir}/gnupg' -k --with-colons --fast-list-mode | \
-            ${pkgs.gawk}/bin/awk -F: '/^pub/{print $5}') )
+          mapfile -t recipient < <(${gpg} --homedir '${privateDir}/gnupg' -k --with-colons --fast-list-mode | \
+            ${pkgs.gawk}/bin/awk -F: '/^pub/{print $5}')
           r=( "''${recipient[@]/#/-r}" )
           ${gpg} --homedir '${privateDir}/gnupg' --batch --no-tty --yes \
             "''${r[@]}" --trust-model always \
