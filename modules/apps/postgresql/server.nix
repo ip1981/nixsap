@@ -4,7 +4,7 @@ let
   inherit (lib) mkOption mkOptionType mkIf types isInt isString
                 all length splitString stringToCharacters filter;
   inherit (types) either enum attrsOf nullOr listOf str path lines int bool;
-  inherit (builtins) toString match;
+  inherit (builtins) match;
 
   default = d: t: mkOption { type = t; default = d; };
   mandatory = t: mkOption { type = t; };

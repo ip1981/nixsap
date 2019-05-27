@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 let
-  inherit (builtins) length toString replaceStrings;
+  inherit (builtins) length replaceStrings;
   inherit (lib) concatMapStringsSep optionalString splitString mkOption;
   inherit (lib.types) listOf int submodule enum str;
 

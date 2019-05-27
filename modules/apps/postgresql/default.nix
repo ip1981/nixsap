@@ -2,7 +2,7 @@
 let
 
   inherit (builtins)
-    match toString ;
+    match ;
 
   inherit (lib)
     concatMapStrings concatStringsSep filterAttrs foldAttrs filter foldl

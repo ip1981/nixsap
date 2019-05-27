@@ -1,8 +1,7 @@
 { config, pkgs, lib, ... }:
 let
   inherit (builtins)
-    attrNames filter isBool isInt isList isPath isString length replaceStrings
-    toString ;
+    attrNames filter isBool isInt isList isPath isString length replaceStrings;
 
   inherit (lib)
     mkOption mkEnableOption mkIf types toUpper unique

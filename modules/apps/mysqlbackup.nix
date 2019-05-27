@@ -1,10 +1,10 @@
 { config, pkgs, lib, ... }:
 let
-  inherit (lib) mkOption mkIf mkDefault mapAttrsToList flatten hasPrefix 
+  inherit (lib) mkOption mkIf mkDefault mapAttrsToList flatten hasPrefix
                 concatMapStringsSep concatStringsSep optionalString filterAttrs
                 splitString removeSuffix;
   inherit (lib.types) bool str int path either enum nullOr listOf attrsOf submodule;
-  inherit (builtins) isString isBool isInt isList isPath toString length;
+  inherit (builtins) isString isBool isInt isList isPath length;
 
   cfg = config.nixsap.apps.mysqlbackup;
   privateDir = "/run/mysqlbackup";

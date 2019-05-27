@@ -5,7 +5,7 @@ let
   inherit (lib) mkIf mkOption types filterAttrs hasPrefix
                 mapAttrsToList concatStringsSep concatMapStringsSep;
   inherit (types) listOf submodule path attrsOf;
-  inherit (builtins) toString toFile isList isBool;
+  inherit (builtins) toFile isList isBool;
 
   cfg = config.nixsap.apps.strongswan;
   explicit = filterAttrs (n: v: n != "_module" && v != null);
@@ -30,9 +30,9 @@ let
             ))
         ) (explicit sections)
       );
-      setupSec = makeSections "config" { inherit (cfg) setup; }; 
-      caSec = makeSections "ca" cfg.ca; 
-      connSec = makeSections "conn" cfg.conn; 
+      setupSec = makeSections "config" { inherit (cfg) setup; };
+      caSec = makeSections "ca" cfg.ca;
+      connSec = makeSections "conn" cfg.conn;
     in toFile "ipsec.conf" ''
       ${setupSec}
       ${caSec}

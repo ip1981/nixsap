@@ -2,7 +2,6 @@
 
 let
 
-  inherit (builtins) toString ;
   inherit (lib)
     concatStrings hasPrefix mkEnableOption mkIf mkOption
     optionalString types ;

@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 
 let
-  inherit (builtins) toString;
   inherit (lib) types mkOption mkEnableOption mkIf hasPrefix
                 concatStrings optionalString;
   inherit (types) str path int nullOr;
