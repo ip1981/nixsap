@@ -34,10 +34,7 @@ in {
     fileSystems."/tmp" = 1;
   };
 
-  nixsap.apps.filebackup.s3uri = mkForce null;
   nixsap.apps.icinga2.notifications = mkForce false;
-  nixsap.apps.mysqlbackup.s3uri = mkForce null;
-  nixsap.apps.pgbackup.s3uri = mkForce null;
 
   nixsap.apps.mariadb.mysqld = {
     datadir = mkForce "/mariadb/db";
