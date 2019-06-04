@@ -10,7 +10,7 @@ let
     mkDefault mkIf mkOption nameValuePair types ;
 
   inherit (types)
-    attrsOf lines listOf nullOr package path str submodule ;
+    attrsOf bool lines listOf nullOr package path str submodule ;
 
   concatNonEmpty = sep: list: concatStringsSep sep (filter (s: s != "") list);
   explicit = filterAttrs (n: v: n != "_module" && v != null);
@@ -20,9 +20,29 @@ let
 
   isFloat = x: match "^[0-9]+(\\.[0-9]+)?$" (toString x) != null;
 
+  mkKeys = name: opts: pkgs.runCommand "psql-${name}-keys.nix" {} ''
+    exec >$out
+
+    printf '['
+
+    ${pkgs.gnugrep}/bin/grep -oE '${config.nixsap.deployment.keyStore}/[^/]+\b' \
+    ${opts._configureFile} > keys || [ $? -eq 1 ]
+
+    while read -r key; do
+      printf ' "%s"' "$key"
+    done < keys
+
+    printf ' ]'
+
+    printf '%s: ' $out >&2
+    cat $out >&2
+  '';
+
   keyrings =
     let
-      ik = mapAttrsToList (_: i: { "${i.user}" = [ i.server.ssl_key_file ]; } ) instances;
+      # This requires read-write mode of evaluation:
+      keys = n: i: if i.extractKeys then import (mkKeys n i) else [];
+      ik = mapAttrsToList (n: i: { "${i.user}" = [ i.server.ssl_key_file ] ++ keys n i; } ) instances;
     in foldAttrs (l: r: l ++ r) [] ik;
 
   mkService = name: opts:
@@ -84,7 +104,7 @@ let
           done
           ${psql} -f ${./functions.pgsql}
           ${psql} -f ${create}
-          ${psql} -f ${pkgs.writeText "pgsql-${name}.sql" opts.configure}
+          ${psql} -f ${opts._configureFile}
         '';
 
       needConf = (opts.configure != "") || (opts.roles != []) || (opts.databases != []);
@@ -159,6 +179,19 @@ let
           SELECT create_db_if_not_exists('sproxy');
           ALTER DATABASE sproxy OWNER TO sproxy;
         '';
+      };
+      _configureFile = mkOption {
+        readOnly = true;
+        internal = true;
+        default = pkgs.writeText "pgsql-${name}.sql" config.configure;
+      };
+      extractKeys = mkOption {
+        description = ''
+          Automatically extract secret keys from the configuration script.
+          Experimental.
+        '';
+        default = true;
+        type = bool;
       };
       package = mkOption {
         description = "PostgreSQL package";
