@@ -163,6 +163,7 @@ in {
     nixsap.apps.logrotate.conf.nginx = mkIf enabled {
       files = [ "${cfg.logDir}/*.log" ];
       directives = {
+        su = "${cfg.user} ${cfg.user}";
         delaycompress = mkDefault true;
         missingok = mkDefault true;
         notifempty = mkDefault true;
