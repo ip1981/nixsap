@@ -8,7 +8,7 @@ let
     findFirst hasPrefix mapAttrsToList mkIf
     mkOption optionalString removeSuffix ;
   inherit (lib.types)
-    bool enum int listOf nullOr path str submodule ;
+    bool enum int listOf nullOr package path str submodule ;
 
   cfg = config.nixsap.apps.pgbackup;
   privateDir = "/run/pgbackup";
@@ -80,7 +80,7 @@ let
       # XXX: Use the latest pg_dump:
       pg_dump = pkgs.writeBashScript name ''
         ${optionalString (cfg.pgpass != null) "export PGPASSFILE='${cfg.pgpass}'"}
-        exec ${pkgs.postgresql95}/bin/pg_dump \
+        exec ${cfg.package}/bin/pg_dump \
           ${concatMapAttrsSep " " mkArg args} \
           "$@"
       '';
@@ -256,6 +256,13 @@ let
 
 in {
   options.nixsap.apps.pgbackup = {
+
+    package = mkOption {
+      description = "PostgreSQL package providing pg_dump";
+      type = package;
+      default = pkgs.postgresql;
+    };
+
     user = mkOption {
       description = "User to run as";
       default = "pgbackup";
