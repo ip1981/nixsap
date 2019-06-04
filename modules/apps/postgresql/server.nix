@@ -203,7 +203,7 @@ in {
     vacuum_multixact_freeze_table_age = optional int;
     wal_buffers = optional int;
     wal_keep_segments = optional int;
-    wal_level = optional (enum [ "minimal" "archive" "hot_standby" "logical" ]);
+    wal_level = optional (enum [ "minimal" "replica" "logical" ]);
     wal_log_hints = optional bool;
     wal_receiver_status_interval = optional int;
     wal_receiver_timeout = optional int;
