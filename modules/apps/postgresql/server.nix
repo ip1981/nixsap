@@ -150,7 +150,7 @@ in {
     max_standby_streaming_delay = optional int;
     max_wal_senders = optional int;
     max_worker_processes = optional int;
-    password_encryption = optional bool;
+    password_encryption = optional (enum [ "md5" "scram-sha-256" ]);
     port = default 5432 int;
     quote_all_identifiers = optional bool;
     random_page_cost = optional float;
