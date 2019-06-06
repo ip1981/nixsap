@@ -29,6 +29,7 @@ let
 
   command = sub
     {
+      package                 = default pkgs.postgresql package;
       blobs                   = optional bool;
       clean                   = optional bool;
       compress                = default 9 int;
@@ -65,6 +66,7 @@ let
 
       args = filterAttrs (n: v:
           v != null && n != "_module"
+          && n != "package"
           && (n == "host"     -> v != "localhost")
           && (n == "jobs"     -> o.format == "directory")
              # XXX will use pigz for others:
@@ -77,10 +79,9 @@ let
        else if isString v then "--${k}='${v}'"
        else "--${k}=${toString v}" ;
 
-      # XXX: Use the latest pg_dump:
       pg_dump = pkgs.writeBashScript name ''
         ${optionalString (cfg.pgpass != null) "export PGPASSFILE='${cfg.pgpass}'"}
-        exec ${cfg.package}/bin/pg_dump \
+        exec ${o.package}/bin/pg_dump \
           ${concatMapAttrsSep " " mkArg args} \
           "$@"
       '';
@@ -256,12 +257,6 @@ let
 
 in {
   options.nixsap.apps.pgbackup = {
-
-    package = mkOption {
-      description = "PostgreSQL package providing pg_dump";
-      type = package;
-      default = pkgs.postgresql;
-    };
 
     user = mkOption {
       description = "User to run as";
