@@ -7,8 +7,8 @@
 }:
 mkDerivation {
   pname = "sproxy2";
-  version = "1.97.0";
-  sha256 = "538a95dd0714981ba255ded73d634f459739eaec04a44426ef86d015c8d2c8c6";
+  version = "1.97.1";
+  sha256 = "a43358ca9ebba23b121d74a1388926ed33c016636b00098ce749825b17a673e5";
   isLibrary = false;
   isExecutable = true;
   executableHaskellDepends = [
