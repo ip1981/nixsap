@@ -332,7 +332,7 @@ in {
         default = "";
         description = ''
           Any SQL statements to execute, typically GRANT / REVOKE etc.
-          This is executed in contect of the `mysql` database.
+          This is executed in context of the `mysql` database.
         '';
         example = ''
           CREATE USER IF NOT EXISTS 'icinga'@'%' IDENTIFIED BY PASSWORD '*AC8C3BDA823EECFF90A8381D554232C7620345B3';
