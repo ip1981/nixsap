@@ -5,7 +5,7 @@ Nixsap is a set of modules built on top of
 [NixOS](https://nixos.org/)/[Nixpkgs](https://nixos.org/nixpkgs/).  Nixsap
 provides NixOS modules in the `nixsap` "namespace", e. g. `nixsap.apps.mariadb`
 or `nixsap.system.users`, and adds or overrides some packages in Nixpkgs.
-From vanila Nixpkgs, Nixsap relies only on basic services like systemd, ssh, ntpd
+From vanilla Nixpkgs, Nixsap relies only on basic services like systemd, ssh, ntpd
 and package set (extending and overriding it).
 
 
@@ -29,7 +29,7 @@ For example:
 
 You can use this techniques in your own projects. You can take out any modules
 or packages and put them into your project with your modifications without
-maintaning a fork of Nixsap.  When taking modules you have to change the
+maintaining a fork of Nixsap.  When taking modules you have to change the
 `nixsap` namespace to something different to avoid conflicts.
 
 
@@ -103,7 +103,7 @@ Design
 Static analysis
 ---------------
 
-There are a handful of tools used thoughout the applications to ensure
+There are a handful of tools used throughout the applications to ensure
 correctness at build time: `writeBashScript`, `writeXML`, `writePHPFile`.
 `writeBashScript` uses [shellcheck](https://www.shellcheck.net/). `writeXML`
 runs [xmllint](http://xmlsoft.org/xmllint.html). `writePHPFile` relies on
