@@ -1,4 +1,4 @@
-{lib, ... }:
+{ lib, ... }:
 
 let
   all = lib.filterAttrs

@@ -76,12 +76,13 @@ Examples:
 Keyrings
 --------
 
-[Keyrings](modules/deployment/keyrings.nix) provide a means of
-deploying secret files with sensitive content.  It's inspired by
-[NixOps](https://nixos.org/nixops/) and relies on it as on reference
-implementation. Most applications from `nixsap.apps` recognize keys from their
-parameters or extract them from configuration files and automatically build
-their keyrings.
+[Keyrings](modules/deployment/keyrings.nix) provide a means of deploying secret files with
+sensitive content.  It's inspired by [NixOps](https://nixos.org/nixops/). Most applications
+from `nixsap.apps` recognize keys from their parameters or extract them from configuration
+files and automatically build their keyrings. After the decline of NixOps, its key supporting
+facilities were adopted as `nixsap.deployment.keys` with improvements to serve as a backend
+for the keyrings. Now there is also an SFTP batch file (`nixsap.deployment.send-keys-sftp`)
+which can be fed to `sftp(1)`to make it upload the keys.
 
 
 Multi-instance applications
@@ -153,7 +154,7 @@ _secure_, default value.
 Recommendations
 ===============
 
-* [nixpkgs](https://nixos.org/nixpkgs/) >= 18.03
+* [nixpkgs](https://nixos.org/nixpkgs/) >= 25.11
 
 
 License
