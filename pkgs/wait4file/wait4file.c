@@ -49,7 +49,7 @@ does not block the following test for the file's existence. But this approach do
 solves the problem because testing the file's existence still can happen before adding
 a watch somewhere within inotifywait: two shells (test & add-wait) run concurrently.
 A better solution is to add a watch first, then test for the file's existence, then start
-waiting for a corresponding even if necessary (the add-test-wait scheme). At this moment
+waiting for a corresponding event if necessary (the add-test-wait scheme). At this moment
 inotifywait is off the table. The sequential add-test-wait scheme has one theoretical issue:
 the inotify event queue can overflow and events can be lost.  To prevent loss of events
 the gap between the "add" and "wait" steps has to be as small as possible, so we start the
