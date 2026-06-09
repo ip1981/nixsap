@@ -19,9 +19,6 @@ let
 
 in {
   options = {
-    DateStyle = optional str;
-    IntervalStyle = optional (enum [ "sql_standard" "postgres_verbose" "iso_8601" ]);
-    TimeZone = optional str;
     application_name = optional str;
     archive_command = optional path;
     archive_mode = optional bool;
@@ -60,6 +57,7 @@ in {
     cpu_tuple_cost = optional float;
     cursor_tuple_fraction = optional float;
     data_directory = mandatory path;
+    DateStyle = optional str;
     deadlock_timeout = optional int;
     debug_pretty_print = optional bool;
     debug_print_parse = optional bool;
@@ -104,6 +102,7 @@ in {
     hot_standby_feedback = optional bool;
     huge_pages = optional (enum [ "on" "off" "try" ]);
     ident_file = default "" lines;
+    IntervalStyle = optional (enum [ "sql_standard" "postgres_verbose" "iso_8601" ]);
     join_collapse_limit = optional int;
     lc_messages = optional str;
     lc_monetary = optional str;
@@ -183,6 +182,7 @@ in {
     temp_buffers = optional int;
     temp_file_limit = optional int;
     temp_tablespaces = optional str;
+    TimeZone = optional str;
     timezone_abbreviations = optional str;
     track_activities = optional bool;
     track_activity_query_size = optional int;
