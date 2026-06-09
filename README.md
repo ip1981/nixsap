@@ -8,6 +8,8 @@ or `nixsap.system.users`, and adds or overrides some packages in Nixpkgs.
 From vanilla Nixpkgs, Nixsap relies only on basic services like systemd, ssh, ntpd
 and package set (extending and overriding it).
 
+See [nixsap-examples](https://git.pashev.ru/nix/nixsap-examples/) ([Github](https://github.com/ip1981/nixsap-examples)).
+
 
 Features
 ========
@@ -29,8 +31,7 @@ For example:
 
 You can use this techniques in your own projects. You can take out any modules
 or packages and put them into your project with your modifications without
-maintaining a fork of Nixsap.  When taking modules you have to change the
-`nixsap` namespace to something different to avoid conflicts.
+maintaining a fork of Nixsap.
 
 
 Package Overlay
