@@ -82,8 +82,14 @@ let
 
         mkdirs() {
           for d in "$@"; do
-            mkdir -p -v "$d"
-            chmod -c a=rwxt "$d"
+            case $d in
+              @*)
+                ;;
+              *)
+                mkdir -p -v "$d"
+                chmod -c a=rwxt "$d"
+                ;;
+            esac
           done
         }
         export -f mkdirs
