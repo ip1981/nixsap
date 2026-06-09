@@ -36,6 +36,7 @@ let
   mkDaemonUser = name:
     {
       isNormalUser = false;
+      isSystemUser = true;
       uid = uid name;
       group = name;
     };
@@ -43,6 +44,7 @@ let
   mkNormalUser = name:
     {
       isNormalUser = true;
+      isSystemUser = false;
       uid = uid name;
     };
 
