@@ -68,21 +68,40 @@ let
         concatStringsSep "\n" (mapAttrsToList (n: v: "${n} = ${show n v}") (explicit opts.server))
       );
 
-      preStart = ''
+
+      # FIXME: There is a bash builtin "csv", but it fails on a complicated,
+      # FIXME: but still valid string like '/tmp, "/xx, yy", "/foo"'.
+      # FIXME: Ref. https://www.postgresql.org/docs/current/runtime-config-connection.html
+      # XXX: order of options is important for postgres.
+      main-pre = pkgs.writeBashScriptBin "pgsql-${name}-pre"  ''
+        set -euo pipefail
+
         mkdir -v -p '${data_directory}'
         chown -R '${user}:${user}' '${data_directory}'
         chmod -R u=rwX,g=,o= '${data_directory}'
+
+        mkdirs() {
+          for d in "$@"; do
+            mkdir -p -v "$d"
+            chmod -c a=rwxt "$d"
+          done
+        }
+        export -f mkdirs
+
+        ${pkgs.csvtool}/bin/csvtool call mkdirs <(${opts.package}/bin/postgres -C unix_socket_directories --config-file='${conf}')
       '';
 
       main = pkgs.writeBashScriptBin "pgsql-${name}" ''
         set -euo pipefail
+
         if [ ! -f '${data_directory}/PG_VERSION' ]; then
           ${initdb} '${data_directory}'
           rm -f '${data_directory}/'*hba.conf
           rm -f '${data_directory}/'*ident.conf
           rm -f '${data_directory}/postgresql.conf'
         fi
-        exec '${opts.package}/bin/postgres' -c 'config_file=${conf}'
+
+        exec ${opts.package}/bin/postgres --config-file='${conf}'
       '';
 
       psql = "${opts.package}/bin/psql -v ON_ERROR_STOP=1 -p${toString port} -U postgres";
@@ -114,8 +133,8 @@ let
         wantedBy = [ "multi-user.target" ];
         wants = [ "keys.target" ];
         after = [ "keys.target" "network.target" "local-fs.target" ];
-        inherit preStart;
         serviceConfig = {
+          ExecStartPre = "${main-pre}/bin/pgsql-${name}-pre";
           ExecStart = "${main}/bin/pgsql-${name}";
           KillMode = "mixed";
           KillSignal = "SIGINT";
