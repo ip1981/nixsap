@@ -91,11 +91,13 @@ cmd_send_keys() {
 
 cmd_deploy() {
   system=$(cmd_build)
+
   NIX_SSHOPTS="${SSH_OPTS[*]}" nix-copy-closure --to "$MACHINE_NAME" "$system"
   cmd_send_keys
 
   # shellcheck disable=SC2029
-  ssh "${SSH_OPTS[@]}" "$MACHINE_NAME" "$system/bin/switch-to-configuration switch"
+  ssh "${SSH_OPTS[@]}" "$MACHINE_NAME" "nix-env -p /nix/var/nix/profiles/system --set $system"
+  ssh "${SSH_OPTS[@]}" "$MACHINE_NAME" "/nix/var/nix/profiles/system/bin/switch-to-configuration switch"
 }
 
 
